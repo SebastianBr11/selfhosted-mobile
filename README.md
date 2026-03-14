@@ -2,6 +2,10 @@
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+## Requirements
+
+- [Mise](https://github.com/jdx/mise) is used for installing necessary dependencies
+
 ## Get started
 
 1. Install dependencies
