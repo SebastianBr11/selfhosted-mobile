@@ -6,6 +6,7 @@ const theme = {
   ios: {
     text: Color.ios.label,
     textSecondary: Color.ios.secondaryLabel,
+    textError: Color.ios.systemRed,
     background: Color.ios.systemBackground,
     backgroundElement: Color.ios.secondarySystemBackground,
     backgroundSelected: Color.ios.tertiarySystemBackground,
@@ -13,16 +14,18 @@ const theme = {
   android: {
     text: Color.android.dynamic.onSurface,
     textSecondary: Color.android.dynamic.onSurfaceVariant,
+    textError: Color.android.dynamic.error,
     background: Color.android.dynamic.surface,
     backgroundElement: Color.android.dynamic.surfaceContainer,
     backgroundSelected: Color.android.dynamic.surfaceContainerHighest,
   },
 } as const
 
-export const colors = Platform.select({
-  ios: theme.ios,
-  default: theme.android,
-})
+export const colors = () =>
+  Platform.select({
+    ios: theme.ios,
+    default: theme.android,
+  })
 
 export type ThemeColor = keyof typeof theme.android & keyof typeof theme.ios
 
