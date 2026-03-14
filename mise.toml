@@ -1,4 +1,5 @@
 [tools]
 bun = "latest"
+java = "17"
 node = "lts"
 "npm:eas-cli" = "latest"
