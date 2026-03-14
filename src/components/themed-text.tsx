@@ -72,6 +72,18 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     fontWeight: 700,
   },
+  success: {
+    color: colors().textSuccess,
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: 700,
+  },
+  button: {
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: 500,
+    textAlign: 'center',
+  },
   code: {
     fontFamily: Fonts.mono,
     fontWeight: Platform.select({ android: 700 }) ?? 500,
