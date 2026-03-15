@@ -13,7 +13,7 @@ const urlSchema = v.pipe(
   v.url('The URL is invalid'),
 )
 
-export default function HomeScreen() {
+export default function SettingsScreen() {
   const theme = useTheme()
   const url = process.env.EXPO_PUBLIC_SERVICES_URL
   const urlFromEnv = !!url
