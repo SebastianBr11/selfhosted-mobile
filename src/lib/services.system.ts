@@ -24,7 +24,7 @@ const builtInServiceIds = [
 export const serviceSystem = createServiceSystem([
   {
     id: 'audiobookshelf',
-    title: 'Audiobookshelf',
+    name: 'Audiobookshelf',
     url: 'https://www.audiobookshelf.org/',
     description: 'Self-hosted audiobook and podcast server',
     appStoreLink:
@@ -33,7 +33,7 @@ export const serviceSystem = createServiceSystem([
   },
   {
     id: 'booklore',
-    title: 'Booklore',
+    name: 'Booklore',
     url: 'https://booklore.org/',
     description:
       'A modern way to organize, read, and own your digital library.',
@@ -41,28 +41,28 @@ export const serviceSystem = createServiceSystem([
   },
   {
     id: 'cup',
-    title: 'Cup',
+    name: 'Cup',
     url: 'https://cup.sergi0g.dev/',
     description: 'Docker container updates made easy',
     iconUrl: 'https://cup.sergi0g.dev/favicon.svg',
   },
   {
     id: 'dozzle',
-    title: 'Dozzle',
+    name: 'Dozzle',
     url: 'https://dozzle.dev/',
     description: 'Simple Container Monitoring and Logging',
     iconUrl: 'https://dozzle.dev/logo.svg',
   },
   {
     id: 'freshrss',
-    title: 'FreshRSS',
+    name: 'FreshRSS',
     url: 'https://www.freshrss.org/',
     description: 'A free, self-hostable feed aggregator.',
     iconUrl: 'https://freshrss.org/images/icon.svg',
   },
   {
     id: 'jellyfin',
-    title: 'Jellyfin',
+    name: 'Jellyfin',
     url: 'https://jellyfin.org/',
     description: 'The Free Software Media System',
     iconUrl:
@@ -70,7 +70,7 @@ export const serviceSystem = createServiceSystem([
   },
   {
     id: 'linkding',
-    title: 'linkding',
+    name: 'linkding',
     url: 'https://linkding.link/',
     description:
       'A self-hosted bookmark manager designed to be minimal, fast, and easy to set up.',
@@ -78,7 +78,7 @@ export const serviceSystem = createServiceSystem([
   },
   {
     id: 'ntfy',
-    title: 'ntfy',
+    name: 'ntfy',
     url: 'https://ntfy.sh/',
     description:
       'Send push notifications to your phone or desktop using PUT/POST',
@@ -87,7 +87,7 @@ export const serviceSystem = createServiceSystem([
   },
   {
     id: 'otterwiki',
-    title: 'An Otter Wiki',
+    name: 'An Otter Wiki',
     url: 'https://otterwiki.com/',
     description: 'A minimalistic wiki powered by python, markdown and git.',
     iconUrl: {
@@ -98,16 +98,18 @@ export const serviceSystem = createServiceSystem([
   },
   {
     id: 'paperless',
-    title: 'Paperless-ngx',
+    name: 'Paperless-ngx',
     url: 'https://docs.paperless-ngx.com/',
     description:
       'A community-supported supercharged document management system: scan, index and archive all your documents',
+    appStoreLink:
+      'https://f-droid.org/en/packages/de.astubenbord.paperless_mobile/',
     iconUrl:
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/paperless-ngx.svg',
   },
   {
     id: 'pi-hole',
-    title: 'Pi-hole',
+    name: 'Pi-hole',
     url: 'https://pi-hole.net/',
     description: 'A black hole for Internet advertisements',
     iconUrl:
@@ -115,21 +117,21 @@ export const serviceSystem = createServiceSystem([
   },
   {
     id: 'readeck',
-    title: 'Readeck',
+    name: 'Readeck',
     url: 'https://readeck.org/en/',
     description: 'Readeck is a libre, self hosted, read later web application.',
     iconUrl: 'https://readeck.org/media/favicons/favicon.d57024ea.svg',
   },
   {
     id: 'romm',
-    title: 'Romm',
+    name: 'Romm',
     url: 'https://romm.app/',
     description: 'A beautiful, powerful, self-hosted rom manager and player.',
     iconUrl: 'https://romm.app/_ipx/q_80/images/blocks/logos/romm.svg',
   },
   {
     id: 'tandoor',
-    title: 'Tandoor Recipes',
+    name: 'Tandoor Recipes',
     url: 'https://docs.tandoor.dev/',
     description:
       'The recipe manager that allows you to manage your ever growing collection of digital recipes.',
@@ -138,7 +140,7 @@ export const serviceSystem = createServiceSystem([
   },
   {
     id: 'vaultwarden',
-    title: 'Vaultwarden',
+    name: 'Vaultwarden',
     url: 'https://github.com/dani-garcia/vaultwarden',
     description: 'Unofficial Bitwarden compatible server written in Rust',
     iconUrl: {
@@ -149,7 +151,7 @@ export const serviceSystem = createServiceSystem([
   },
   {
     id: 'yamtrack',
-    title: 'Yamtrack',
+    name: 'Yamtrack',
     url: 'https://github.com/FuzzyGrim/Yamtrack',
     description:
       'A self hosted media tracker for movies, tv shows, anime, manga, video games, books, comics, and board games.',
@@ -164,31 +166,42 @@ export const serviceSystem = createServiceSystem([
 const BuiltInServiceIdSchema = v.picklist(builtInServiceIds)
 type BuiltInServiceId = v.InferOutput<typeof BuiltInServiceIdSchema>
 
+const ServiceIdSchema = v.string()
+const ServiceNameSchema = v.string()
+const ServiceDescriptionSchema = v.string()
+const ServiceAppStoreLinkSchema = v.union([
+  UrlSchema,
+  v.array(v.object({ name: v.string(), url: UrlSchema })),
+])
+const ServiceIconUrlSchema = v.union([
+  UrlSchema,
+  v.object({ light: UrlSchema, dark: UrlSchema }),
+])
+
 const ServiceSchema = v.object({
-  id: v.string(),
-  title: v.string(),
+  id: ServiceIdSchema,
+  name: ServiceNameSchema,
   url: UrlSchema,
   description: v.string(),
-  appStoreLink: v.optional(UrlSchema),
-  iconUrl: v.union([
-    UrlSchema,
-    v.object({ light: UrlSchema, dark: UrlSchema }),
-  ]),
+  appStoreLink: v.optional(ServiceAppStoreLinkSchema),
+  iconUrl: ServiceIconUrlSchema,
 })
 export type Service = v.InferOutput<typeof ServiceSchema>
+export type ServiceName = Service['name']
+export type ServiceUrl = Service['url']
+export type ServiceDescription = Service['description']
+export type ServiceAppStoreLink = Service['appStoreLink']
 export type ServiceIconUrl = Service['iconUrl']
 
 function createUserInputSchema(validIds: Set<string>) {
   return v.pipe(
     v.object({
-      id: v.string(),
-      title: v.optional(v.string()),
+      id: ServiceIdSchema,
+      name: v.optional(ServiceNameSchema),
       url: UrlSchema,
-      description: v.optional(v.string()),
-      appStoreLink: v.optional(UrlSchema),
-      iconUrl: v.optional(
-        v.union([UrlSchema, v.object({ light: UrlSchema, dark: UrlSchema })]),
-      ),
+      description: v.optional(ServiceDescriptionSchema),
+      appStoreLink: v.optional(ServiceAppStoreLinkSchema),
+      iconUrl: v.optional(ServiceIconUrlSchema),
     }),
     v.check((input) => {
       // If any field is missing, the ID must be a built-in one
@@ -219,7 +232,7 @@ function createServiceSystem<const T extends readonly Service[] = Service[]>(
           const defaults = defaultMap.get(item.id)
           return {
             id: item.id,
-            title: item.title ?? defaults?.title!,
+            name: item.name ?? defaults?.name!,
             url: item.url,
             description: item.description ?? defaults?.description!,
             appStoreLink: item.appStoreLink ?? defaults?.appStoreLink!,
