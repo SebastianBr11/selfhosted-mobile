@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     fontSize: 48,
     fontWeight: 700,
     lineHeight: 52,
-    paddingBlock: 64,
+    paddingBlock: 40,
     textAlign: 'center',
   },
   subtitle: {

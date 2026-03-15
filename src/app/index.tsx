@@ -24,7 +24,6 @@ export default function HomeScreen() {
       </ThemedView>
     )
   }
-  console.log('services', services)
 
   return (
     <ThemedView style={{ flex: 1 }} type="background">
@@ -32,17 +31,18 @@ export default function HomeScreen() {
         <ThemedText type="title">Here are your services</ThemedText>
         <FlatList
           data={services}
+          numColumns={2}
+          refreshing={fetchState.didFetch && fetchState.fetching}
+          onRefresh={fetchServices}
+          columnWrapperStyle={{ gap: 12 }}
+          style={{ marginInline: 20 }}
           keyExtractor={(item) => item.id}
-          columnWrapperStyle={{
-            gap: 16,
-          }}
           contentContainerStyle={{
-            flex: 1,
-            paddingInline: 20,
+            gap: 12,
           }}
           renderItem={({ item }) => (
             <Link href={`${item.url}/`} asChild>
-              <Pressable style={{ flex: 1, flexShrink: 1 }}>
+              <Pressable style={{ flex: 1 }}>
                 <ThemedView
                   type="backgroundElement"
                   style={{
@@ -69,15 +69,13 @@ export default function HomeScreen() {
                       flexDirection: 'row',
                       gap: 8,
                       alignItems: 'center',
-                      maxWidth: 100,
+                      justifyContent: 'space-around',
+                      marginInline: 18,
                     }}
                   >
-                    <ThemedText type="large">{item.title}</ThemedText>
-                    <Feather
-                      name="external-link"
-                      size={20}
-                      color={theme.textSecondary}
-                    />
+                    <ThemedText style={{ textAlign: 'center' }} type="large">
+                      {item.title}
+                    </ThemedText>
                   </ThemedView>
                   <ThemedText
                     type="small"
@@ -90,16 +88,15 @@ export default function HomeScreen() {
               </Pressable>
             </Link>
           )}
-          ListFooterComponent={
-            <Button
-              loading={fetchState.didFetch && fetchState.fetching}
-              onPress={fetchServices}
-            >
-              Fetch services
-            </Button>
-          }
-          ListFooterComponentStyle={{ marginTop: 'auto' }}
         />
+
+        <Button
+          loading={fetchState.didFetch && fetchState.fetching}
+          onPress={fetchServices}
+          style={{ marginInline: 20 }}
+        >
+          Fetch services
+        </Button>
       </SafeAreaView>
     </ThemedView>
   )
