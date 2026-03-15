@@ -9,8 +9,11 @@ import { FlatList, Pressable } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Feather from '@expo/vector-icons/Feather'
 import { useTheme } from '@/hooks/use-theme'
+import { schemeDependantIcon } from '@/util/theme-util'
+import { useColorScheme } from '@/hooks/use-color-scheme'
 
 export default function HomeScreen() {
+  const scheme = useColorScheme()
   const theme = useTheme()
   const { url, valid } = useServicesUrl()
   const { services, fetchState, fetchServices } = useServices(url || '')
@@ -61,7 +64,7 @@ export default function HomeScreen() {
                   >
                     <Image
                       contentFit="cover"
-                      source={item.iconUrl}
+                      source={schemeDependantIcon(scheme, item.iconUrl)}
                       style={{ flex: 1, width: '100%' }}
                     />
                   </ThemedView>

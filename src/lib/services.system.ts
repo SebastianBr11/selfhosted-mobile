@@ -90,7 +90,11 @@ export const serviceSystem = createServiceSystem([
     title: 'An Otter Wiki',
     url: 'https://otterwiki.com/',
     description: 'A minimalistic wiki powered by python, markdown and git.',
-    iconUrl: 'https://otterwiki.com/static/img/otter.png',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/otter-wiki.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/otter-wiki-dark.svg',
+    },
   },
   {
     id: 'paperless',
@@ -98,7 +102,8 @@ export const serviceSystem = createServiceSystem([
     url: 'https://docs.paperless-ngx.com/',
     description:
       'A community-supported supercharged document management system: scan, index and archive all your documents',
-    iconUrl: 'https://docs.paperless-ngx.com/assets/logo.svg',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/paperless-ngx.svg',
   },
   {
     id: 'pi-hole',
@@ -136,8 +141,11 @@ export const serviceSystem = createServiceSystem([
     title: 'Vaultwarden',
     url: 'https://github.com/dani-garcia/vaultwarden',
     description: 'Unofficial Bitwarden compatible server written in Rust',
-    iconUrl:
-      'https://github.com/dani-garcia/vaultwarden/raw/refs/heads/main/resources/vaultwarden-icon.svg',
+    iconUrl: {
+      light:
+        'https://github.com/dani-garcia/vaultwarden/raw/refs/heads/main/resources/vaultwarden-icon.svg',
+      dark: 'https://github.com/dani-garcia/vaultwarden/raw/refs/heads/main/resources/vaultwarden-icon-white.svg',
+    },
   },
   {
     id: 'yamtrack',
@@ -145,8 +153,11 @@ export const serviceSystem = createServiceSystem([
     url: 'https://github.com/FuzzyGrim/Yamtrack',
     description:
       'A self hosted media tracker for movies, tv shows, anime, manga, video games, books, comics, and board games.',
-    iconUrl:
-      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/yamtrack.svg',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/yamtrack-light.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/yamtrack.svg',
+    },
   },
 ])
 
@@ -159,9 +170,13 @@ const ServiceSchema = v.object({
   url: UrlSchema,
   description: v.string(),
   appStoreLink: v.optional(UrlSchema),
-  iconUrl: UrlSchema,
+  iconUrl: v.union([
+    UrlSchema,
+    v.object({ light: UrlSchema, dark: UrlSchema }),
+  ]),
 })
 export type Service = v.InferOutput<typeof ServiceSchema>
+export type ServiceIconUrl = Service['iconUrl']
 
 function createUserInputSchema(validIds: Set<string>) {
   return v.pipe(
@@ -171,7 +186,9 @@ function createUserInputSchema(validIds: Set<string>) {
       url: UrlSchema,
       description: v.optional(v.string()),
       appStoreLink: v.optional(UrlSchema),
-      iconUrl: v.optional(UrlSchema),
+      iconUrl: v.optional(
+        v.union([UrlSchema, v.object({ light: UrlSchema, dark: UrlSchema })]),
+      ),
     }),
     v.check((input) => {
       // If any field is missing, the ID must be a built-in one
