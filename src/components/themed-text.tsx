@@ -1,7 +1,8 @@
 import { Platform, StyleSheet, Text, type TextProps } from 'react-native'
 
-import { colors, Fonts, ThemeColor } from '@/constants/theme'
+import { Fonts } from '@/constants/theme'
 import { useTheme } from '@/hooks/use-theme'
+import { getColors, ThemeColor } from '@/constants/colors'
 
 export type ThemedTextProps = TextProps & {
   type?: keyof typeof styles
@@ -72,13 +73,13 @@ const styles = StyleSheet.create({
     color: '#3c87f7',
   },
   error: {
-    color: colors().textError,
+    color: getColors().textError,
     fontSize: 14,
     lineHeight: 20,
     fontWeight: 700,
   },
   success: {
-    color: colors().textSuccess,
+    color: getColors().textSuccess,
     fontSize: 14,
     lineHeight: 20,
     fontWeight: 700,

@@ -2,7 +2,12 @@ import { AssertExactlyAllIdsPresent } from '@/util/types'
 import * as v from 'valibot'
 import { UrlSchema } from './schemas'
 
-const builtInServiceIds = ['audiobookshelf', 'cup'] as const
+const builtInServiceIds = [
+  'audiobookshelf',
+  'booklore',
+  'cup',
+  'dozzle',
+] as const
 
 export const serviceSystem = createServiceSystem([
   {
@@ -15,11 +20,26 @@ export const serviceSystem = createServiceSystem([
     iconUrl: 'https://www.audiobookshelf.org/Logo.png',
   },
   {
+    id: 'booklore',
+    title: 'Booklore',
+    url: 'https://booklore.org/',
+    description:
+      'A modern way to organize, read, and own your digital library.',
+    iconUrl: 'https://booklore.org/img/logo.svg',
+  },
+  {
     id: 'cup',
     title: 'Cup',
     url: 'https://cup.sergi0g.dev/',
     description: 'Docker container updates made easy',
     iconUrl: 'https://cup.sergi0g.dev/favicon.svg',
+  },
+  {
+    id: 'dozzle',
+    title: 'Dozzle',
+    url: 'https://dozzle.dev/',
+    description: 'Simple Container Monitoring and Logging',
+    iconUrl: 'https://dozzle.dev/logo.svg',
   },
 ])
 

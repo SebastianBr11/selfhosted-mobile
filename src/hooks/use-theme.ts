@@ -1,9 +1,9 @@
-import { colors } from '@/constants/theme'
 import { useColorScheme } from '@/hooks/use-color-scheme'
-import { Color } from 'expo-router'
+import { useMemo } from 'react'
+import { getColors } from '@/constants/colors'
 
 export function useTheme() {
   // Triggers re-render when system theme changes
-  useColorScheme()
-  return colors()
+  const scheme = useColorScheme()
+  return useMemo(getColors, [scheme])
 }
