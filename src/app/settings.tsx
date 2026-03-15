@@ -6,15 +6,11 @@ import { TextInput } from '@/components/text-input'
 import { Pressable } from 'react-native'
 import { useTheme } from '@/hooks/use-theme'
 import { useServicesUrl } from '@/hooks/use-services-url'
+import Button from '@/components/button'
 
 export default function SettingsScreen() {
   const theme = useTheme()
   const { url, setUrl, urlFromEnv, valid, errors } = useServicesUrl()
-  useEffect(() => {
-    if (urlFromEnv) {
-      setUrl(process.env.EXPO_PUBLIC_SERVICES_URL)
-    }
-  }, [])
   const [connectionStatus, setConnectionStatus] = useState<
     { success: boolean; connecting: false } | { connecting: true } | undefined
   >()
@@ -27,7 +23,7 @@ export default function SettingsScreen() {
   console.log('input disabled', urlFromEnv)
 
   return (
-    <ThemedView style={{ flex: 1 }} type="background">
+    <ThemedView style={{ flex: 1 }} inlineInset type="background">
       <SafeAreaView style={{ flex: 1 }}>
         <ThemedView style={{ flex: 1, justifyContent: 'center' }}>
           <ThemedText type="title">Settings</ThemedText>
@@ -50,18 +46,7 @@ export default function SettingsScreen() {
             {!valid && <ThemedText type="error">{errors[0]}</ThemedText>}
           </ThemedView>
           <ThemedView style={{ gap: 8 }}>
-            <Pressable
-              style={{
-                padding: 16,
-                backgroundColor: theme.backgroundPrimary,
-                borderRadius: 8,
-              }}
-              onPress={connect}
-            >
-              <ThemedText type="button" themeColor="textPrimary">
-                Test Connection
-              </ThemedText>
-            </Pressable>
+            <Button onPress={connect}>Test connection</Button>
             {connectionStatus !== undefined &&
               (connectionStatus.connecting ? (
                 <ThemedText type="default">Connecting...</ThemedText>

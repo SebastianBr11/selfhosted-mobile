@@ -5,9 +5,15 @@ import { useTheme } from '@/hooks/use-theme'
 
 export type ThemedViewProps = ViewProps & {
   type?: ThemeColor
+  inlineInset?: boolean
 }
 
-export function ThemedView({ style, type, ...otherProps }: ThemedViewProps) {
+export function ThemedView({
+  style,
+  type,
+  inlineInset,
+  ...otherProps
+}: ThemedViewProps) {
   const theme = useTheme()
 
   return (
@@ -15,7 +21,7 @@ export function ThemedView({ style, type, ...otherProps }: ThemedViewProps) {
       style={[
         {
           backgroundColor: theme[type ?? 'background'],
-          paddingInline: type === 'background' ? 32 : 0,
+          paddingInline: inlineInset ? 32 : 0,
         },
         style,
       ]}

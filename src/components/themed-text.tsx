@@ -30,6 +30,11 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     fontWeight: 500,
   },
+  large: {
+    fontSize: 24,
+    lineHeight: 20,
+    fontWeight: 700,
+  },
   label: {
     fontSize: 14,
     lineHeight: 20,

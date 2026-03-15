@@ -63,7 +63,7 @@ export function useServices(url: string) {
       return
     }
     setFetchState({ success: true, didFetch: true, fetching: false })
-    setServices(services)
+    setServices(result.services)
   }
 
   return {

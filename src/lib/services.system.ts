@@ -7,6 +7,7 @@ const builtInServiceIds = ['audiobookshelf', 'cup'] as const
 export const serviceSystem = createServiceSystem([
   {
     id: 'audiobookshelf',
+    title: 'Audiobookshelf',
     url: 'https://www.audiobookshelf.org/',
     description: 'Self-hosted audiobook and podcast server',
     appStoreLink:
@@ -15,8 +16,9 @@ export const serviceSystem = createServiceSystem([
   },
   {
     id: 'cup',
+    title: 'Cup',
     url: 'https://cup.sergi0g.dev/',
-    description: 'Cup',
+    description: 'Docker container updates made easy',
     iconUrl: 'https://cup.sergi0g.dev/favicon.svg',
   },
 ])
@@ -26,6 +28,7 @@ type BuiltInServiceId = v.InferOutput<typeof BuiltInServiceIdSchema>
 
 const ServiceSchema = v.object({
   id: v.string(),
+  title: v.string(),
   url: UrlSchema,
   description: v.string(),
   appStoreLink: v.optional(UrlSchema),
@@ -37,6 +40,7 @@ function createUserInputSchema(validIds: Set<string>) {
   return v.pipe(
     v.object({
       id: v.string(),
+      title: v.optional(v.string()),
       url: UrlSchema,
       description: v.optional(v.string()),
       appStoreLink: v.optional(UrlSchema),
@@ -71,6 +75,7 @@ function createServiceSystem<const T extends readonly Service[] = Service[]>(
           const defaults = defaultMap.get(item.id)
           return {
             id: item.id,
+            title: item.title ?? defaults?.title!,
             url: item.url,
             description: item.description ?? defaults?.description!,
             appStoreLink: item.appStoreLink ?? defaults?.appStoreLink!,

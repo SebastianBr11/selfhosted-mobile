@@ -1,4 +1,5 @@
 import { UrlSchema } from '@/lib/schemas'
+import { useEffect } from 'react'
 
 import { createStore } from 'stan-js'
 import { storage } from 'stan-js/storage'
@@ -17,9 +18,15 @@ type UseServicesUrl = {
 )
 export function useServicesUrl(): UseServicesUrl {
   const { url, setUrl } = useStore()
-
   const result = safeParse(UrlSchema, url)
   const state = { setUrl, urlFromEnv: !!url }
+
+  useEffect(() => {
+    if (state.urlFromEnv) {
+      setUrl(process.env.EXPO_PUBLIC_SERVICES_URL)
+    }
+  }, [state.urlFromEnv, setUrl])
+
   if (result.success) {
     return { ...state, url: result.output, valid: true, errors: undefined }
   }
