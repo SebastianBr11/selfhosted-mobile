@@ -18,7 +18,9 @@ export default function HomeScreen() {
   if (!valid) {
     return (
       <ThemedView style={{ flex: 1 }} type="background">
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView
+          style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+        >
           <ThemedText type="title">Go to settings to setup the URL</ThemedText>
         </SafeAreaView>
       </ThemedView>
@@ -49,7 +51,7 @@ export default function HomeScreen() {
                     borderRadius: 8,
                     padding: 16,
                     paddingInline: 12,
-                    gap: 12,
+                    gap: 8,
                     alignItems: 'center',
                   }}
                 >
@@ -67,7 +69,7 @@ export default function HomeScreen() {
                     type="backgroundElement"
                     style={{
                       flexDirection: 'row',
-                      gap: 8,
+                      gap: 6,
                       alignItems: 'center',
                       justifyContent: 'space-around',
                       marginInline: 18,

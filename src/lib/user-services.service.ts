@@ -30,7 +30,6 @@ export async function fetchUserServices(
     const data = await fetch(url, { signal: signalTimeout(10000) }).then(
       (res) => res.json(),
     )
-    console.log(data)
     const parseResult = serviceSystem.parse(data)
     if (!parseResult.success) {
       return {

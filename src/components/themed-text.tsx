@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
   large: {
     fontSize: 24,
-    lineHeight: 20,
+    lineHeight: 26,
     fontWeight: 700,
   },
   label: {
