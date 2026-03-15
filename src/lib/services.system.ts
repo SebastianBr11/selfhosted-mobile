@@ -1,5 +1,6 @@
 import { AssertExactlyAllIdsPresent } from '@/util/types'
 import * as v from 'valibot'
+import { UrlSchema } from './schemas'
 
 const builtInServiceIds = ['audiobookshelf', 'cup'] as const
 
@@ -23,8 +24,6 @@ export const serviceSystem = createServiceSystem([
 const BuiltInServiceIdSchema = v.picklist(builtInServiceIds)
 type BuiltInServiceId = v.InferOutput<typeof BuiltInServiceIdSchema>
 
-const UrlSchema = v.pipe(v.string(), v.nonEmpty(), v.url())
-
 const ServiceSchema = v.object({
   id: v.string(),
   url: UrlSchema,
@@ -34,8 +33,8 @@ const ServiceSchema = v.object({
 })
 export type Service = v.InferOutput<typeof ServiceSchema>
 
-const createUserInputSchema = (validIds: Set<string>) =>
-  v.pipe(
+function createUserInputSchema(validIds: Set<string>) {
+  return v.pipe(
     v.object({
       id: v.string(),
       url: UrlSchema,
@@ -51,6 +50,7 @@ const createUserInputSchema = (validIds: Set<string>) =>
       return true
     }, 'Description, App store link and icon URL are required for custom products.'),
   )
+}
 
 function createServiceSystem<const T extends readonly Service[] = Service[]>(
   builtIns: T & AssertExactlyAllIdsPresent<T, BuiltInServiceId>,

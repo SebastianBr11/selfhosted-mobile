@@ -1,31 +1,20 @@
 import { ThemedText } from '@/components/themed-text'
 import { ThemedView } from '@/components/themed-view'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { useEffect, useEffectEvent, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { TextInput } from '@/components/text-input'
-import * as v from 'valibot'
 import { Pressable } from 'react-native'
 import { useTheme } from '@/hooks/use-theme'
-
-const urlSchema = v.pipe(
-  v.string(),
-  v.nonEmpty('The URL is required'),
-  v.url('The URL is invalid'),
-)
+import { useServicesUrl } from '@/hooks/use-services-url'
 
 export default function SettingsScreen() {
   const theme = useTheme()
-  const url = process.env.EXPO_PUBLIC_SERVICES_URL
-  const urlFromEnv = !!url
-  const onMount = useEffectEvent(() => {
-    if (url) {
-      setValue(url)
-    }
-  })
+  const { url, setUrl, urlFromEnv, valid, errors } = useServicesUrl()
   useEffect(() => {
-    onMount()
-  }, [onMount])
-  const [value, setValue] = useState(url)
+    if (urlFromEnv) {
+      setUrl(process.env.EXPO_PUBLIC_SERVICES_URL)
+    }
+  }, [])
   const [connectionStatus, setConnectionStatus] = useState<
     { success: boolean; connecting: false } | { connecting: true } | undefined
   >()
@@ -37,7 +26,6 @@ export default function SettingsScreen() {
   }
   console.log('input disabled', urlFromEnv)
 
-  const result = v.safeParse(urlSchema, value)
   return (
     <ThemedView style={{ flex: 1 }} type="background">
       <SafeAreaView style={{ flex: 1 }}>
@@ -55,13 +43,11 @@ export default function SettingsScreen() {
               )}
             </ThemedText>
             <TextInput
-              value={value}
-              onChangeText={setValue}
+              value={url}
+              onChangeText={setUrl}
               editable={!urlFromEnv}
             />
-            {result.issues?.length && (
-              <ThemedText type="error">{result.issues[0].message}</ThemedText>
-            )}
+            {!valid && <ThemedText type="error">{errors[0]}</ThemedText>}
           </ThemedView>
           <ThemedView style={{ gap: 8 }}>
             <Pressable
