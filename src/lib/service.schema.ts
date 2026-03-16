@@ -8,6 +8,7 @@ export const ServiceAppStoreLinkSchema = v.union([
   UrlSchema,
   v.array(v.object({ name: v.string(), url: UrlSchema })),
 ])
+export const ServicePackageNameSchema = v.string()
 export const ServiceIconUrlSchema = v.union([
   UrlSchema,
   v.object({ light: UrlSchema, dark: UrlSchema }),
@@ -17,8 +18,9 @@ export const ServiceSchema = v.object({
   id: ServiceIdSchema,
   name: ServiceNameSchema,
   url: UrlSchema,
-  description: v.string(),
+  description: ServiceDescriptionSchema,
   appStoreLink: v.optional(ServiceAppStoreLinkSchema),
+  packageName: v.optional(ServicePackageNameSchema),
   iconUrl: ServiceIconUrlSchema,
 })
 export type Service = v.InferOutput<typeof ServiceSchema>
@@ -37,6 +39,7 @@ export function createUserInputSchema(validIds: Set<string>) {
       url: UrlSchema,
       description: v.optional(ServiceDescriptionSchema),
       appStoreLink: v.optional(ServiceAppStoreLinkSchema),
+      packageName: v.optional(ServicePackageNameSchema),
       iconUrl: v.optional(ServiceIconUrlSchema),
     }),
     v.check((input) => {

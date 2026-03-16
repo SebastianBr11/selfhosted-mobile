@@ -29,6 +29,7 @@ export const serviceSystem = createServiceSystem([
     description: 'Self-hosted audiobook and podcast server',
     appStoreLink:
       'https://play.google.com/store/apps/details?id=com.audiobookshelf.app',
+    packageName: 'com.audiobookshelf.app',
     iconUrl: 'https://www.audiobookshelf.org/Logo.png',
   },
   {
@@ -188,7 +189,8 @@ function createServiceSystem<const T extends readonly Service[] = Service[]>(
             name: item.name ?? defaults?.name!,
             url: item.url,
             description: item.description ?? defaults?.description!,
-            appStoreLink: item.appStoreLink ?? defaults?.appStoreLink!,
+            appStoreLink: item.appStoreLink ?? defaults?.appStoreLink,
+            packageName: item.packageName ?? defaults?.packageName,
             iconUrl: item.iconUrl ?? defaults?.iconUrl!,
           } satisfies T[number]
         }),
