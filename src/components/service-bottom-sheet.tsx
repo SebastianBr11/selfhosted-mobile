@@ -9,9 +9,11 @@ import {
 } from '@expo/ui/jetpack-compose'
 import { fillMaxWidth, padding } from '@expo/ui/jetpack-compose/modifiers'
 import * as WebBrowser from 'expo-web-browser'
+import * as IntentLauncher from 'expo-intent-launcher'
 import { useService } from '@/hooks/use-services'
 import { isArray } from '@/util/is-type'
 import { ServiceId } from '@/lib/service.schema'
+import { useEffect, useState } from 'react'
 
 type ServiceBottomSheetProps = {
   hide: () => void
@@ -22,13 +24,35 @@ export default function ServiceBottomSheet({
   serviceId,
 }: ServiceBottomSheetProps) {
   const service = useService(serviceId)
+
+  const [androidAppAvailable, setAndroidAppAvailable] = useState(false)
+
+  useEffect(() => {
+    async function updateAndroidAppAvailable(packageName: string) {
+      try {
+        setAndroidAppAvailable(
+          Boolean(await IntentLauncher.getApplicationIconAsync(packageName)),
+        )
+      } catch {}
+    }
+    if (service?.packageName) {
+      updateAndroidAppAvailable(service.packageName)
+    }
+  }, [service?.packageName])
+
   if (!service) {
     hide()
     return null
   }
+
   function openLink(url: string) {
     WebBrowser.openBrowserAsync(url)
   }
+
+  function openApp(packageName: string) {
+    IntentLauncher.openApplication(packageName)
+  }
+
   console.log('service', service)
   return (
     <Host ignoreSafeAreaKeyboardInsets matchContents>
@@ -55,6 +79,18 @@ export default function ServiceBottomSheet({
             >
               Open in Browser
             </Button>
+
+            {androidAppAvailable && service.packageName && (
+              <>
+                <Spacer modifiers={[padding(0, 6, 0, 6)]} />
+                <Button
+                  onPress={() => openApp(service.packageName!)}
+                  modifiers={[fillMaxWidth()]}
+                >
+                  Open installed App
+                </Button>
+              </>
+            )}
             {service.appStoreLink &&
               (isArray(service.appStoreLink) ? (
                 service.appStoreLink.map(({ name, url }) => (
