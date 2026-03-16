@@ -23,7 +23,7 @@ jobs:
         run: echo "Proceeding with workflow"
 
   build-and-release:
-    needs: check-token
+    needs: check-skip
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
