@@ -3,8 +3,8 @@ import {
   TextInput as BaseTextInput,
 } from 'react-native'
 
-import { ThemeColor } from '@/constants/theme'
 import { useTheme } from '@/hooks/use-theme'
+import { ThemeColor } from '@/constants/colors'
 
 export type TextInputProps = BaseTextInputProps & {
   color?: ThemeColor

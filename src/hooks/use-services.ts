@@ -1,8 +1,8 @@
 import { createStore } from 'stan-js'
 import { storage } from 'stan-js/storage'
-import { type Service } from '../lib/services.system'
 import { fetchUserServices } from '@/lib/user-services.service'
 import { useState } from 'react'
+import { Service, ServiceId } from '@/lib/service.schema'
 
 const { useStore } = createStore({
   services: storage<Service[]>([]),
@@ -71,4 +71,10 @@ export function useServices(url: string) {
     fetchState,
     fetchServices,
   }
+}
+
+export function useService(serviceId: ServiceId) {
+  const { services } = useStore()
+  const service = services.find((service) => serviceId === service.id)
+  return service
 }
