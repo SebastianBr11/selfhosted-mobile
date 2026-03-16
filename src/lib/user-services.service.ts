@@ -1,5 +1,6 @@
 import { fetch } from 'expo/fetch'
-import { Service, serviceSystem } from './services.system'
+import { serviceSystem } from './services.system'
+import { Service } from './service.schema'
 
 function signalTimeout(ms: number) {
   const ctrl = new AbortController()
