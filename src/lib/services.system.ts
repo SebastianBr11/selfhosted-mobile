@@ -1,6 +1,6 @@
 import { AssertExactlyAllIdsPresent } from '@/util/types'
 import * as v from 'valibot'
-import { UrlSchema } from './schemas'
+import { createUserInputSchema, Service } from './service.schema'
 
 const builtInServiceIds = [
   'audiobookshelf',
@@ -165,53 +165,6 @@ export const serviceSystem = createServiceSystem([
 
 const BuiltInServiceIdSchema = v.picklist(builtInServiceIds)
 type BuiltInServiceId = v.InferOutput<typeof BuiltInServiceIdSchema>
-
-const ServiceIdSchema = v.string()
-const ServiceNameSchema = v.string()
-const ServiceDescriptionSchema = v.string()
-const ServiceAppStoreLinkSchema = v.union([
-  UrlSchema,
-  v.array(v.object({ name: v.string(), url: UrlSchema })),
-])
-const ServiceIconUrlSchema = v.union([
-  UrlSchema,
-  v.object({ light: UrlSchema, dark: UrlSchema }),
-])
-
-const ServiceSchema = v.object({
-  id: ServiceIdSchema,
-  name: ServiceNameSchema,
-  url: UrlSchema,
-  description: v.string(),
-  appStoreLink: v.optional(ServiceAppStoreLinkSchema),
-  iconUrl: ServiceIconUrlSchema,
-})
-export type Service = v.InferOutput<typeof ServiceSchema>
-export type ServiceName = Service['name']
-export type ServiceUrl = Service['url']
-export type ServiceDescription = Service['description']
-export type ServiceAppStoreLink = Service['appStoreLink']
-export type ServiceIconUrl = Service['iconUrl']
-
-function createUserInputSchema(validIds: Set<string>) {
-  return v.pipe(
-    v.object({
-      id: ServiceIdSchema,
-      name: v.optional(ServiceNameSchema),
-      url: UrlSchema,
-      description: v.optional(ServiceDescriptionSchema),
-      appStoreLink: v.optional(ServiceAppStoreLinkSchema),
-      iconUrl: v.optional(ServiceIconUrlSchema),
-    }),
-    v.check((input) => {
-      // If any field is missing, the ID must be a built-in one
-      if (!input.description || !input.appStoreLink || !input.iconUrl) {
-        return validIds.has(input.id)
-      }
-      return true
-    }, 'Description, App store link and icon URL are required for custom products.'),
-  )
-}
 
 function createServiceSystem<const T extends readonly Service[] = Service[]>(
   builtIns: T & AssertExactlyAllIdsPresent<T, BuiltInServiceId>,
