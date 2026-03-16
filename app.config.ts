@@ -1,3 +1,4 @@
+import 'tsx/cjs'
 import { ExpoConfig, ConfigContext } from 'expo/config'
 import { version as appVersion } from './package.json'
 
@@ -34,6 +35,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     favicon: './assets/images/favicon.png',
   },
   plugins: [
+    './plugins/withAndroidQueries.ts',
     'expo-router',
     [
       'expo-splash-screen',

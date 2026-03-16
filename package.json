@@ -10,7 +10,8 @@
     "web": "APP_VARIANT=development expo start --web",
     "lint": "expo lint",
     "android:eas-prod": "eas build --local --profile production --platform android",
-    "android:eas-dev": "eas build --local --profile development --platform android"
+    "android:eas-dev": "eas build --local --profile development --platform android",
+    "prebuild": "expo prebuild --clean"
   },
   "dependencies": {
     "@expo/ui": "~55.0.2",
@@ -52,6 +53,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
     "prettier": "^3.8.1",
+    "tsx": "^4.21.0",
     "typescript": "~5.9.2"
   },
   "private": true

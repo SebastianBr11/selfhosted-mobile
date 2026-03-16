@@ -1,0 +1,19 @@
+import { withAndroidManifest, ConfigPlugin } from 'expo/config-plugins'
+
+/**
+ * Add queries that allow the app to open other apps.
+ * @see https://developer.android.com/training/package-visibility
+ */
+const withAndroidQueries: ConfigPlugin = (config) => {
+  return withAndroidManifest(config, (config) => {
+    config.modResults.manifest.queries = [
+      {
+        package: [{ $: { 'android:name': 'com.audiobookshelf.app' } }],
+      },
+    ]
+
+    return config
+  })
+}
+
+module.exports = withAndroidQueries
