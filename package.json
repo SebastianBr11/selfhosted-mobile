@@ -11,7 +11,8 @@
     "lint": "expo lint",
     "android:eas-prod": "eas build --local --profile production --platform android",
     "android:eas-dev": "eas build --local --profile development --platform android",
-    "prebuild": "expo prebuild --clean"
+    "prebuild": "expo prebuild --clean",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@expo/ui": "~55.0.2",
