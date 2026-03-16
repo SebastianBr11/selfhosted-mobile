@@ -25,8 +25,19 @@ jobs:
       - name: Skip CI check
         run: echo "Proceeding with workflow"
 
-  build-and-release:
+  check-token:
     needs: check-skip
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check token
+        run: |
+          if [ -z "$EXPO_TOKEN" ]; then
+            echo "Error: EXPO_TOKEN secret not set"
+            exit 1
+          fi
+
+  build-and-release:
+    needs: check-token
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
