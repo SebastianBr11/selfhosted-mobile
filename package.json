@@ -1,7 +1,7 @@
 {
   "name": "selfhosted-mobile",
   "main": "expo-router/entry",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "scripts": {
     "start": "APP_VARIANT=development expo start",
     "reset-project": "node ./scripts/reset-project.js",
