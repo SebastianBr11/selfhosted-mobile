@@ -46,17 +46,6 @@ jobs:
         env:
           NODE_ENV: production
 
-      - name: 🏷️ Generate build information
-        id: build-info
-        run: |
-          # Generate changelog from commit messages since last tag
-          if git describe --tags --abbrev=0 > /dev/null 2>&1; then
-            LAST_TAG=$(git describe --tags --abbrev=0)
-            git log $LAST_TAG..HEAD --pretty=format:"- %s" > CHANGELOG.md
-          else
-            git log --pretty=format:"- %s" -n 10 > CHANGELOG.md
-          fi
-
       - name: 📝 Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
@@ -65,5 +54,6 @@ jobs:
             ./app-dev.apk
             ./app-release.apk
           body_path: CHANGELOG.md
+          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
