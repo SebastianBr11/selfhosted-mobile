@@ -1,4 +1,3 @@
-import Button from '@/components/button'
 import { ThemedText } from '@/components/themed-text'
 import { ThemedView } from '@/components/themed-view'
 import { useServices } from '@/hooks/use-services'
@@ -10,6 +9,13 @@ import { schemeDependantIcon } from '@/util/theme-util'
 import { useColorScheme } from '@/hooks/use-color-scheme'
 import { useState } from 'react'
 import ServiceBottomSheet from './service-bottom-sheet'
+import { Button, Host } from '@expo/ui/jetpack-compose'
+import {
+  fillMaxWidth,
+  height,
+  padding,
+} from '@expo/ui/jetpack-compose/modifiers'
+import { InlineInsetSmall } from '@/constants/theme'
 
 export default function ServicesView() {
   const scheme = useColorScheme()
@@ -41,7 +47,7 @@ export default function ServicesView() {
           refreshing={fetchState.didFetch && fetchState.fetching}
           onRefresh={fetchServices}
           columnWrapperStyle={{ gap: 12 }}
-          style={{ marginInline: 20 }}
+          style={{ marginInline: InlineInsetSmall }}
           keyExtractor={(item) => item.id}
           contentContainerStyle={{
             gap: 12,
@@ -96,14 +102,19 @@ export default function ServicesView() {
             </Pressable>
           )}
         />
-
-        <Button
-          loading={fetchState.didFetch && fetchState.fetching}
-          onPress={fetchServices}
-          style={{ marginInline: 20 }}
-        >
-          Fetch services
-        </Button>
+        <Host matchContents>
+          <Button
+            modifiers={[
+              fillMaxWidth(),
+              padding(InlineInsetSmall, 0, InlineInsetSmall, 0),
+              height(48),
+            ]}
+            onPress={fetchServices}
+            trailingIcon="rounded.Add"
+          >
+            Fetch services
+          </Button>
+        </Host>
       </SafeAreaView>
       {selectedServiceId && (
         <ServiceBottomSheet
