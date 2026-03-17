@@ -41,3 +41,7 @@ app-example
 # generated native folders
 /ios
 /android
+
+# js translation files should be generated as part of build process
+src/locales/**/*.js
+src/locales/**/*.ts

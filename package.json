@@ -4,6 +4,7 @@
   "version": "0.1.4",
   "scripts": {
     "start": "APP_VARIANT=development expo start",
+    "start:metro-clean": "APP_VARIANT=development expo start -c",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "APP_VARIANT=development bun run prebuild && expo run:android",
     "android:prod": "APP_VARIANT=production bun run prebuild && expo run:android",
@@ -13,10 +14,14 @@
     "android:eas-prod": "eas build --local --profile production --platform android",
     "android:eas-dev": "eas build --local --profile development --platform android",
     "prebuild": "expo prebuild --clean",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "i18n:extract": "lingui extract",
+    "i18n:compile": "lingui compile --typescript"
   },
   "dependencies": {
     "@expo/ui": "~55.0.2",
+    "@lingui/core": "^5.9.3",
+    "@lingui/react": "^5.9.3",
     "@react-navigation/bottom-tabs": "^7.7.3",
     "@react-navigation/elements": "^2.8.1",
     "@react-navigation/native": "^7.1.28",
@@ -29,6 +34,7 @@
     "expo-image": "~55.0.6",
     "expo-intent-launcher": "~55.0.8",
     "expo-linking": "~55.0.7",
+    "expo-localization": "~55.0.8",
     "expo-router": "~55.0.5",
     "expo-splash-screen": "~55.0.10",
     "expo-status-bar": "~55.0.4",
@@ -49,10 +55,14 @@
     "valibot": "^1.2.0"
   },
   "devDependencies": {
+    "@lingui/babel-plugin-lingui-macro": "^5.9.3",
+    "@lingui/cli": "^5.9.3",
+    "@lingui/metro-transformer": "^5.9.3",
     "@types/react": "~19.2.2",
     "eslint": "^9.0.0",
     "eslint-config-expo": "~55.0.0",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-lingui": "^0.11.0",
     "eslint-plugin-prettier": "^5.5.5",
     "prettier": "^3.8.1",
     "tsx": "^4.21.0",
