@@ -5,9 +5,9 @@
   "scripts": {
     "start": "APP_VARIANT=development expo start",
     "reset-project": "node ./scripts/reset-project.js",
-    "android": "APP_VARIANT=development expo run:android",
-    "android:prod": "APP_VARIANT=production expo run:android",
-    "ios": "APP_VARIANT=development expo run:ios",
+    "android": "APP_VARIANT=development bun run prebuild && expo run:android",
+    "android:prod": "APP_VARIANT=production bun run prebuild && expo run:android",
+    "ios": "APP_VARIANT=development bun run prebuild && expo run:ios",
     "web": "APP_VARIANT=development expo start --web",
     "lint": "expo lint",
     "android:eas-prod": "eas build --local --profile production --platform android",
