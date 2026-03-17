@@ -1,7 +1,37 @@
 import { I18nProvider as BaseI18nProvider } from '@lingui/react'
-import { i18n } from '@lingui/core'
+import { useLocales } from 'expo-localization'
+import { i18n, Messages } from '@lingui/core'
 import { ThemedText } from './components/themed-text'
+import { useEffect } from 'react'
+
+const availableLocales = ['en', 'de'] as const
+type AvailableLocale = (typeof availableLocales)[number]
+const fallbackLocale: AvailableLocale = 'en'
+
+async function loadAndActivateLocale(locale: AvailableLocale | (string & {})) {
+  let messages: Messages
+  switch (locale) {
+    case 'de':
+      messages = (await import('@/locales/de/messages')).messages
+      break
+    default:
+    case 'en':
+      messages = (await import('@/locales/en/messages')).messages
+      break
+  }
+
+  i18n.loadAndActivate({
+    locale,
+    messages: messages,
+  })
+}
+loadAndActivateLocale(fallbackLocale)
+
 export function I18nProvider({ children }: { children: React.ReactNode }) {
+  const locales = useLocales()
+  useEffect(() => {
+    loadAndActivateLocale(locales[0].languageCode || fallbackLocale)
+  }, [locales[0]])
   return (
     <BaseI18nProvider i18n={i18n} defaultComponent={ThemedText}>
       {children}
