@@ -15,19 +15,19 @@ msgstr ""
 
 #: src/app/settings.tsx:31
 msgid "(from environment)"
-msgstr ""
+msgstr "(Umgebungsvariable)"
 
 #: src/app/settings.tsx:65
 msgid "Connected"
-msgstr ""
+msgstr "Verbunden"
 
 #: src/app/settings.tsx:60
 msgid "Connecting..."
-msgstr ""
+msgstr "Verbinde..."
 
 #: src/components/services-view.tsx:122
 msgid "Fetch services"
-msgstr ""
+msgstr "Lade Dienste"
 
 #: src/components/services-view.tsx:36
 msgid "Go to settings to setup the URL"
@@ -35,41 +35,41 @@ msgstr "Gehe in die Einstellungen, um die URL zu konfigurieren"
 
 #: src/components/app-tabs.tsx:10
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 #: src/app/settings.tsx:65
 msgid "Not Connected"
-msgstr ""
+msgstr "Nicht verbunden"
 
 #: src/components/service-bottom-sheet.tsx:105
 msgid "Open in {name}"
-msgstr ""
+msgstr "Öffne in {name}"
 
 #: src/components/service-bottom-sheet.tsx:117
 msgid "Open in App Store"
-msgstr ""
+msgstr "Öffne im App Store"
 
 #: src/components/service-bottom-sheet.tsx:81
 msgid "Open in Browser"
-msgstr ""
+msgstr "Öffne im Browser"
 
 #: src/components/service-bottom-sheet.tsx:91
 msgid "Open installed App"
-msgstr ""
+msgstr "Installierte App öffnen"
 
 #: src/app/settings.tsx:28
 msgid "Services URL "
-msgstr ""
+msgstr "Dienste-URL "
 
 #: src/app/settings.tsx:22
 #: src/components/app-tabs.tsx:14
 msgid "Settings"
-msgstr ""
+msgstr "Einstellungen"
 
 #: src/app/settings.tsx:52
 msgid "Test connection"
-msgstr ""
+msgstr "Verbindung testen"
 
 #: src/components/services-view.tsx:49
 msgid "Your Services"
-msgstr ""
+msgstr "Deine Dienste"
