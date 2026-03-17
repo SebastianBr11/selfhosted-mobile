@@ -1,0 +1,12 @@
+changelog:
+  categories:
+    - title: Exciting New Features 🎉
+      labels:
+        - enhancement
+        - feature
+    - title: Bug fixes 🐛
+      labels:
+        - bug
+    - title: Other Changes 🔄
+      labels:
+        - "*"
