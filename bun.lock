@@ -6,6 +6,8 @@
       "name": "selfhosted-mobile",
       "dependencies": {
         "@expo/ui": "~55.0.2",
+        "@lingui/core": "^5.9.3",
+        "@lingui/react": "^5.9.3",
         "@react-navigation/bottom-tabs": "^7.7.3",
         "@react-navigation/elements": "^2.8.1",
         "@react-navigation/native": "^7.1.28",
@@ -434,6 +436,8 @@
     "@lingui/format-po": ["@lingui/format-po@5.9.3", "", { "dependencies": { "@lingui/conf": "5.9.3", "@lingui/message-utils": "5.9.3", "date-fns": "^3.6.0", "pofile": "^1.1.4" } }, "sha512-+LMnhWl7EmXrdOv10gopE1g8w8vtPY5Fxk72OORrGQFVMGBIioz4BEnKrNdV1ek2M+GxoMZtnUs17KrJN5Jv9A=="],
 
     "@lingui/message-utils": ["@lingui/message-utils@5.9.3", "", { "dependencies": { "@messageformat/parser": "^5.0.0", "js-sha256": "^0.10.1" } }, "sha512-oAK7HA7lcQrzaEaM6G1T5RwwxJxaSKfG/IFIxpZIl49TSFQv+s9YPNgHnVi+d4DmterpXNxy9ZZ+NtckJx6u7g=="],
+
+    "@lingui/react": ["@lingui/react@5.9.3", "", { "dependencies": { "@babel/runtime": "^7.20.13", "@lingui/core": "5.9.3" }, "peerDependencies": { "@lingui/babel-plugin-lingui-macro": "5.9.3", "babel-plugin-macros": "2 || 3", "react": "^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0" }, "optionalPeers": ["@lingui/babel-plugin-lingui-macro", "babel-plugin-macros"] }, "sha512-aje78l3zGGZ3C75fiGhDVKyVALHfiKlYFjcOlZpgXY/JAVfFuZX+6wUGG9x1A8k7BfxrDy/ofHIBahPvNAqoKw=="],
 
     "@messageformat/parser": ["@messageformat/parser@5.1.1", "", { "dependencies": { "moo": "^0.5.1" } }, "sha512-3p0YRGCcTUCYvBKLIxtDDyrJ0YijGIwrTRu1DT8gIviIDZru8H23+FkY6MJBzM1n9n20CiM4VeDYuBsrrwnLjg=="],
 
