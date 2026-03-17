@@ -6,35 +6,36 @@ import { storage } from 'stan-js/storage'
 import { safeParse } from 'valibot'
 
 const { useStore } = createStore({
-  url: storage<string>(process.env.EXPO_PUBLIC_SERVICES_URL),
+  url: storage<string>(process.env.EXPO_PUBLIC_SERVICES_URL || ''),
 })
 
 type UseServicesUrl = {
   setUrl: ReturnType<typeof useStore>['setUrl']
   urlFromEnv: boolean
-} & (
-  | { url: undefined; valid: false; errors: string[] }
-  | { url: string; valid: true; errors: undefined }
-)
+  url: string
+} & ({ valid: false; errors: string[] } | { valid: true; errors: undefined })
 export function useServicesUrl(): UseServicesUrl {
   const { url, setUrl } = useStore()
   const result = safeParse(UrlSchema, url)
-  const state = { setUrl, urlFromEnv: !!url }
+  const state = {
+    url,
+    setUrl,
+    urlFromEnv: !!process.env.EXPO_PUBLIC_SERVICES_URL,
+  }
 
   useEffect(() => {
-    if (state.urlFromEnv) {
+    if (process.env.EXPO_PUBLIC_SERVICES_URL) {
       setUrl(process.env.EXPO_PUBLIC_SERVICES_URL)
     }
   }, [state.urlFromEnv, setUrl])
 
   if (result.success) {
-    return { ...state, url: result.output, valid: true, errors: undefined }
+    return { ...state, valid: true, errors: undefined }
   }
 
   return {
     ...state,
     valid: false,
     errors: result.issues.map((error) => error.message),
-    url: undefined,
   }
 }
