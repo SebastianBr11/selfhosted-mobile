@@ -39,9 +39,13 @@ export default function ServicesView() {
 
   return (
     <ThemedView style={{ flex: 1 }} type="background">
-      <SafeAreaView style={{ flex: 1, gap: 20 }}>
-        <ThemedText type="title">Here are your services</ThemedText>
+      <SafeAreaView style={{ flex: 1, gap: 20, paddingTop: 40 }}>
         <FlatList
+          ListHeaderComponent={
+            <ThemedText style={{ paddingVertical: 20 }} type="title">
+              Your Services
+            </ThemedText>
+          }
           data={services}
           numColumns={2}
           refreshing={fetchState.didFetch && fetchState.fetching}
