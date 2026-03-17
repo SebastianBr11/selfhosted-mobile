@@ -13,7 +13,9 @@
     "android:eas-prod": "eas build --local --profile production --platform android",
     "android:eas-dev": "eas build --local --profile development --platform android",
     "prebuild": "expo prebuild --clean",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "i18n:extract": "lingui extract",
+    "i18n:compile": "lingui compile --typescript"
   },
   "dependencies": {
     "@expo/ui": "~55.0.2",
@@ -49,6 +51,7 @@
     "valibot": "^1.2.0"
   },
   "devDependencies": {
+    "@lingui/cli": "^5.9.3",
     "@types/react": "~19.2.2",
     "eslint": "^9.0.0",
     "eslint-config-expo": "~55.0.0",
