@@ -48,7 +48,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       },
     ],
     'expo-web-browser',
-    ['expo-localization', ['de', 'en']],
+    ['expo-localization', ['de', 'en', 'es']],
   ],
   experiments: {
     typedRoutes: true,
