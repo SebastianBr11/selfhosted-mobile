@@ -104,13 +104,13 @@ export default function ServicesView() {
         >
           Fetch services
         </Button>
-        {selectedServiceId && (
-          <ServiceBottomSheet
-            hide={() => setSelectedServiceId(null)}
-            serviceId={selectedServiceId}
-          />
-        )}
       </SafeAreaView>
+      {selectedServiceId && (
+        <ServiceBottomSheet
+          hide={() => setSelectedServiceId(null)}
+          serviceId={selectedServiceId}
+        />
+      )}
     </ThemedView>
   )
 }
