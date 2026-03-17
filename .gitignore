@@ -44,3 +44,4 @@ app-example
 
 # js translation files should be generated as part of build process
 src/locales/**/*.js
+src/locales/**/*.ts
