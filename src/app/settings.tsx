@@ -7,24 +7,28 @@ import { TextInput } from '@/components/text-input'
 import { Button, Host, Text } from '@expo/ui/jetpack-compose'
 import { fillMaxWidth, padding } from '@expo/ui/jetpack-compose/modifiers'
 import { InlineInsetMedium } from '@/constants/theme'
+import { Trans, useLingui } from '@lingui/react/macro'
 
 export default function SettingsScreen() {
   const { url, setUrl, urlFromEnv, valid, errors } = useServicesUrl()
   const { fetchServices, fetchState } = useServices(url || '')
+  const { t } = useLingui()
 
   return (
     <ThemedView style={{ flex: 1 }} type="background">
       <SafeAreaView style={{ flex: 1 }}>
         <ThemedView style={{ flex: 1, justifyContent: 'center' }}>
-          <ThemedText type="title">Settings</ThemedText>
+          <ThemedText type="title">
+            <Trans>Settings</Trans>
+          </ThemedText>
         </ThemedView>
         <ThemedView style={{ flex: 1, gap: 24 }}>
           <ThemedView inlineInset style={{ gap: 8 }}>
             <ThemedText type="label">
-              Services URL{' '}
+              <Trans>Services URL </Trans>
               {urlFromEnv && (
                 <ThemedText type="small" themeColor="textSecondary">
-                  (from environment)
+                  <Trans>(from environment)</Trans>
                 </ThemedText>
               )}
             </ThemedText>
@@ -44,17 +48,21 @@ export default function SettingsScreen() {
                   padding(InlineInsetMedium, 0, InlineInsetMedium, 0),
                 ]}
               >
-                <Text>Test connection</Text>
+                <Text>
+                  <Trans>Test connection</Trans>
+                </Text>
               </Button>
             </Host>
             <ThemedView inlineInset>
               {fetchState.didFetch &&
                 (fetchState.fetching ? (
-                  <ThemedText type="default">Connecting...</ThemedText>
+                  <ThemedText type="default">
+                    <Trans>Connecting...</Trans>
+                  </ThemedText>
                 ) : (
                   <>
                     <ThemedText type={fetchState.success ? 'success' : 'error'}>
-                      {fetchState.success ? 'Connected' : 'Not Connected'}
+                      {fetchState.success ? t`Connected` : t`Not Connected`}
                     </ThemedText>
                     {!fetchState.success &&
                       fetchState.errors.map((error) => (

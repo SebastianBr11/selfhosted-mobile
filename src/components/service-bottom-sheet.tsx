@@ -14,6 +14,7 @@ import { useService } from '@/hooks/use-services'
 import { isArray } from '@/util/is-type'
 import { ServiceId } from '@/lib/service.schema'
 import { useEffect, useState } from 'react'
+import { Trans } from '@lingui/react/macro'
 
 type ServiceBottomSheetProps = {
   hide: () => void
@@ -77,7 +78,7 @@ export default function ServiceBottomSheet({
               onPress={() => openLink(service.url)}
               modifiers={[fillMaxWidth()]}
             >
-              Open in Browser
+              <Trans>Open in Browser</Trans>
             </Button>
 
             {androidAppAvailable && service.packageName && (
@@ -87,7 +88,7 @@ export default function ServiceBottomSheet({
                   onPress={() => openApp(service.packageName!)}
                   modifiers={[fillMaxWidth()]}
                 >
-                  Open installed App
+                  <Trans>Open installed App</Trans>
                 </Button>
               </>
             )}
@@ -101,7 +102,7 @@ export default function ServiceBottomSheet({
                       onPress={() => openLink(url)}
                       modifiers={[fillMaxWidth()]}
                     >
-                      Open in {name}
+                      <Trans>Open in {name}</Trans>
                     </Button>
                   </Column>
                 ))
@@ -113,7 +114,7 @@ export default function ServiceBottomSheet({
                     onPress={() => openLink(service.appStoreLink as string)}
                     modifiers={[fillMaxWidth()]}
                   >
-                    Open in App Store
+                    <Trans>Open in App Store</Trans>
                   </Button>
                 </>
               ))}
