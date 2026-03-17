@@ -6,6 +6,7 @@ import { useServices } from '@/hooks/use-services'
 import { TextInput } from '@/components/text-input'
 import { Button, Host, Text } from '@expo/ui/jetpack-compose'
 import { fillMaxWidth, padding } from '@expo/ui/jetpack-compose/modifiers'
+import { InlineInsetMedium } from '@/constants/theme'
 
 export default function SettingsScreen() {
   const { url, setUrl, urlFromEnv, valid, errors } = useServicesUrl()
@@ -38,7 +39,10 @@ export default function SettingsScreen() {
             <Host matchContents>
               <Button
                 onPress={fetchServices}
-                modifiers={[fillMaxWidth(), padding(32, 0, 32, 0)]}
+                modifiers={[
+                  fillMaxWidth(),
+                  padding(InlineInsetMedium, 0, InlineInsetMedium, 0),
+                ]}
               >
                 <Text>Test connection</Text>
               </Button>

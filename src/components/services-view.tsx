@@ -15,6 +15,7 @@ import {
   height,
   padding,
 } from '@expo/ui/jetpack-compose/modifiers'
+import { InlineInsetSmall } from '@/constants/theme'
 
 export default function ServicesView() {
   const scheme = useColorScheme()
@@ -46,7 +47,7 @@ export default function ServicesView() {
           refreshing={fetchState.didFetch && fetchState.fetching}
           onRefresh={fetchServices}
           columnWrapperStyle={{ gap: 12 }}
-          style={{ marginInline: 20 }}
+          style={{ marginInline: InlineInsetSmall }}
           keyExtractor={(item) => item.id}
           contentContainerStyle={{
             gap: 12,
@@ -103,7 +104,11 @@ export default function ServicesView() {
         />
         <Host matchContents>
           <Button
-            modifiers={[fillMaxWidth(), padding(16, 0, 16, 0), height(48)]}
+            modifiers={[
+              fillMaxWidth(),
+              padding(InlineInsetSmall, 0, InlineInsetSmall, 0),
+              height(48),
+            ]}
             onPress={fetchServices}
             trailingIcon="rounded.Add"
           >

@@ -2,6 +2,7 @@ import { View, type ViewProps } from 'react-native'
 
 import { useTheme } from '@/hooks/use-theme'
 import { ThemeColor } from '@/constants/colors'
+import { InlineInsetMedium } from '@/constants/theme'
 
 export type ThemedViewProps = ViewProps & {
   type?: ThemeColor
@@ -21,7 +22,7 @@ export function ThemedView({
       style={[
         {
           backgroundColor: theme[type ?? 'background'],
-          paddingInline: inlineInset ? 32 : 0,
+          paddingInline: inlineInset ? InlineInsetMedium : 0,
         },
         style,
       ]}
