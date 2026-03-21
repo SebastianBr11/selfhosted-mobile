@@ -365,6 +365,7 @@ export const serviceSystem = createServiceSystem([
     name: 'Romm',
     url: 'https://romm.app/',
     description: 'A beautiful, powerful, self-hosted rom manager and player.',
+    packageName: 'io.github.mattsays.rommmobile',
     iconUrl: 'https://romm.app/_ipx/q_80/images/blocks/logos/romm.svg',
   },
   {

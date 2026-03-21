@@ -14,6 +14,7 @@ const withAndroidQueries: ConfigPlugin = (config) => {
           { $: { 'android:name': 'app.alextran.immich' } },
           { $: { 'android:name': 'app.linkwarden' } },
           { $: { 'android:name': 'com.nextcloud.client' } },
+          { $: { 'android:name': 'io.github.mattsays.rommmobile' } },
           { $: { 'android:name': 'dev.seerr.mobileapp' } },
           { $: { 'android:name': 'com.github.catfriend1.syncthingfork' } },
           { $: { 'android:name': 'fr.gaulupeau.apps.InThePoche' } },
