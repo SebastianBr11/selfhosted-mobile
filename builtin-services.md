@@ -39,6 +39,7 @@
 - [Portainer](https://www.portainer.io/)
 - [Readeck](https://readeck.org/en/)
 - [Romm](https://romm.app/)
+- [Ryot](https://ryot.io)
 - [Seerr](https://docs.seerr.dev)
 - [Stirling PDF](https://www.stirling.com)
 - [Syncthing](https://syncthing.net)

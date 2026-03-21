@@ -42,6 +42,7 @@ const builtInServiceIds = [
   'portainer',
   'readeck',
   'romm',
+  'ryot',
   'seerr',
   'stirling-pdf',
   'syncthing',
@@ -411,6 +412,17 @@ export const serviceSystem = createServiceSystem([
     description: 'A beautiful, powerful, self-hosted rom manager and player.',
     packageName: 'io.github.mattsays.rommmobile',
     iconUrl: 'https://romm.app/_ipx/q_80/images/blocks/logos/romm.svg',
+  },
+  {
+    id: 'ryot',
+    name: 'Ryot',
+    url: 'https://ryot.io',
+    description: 'Roll your own tracker!',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/ryot.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/ryot-light.svg',
+    },
   },
   {
     id: 'seerr',
