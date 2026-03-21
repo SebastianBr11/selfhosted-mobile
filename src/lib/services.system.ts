@@ -18,6 +18,7 @@ const builtInServiceIds = [
   'pi-hole',
   'readeck',
   'romm',
+  'syncthing',
   'tandoor',
   'vaultwarden',
   'yamtrack',
@@ -148,6 +149,17 @@ export const serviceSystem = createServiceSystem([
     url: 'https://romm.app/',
     description: 'A beautiful, powerful, self-hosted rom manager and player.',
     iconUrl: 'https://romm.app/_ipx/q_80/images/blocks/logos/romm.svg',
+  },
+  {
+    id: 'syncthing',
+    name: 'Syncthing',
+    url: 'https://syncthing.net',
+    description: 'Open Source Continuous File Synchronization',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/syncthing.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/syncthing-dark.svg',
+    },
   },
   {
     id: 'tandoor',
