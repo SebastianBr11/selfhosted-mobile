@@ -43,6 +43,7 @@ const builtInServiceIds = [
   'syncthing',
   'tandoor',
   'vaultwarden',
+  'wakapi',
   'wallabag',
   'wikijs',
   'wg-easy',
@@ -421,6 +422,15 @@ export const serviceSystem = createServiceSystem([
         'https://github.com/dani-garcia/vaultwarden/raw/refs/heads/main/resources/vaultwarden-icon.svg',
       dark: 'https://github.com/dani-garcia/vaultwarden/raw/refs/heads/main/resources/vaultwarden-icon-white.svg',
     },
+  },
+  {
+    id: 'wakapi',
+    name: 'Wakapi',
+    url: 'https://wakapi.dev',
+    description:
+      'A minimalist, WakaTime-compatible backend for coding statistics',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wakapi.svg',
   },
   {
     id: 'wallabag',

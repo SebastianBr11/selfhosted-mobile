@@ -35,6 +35,7 @@
 - [Syncthing](https://syncthing.net)
 - [Tandoor Recipes](https://docs.tandoor.dev/)
 - [Vaultwarden](https://github.com/dani-garcia/vaultwarden)
+- [Wakapi](https://wakapi.dev)
 - [Wallabag](https://wallabag.org)
 - [Wiki.js](https://js.wiki)
 - [wg-easy](https://wg-easy.github.io/wg-easy/latest/)
