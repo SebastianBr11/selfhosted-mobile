@@ -32,6 +32,7 @@ const builtInServiceIds = [
   'tandoor',
   'vaultwarden',
   'wikijs',
+  'wg-easy',
   'yamtrack',
 ] as const
 
@@ -299,6 +300,14 @@ export const serviceSystem = createServiceSystem([
     description: 'A modern and powerful wiki app built on Node.js',
     iconUrl:
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wikijs.svg',
+  },
+  {
+    id: 'wg-easy',
+    name: 'wg-easy',
+    url: 'https://wg-easy.github.io/wg-easy/latest/',
+    description: 'The easiest way to run WireGuard VPN + Web-based Admin UI.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wireguard.svg',
   },
   {
     id: 'yamtrack',
