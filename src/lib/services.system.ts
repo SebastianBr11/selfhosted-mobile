@@ -487,6 +487,9 @@ export const serviceSystem = createServiceSystem([
     name: 'Vaultwarden',
     url: 'https://github.com/dani-garcia/vaultwarden',
     description: 'Unofficial Bitwarden compatible server written in Rust',
+    appStoreLink:
+      'https://play.google.com/store/apps/details?id=com.x8bit.bitwarden',
+    packageName: 'com.x8bit.bitwarden',
     iconUrl: {
       light:
         'https://github.com/dani-garcia/vaultwarden/raw/refs/heads/main/resources/vaultwarden-icon.svg',
