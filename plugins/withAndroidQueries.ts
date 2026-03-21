@@ -15,6 +15,7 @@ const withAndroidQueries: ConfigPlugin = (config) => {
           { $: { 'android:name': 'app.linkwarden' } },
           { $: { 'android:name': 'com.nextcloud.client' } },
           { $: { 'android:name': 'com.github.catfriend1.syncthingfork' } },
+          { $: { 'android:name': 'fr.gaulupeau.apps.InThePoche' } },
         ],
       },
     ]

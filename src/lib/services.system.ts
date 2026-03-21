@@ -375,6 +375,9 @@ export const serviceSystem = createServiceSystem([
     name: 'Wallabag',
     url: 'https://wallabag.org',
     description: 'Save and classify articles. Read them later. Freely.',
+    appStoreLink:
+      'https://play.google.com/store/apps/details?id=fr.gaulupeau.apps.InThePoche',
+    packageName: 'fr.gaulupeau.apps.InThePoche',
     iconUrl: {
       light:
         'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wallabag.svg',
