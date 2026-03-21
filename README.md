@@ -2,6 +2,8 @@
 
 This app shows you your self-hosted services.
 
+<img width="380" alt="Screenshot_20260321-122650" src="https://github.com/user-attachments/assets/4a95fb12-b90f-487d-9e4b-96b25f1b62c5" />
+
 ## Requirements
 
 - [Mise](https://github.com/jdx/mise) can used for installing the following
