@@ -1,0 +1,168 @@
+{
+  "type": "object",
+  "properties": {
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Service ID",
+            "description": "A unique identifier for the service",
+            "examples": [
+              "adguard-home",
+              "audiobookshelf",
+              "authelia",
+              "authentik",
+              "bentopdf",
+              "bookstack",
+              "calibre-web",
+              "changedetection",
+              "cup",
+              "dozzle",
+              "firefly-iii",
+              "forgejo",
+              "freshrss",
+              "gitea",
+              "grafana",
+              "grimmory",
+              "home-assistant",
+              "immich",
+              "jellyfin",
+              "linkace",
+              "linkding",
+              "linkwarden",
+              "karakeep",
+              "kavita",
+              "mealie",
+              "memos",
+              "miniflux",
+              "navidrome",
+              "nextcloud",
+              "ntfy",
+              "olivetin",
+              "otterwiki",
+              "paperless",
+              "papra",
+              "pi-hole",
+              "photoprism",
+              "portainer",
+              "readeck",
+              "romm",
+              "ryot",
+              "seerr",
+              "shelfmark",
+              "stirling-pdf",
+              "syncthing",
+              "tandoor",
+              "vaultwarden",
+              "wakapi",
+              "wallabag",
+              "wanderer",
+              "wikijs",
+              "wg-easy",
+              "yamtrack",
+              "your-spotify"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "title": "Service Name",
+            "description": "The name of the service"
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "format": "uri"
+          },
+          "description": {
+            "type": "string",
+            "title": "Service Description",
+            "description": "A short description of the service"
+          },
+          "appStoreLink": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "format": "uri"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string",
+                      "minLength": 1,
+                      "format": "uri"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "url"
+                  ]
+                }
+              }
+            ],
+            "title": "App store link",
+            "description": "Either a link to the app's page in the app store or an array of links with names"
+          },
+          "packageName": {
+            "type": "string",
+            "title": "Android app package name",
+            "description": "The package name of the Android app",
+            "examples": [
+              "com.audiobookshelf.app"
+            ]
+          },
+          "iconUrl": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "format": "uri"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "light": {
+                    "type": "string",
+                    "minLength": 1,
+                    "format": "uri"
+                  },
+                  "dark": {
+                    "type": "string",
+                    "minLength": 1,
+                    "format": "uri"
+                  }
+                },
+                "required": [
+                  "light",
+                  "dark"
+                ],
+                "description": "An icon URL for light and dark mode"
+              }
+            ],
+            "description": "Either a URL to an icon or an object with light and dark mode icons"
+          }
+        },
+        "required": [
+          "id",
+          "url"
+        ],
+        "title": "Service",
+        "description": "When using IDs from built-in services, you only have to provide a URL, the other options are optional and when used, will overide the defaults."
+      }
+    }
+  },
+  "required": [
+    "services"
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/SebastianBr11/selfhosted-mobile/raw/refs/heads/main/schema.json"
+}
