@@ -53,7 +53,6 @@ jobs:
           files: |
             ./app-dev.apk
             ./app-release.apk
-          body_path: CHANGELOG.md
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
