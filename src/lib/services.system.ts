@@ -5,6 +5,7 @@ import { createUserInputSchema, Service } from './service.schema'
 const builtInServiceIds = [
   'adguard-home',
   'audiobookshelf',
+  'authelia',
   'booklore',
   'changedetection',
   'cup',
@@ -52,6 +53,14 @@ export const serviceSystem = createServiceSystem([
       'https://play.google.com/store/apps/details?id=com.audiobookshelf.app',
     packageName: 'com.audiobookshelf.app',
     iconUrl: 'https://www.audiobookshelf.org/Logo.png',
+  },
+  {
+    id: 'authelia',
+    name: 'Authelia',
+    url: 'https://www.authelia.com',
+    description: 'The Single Sign-On Multi-Factor portal for web apps',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/authelia.svg',
   },
   {
     id: 'booklore',
