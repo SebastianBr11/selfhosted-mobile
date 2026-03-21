@@ -6,13 +6,13 @@ const builtInServiceIds = [
   'adguard-home',
   'audiobookshelf',
   'authelia',
-  'booklore',
   'changedetection',
   'cup',
   'dozzle',
   'freshrss',
   'gitea',
   'grafana',
+  'grimmory',
   'home-assistant',
   'immich',
   'jellyfin',
@@ -63,14 +63,6 @@ export const serviceSystem = createServiceSystem([
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/authelia.svg',
   },
   {
-    id: 'booklore',
-    name: 'Booklore',
-    url: 'https://booklore.org/',
-    description:
-      'A modern way to organize, read, and own your digital library.',
-    iconUrl: 'https://booklore.org/img/logo.svg',
-  },
-  {
     id: 'changedetection',
     name: 'Changedetection.io',
     url: 'https://changedetection.io',
@@ -115,6 +107,15 @@ export const serviceSystem = createServiceSystem([
       'The open and composable observability and data visualization platform',
     iconUrl:
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/grafana.svg',
+  },
+  {
+    id: 'grimmory',
+    name: 'Grimmory',
+    url: 'https://github.com/grimmory-tools/grimmory',
+    description:
+      'Grimmory is the successor of booklore. A modern way to organize, read, and own your digital library.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/booklore.svg',
   },
   {
     id: 'home-assistant',
