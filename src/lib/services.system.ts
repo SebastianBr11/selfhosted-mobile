@@ -33,6 +33,7 @@ const builtInServiceIds = [
   'ntfy',
   'otterwiki',
   'paperless',
+  'papra',
   'pi-hole',
   'photoprism',
   'portainer',
@@ -324,6 +325,14 @@ export const serviceSystem = createServiceSystem([
       'https://f-droid.org/en/packages/de.astubenbord.paperless_mobile/',
     iconUrl:
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/paperless-ngx.svg',
+  },
+  {
+    id: 'papra',
+    name: 'Papra',
+    url: 'https://github.com/papra-hq/papra',
+    description: 'The minimalistic document archiving platform.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/papra.svg',
   },
   {
     id: 'pi-hole',

@@ -25,6 +25,7 @@
 - [ntfy](https://ntfy.sh/)
 - [An Otter Wiki](https://otterwiki.com/)
 - [Paperless-ngx](https://docs.paperless-ngx.com/)
+- [Papra](https://github.com/papra-hq/papra)
 - [Pi-hole](https://pi-hole.net/)
 - [PhotoPrism](https://www.photoprism.app)
 - [Portainer](https://www.portainer.io/)
