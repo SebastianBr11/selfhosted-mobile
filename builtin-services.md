@@ -45,6 +45,7 @@
 - [Vaultwarden](https://github.com/dani-garcia/vaultwarden)
 - [Wakapi](https://wakapi.dev)
 - [Wallabag](https://wallabag.org)
+- [Wanderer](https://wanderer.to)
 - [Wiki.js](https://js.wiki)
 - [wg-easy](https://wg-easy.github.io/wg-easy/latest/)
 - [Yamtrack](https://github.com/FuzzyGrim/Yamtrack)

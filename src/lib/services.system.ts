@@ -48,6 +48,7 @@ const builtInServiceIds = [
   'vaultwarden',
   'wakapi',
   'wallabag',
+  'wanderer',
   'wikijs',
   'wg-easy',
   'yamtrack',
@@ -475,6 +476,17 @@ export const serviceSystem = createServiceSystem([
       light:
         'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wallabag.svg',
       dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wallabag-light.svg',
+    },
+  },
+  {
+    id: 'wanderer',
+    name: 'wanderer',
+    url: 'https://wanderer.to',
+    description: 'A self-hosted trail database. Save your adventures!',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wanderer.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wanderer-light.svg',
     },
   },
   {
