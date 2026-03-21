@@ -8,6 +8,7 @@ const builtInServiceIds = [
   'authelia',
   'authentik',
   'bookstack',
+  'calibre-web',
   'changedetection',
   'cup',
   'dozzle',
@@ -85,6 +86,15 @@ export const serviceSystem = createServiceSystem([
       'A simple, self-hosted, easy-to-use platform for organising and storing information.',
     iconUrl:
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/bookstack.svg',
+  },
+  {
+    id: 'calibre-web',
+    name: 'Calibre-Web',
+    url: 'https://github.com/janeczku/calibre-web',
+    description:
+      'Web app for browsing, reading and downloading eBooks stored in a Calibre database',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/calibre-web.svg',
   },
   {
     id: 'changedetection',

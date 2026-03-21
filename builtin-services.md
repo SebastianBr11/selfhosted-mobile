@@ -5,6 +5,7 @@
 - [Authelia](https://www.authelia.com)
 - [Authentik](https://goauthentik.io)
 - [Bookstack](https://www.bookstackapp.com)
+- [Calibre-Web](https://github.com/janeczku/calibre-web)
 - [Gitea](https://about.gitea.com/)
 - [Grafana](https://grafana.com)
 - [Grimmory](https://github.com/grimmory-tools/grimmory)
