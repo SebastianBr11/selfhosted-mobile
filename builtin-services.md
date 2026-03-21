@@ -12,6 +12,7 @@
 - [Immich](https://immich.app/)
 - [Jellyfin](https://jellyfin.org/)
 - [linkding](https://linkding.link/)
+- [Linkwarden](https://linkwarden.app/website)
 - [Karakeep](https://karakeep.app)
 - [Memos](https://usememos.com)
 - [Navidrome](https://www.navidrome.org)

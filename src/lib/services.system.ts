@@ -20,6 +20,7 @@ const builtInServiceIds = [
   'immich',
   'jellyfin',
   'linkding',
+  'linkwarden',
   'karakeep',
   'memos',
   'navidrome',
@@ -185,6 +186,15 @@ export const serviceSystem = createServiceSystem([
     description:
       'A self-hosted bookmark manager designed to be minimal, fast, and easy to set up.',
     iconUrl: 'https://linkding.link/_astro/logo.DkvM5cgj.svg',
+  },
+  {
+    id: 'linkwarden',
+    name: 'Linkwarden',
+    url: 'https://linkwarden.app/website',
+    description:
+      'Collect, read, annotate, and fully preserve what matters, all in one place.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/linkwarden.png',
   },
   {
     id: 'karakeep',
