@@ -14,7 +14,7 @@ import { useService } from '@/hooks/use-services'
 import { isArray } from '@/util/is-type'
 import { ServiceId } from '@/lib/service.schema'
 import { useEffect, useState } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 
 type ServiceBottomSheetProps = {
   hide: () => void
@@ -25,6 +25,7 @@ export default function ServiceBottomSheet({
   serviceId,
 }: ServiceBottomSheetProps) {
   const service = useService(serviceId)
+  const { t } = useLingui()
 
   const [androidAppAvailable, setAndroidAppAvailable] = useState(false)
 
@@ -78,7 +79,7 @@ export default function ServiceBottomSheet({
               onPress={() => openLink(service.url)}
               modifiers={[fillMaxWidth()]}
             >
-              <Trans>Open in Browser</Trans>
+              {t`Open in Browser`}
             </Button>
 
             {androidAppAvailable && service.packageName && (
@@ -88,7 +89,7 @@ export default function ServiceBottomSheet({
                   onPress={() => openApp(service.packageName!)}
                   modifiers={[fillMaxWidth()]}
                 >
-                  <Trans>Open installed App</Trans>
+                  {t`Open installed App`}
                 </Button>
               </>
             )}
@@ -102,7 +103,7 @@ export default function ServiceBottomSheet({
                       onPress={() => openLink(url)}
                       modifiers={[fillMaxWidth()]}
                     >
-                      <Trans>Open in {name}</Trans>
+                      {t`Open in {name}`}
                     </Button>
                   </Column>
                 ))
@@ -114,7 +115,7 @@ export default function ServiceBottomSheet({
                     onPress={() => openLink(service.appStoreLink as string)}
                     modifiers={[fillMaxWidth()]}
                   >
-                    <Trans>Open in App Store</Trans>
+                    {t`Open in App Store`}
                   </Button>
                 </>
               ))}
