@@ -30,6 +30,7 @@ const builtInServiceIds = [
   'syncthing',
   'tandoor',
   'vaultwarden',
+  'wikijs',
   'yamtrack',
 ] as const
 
@@ -280,6 +281,14 @@ export const serviceSystem = createServiceSystem([
         'https://github.com/dani-garcia/vaultwarden/raw/refs/heads/main/resources/vaultwarden-icon.svg',
       dark: 'https://github.com/dani-garcia/vaultwarden/raw/refs/heads/main/resources/vaultwarden-icon-white.svg',
     },
+  },
+  {
+    id: 'wikijs',
+    name: 'Wiki.js',
+    url: 'https://js.wiki',
+    description: 'A modern and powerful wiki app built on Node.js',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wikijs.svg',
   },
   {
     id: 'yamtrack',
