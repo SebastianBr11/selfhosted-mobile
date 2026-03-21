@@ -32,6 +32,7 @@ const builtInServiceIds = [
   'navidrome',
   'nextcloud',
   'ntfy',
+  'olivetin',
   'otterwiki',
   'paperless',
   'papra',
@@ -312,6 +313,18 @@ export const serviceSystem = createServiceSystem([
       'Send push notifications to your phone or desktop using PUT/POST',
     iconUrl:
       'https://github.com/binwiederhier/ntfy/raw/main/web/public/static/images/ntfy.png',
+  },
+  {
+    id: 'olivetin',
+    name: 'OliveTin',
+    url: 'https://www.olivetin.app',
+    description:
+      'Give safe and simple access to predefined shell commands from a web interface.',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/olivetin.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/olivetin-light.svg',
+    },
   },
   {
     id: 'otterwiki',

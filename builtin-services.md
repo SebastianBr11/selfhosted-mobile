@@ -29,6 +29,7 @@
 - [Navidrome](https://www.navidrome.org)
 - [Nextcloud](https://nextcloud.com)
 - [ntfy](https://ntfy.sh/)
+- [OliveTin](https://www.olivetin.app)
 - [An Otter Wiki](https://otterwiki.com/)
 - [Paperless-ngx](https://docs.paperless-ngx.com/)
 - [Papra](https://github.com/papra-hq/papra)
