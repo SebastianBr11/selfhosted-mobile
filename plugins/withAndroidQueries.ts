@@ -12,6 +12,7 @@ const withAndroidQueries: ConfigPlugin = (config) => {
           { $: { 'android:name': 'com.audiobookshelf.app' } },
           { $: { 'android:name': 'io.homeassistant.companion.android' } },
           { $: { 'android:name': 'app.alextran.immich' } },
+          { $: { 'android:name': 'app.linkwarden' } },
           { $: { 'android:name': 'com.nextcloud.client' } },
           { $: { 'android:name': 'com.github.catfriend1.syncthingfork' } },
         ],
