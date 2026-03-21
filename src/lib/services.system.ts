@@ -14,6 +14,7 @@ const builtInServiceIds = [
   'cup',
   'dozzle',
   'firefly-iii',
+  'forgejo',
   'freshrss',
   'gitea',
   'grafana',
@@ -142,6 +143,14 @@ export const serviceSystem = createServiceSystem([
     description: 'A free and open source personal finance manager',
     iconUrl:
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/firefly-iii.svg',
+  },
+  {
+    id: 'forgejo',
+    name: 'Forgejo',
+    url: 'https://forgejo.org',
+    description: 'A self-hosted lightweight software forge.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/forgejo.svg',
   },
   {
     id: 'freshrss',
