@@ -19,6 +19,7 @@
 - [Home Assistant](https://www.home-assistant.io)
 - [Immich](https://immich.app/)
 - [Jellyfin](https://jellyfin.org/)
+- [LinkAce](https://www.linkace.org)
 - [linkding](https://linkding.link/)
 - [Linkwarden](https://linkwarden.app/website)
 - [Karakeep](https://karakeep.app)

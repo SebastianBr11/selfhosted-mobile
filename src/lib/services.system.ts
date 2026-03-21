@@ -22,6 +22,7 @@ const builtInServiceIds = [
   'home-assistant',
   'immich',
   'jellyfin',
+  'linkace',
   'linkding',
   'linkwarden',
   'karakeep',
@@ -216,6 +217,15 @@ export const serviceSystem = createServiceSystem([
     description: 'The Free Software Media System',
     iconUrl:
       'https://raw.githubusercontent.com/jellyfin/jellyfin-ux/36fe7e93c830f53e5a5573745c15a43f5244f1e9/logos/SVG/jellyfin-icon--color-on-dark.svg',
+  },
+  {
+    id: 'linkace',
+    name: 'LinkAce',
+    url: 'https://www.linkace.org',
+    description:
+      'A self-hosted archive to collect links of your favorite websites.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/linkace.svg',
   },
   {
     id: 'linkding',
