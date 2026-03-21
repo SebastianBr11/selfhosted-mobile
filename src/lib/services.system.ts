@@ -36,6 +36,7 @@ const builtInServiceIds = [
   'portainer',
   'readeck',
   'romm',
+  'seerr',
   'stirling-pdf',
   'syncthing',
   'tandoor',
@@ -344,6 +345,16 @@ export const serviceSystem = createServiceSystem([
     url: 'https://romm.app/',
     description: 'A beautiful, powerful, self-hosted rom manager and player.',
     iconUrl: 'https://romm.app/_ipx/q_80/images/blocks/logos/romm.svg',
+  },
+  {
+    id: 'seerr',
+    name: 'Seerr',
+    url: 'https://docs.seerr.dev',
+    description:
+      'Open-source media request and discovery manager for Jellyfin, Plex, and Emby.',
+    packageName: 'dev.seerr.mobileapp',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/seerr.svg',
   },
   {
     id: 'stirling-pdf',

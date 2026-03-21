@@ -28,6 +28,7 @@
 - [Portainer](https://www.portainer.io/)
 - [Readeck](https://readeck.org/en/)
 - [Romm](https://romm.app/)
+- [Seerr](https://docs.seerr.dev)
 - [Stirling PDF](https://www.stirling.com)
 - [Syncthing](https://syncthing.net)
 - [Tandoor Recipes](https://docs.tandoor.dev/)
