@@ -6,6 +6,7 @@ const builtInServiceIds = [
   'adguard-home',
   'audiobookshelf',
   'authelia',
+  'authentik',
   'changedetection',
   'cup',
   'dozzle',
@@ -64,6 +65,14 @@ export const serviceSystem = createServiceSystem([
     description: 'The Single Sign-On Multi-Factor portal for web apps',
     iconUrl:
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/authelia.svg',
+  },
+  {
+    id: 'authentik',
+    name: 'Authentik',
+    url: 'https://goauthentik.io',
+    description: 'The authentication glue you need.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/authentik.svg',
   },
   {
     id: 'changedetection',

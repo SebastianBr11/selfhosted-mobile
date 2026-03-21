@@ -3,6 +3,7 @@
 - [AdGuard Home](https://adguard.com/en/adguard-home/overview.html)
 - [Audiobookshelf](https://www.audiobookshelf.org/)
 - [Authelia](https://www.authelia.com)
+- [Authentik](https://goauthentik.io)
 - [Changedetection.io](https://changedetection.io)
 - [Cup](https://cup.sergi0g.dev/)
 - [Dozzle](https://dozzle.dev/)
