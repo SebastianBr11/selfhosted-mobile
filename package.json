@@ -15,7 +15,8 @@
     "prebuild": "expo prebuild --clean",
     "typecheck": "tsc --noEmit",
     "i18n:extract": "lingui extract",
-    "i18n:compile": "lingui compile --typescript"
+    "i18n:compile": "lingui compile --typescript",
+    "gen:schema": "bun run scripts/generate-schema.ts"
   },
   "dependencies": {
     "@expo/ui": "~55.0.2",
