@@ -14,8 +14,34 @@ jobs:
       - name: Skip CI check
         run: echo "Proceeding with workflow"
 
-  build-and-release:
+  generate-schema:
     needs: check-skip
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun ci
+
+      - name: Generate schema.json
+        run: bun gen:schema
+
+      - name: Upload schema.json
+        uses: actions/upload-artifact@v4
+        with:
+          name: schema
+          path: schema.json
+
+  build-and-release:
+    needs: generate-schema
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     permissions:
       contents: write
@@ -46,6 +72,11 @@ jobs:
         env:
           NODE_ENV: production
 
+      - name: Download schema.json
+        uses: actions/download-artifact@v5
+        with:
+          name: schema
+
       - name: 📝 Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
@@ -53,6 +84,15 @@ jobs:
           files: |
             ./app-dev.apk
             ./app-release.apk
+            ./schema.json
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit schema
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add schema.json
+          git commit -m "Update schema.json"
+          git push
