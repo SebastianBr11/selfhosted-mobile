@@ -39,3 +39,4 @@
 - [Wiki.js](https://js.wiki)
 - [wg-easy](https://wg-easy.github.io/wg-easy/latest/)
 - [Yamtrack](https://github.com/FuzzyGrim/Yamtrack)
+- [Your Spotify](https://github.com/Yooooomi/your_spotify)

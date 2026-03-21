@@ -47,6 +47,7 @@ const builtInServiceIds = [
   'wikijs',
   'wg-easy',
   'yamtrack',
+  'your-spotify',
 ] as const
 
 export const serviceSystem = createServiceSystem([
@@ -462,6 +463,14 @@ export const serviceSystem = createServiceSystem([
         'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/yamtrack-light.svg',
       dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/yamtrack.svg',
     },
+  },
+  {
+    id: 'your-spotify',
+    name: 'Your Spotify',
+    url: 'https://github.com/Yooooomi/your_spotify',
+    description: 'Self hosted Spotify tracking dashboard',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/your-spotify.svg',
   },
 ])
 
