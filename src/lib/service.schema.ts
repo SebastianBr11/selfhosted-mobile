@@ -15,7 +15,6 @@ export const ServiceNameSchema = v.pipe(
   v.metadata({
     title: 'Service Name',
     description: 'The name of the service',
-    examples: ['AdGuard Home', 'Authelia', 'Authentik', 'BentoPDF', 'Cup'],
   }),
 )
 export const ServiceDescriptionSchema = v.pipe(
