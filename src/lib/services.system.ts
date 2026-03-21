@@ -19,6 +19,7 @@ const builtInServiceIds = [
   'otterwiki',
   'paperless',
   'pi-hole',
+  'photoprism',
   'readeck',
   'romm',
   'stirling-pdf',
@@ -164,6 +165,17 @@ export const serviceSystem = createServiceSystem([
     description: 'A black hole for Internet advertisements',
     iconUrl:
       'https://wp-cdn.pi-hole.net/wp-content/uploads/2016/12/Vortex-R.png',
+  },
+  {
+    id: 'photoprism',
+    name: 'PhotoPrism',
+    url: 'https://www.photoprism.app',
+    description: 'AI-Powered Photos App for the Decentralized Web 🌈💎✨',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/photoprism-light.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/photoprism.svg',
+    },
   },
   {
     id: 'readeck',
