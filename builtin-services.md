@@ -16,6 +16,7 @@
 - [linkding](https://linkding.link/)
 - [Linkwarden](https://linkwarden.app/website)
 - [Karakeep](https://karakeep.app)
+- [Mealie](https://docs.mealie.io)
 - [Memos](https://usememos.com)
 - [Navidrome](https://www.navidrome.org)
 - [Nextcloud](https://nextcloud.com)

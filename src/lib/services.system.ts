@@ -24,6 +24,7 @@ const builtInServiceIds = [
   'linkding',
   'linkwarden',
   'karakeep',
+  'mealie',
   'memos',
   'navidrome',
   'nextcloud',
@@ -241,6 +242,14 @@ export const serviceSystem = createServiceSystem([
     description: 'A private timeline for your thoughts.',
     iconUrl:
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/memos.svg',
+  },
+  {
+    id: 'mealie',
+    name: 'Mealie',
+    url: 'https://docs.mealie.io',
+    description: 'A self hosted recipe manager and meal planner',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/mealie.svg',
   },
   {
     id: 'navidrome',
