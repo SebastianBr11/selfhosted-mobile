@@ -8,6 +8,7 @@ const builtInServiceIds = [
   'cup',
   'dozzle',
   'freshrss',
+  'gitea',
   'grafana',
   'home-assistant',
   'immich',
@@ -66,6 +67,14 @@ export const serviceSystem = createServiceSystem([
     url: 'https://www.freshrss.org/',
     description: 'A free, self-hostable feed aggregator.',
     iconUrl: 'https://freshrss.org/images/icon.svg',
+  },
+  {
+    id: 'gitea',
+    name: 'Gitea',
+    url: 'https://about.gitea.com/',
+    description: 'Painless self-hosted all-in-one software development service',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/gitea.svg',
   },
   {
     id: 'grafana',
