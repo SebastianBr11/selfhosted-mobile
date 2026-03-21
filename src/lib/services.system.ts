@@ -38,6 +38,7 @@ const builtInServiceIds = [
   'syncthing',
   'tandoor',
   'vaultwarden',
+  'wallabag',
   'wikijs',
   'wg-easy',
   'yamtrack',
@@ -364,6 +365,17 @@ export const serviceSystem = createServiceSystem([
       light:
         'https://github.com/dani-garcia/vaultwarden/raw/refs/heads/main/resources/vaultwarden-icon.svg',
       dark: 'https://github.com/dani-garcia/vaultwarden/raw/refs/heads/main/resources/vaultwarden-icon-white.svg',
+    },
+  },
+  {
+    id: 'wallabag',
+    name: 'Wallabag',
+    url: 'https://wallabag.org',
+    description: 'Save and classify articles. Read them later. Freely.',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wallabag.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wallabag-light.svg',
     },
   },
   {
