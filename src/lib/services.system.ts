@@ -20,6 +20,7 @@ const builtInServiceIds = [
   'paperless',
   'pi-hole',
   'photoprism',
+  'portainer',
   'readeck',
   'romm',
   'stirling-pdf',
@@ -175,6 +176,17 @@ export const serviceSystem = createServiceSystem([
       light:
         'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/photoprism-light.svg',
       dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/photoprism.svg',
+    },
+  },
+  {
+    id: 'portainer',
+    name: 'Portainer',
+    url: 'https://www.portainer.io/',
+    description: 'Making Docker and Kubernetes management easy.',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/portainer.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/portainer-dark.svg',
     },
   },
   {
