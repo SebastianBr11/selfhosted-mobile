@@ -3,25 +3,70 @@ import * as v from 'valibot'
 import { createUserInputSchema, Service } from './service.schema'
 
 const builtInServiceIds = [
+  'adguard-home',
   'audiobookshelf',
-  'booklore',
+  'authelia',
+  'authentik',
+  'bentopdf',
+  'bookstack',
+  'calibre-web',
+  'changedetection',
   'cup',
   'dozzle',
+  'firefly-iii',
+  'forgejo',
   'freshrss',
+  'gitea',
+  'grafana',
+  'grimmory',
+  'home-assistant',
+  'immich',
   'jellyfin',
+  'linkace',
   'linkding',
+  'linkwarden',
+  'karakeep',
+  'kavita',
+  'mealie',
+  'memos',
+  'miniflux',
+  'navidrome',
+  'nextcloud',
   'ntfy',
+  'olivetin',
   'otterwiki',
   'paperless',
+  'papra',
   'pi-hole',
+  'photoprism',
+  'portainer',
   'readeck',
   'romm',
+  'ryot',
+  'seerr',
+  'shelfmark',
+  'stirling-pdf',
+  'syncthing',
   'tandoor',
   'vaultwarden',
+  'wakapi',
+  'wallabag',
+  'wanderer',
+  'wikijs',
+  'wg-easy',
   'yamtrack',
+  'your-spotify',
 ] as const
 
 export const serviceSystem = createServiceSystem([
+  {
+    id: 'adguard-home',
+    name: 'AdGuard Home',
+    url: 'https://adguard.com/en/adguard-home/overview.html',
+    description: 'Network-wide ads & trackers blocking DNS server',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/adguard-home.svg',
+  },
   {
     id: 'audiobookshelf',
     name: 'Audiobookshelf',
@@ -33,12 +78,54 @@ export const serviceSystem = createServiceSystem([
     iconUrl: 'https://www.audiobookshelf.org/Logo.png',
   },
   {
-    id: 'booklore',
-    name: 'Booklore',
-    url: 'https://booklore.org/',
+    id: 'authelia',
+    name: 'Authelia',
+    url: 'https://www.authelia.com',
+    description: 'The Single Sign-On Multi-Factor portal for web apps',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/authelia.svg',
+  },
+  {
+    id: 'authentik',
+    name: 'Authentik',
+    url: 'https://goauthentik.io',
+    description: 'The authentication glue you need.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/authentik.svg',
+  },
+  {
+    id: 'bentopdf',
+    name: 'BentoPDF',
+    url: 'https://bentopdf.com',
+    description: 'A Privacy First PDF Toolkit',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/bentopdf.svg',
+  },
+  {
+    id: 'bookstack',
+    name: 'Bookstack',
+    url: 'https://www.bookstackapp.com',
     description:
-      'A modern way to organize, read, and own your digital library.',
-    iconUrl: 'https://booklore.org/img/logo.svg',
+      'A simple, self-hosted, easy-to-use platform for organising and storing information.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/bookstack.svg',
+  },
+  {
+    id: 'calibre-web',
+    name: 'Calibre-Web',
+    url: 'https://github.com/janeczku/calibre-web',
+    description:
+      'Web app for browsing, reading and downloading eBooks stored in a Calibre database',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/calibre-web.svg',
+  },
+  {
+    id: 'changedetection',
+    name: 'Changedetection.io',
+    url: 'https://changedetection.io',
+    description: 'Best and simplest tool for website change detection',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/changedetection.svg',
   },
   {
     id: 'cup',
@@ -55,6 +142,22 @@ export const serviceSystem = createServiceSystem([
     iconUrl: 'https://dozzle.dev/logo.svg',
   },
   {
+    id: 'firefly-iii',
+    name: 'Firefly III',
+    url: 'https://firefly-iii.org',
+    description: 'A free and open source personal finance manager',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/firefly-iii.svg',
+  },
+  {
+    id: 'forgejo',
+    name: 'Forgejo',
+    url: 'https://forgejo.org',
+    description: 'A self-hosted lightweight software forge.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/forgejo.svg',
+  },
+  {
     id: 'freshrss',
     name: 'FreshRSS',
     url: 'https://www.freshrss.org/',
@@ -62,12 +165,72 @@ export const serviceSystem = createServiceSystem([
     iconUrl: 'https://freshrss.org/images/icon.svg',
   },
   {
+    id: 'gitea',
+    name: 'Gitea',
+    url: 'https://about.gitea.com/',
+    description: 'Painless self-hosted all-in-one software development service',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/gitea.svg',
+  },
+  {
+    id: 'grafana',
+    name: 'Grafana',
+    url: 'https://grafana.com',
+    description:
+      'The open and composable observability and data visualization platform',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/grafana.svg',
+  },
+  {
+    id: 'grimmory',
+    name: 'Grimmory',
+    url: 'https://github.com/grimmory-tools/grimmory',
+    description:
+      'Grimmory is the successor of booklore. A modern way to organize, read, and own your digital library.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/booklore.svg',
+  },
+  {
+    id: 'home-assistant',
+    name: 'Home Assistant',
+    url: 'https://www.home-assistant.io',
+    appStoreLink:
+      'https://play.google.com/store/apps/details?id=io.homeassistant.companion.android',
+    packageName: 'io.homeassistant.companion.android',
+    description:
+      'Open source home automation that puts local control and privacy first.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/home-assistant.svg',
+  },
+  {
+    id: 'immich',
+    name: 'Immich',
+    url: 'https://immich.app/',
+    description: 'Self-hosted photo and video management solution',
+    appStoreLink: 'https://get.immich.app/android',
+    packageName: 'app.alextran.immich',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/immich.svg',
+  },
+  {
     id: 'jellyfin',
     name: 'Jellyfin',
     url: 'https://jellyfin.org/',
     description: 'The Free Software Media System',
+    appStoreLink:
+      'https://play.google.com/store/apps/details?id=org.jellyfin.mobile',
+    packageName: 'org.jellyfin.mobile',
     iconUrl:
       'https://raw.githubusercontent.com/jellyfin/jellyfin-ux/36fe7e93c830f53e5a5573745c15a43f5244f1e9/logos/SVG/jellyfin-icon--color-on-dark.svg',
+  },
+  {
+    id: 'linkace',
+    name: 'LinkAce',
+    url: 'https://www.linkace.org',
+    description:
+      'A self-hosted archive to collect links of your favorite websites.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/linkace.svg',
   },
   {
     id: 'linkding',
@@ -78,13 +241,109 @@ export const serviceSystem = createServiceSystem([
     iconUrl: 'https://linkding.link/_astro/logo.DkvM5cgj.svg',
   },
   {
+    id: 'linkwarden',
+    name: 'Linkwarden',
+    url: 'https://linkwarden.app/website',
+    description:
+      'Collect, read, annotate, and fully preserve what matters, all in one place.',
+    appStoreLink:
+      'https://play.google.com/store/apps/details?id=app.linkwarden',
+    packageName: 'app.linkwarden',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/linkwarden.png',
+  },
+  {
+    id: 'karakeep',
+    name: 'Karakeep',
+    url: 'https://karakeep.app',
+    description:
+      'A self-hostable bookmark-everything app with AI-based automatic tagging and full text search.',
+    appStoreLink:
+      'https://play.google.com/store/apps/details?id=app.hoarder.hoardermobile',
+    packageName: 'app.hoarder.hoardermobile',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/karakeep-dark.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/karakeep.svg',
+    },
+  },
+  {
+    id: 'kavita',
+    name: 'Kavita',
+    url: 'https://www.kavitareader.com',
+    description: 'A fast, feature rich, cross platform reading server. ',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/kavita.svg',
+  },
+  {
+    id: 'mealie',
+    name: 'Mealie',
+    url: 'https://docs.mealie.io',
+    description: 'A self hosted recipe manager and meal planner',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/mealie.svg',
+  },
+  {
+    id: 'memos',
+    name: 'Memos',
+    url: 'https://usememos.com',
+    description: 'A private timeline for your thoughts.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/memos.svg',
+  },
+  {
+    id: 'miniflux',
+    name: 'Miniflux',
+    url: 'https://miniflux.app',
+    description: 'Minimalist and opinionated feed reader',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/miniflux.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/miniflux-light.svg',
+    },
+  },
+  {
+    id: 'navidrome',
+    name: 'Navidrome',
+    url: 'https://www.navidrome.org',
+    description: 'Modern web-based music server',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/navidrome.svg',
+  },
+  {
+    id: 'nextcloud',
+    name: 'Nextcloud',
+    url: 'https://nextcloud.com',
+    description: 'A safe home for all your data.',
+    appStoreLink:
+      'https://play.google.com/store/apps/details?id=com.nextcloud.client',
+    packageName: 'com.nextcloud.client',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/nextcloud.svg',
+  },
+  {
     id: 'ntfy',
     name: 'ntfy',
     url: 'https://ntfy.sh/',
     description:
       'Send push notifications to your phone or desktop using PUT/POST',
+    appStoreLink:
+      'https://play.google.com/store/apps/details?id=io.heckel.ntfy',
+    packageName: 'io.heckel.ntfy',
     iconUrl:
       'https://github.com/binwiederhier/ntfy/raw/main/web/public/static/images/ntfy.png',
+  },
+  {
+    id: 'olivetin',
+    name: 'OliveTin',
+    url: 'https://www.olivetin.app',
+    description:
+      'Give safe and simple access to predefined shell commands from a web interface.',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/olivetin.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/olivetin-light.svg',
+    },
   },
   {
     id: 'otterwiki',
@@ -109,12 +368,42 @@ export const serviceSystem = createServiceSystem([
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/paperless-ngx.svg',
   },
   {
+    id: 'papra',
+    name: 'Papra',
+    url: 'https://github.com/papra-hq/papra',
+    description: 'The minimalistic document archiving platform.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/papra.svg',
+  },
+  {
     id: 'pi-hole',
     name: 'Pi-hole',
     url: 'https://pi-hole.net/',
     description: 'A black hole for Internet advertisements',
     iconUrl:
       'https://wp-cdn.pi-hole.net/wp-content/uploads/2016/12/Vortex-R.png',
+  },
+  {
+    id: 'photoprism',
+    name: 'PhotoPrism',
+    url: 'https://www.photoprism.app',
+    description: 'AI-Powered Photos App for the Decentralized Web 🌈💎✨',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/photoprism-light.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/photoprism.svg',
+    },
+  },
+  {
+    id: 'portainer',
+    name: 'Portainer',
+    url: 'https://www.portainer.io/',
+    description: 'Making Docker and Kubernetes management easy.',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/portainer.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/portainer-dark.svg',
+    },
   },
   {
     id: 'readeck',
@@ -128,7 +417,61 @@ export const serviceSystem = createServiceSystem([
     name: 'Romm',
     url: 'https://romm.app/',
     description: 'A beautiful, powerful, self-hosted rom manager and player.',
+    packageName: 'io.github.mattsays.rommmobile',
     iconUrl: 'https://romm.app/_ipx/q_80/images/blocks/logos/romm.svg',
+  },
+  {
+    id: 'ryot',
+    name: 'Ryot',
+    url: 'https://ryot.io',
+    description: 'Roll your own tracker!',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/ryot.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/ryot-light.svg',
+    },
+  },
+  {
+    id: 'seerr',
+    name: 'Seerr',
+    url: 'https://docs.seerr.dev',
+    description:
+      'Open-source media request and discovery manager for Jellyfin, Plex, and Emby.',
+    packageName: 'dev.seerr.mobileapp',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/seerr.svg',
+  },
+  {
+    id: 'shelfmark',
+    name: 'Shelfmark',
+    url: 'https://github.com/calibrain/shelfmark',
+    description:
+      'A self-hosted web interface for searching and downloading books and audiobooks from multiple sources.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/shelfmark.png',
+  },
+  {
+    id: 'stirling-pdf',
+    name: 'Stirling PDF',
+    url: 'https://www.stirling.com',
+    description:
+      "The world's most secure PDF platform. AI-native and completely private.",
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/stirling-pdf.svg',
+  },
+  {
+    id: 'syncthing',
+    name: 'Syncthing',
+    url: 'https://syncthing.net',
+    description: 'Open Source Continuous File Synchronization',
+    appStoreLink:
+      'https://f-droid.org/packages/com.github.catfriend1.syncthingfork',
+    packageName: 'com.github.catfriend1.syncthingfork',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/syncthing.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/syncthing-dark.svg',
+    },
   },
   {
     id: 'tandoor',
@@ -144,11 +487,64 @@ export const serviceSystem = createServiceSystem([
     name: 'Vaultwarden',
     url: 'https://github.com/dani-garcia/vaultwarden',
     description: 'Unofficial Bitwarden compatible server written in Rust',
+    appStoreLink:
+      'https://play.google.com/store/apps/details?id=com.x8bit.bitwarden',
+    packageName: 'com.x8bit.bitwarden',
     iconUrl: {
       light:
         'https://github.com/dani-garcia/vaultwarden/raw/refs/heads/main/resources/vaultwarden-icon.svg',
       dark: 'https://github.com/dani-garcia/vaultwarden/raw/refs/heads/main/resources/vaultwarden-icon-white.svg',
     },
+  },
+  {
+    id: 'wakapi',
+    name: 'Wakapi',
+    url: 'https://wakapi.dev',
+    description:
+      'A minimalist, WakaTime-compatible backend for coding statistics',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wakapi.svg',
+  },
+  {
+    id: 'wallabag',
+    name: 'Wallabag',
+    url: 'https://wallabag.org',
+    description: 'Save and classify articles. Read them later. Freely.',
+    appStoreLink:
+      'https://play.google.com/store/apps/details?id=fr.gaulupeau.apps.InThePoche',
+    packageName: 'fr.gaulupeau.apps.InThePoche',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wallabag.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wallabag-light.svg',
+    },
+  },
+  {
+    id: 'wanderer',
+    name: 'wanderer',
+    url: 'https://wanderer.to',
+    description: 'A self-hosted trail database. Save your adventures!',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wanderer.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wanderer-light.svg',
+    },
+  },
+  {
+    id: 'wikijs',
+    name: 'Wiki.js',
+    url: 'https://js.wiki',
+    description: 'A modern and powerful wiki app built on Node.js',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wikijs.svg',
+  },
+  {
+    id: 'wg-easy',
+    name: 'wg-easy',
+    url: 'https://wg-easy.github.io/wg-easy/latest/',
+    description: 'The easiest way to run WireGuard VPN + Web-based Admin UI.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wireguard.svg',
   },
   {
     id: 'yamtrack',
@@ -161,6 +557,14 @@ export const serviceSystem = createServiceSystem([
         'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/yamtrack-light.svg',
       dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/yamtrack.svg',
     },
+  },
+  {
+    id: 'your-spotify',
+    name: 'Your Spotify',
+    url: 'https://github.com/Yooooomi/your_spotify',
+    description: 'Self hosted Spotify tracking dashboard',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/your-spotify.svg',
   },
 ])
 

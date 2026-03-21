@@ -4,6 +4,24 @@ This app shows you your self-hosted services.
 
 <img width="380" alt="Screenshot_20260321-122650" src="https://github.com/user-attachments/assets/4a95fb12-b90f-487d-9e4b-96b25f1b62c5" />
 
+## Built-in Services
+
+See [builtin-services.md](./builtin-services.md) for a list of built-in services.
+
+You can also define custom services by supplying the following properties to the service object:
+
+```ts
+{
+    id: string,
+    name: string,
+    url: string,
+    description: string,
+    appStoreLink?: string,
+    packageName?: string,
+    iconUrl: string
+}
+```
+
 ## Requirements
 
 - [Mise](https://github.com/jdx/mise) can used for installing the following

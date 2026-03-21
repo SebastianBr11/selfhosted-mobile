@@ -8,7 +8,20 @@ const withAndroidQueries: ConfigPlugin = (config) => {
   return withAndroidManifest(config, (config) => {
     config.modResults.manifest.queries = [
       {
-        package: [{ $: { 'android:name': 'com.audiobookshelf.app' } }],
+        package: [
+          { $: { 'android:name': 'com.audiobookshelf.app' } },
+          { $: { 'android:name': 'com.x8bit.bitwarden' } },
+          { $: { 'android:name': 'io.homeassistant.companion.android' } },
+          { $: { 'android:name': 'app.alextran.immich' } },
+          { $: { 'android:name': 'org.jellyfin.mobile' } },
+          { $: { 'android:name': 'app.linkwarden' } },
+          { $: { 'android:name': 'com.nextcloud.client' } },
+          { $: { 'android:name': 'io.heckel.ntfy' } },
+          { $: { 'android:name': 'io.github.mattsays.rommmobile' } },
+          { $: { 'android:name': 'dev.seerr.mobileapp' } },
+          { $: { 'android:name': 'com.github.catfriend1.syncthingfork' } },
+          { $: { 'android:name': 'fr.gaulupeau.apps.InThePoche' } },
+        ],
       },
     ]
 
