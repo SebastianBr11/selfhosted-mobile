@@ -21,6 +21,7 @@ const builtInServiceIds = [
   'linkding',
   'karakeep',
   'memos',
+  'navidrome',
   'nextcloud',
   'ntfy',
   'otterwiki',
@@ -197,6 +198,14 @@ export const serviceSystem = createServiceSystem([
     description: 'A private timeline for your thoughts.',
     iconUrl:
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/memos.svg',
+  },
+  {
+    id: 'navidrome',
+    name: 'Navidrome',
+    url: 'https://www.navidrome.org',
+    description: 'Modern web-based music server',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/navidrome.svg',
   },
   {
     id: 'nextcloud',

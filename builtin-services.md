@@ -18,6 +18,7 @@
 - [linkding](https://linkding.link/)
 - [Karakeep](https://karakeep.app)
 - [Memos](https://usememos.com)
+- [Navidrome](https://www.navidrome.org)
 - [Nextcloud](https://nextcloud.com)
 - [ntfy](https://ntfy.sh/)
 - [An Otter Wiki](https://otterwiki.com/)
