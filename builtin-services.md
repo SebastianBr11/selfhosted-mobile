@@ -19,6 +19,7 @@
 - [Kavita](https://www.kavitareader.com)
 - [Mealie](https://docs.mealie.io)
 - [Memos](https://usememos.com)
+- [Miniflux](https://miniflux.app)
 - [Navidrome](https://www.navidrome.org)
 - [Nextcloud](https://nextcloud.com)
 - [ntfy](https://ntfy.sh/)

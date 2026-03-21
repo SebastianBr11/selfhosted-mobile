@@ -27,6 +27,7 @@ const builtInServiceIds = [
   'kavita',
   'mealie',
   'memos',
+  'miniflux',
   'navidrome',
   'nextcloud',
   'ntfy',
@@ -246,6 +247,14 @@ export const serviceSystem = createServiceSystem([
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/kavita.svg',
   },
   {
+    id: 'mealie',
+    name: 'Mealie',
+    url: 'https://docs.mealie.io',
+    description: 'A self hosted recipe manager and meal planner',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/mealie.svg',
+  },
+  {
     id: 'memos',
     name: 'Memos',
     url: 'https://usememos.com',
@@ -254,12 +263,15 @@ export const serviceSystem = createServiceSystem([
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/memos.svg',
   },
   {
-    id: 'mealie',
-    name: 'Mealie',
-    url: 'https://docs.mealie.io',
-    description: 'A self hosted recipe manager and meal planner',
-    iconUrl:
-      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/mealie.svg',
+    id: 'miniflux',
+    name: 'Miniflux',
+    url: 'https://miniflux.app',
+    description: 'Minimalist and opinionated feed reader',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/miniflux.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/miniflux-light.svg',
+    },
   },
   {
     id: 'navidrome',
