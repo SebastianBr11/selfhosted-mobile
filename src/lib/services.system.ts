@@ -250,6 +250,15 @@ export const serviceSystem = createServiceSystem([
     iconUrl: 'https://romm.app/_ipx/q_80/images/blocks/logos/romm.svg',
   },
   {
+    id: 'stirling-pdf',
+    name: 'Stirling PDF',
+    url: 'https://www.stirling.com',
+    description:
+      "The world's most secure PDF platform. AI-native and completely private.",
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/stirling-pdf.svg',
+  },
+  {
     id: 'syncthing',
     name: 'Syncthing',
     url: 'https://syncthing.net',
@@ -262,15 +271,6 @@ export const serviceSystem = createServiceSystem([
         'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/syncthing.svg',
       dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/syncthing-dark.svg',
     },
-  },
-  {
-    id: 'stirling-pdf',
-    name: 'Stirling PDF',
-    url: 'https://www.stirling.com',
-    description:
-      "The world's most secure PDF platform. AI-native and completely private.",
-    iconUrl:
-      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/stirling-pdf.svg',
   },
   {
     id: 'tandoor',
