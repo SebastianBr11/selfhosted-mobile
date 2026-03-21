@@ -6,6 +6,7 @@ const builtInServiceIds = [
   'adguard-home',
   'audiobookshelf',
   'booklore',
+  'changedetection',
   'cup',
   'dozzle',
   'freshrss',
@@ -58,6 +59,14 @@ export const serviceSystem = createServiceSystem([
     description:
       'A modern way to organize, read, and own your digital library.',
     iconUrl: 'https://booklore.org/img/logo.svg',
+  },
+  {
+    id: 'changedetection',
+    name: 'Changedetection.io',
+    url: 'https://changedetection.io',
+    description: 'Best and simplest tool for website change detection',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/changedetection.svg',
   },
   {
     id: 'cup',
