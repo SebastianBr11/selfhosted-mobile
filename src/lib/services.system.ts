@@ -7,6 +7,7 @@ const builtInServiceIds = [
   'audiobookshelf',
   'authelia',
   'authentik',
+  'bentopdf',
   'bookstack',
   'calibre-web',
   'changedetection',
@@ -78,6 +79,14 @@ export const serviceSystem = createServiceSystem([
     description: 'The authentication glue you need.',
     iconUrl:
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/authentik.svg',
+  },
+  {
+    id: 'bentopdf',
+    name: 'BentoPDF',
+    url: 'https://bentopdf.com',
+    description: 'A Privacy First PDF Toolkit',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/bentopdf.svg',
   },
   {
     id: 'bookstack',

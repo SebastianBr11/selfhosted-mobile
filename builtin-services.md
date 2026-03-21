@@ -4,6 +4,7 @@
 - [Audiobookshelf](https://www.audiobookshelf.org/)
 - [Authelia](https://www.authelia.com)
 - [Authentik](https://goauthentik.io)
+- [BentoPDF](https://bentopdf.com)
 - [Bookstack](https://www.bookstackapp.com)
 - [Calibre-Web](https://github.com/janeczku/calibre-web)
 - [Gitea](https://about.gitea.com/)
