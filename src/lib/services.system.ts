@@ -9,6 +9,7 @@ const builtInServiceIds = [
   'changedetection',
   'cup',
   'dozzle',
+  'firefly-iii',
   'freshrss',
   'gitea',
   'grafana',
@@ -85,6 +86,14 @@ export const serviceSystem = createServiceSystem([
     url: 'https://dozzle.dev/',
     description: 'Simple Container Monitoring and Logging',
     iconUrl: 'https://dozzle.dev/logo.svg',
+  },
+  {
+    id: 'firefly-iii',
+    name: 'Firefly III',
+    url: 'https://firefly-iii.org',
+    description: 'A free and open source personal finance manager',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/firefly-iii.svg',
   },
   {
     id: 'freshrss',

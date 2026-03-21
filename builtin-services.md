@@ -6,6 +6,7 @@
 - [Changedetection.io](https://changedetection.io)
 - [Cup](https://cup.sergi0g.dev/)
 - [Dozzle](https://dozzle.dev/)
+- [Firefly III](https://firefly-iii.org)
 - [FreshRSS](https://www.freshrss.org/)
 - [Gitea](https://about.gitea.com/)
 - [Grafana](https://grafana.com)
