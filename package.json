@@ -24,6 +24,7 @@
     "@react-navigation/bottom-tabs": "^7.7.3",
     "@react-navigation/elements": "^2.8.1",
     "@react-navigation/native": "^7.1.28",
+    "@valibot/to-json-schema": "^1.6.0",
     "expo": "~55.0.6",
     "expo-constants": "~55.0.7",
     "expo-dev-client": "~55.0.16",
