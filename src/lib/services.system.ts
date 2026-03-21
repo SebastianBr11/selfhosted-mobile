@@ -327,6 +327,9 @@ export const serviceSystem = createServiceSystem([
     url: 'https://ntfy.sh/',
     description:
       'Send push notifications to your phone or desktop using PUT/POST',
+    appStoreLink:
+      'https://play.google.com/store/apps/details?id=io.heckel.ntfy',
+    packageName: 'io.heckel.ntfy',
     iconUrl:
       'https://github.com/binwiederhier/ntfy/raw/main/web/public/static/images/ntfy.png',
   },

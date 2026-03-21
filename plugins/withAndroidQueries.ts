@@ -15,6 +15,7 @@ const withAndroidQueries: ConfigPlugin = (config) => {
           { $: { 'android:name': 'org.jellyfin.mobile' } },
           { $: { 'android:name': 'app.linkwarden' } },
           { $: { 'android:name': 'com.nextcloud.client' } },
+          { $: { 'android:name': 'io.heckel.ntfy' } },
           { $: { 'android:name': 'io.github.mattsays.rommmobile' } },
           { $: { 'android:name': 'dev.seerr.mobileapp' } },
           { $: { 'android:name': 'com.github.catfriend1.syncthingfork' } },
