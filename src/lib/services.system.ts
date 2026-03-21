@@ -8,6 +8,7 @@ const builtInServiceIds = [
   'cup',
   'dozzle',
   'freshrss',
+  'immich',
   'jellyfin',
   'linkding',
   'ntfy',
@@ -60,6 +61,14 @@ export const serviceSystem = createServiceSystem([
     url: 'https://www.freshrss.org/',
     description: 'A free, self-hostable feed aggregator.',
     iconUrl: 'https://freshrss.org/images/icon.svg',
+  },
+  {
+    id: 'immich',
+    name: 'Immich',
+    url: 'https://immich.app/',
+    description: 'Self-hosted photo and video management solution',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/immich.svg',
   },
   {
     id: 'jellyfin',
