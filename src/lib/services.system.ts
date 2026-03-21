@@ -15,6 +15,7 @@ const builtInServiceIds = [
   'jellyfin',
   'linkding',
   'memos',
+  'nextcloud',
   'ntfy',
   'otterwiki',
   'paperless',
@@ -127,6 +128,17 @@ export const serviceSystem = createServiceSystem([
     description: 'A private timeline for your thoughts.',
     iconUrl:
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/memos.svg',
+  },
+  {
+    id: 'nextcloud',
+    name: 'Nextcloud',
+    url: 'https://nextcloud.com',
+    description: 'A safe home for all your data.',
+    appStoreLink:
+      'https://play.google.com/store/apps/details?id=com.nextcloud.client',
+    packageName: 'com.nextcloud.client',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/nextcloud.svg',
   },
   {
     id: 'ntfy',

@@ -8,7 +8,10 @@ const withAndroidQueries: ConfigPlugin = (config) => {
   return withAndroidManifest(config, (config) => {
     config.modResults.manifest.queries = [
       {
-        package: [{ $: { 'android:name': 'com.audiobookshelf.app' } }],
+        package: [
+          { $: { 'android:name': 'com.audiobookshelf.app' } },
+          { $: { 'android:name': 'com.nextcloud.client' } },
+        ],
       },
     ]
 
