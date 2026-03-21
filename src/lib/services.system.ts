@@ -7,6 +7,7 @@ const builtInServiceIds = [
   'audiobookshelf',
   'authelia',
   'authentik',
+  'bookstack',
   'changedetection',
   'cup',
   'dozzle',
@@ -74,6 +75,15 @@ export const serviceSystem = createServiceSystem([
     description: 'The authentication glue you need.',
     iconUrl:
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/authentik.svg',
+  },
+  {
+    id: 'bookstack',
+    name: 'Bookstack',
+    url: 'https://www.bookstackapp.com',
+    description:
+      'A simple, self-hosted, easy-to-use platform for organising and storing information.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/bookstack.svg',
   },
   {
     id: 'changedetection',
