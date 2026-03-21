@@ -581,12 +581,13 @@ function createServiceSystem<const T extends readonly Service[] = Service[]>(
 
   return {
     builtIns,
+    schema: UserInputSchema,
     parse: (data: unknown) => {
-      const parsed = v.safeParse(v.array(UserInputSchema), data)
+      const parsed = v.safeParse(UserInputSchema, data)
       if (!parsed.success) return parsed
       return {
         ...parsed,
-        output: parsed.output.map((item) => {
+        output: parsed.output.services.map((item) => {
           const defaults = defaultMap.get(item.id)
           return {
             id: item.id,
