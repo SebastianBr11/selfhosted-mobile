@@ -1,4 +1,5 @@
 import { ThemedText } from '@/components/themed-text'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { ThemedView } from '@/components/themed-view'
 import { useServices } from '@/hooks/use-services'
 import { useServicesUrl } from '@/hooks/use-services-url'
@@ -19,6 +20,7 @@ import { InlineInsetSmall } from '@/constants/theme'
 
 export default function ServicesView() {
   const scheme = useColorScheme()
+  const { t } = useLingui()
   const { url, valid } = useServicesUrl()
   const { services, fetchState, fetchServices } = useServices(url || '')
   const [selectedServiceId, setSelectedServiceId] = useState<string | null>(
@@ -31,7 +33,9 @@ export default function ServicesView() {
         <SafeAreaView
           style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
         >
-          <ThemedText type="title">Go to settings to setup the URL</ThemedText>
+          <ThemedText type="title">
+            <Trans>Go to settings to setup the URL</Trans>
+          </ThemedText>
         </SafeAreaView>
       </ThemedView>
     )
@@ -43,7 +47,7 @@ export default function ServicesView() {
         <FlatList
           ListHeaderComponent={
             <ThemedText style={{ paddingVertical: 20 }} type="title">
-              Your Services
+              <Trans>Your Services</Trans>
             </ThemedText>
           }
           data={services}
@@ -114,9 +118,8 @@ export default function ServicesView() {
               height(48),
             ]}
             onPress={fetchServices}
-            trailingIcon="rounded.Add"
           >
-            Fetch services
+            {t`Fetch services`}
           </Button>
         </Host>
       </SafeAreaView>
