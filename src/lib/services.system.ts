@@ -8,6 +8,7 @@ const builtInServiceIds = [
   'cup',
   'dozzle',
   'freshrss',
+  'home-assistant',
   'immich',
   'jellyfin',
   'linkding',
@@ -61,6 +62,15 @@ export const serviceSystem = createServiceSystem([
     url: 'https://www.freshrss.org/',
     description: 'A free, self-hostable feed aggregator.',
     iconUrl: 'https://freshrss.org/images/icon.svg',
+  },
+  {
+    id: 'home-assistant',
+    name: 'Home Assistant',
+    url: 'https://www.home-assistant.io',
+    description:
+      'Open source home automation that puts local control and privacy first.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/home-assistant.svg',
   },
   {
     id: 'immich',
