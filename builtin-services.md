@@ -41,6 +41,7 @@
 - [Romm](https://romm.app/)
 - [Ryot](https://ryot.io)
 - [Seerr](https://docs.seerr.dev)
+- [Shelfmark](https://github.com/calibrain/shelfmark)
 - [Stirling PDF](https://www.stirling.com)
 - [Syncthing](https://syncthing.net)
 - [Tandoor Recipes](https://docs.tandoor.dev/)

@@ -44,6 +44,7 @@ const builtInServiceIds = [
   'romm',
   'ryot',
   'seerr',
+  'shelfmark',
   'stirling-pdf',
   'syncthing',
   'tandoor',
@@ -433,6 +434,15 @@ export const serviceSystem = createServiceSystem([
     packageName: 'dev.seerr.mobileapp',
     iconUrl:
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/seerr.svg',
+  },
+  {
+    id: 'shelfmark',
+    name: 'Shelfmark',
+    url: 'https://github.com/calibrain/shelfmark',
+    description:
+      'A self-hosted web interface for searching and downloading books and audiobooks from multiple sources.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/shelfmark.png',
   },
   {
     id: 'stirling-pdf',
