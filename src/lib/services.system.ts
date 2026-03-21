@@ -17,6 +17,7 @@ const builtInServiceIds = [
   'immich',
   'jellyfin',
   'linkding',
+  'karakeep',
   'memos',
   'nextcloud',
   'ntfy',
@@ -155,6 +156,21 @@ export const serviceSystem = createServiceSystem([
     description:
       'A self-hosted bookmark manager designed to be minimal, fast, and easy to set up.',
     iconUrl: 'https://linkding.link/_astro/logo.DkvM5cgj.svg',
+  },
+  {
+    id: 'karakeep',
+    name: 'Karakeep',
+    url: 'https://karakeep.app',
+    description:
+      'A self-hostable bookmark-everything app with AI-based automatic tagging and full text search.',
+    appStoreLink:
+      'https://play.google.com/store/apps/details?id=app.hoarder.hoardermobile',
+    packageName: 'app.hoarder.hoardermobile',
+    iconUrl: {
+      light:
+        'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/karakeep-dark.svg',
+      dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/karakeep.svg',
+    },
   },
   {
     id: 'memos',

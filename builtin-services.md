@@ -14,6 +14,7 @@
 - [Immich](https://immich.app/)
 - [Jellyfin](https://jellyfin.org/)
 - [linkding](https://linkding.link/)
+- [Karakeep](https://karakeep.app)
 - [Memos](https://usememos.com)
 - [Nextcloud](https://nextcloud.com)
 - [ntfy](https://ntfy.sh/)
