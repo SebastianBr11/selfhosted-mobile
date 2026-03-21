@@ -102,6 +102,8 @@ export const serviceSystem = createServiceSystem([
     name: 'Immich',
     url: 'https://immich.app/',
     description: 'Self-hosted photo and video management solution',
+    appStoreLink: 'https://get.immich.app/android',
+    packageName: 'app.alextran.immich',
     iconUrl:
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/immich.svg',
   },
