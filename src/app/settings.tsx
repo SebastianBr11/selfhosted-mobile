@@ -48,9 +48,7 @@ export default function SettingsScreen() {
                   padding(InlineInsetMedium, 0, InlineInsetMedium, 0),
                 ]}
               >
-                <Text>
-                  <Trans>Test connection</Trans>
-                </Text>
+                {t`Test connection`}
               </Button>
             </Host>
             <ThemedView inlineInset>

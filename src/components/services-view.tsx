@@ -1,5 +1,5 @@
 import { ThemedText } from '@/components/themed-text'
-import { Trans } from '@lingui/react/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { ThemedView } from '@/components/themed-view'
 import { useServices } from '@/hooks/use-services'
 import { useServicesUrl } from '@/hooks/use-services-url'
@@ -20,6 +20,7 @@ import { InlineInsetSmall } from '@/constants/theme'
 
 export default function ServicesView() {
   const scheme = useColorScheme()
+  const { t } = useLingui()
   const { url, valid } = useServicesUrl()
   const { services, fetchState, fetchServices } = useServices(url || '')
   const [selectedServiceId, setSelectedServiceId] = useState<string | null>(
@@ -117,9 +118,8 @@ export default function ServicesView() {
               height(48),
             ]}
             onPress={fetchServices}
-            trailingIcon="rounded.Add"
           >
-            <Trans>Fetch services</Trans>
+            {t`Fetch services`}
           </Button>
         </Host>
       </SafeAreaView>

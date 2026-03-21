@@ -35,9 +35,5 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     loadAndActivateLocale(locales[0].languageCode || fallbackLocale)
   }, [locales])
-  return (
-    <BaseI18nProvider i18n={i18n} defaultComponent={ThemedText}>
-      {children}
-    </BaseI18nProvider>
-  )
+  return <BaseI18nProvider i18n={i18n}>{children}</BaseI18nProvider>
 }
