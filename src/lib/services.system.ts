@@ -225,6 +225,9 @@ export const serviceSystem = createServiceSystem([
     name: 'Syncthing',
     url: 'https://syncthing.net',
     description: 'Open Source Continuous File Synchronization',
+    appStoreLink:
+      'https://f-droid.org/packages/com.github.catfriend1.syncthingfork',
+    packageName: 'com.github.catfriend1.syncthingfork',
     iconUrl: {
       light:
         'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/syncthing.svg',

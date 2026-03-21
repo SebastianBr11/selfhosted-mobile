@@ -13,6 +13,7 @@ const withAndroidQueries: ConfigPlugin = (config) => {
           { $: { 'android:name': 'io.homeassistant.companion.android' } },
           { $: { 'android:name': 'app.alextran.immich' } },
           { $: { 'android:name': 'com.nextcloud.client' } },
+          { $: { 'android:name': 'com.github.catfriend1.syncthingfork' } },
         ],
       },
     ]
