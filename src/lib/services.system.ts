@@ -92,6 +92,9 @@ export const serviceSystem = createServiceSystem([
     id: 'home-assistant',
     name: 'Home Assistant',
     url: 'https://www.home-assistant.io',
+    appStoreLink:
+      'https://play.google.com/store/apps/details?id=io.homeassistant.companion.android',
+    packageName: 'io.homeassistant.companion.android',
     description:
       'Open source home automation that puts local control and privacy first.',
     iconUrl:
