@@ -1,20 +1,20 @@
 import {
-  Host,
-  ModalBottomSheet,
   Button,
   Column,
-  Text,
   FlowRow,
+  Host,
+  ModalBottomSheet,
   Spacer,
+  Text,
 } from '@expo/ui/jetpack-compose'
 import { fillMaxWidth, padding } from '@expo/ui/jetpack-compose/modifiers'
-import * as WebBrowser from 'expo-web-browser'
-import * as IntentLauncher from 'expo-intent-launcher'
-import { useService } from '@/hooks/use-services'
-import { isArray } from '@/util/is-type'
-import { ServiceId } from '@/lib/service.schema'
-import { useEffect, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
+import * as IntentLauncher from 'expo-intent-launcher'
+import * as WebBrowser from 'expo-web-browser'
+import { useEffect, useState } from 'react'
+import { useService } from '@/hooks/use-services'
+import { ServiceId } from '@/lib/service.schema'
+import { isArray } from '@/util/is-type'
 
 type ServiceBottomSheetProps = {
   hide: () => void
@@ -60,24 +60,24 @@ export default function ServiceBottomSheet({
     <Host ignoreSafeAreaKeyboardInsets matchContents>
       <ModalBottomSheet onDismissRequest={hide}>
         <Column
-          verticalArrangement={{ spacedBy: 32 }}
           modifiers={[padding(24, 0, 24, 24)]}
+          verticalArrangement={{ spacedBy: 32 }}
         >
           <Text
-            style={{
-              textAlign: 'center',
-              lineHeight: 32,
-              fontWeight: 'bold',
-              fontSize: 32,
-            }}
             modifiers={[fillMaxWidth()]}
+            style={{
+              fontSize: 32,
+              fontWeight: 'bold',
+              lineHeight: 32,
+              textAlign: 'center',
+            }}
           >
             {service.name}
           </Text>
           <FlowRow horizontalArrangement={{ spacedBy: 12 }}>
             <Button
-              onPress={() => openLink(service.url)}
               modifiers={[fillMaxWidth()]}
+              onPress={() => openLink(service.url)}
             >
               {t`Open in Browser`}
             </Button>
@@ -86,8 +86,8 @@ export default function ServiceBottomSheet({
               <>
                 <Spacer modifiers={[padding(0, 6, 0, 6)]} />
                 <Button
-                  onPress={() => openApp(service.packageName!)}
                   modifiers={[fillMaxWidth()]}
+                  onPress={() => openApp(service.packageName!)}
                 >
                   {t`Open installed App`}
                 </Button>
@@ -99,9 +99,9 @@ export default function ServiceBottomSheet({
                   <Column key={name}>
                     <Spacer modifiers={[padding(0, 6, 0, 6)]} />
                     <Button
-                      variant="outlined"
-                      onPress={() => openLink(url)}
                       modifiers={[fillMaxWidth()]}
+                      onPress={() => openLink(url)}
+                      variant="outlined"
                     >
                       {t`Open in {name}`}
                     </Button>
@@ -111,9 +111,9 @@ export default function ServiceBottomSheet({
                 <>
                   <Spacer modifiers={[padding(0, 6, 0, 6)]} />
                   <Button
-                    variant="outlined"
-                    onPress={() => openLink(service.appStoreLink as string)}
                     modifiers={[fillMaxWidth()]}
+                    onPress={() => openLink(service.appStoreLink as string)}
+                    variant="outlined"
                   >
                     {t`Open in App Store`}
                   </Button>

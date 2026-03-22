@@ -1,14 +1,14 @@
-import * as v from 'valibot'
-import { UrlSchema } from './schemas'
 import { msg, t } from '@lingui/core/macro'
+import * as v from 'valibot'
 import { emptyMessage, stringMessage } from './schema-messages'
+import { UrlSchema } from './schemas'
 
 export const ServiceIdSchema = v.pipe(
   v.string(({ received }) => stringMessage('service ID', received)),
   v.nonEmpty(() => emptyMessage('service ID')),
   v.metadata({
-    title: 'Service ID',
     description: 'A unique identifier for the service',
+    title: 'Service ID',
   }),
 )
 export const BuiltInServiceIdSchema = (builtInServiceIds: string[]) =>
@@ -17,24 +17,24 @@ export const ServiceNameSchema = v.pipe(
   v.string(({ received }) => stringMessage('service name', received)),
   v.nonEmpty(() => emptyMessage('service name')),
   v.metadata({
-    title: 'Service Name',
     description: 'The name of the service',
+    title: 'Service Name',
   }),
 )
 export const ServiceDescriptionSchema = v.pipe(
   v.string(({ received }) => stringMessage('service description', received)),
   v.nonEmpty(() => emptyMessage('service description')),
   v.metadata({
-    title: 'Service Description',
     description: 'A short description of the service',
+    title: 'Service Description',
   }),
 )
 export const ServiceAppStoreLinkSchema = v.pipe(
   v.union([UrlSchema, v.array(v.object({ name: v.string(), url: UrlSchema }))]),
   v.metadata({
-    title: 'App store link',
     description:
       "Either a link to the app's page in the app store or an array of links with names",
+    title: 'App store link',
   }),
 )
 export const ServicePackageNameSchema = v.pipe(
@@ -42,16 +42,16 @@ export const ServicePackageNameSchema = v.pipe(
     stringMessage('Android app package name', received),
   ),
   v.metadata({
-    title: 'Android app package name',
     description: 'The package name of the Android app',
     examples: ['com.audiobookshelf.app'],
+    title: 'Android app package name',
   }),
 )
 export const ServiceIconUrlSchema = v.pipe(
   v.union([
     UrlSchema,
     v.pipe(
-      v.object({ light: UrlSchema, dark: UrlSchema }),
+      v.object({ dark: UrlSchema, light: UrlSchema }),
       v.metadata({
         description: 'An icon URL for light and dark mode',
       }),
@@ -64,21 +64,21 @@ export const ServiceIconUrlSchema = v.pipe(
 )
 
 export const ServiceSchema = v.object({
+  appStoreLink: v.optional(ServiceAppStoreLinkSchema),
+  description: ServiceDescriptionSchema,
+  iconUrl: ServiceIconUrlSchema,
   id: ServiceIdSchema,
   name: ServiceNameSchema,
-  url: UrlSchema,
-  description: ServiceDescriptionSchema,
-  appStoreLink: v.optional(ServiceAppStoreLinkSchema),
   packageName: v.optional(ServicePackageNameSchema),
-  iconUrl: ServiceIconUrlSchema,
+  url: UrlSchema,
 })
 export type Service = v.InferOutput<typeof ServiceSchema>
+export type ServiceAppStoreLink = Service['appStoreLink']
+export type ServiceDescription = Service['description']
+export type ServiceIconUrl = Service['iconUrl']
 export type ServiceId = Service['id']
 export type ServiceName = Service['name']
 export type ServiceUrl = Service['url']
-export type ServiceDescription = Service['description']
-export type ServiceAppStoreLink = Service['appStoreLink']
-export type ServiceIconUrl = Service['iconUrl']
 
 export function createUserInputSchema(validIds: Set<string>) {
   return v.object({
@@ -86,18 +86,18 @@ export function createUserInputSchema(validIds: Set<string>) {
       v.pipe(
         v.pipe(
           v.object({
+            appStoreLink: v.optional(ServiceAppStoreLinkSchema),
+            description: v.optional(ServiceDescriptionSchema),
+            iconUrl: v.optional(ServiceIconUrlSchema),
             id: BuiltInServiceIdSchema([...validIds]),
             name: v.optional(ServiceNameSchema),
-            url: UrlSchema,
-            description: v.optional(ServiceDescriptionSchema),
-            appStoreLink: v.optional(ServiceAppStoreLinkSchema),
             packageName: v.optional(ServicePackageNameSchema),
-            iconUrl: v.optional(ServiceIconUrlSchema),
+            url: UrlSchema,
           }),
           v.metadata({
-            title: 'Service',
             description:
               'When using IDs from built-in services, you only have to provide a URL, the other options are optional and when used, will overide the defaults.',
+            title: 'Service',
           }),
         ),
         v.check(

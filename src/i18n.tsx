@@ -1,7 +1,6 @@
+import { i18n, Messages } from '@lingui/core'
 import { I18nProvider as BaseI18nProvider } from '@lingui/react'
 import { useLocales } from 'expo-localization'
-import { i18n, Messages } from '@lingui/core'
-import { ThemedText } from './components/themed-text'
 import { useEffect } from 'react'
 
 const availableLocales = ['en', 'de', 'es'] as const
@@ -17,8 +16,8 @@ async function loadAndActivateLocale(locale: AvailableLocale | (string & {})) {
     case 'es':
       messages = (await import('@/locales/es/messages')).messages
       break
-    default:
     case 'en':
+    default:
       messages = (await import('@/locales/en/messages')).messages
       break
   }
