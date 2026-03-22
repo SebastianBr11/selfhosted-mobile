@@ -66,7 +66,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       },
     ],
     'expo-web-browser',
-    ['expo-localization', ['de', 'en', 'es']],
+    [
+      'expo-localization',
+      {
+        supportedLocales: ['de', 'en', 'es'],
+      },
+    ],
   ],
   experiments: {
     typedRoutes: true,
