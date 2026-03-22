@@ -45,6 +45,7 @@
 - [Stirling PDF](https://www.stirling.com)
 - [Syncthing](https://syncthing.net)
 - [Synology Calendar](https://www.synology.com/en-global/dsm/feature/calendar)
+- [Synology Contacts](https://www.synology.com/en-global/dsm/feature/contacts)
 - [Tandoor Recipes](https://docs.tandoor.dev/)
 - [Vaultwarden](https://github.com/dani-garcia/vaultwarden)
 - [Wakapi](https://wakapi.dev)
