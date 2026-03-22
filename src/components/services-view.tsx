@@ -1,5 +1,5 @@
 import { ThemedText } from '@/components/themed-text'
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Trans } from '@lingui/react/macro'
 import { ThemedView } from '@/components/themed-view'
 import { useServices } from '@/hooks/use-services'
 import { useServicesUrl } from '@/hooks/use-services-url'
@@ -10,17 +10,19 @@ import { schemeDependantIcon } from '@/util/theme-util'
 import { useColorScheme } from '@/hooks/use-color-scheme'
 import { useState } from 'react'
 import ServiceBottomSheet from './service-bottom-sheet'
-import { Button, Host } from '@expo/ui/jetpack-compose'
 import {
-  fillMaxWidth,
-  height,
-  padding,
-} from '@expo/ui/jetpack-compose/modifiers'
+  HorizontalFloatingToolbar,
+  Host,
+  Icon,
+  IconButton,
+} from '@expo/ui/jetpack-compose'
+import { align, paddingAll } from '@expo/ui/jetpack-compose/modifiers'
 import { InlineInsetSmall } from '@/constants/theme'
+import { useTheme } from '@/hooks/use-theme'
 
 export default function ServicesView() {
   const scheme = useColorScheme()
-  const { t } = useLingui()
+  const theme = useTheme()
   const { url, valid } = useServicesUrl()
   const { services, fetchState, fetchServices } = useServices(url || '')
   const [selectedServiceId, setSelectedServiceId] = useState<string | null>(
@@ -110,19 +112,28 @@ export default function ServicesView() {
             </Pressable>
           )}
         />
-        <Host matchContents>
-          <Button
-            modifiers={[
-              fillMaxWidth(),
-              padding(InlineInsetSmall, 0, InlineInsetSmall, 0),
-              height(48),
-            ]}
-            onPress={fetchServices}
-          >
-            {t`Fetch services`}
-          </Button>
-        </Host>
       </SafeAreaView>
+      <Host
+        style={{
+          position: 'absolute',
+          alignSelf: 'flex-end',
+          bottom: 0,
+        }}
+        matchContents
+      >
+        <HorizontalFloatingToolbar
+          variant="vibrant"
+          modifiers={[align('bottomEnd'), paddingAll(16)]}
+        >
+          <IconButton onPress={fetchServices}>
+            <Icon
+              source={require('@/assets/symbols/sync.xml')}
+              contentDescription="Sync Services"
+              tintColor={theme.textPrimary}
+            />
+          </IconButton>
+        </HorizontalFloatingToolbar>
+      </Host>
       {selectedServiceId && (
         <ServiceBottomSheet
           hide={() => setSelectedServiceId(null)}
