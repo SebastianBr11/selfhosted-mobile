@@ -50,6 +50,7 @@ const builtInServiceIds = [
   'synology-calendar',
   'synology-contacts',
   'synology-dsm',
+  'synology-drive',
   'tandoor',
   'vaultwarden',
   'wakapi',
@@ -502,6 +503,18 @@ export const serviceSystem = createServiceSystem([
       'The intuitive operating system that powers every Synology NAS.',
     iconUrl:
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/synology-dsm.svg',
+  },
+  {
+    id: 'synology-drive',
+    name: 'Synology Drive',
+    url: 'https://www.synology.com/en-global/dsm/feature/drive',
+    description:
+      'Your unified solution for effortless file management and secure collaboration.',
+    appStoreLink:
+      'https://play.google.com/store/apps/details?id=com.synology.dsdrive',
+    packageName: 'com.synology.dsdrive',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/synology-drive.png',
   },
   {
     id: 'tandoor',
