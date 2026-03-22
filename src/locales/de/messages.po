@@ -17,11 +17,11 @@ msgstr ""
 msgid "(from environment)"
 msgstr "(Umgebungsvariable)"
 
-#: src/app/settings.tsx:65
+#: src/app/settings.tsx:63
 msgid "Connected"
 msgstr "Verbunden"
 
-#: src/app/settings.tsx:60
+#: src/app/settings.tsx:58
 msgid "Connecting..."
 msgstr "Verbinde..."
 
@@ -29,7 +29,7 @@ msgstr "Verbinde..."
 msgid "Fetch services"
 msgstr "Lade Dienste"
 
-#: src/components/services-view.tsx:36
+#: src/components/services-view.tsx:37
 msgid "Go to settings to setup the URL"
 msgstr "Gehe in die Einstellungen, um die URL zu konfigurieren"
 
@@ -37,23 +37,23 @@ msgstr "Gehe in die Einstellungen, um die URL zu konfigurieren"
 msgid "Home"
 msgstr "Home"
 
-#: src/app/settings.tsx:65
+#: src/app/settings.tsx:63
 msgid "Not Connected"
 msgstr "Nicht verbunden"
 
-#: src/components/service-bottom-sheet.tsx:105
+#: src/components/service-bottom-sheet.tsx:106
 msgid "Open in {name}"
 msgstr "Öffne in {name}"
 
-#: src/components/service-bottom-sheet.tsx:117
+#: src/components/service-bottom-sheet.tsx:118
 msgid "Open in App Store"
 msgstr "Öffne im App Store"
 
-#: src/components/service-bottom-sheet.tsx:81
+#: src/components/service-bottom-sheet.tsx:82
 msgid "Open in Browser"
 msgstr "Öffne im Browser"
 
-#: src/components/service-bottom-sheet.tsx:91
+#: src/components/service-bottom-sheet.tsx:92
 msgid "Open installed App"
 msgstr "Installierte App öffnen"
 
@@ -66,10 +66,26 @@ msgstr "Dienste-URL "
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: src/app/settings.tsx:52
+#: src/app/settings.tsx:51
 msgid "Test connection"
 msgstr "Verbindung testen"
 
-#: src/components/services-view.tsx:49
+#: src/lib/schema-messages.ts:7
+msgid "The {name} must be a string. The value \"{received}\" is invalid."
+msgstr "Der Wert von {name} muss ein String sein. Der Wert \"{received}\" ist ungültig."
+
+#: src/lib/schema-messages.ts:12
+msgid "The {name} must not be empty."
+msgstr "Der Wert von {name} darf nicht leer sein."
+
+#: src/lib/schemas.ts:8
+msgid "The URL \"{received}\" is invalid."
+msgstr "Die URL \"{received}\" ist ungültig."
+
+#: src/lib/service.schema.ts:112
+msgid "Unknown service ID \"{id}\". Service name, description and icon URL are required for custom services."
+msgstr "Unbekannte Service-ID \"{id}\". Für benutzerdefinierte Services sind der Service-Name, die Beschreibung und die URL erforderlich."
+
+#: src/components/services-view.tsx:50
 msgid "Your Services"
 msgstr "Deine Dienste"

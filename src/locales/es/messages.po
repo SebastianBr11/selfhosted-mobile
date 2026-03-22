@@ -6,16 +6,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: es\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
 #: src/app/settings.tsx:31
 msgid "(from environment)"
 msgstr "(del entorno)"
 
-#: src/app/settings.tsx:65
+#: src/app/settings.tsx:63
 msgid "Connected"
 msgstr "Conectado"
 
-#: src/app/settings.tsx:60
+#: src/app/settings.tsx:58
 msgid "Connecting..."
 msgstr "Conectando..."
 
@@ -23,7 +29,7 @@ msgstr "Conectando..."
 msgid "Fetch services"
 msgstr "Obtener servicios"
 
-#: src/components/services-view.tsx:36
+#: src/components/services-view.tsx:37
 msgid "Go to settings to setup the URL"
 msgstr "Ve a la configuración para configurar la URL"
 
@@ -31,23 +37,23 @@ msgstr "Ve a la configuración para configurar la URL"
 msgid "Home"
 msgstr "Inicio"
 
-#: src/app/settings.tsx:65
+#: src/app/settings.tsx:63
 msgid "Not Connected"
 msgstr "No Conectado"
 
-#: src/components/service-bottom-sheet.tsx:105
+#: src/components/service-bottom-sheet.tsx:106
 msgid "Open in {name}"
 msgstr "Abrir en {name}"
 
-#: src/components/service-bottom-sheet.tsx:117
+#: src/components/service-bottom-sheet.tsx:118
 msgid "Open in App Store"
 msgstr "Abrir en tienda de aplicaciones"
 
-#: src/components/service-bottom-sheet.tsx:81
+#: src/components/service-bottom-sheet.tsx:82
 msgid "Open in Browser"
 msgstr "Abrir en navegador"
 
-#: src/components/service-bottom-sheet.tsx:91
+#: src/components/service-bottom-sheet.tsx:92
 msgid "Open installed App"
 msgstr "Abrir aplicación instalada"
 
@@ -60,10 +66,26 @@ msgstr "URL de servicios "
 msgid "Settings"
 msgstr "Configuración"
 
-#: src/app/settings.tsx:52
+#: src/app/settings.tsx:51
 msgid "Test connection"
 msgstr "Probar conexión"
 
-#: src/components/services-view.tsx:49
+#: src/lib/schema-messages.ts:7
+msgid "The {name} must be a string. The value \"{received}\" is invalid."
+msgstr "El valor de {name} debe ser una cadena de caracteres. El valor \"{received}\" es inválido."
+
+#: src/lib/schema-messages.ts:12
+msgid "The {name} must not be empty."
+msgstr "El valor de {name} no puede estar vacío."
+
+#: src/lib/schemas.ts:8
+msgid "The URL \"{received}\" is invalid."
+msgstr "La URL \"{received}\" es inválida."
+
+#: src/lib/service.schema.ts:112
+msgid "Unknown service ID \"{id}\". Service name, description and icon URL are required for custom services."
+msgstr "ID de servicio desconocido \"{id}\". Se requieren el nombre, la descripción y la URL del icono para los servicios personalizados."
+
+#: src/components/services-view.tsx:50
 msgid "Your Services"
 msgstr "Tus servicios"
