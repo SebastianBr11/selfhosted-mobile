@@ -1,14 +1,15 @@
 import { ThemedText } from '@/components/themed-text'
+import { BlurView, BlurTargetView, BlurTint } from 'expo-blur'
 import { Trans } from '@lingui/react/macro'
 import { ThemedView } from '@/components/themed-view'
 import { useServices } from '@/hooks/use-services'
 import { useServicesUrl } from '@/hooks/use-services-url'
 import { Image } from 'expo-image'
-import { FlatList, Pressable } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { FlatList, Pressable, View } from 'react-native'
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 import { schemeDependantIcon } from '@/util/theme-util'
 import { useColorScheme } from '@/hooks/use-color-scheme'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import ServiceBottomSheet from './service-bottom-sheet'
 import {
   HorizontalFloatingToolbar,
@@ -29,6 +30,11 @@ export default function ServicesView() {
     null,
   )
 
+  const blurTargetRef = useRef<View | null>(null)
+  const insets = useSafeAreaInsets()
+  const blurTint: BlurTint =
+    scheme === 'dark' ? 'systemChromeMaterialDark' : 'systemChromeMaterialLight'
+
   if (!valid) {
     return (
       <ThemedView style={{ flex: 1 }} type="background">
@@ -45,76 +51,79 @@ export default function ServicesView() {
 
   return (
     <ThemedView style={{ flex: 1 }} type="background">
-      <FlatList
-        ListHeaderComponent={
-          <ThemedText
-            style={{ paddingVertical: 40, marginTop: 20 }}
-            type="title"
-          >
-            <Trans>Your Services</Trans>
-          </ThemedText>
-        }
-        data={services}
-        numColumns={2}
-        refreshing={fetchState.didFetch && fetchState.fetching}
-        onRefresh={fetchServices}
-        columnWrapperStyle={{ gap: 12 }}
-        keyExtractor={(item) => item.id}
-        contentContainerStyle={{
-          gap: 12,
-          marginInline: InlineInsetSmall,
-          paddingVertical: 32,
-        }}
-        renderItem={({ item }) => (
-          <Pressable
-            onPress={() => setSelectedServiceId(item.id)}
-            style={{ flex: 1 }}
-          >
-            <ThemedView
-              type="backgroundElement"
-              style={{
-                borderRadius: 8,
-                padding: 16,
-                paddingInline: 12,
-                gap: 8,
-                alignItems: 'center',
-              }}
+      <BlurTargetView ref={blurTargetRef}>
+        <FlatList
+          ListHeaderComponent={
+            <ThemedText
+              style={{ paddingVertical: 40, marginTop: 20 }}
+              type="title"
+            >
+              <Trans>Your Services</Trans>
+            </ThemedText>
+          }
+          data={services}
+          numColumns={2}
+          refreshing={fetchState.didFetch && fetchState.fetching}
+          onRefresh={fetchServices}
+          columnWrapperStyle={{ gap: 12 }}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={{
+            gap: 12,
+            paddingInline: InlineInsetSmall,
+            paddingVertical: 32,
+            backgroundColor: theme.background,
+          }}
+          renderItem={({ item }) => (
+            <Pressable
+              onPress={() => setSelectedServiceId(item.id)}
+              style={{ flex: 1 }}
             >
               <ThemedView
                 type="backgroundElement"
-                style={{ height: 50, aspectRatio: 1 }}
-              >
-                <Image
-                  contentFit="cover"
-                  source={schemeDependantIcon(scheme, item.iconUrl)}
-                  style={{ flex: 1, width: '100%' }}
-                />
-              </ThemedView>
-              <ThemedView
-                type="backgroundElement"
                 style={{
-                  flexDirection: 'row',
-                  gap: 6,
+                  borderRadius: 8,
+                  padding: 16,
+                  paddingInline: 12,
+                  gap: 8,
                   alignItems: 'center',
-                  justifyContent: 'space-around',
-                  marginInline: 18,
                 }}
               >
-                <ThemedText style={{ textAlign: 'center' }} type="large">
-                  {item.name}
+                <ThemedView
+                  type="backgroundElement"
+                  style={{ height: 50, aspectRatio: 1 }}
+                >
+                  <Image
+                    contentFit="cover"
+                    source={schemeDependantIcon(scheme, item.iconUrl)}
+                    style={{ flex: 1, width: '100%' }}
+                  />
+                </ThemedView>
+                <ThemedView
+                  type="backgroundElement"
+                  style={{
+                    flexDirection: 'row',
+                    gap: 6,
+                    alignItems: 'center',
+                    justifyContent: 'space-around',
+                    marginInline: 18,
+                  }}
+                >
+                  <ThemedText style={{ textAlign: 'center' }} type="large">
+                    {item.name}
+                  </ThemedText>
+                </ThemedView>
+                <ThemedText
+                  type="small"
+                  style={{ textAlign: 'center' }}
+                  themeColor="textSecondary"
+                >
+                  {item.description}
                 </ThemedText>
               </ThemedView>
-              <ThemedText
-                type="small"
-                style={{ textAlign: 'center' }}
-                themeColor="textSecondary"
-              >
-                {item.description}
-              </ThemedText>
-            </ThemedView>
-          </Pressable>
-        )}
-      />
+            </Pressable>
+          )}
+        />
+      </BlurTargetView>
       <Host
         style={{
           position: 'absolute',
@@ -142,6 +151,13 @@ export default function ServicesView() {
           serviceId={selectedServiceId}
         />
       )}
+      <BlurView
+        blurTarget={blurTargetRef}
+        blurMethod="dimezisBlurViewSdk31Plus"
+        intensity={20}
+        tint={blurTint}
+        style={{ position: 'absolute', width: '100%', height: insets.top }}
+      ></BlurView>
     </ThemedView>
   )
 }
