@@ -47,6 +47,7 @@ const builtInServiceIds = [
   'shelfmark',
   'stirling-pdf',
   'syncthing',
+  'synology-calendar',
   'tandoor',
   'vaultwarden',
   'wakapi',
@@ -472,6 +473,15 @@ export const serviceSystem = createServiceSystem([
         'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/syncthing.svg',
       dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/syncthing-dark.svg',
     },
+  },
+  {
+    id: 'synology-calendar',
+    name: 'Synology Calendar',
+    url: 'https://www.synology.com/en-global/dsm/feature/calendar',
+    description:
+      'Centrally track events and tasks on a reliable, secure, and private platform.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/synology-calendar.png',
   },
   {
     id: 'tandoor',
