@@ -25,11 +25,7 @@ msgstr "Verbunden"
 msgid "Connecting..."
 msgstr "Verbinde..."
 
-#: src/components/services-view.tsx:122
-msgid "Fetch services"
-msgstr "Lade Dienste"
-
-#: src/components/services-view.tsx:37
+#: src/components/services-view.tsx:45
 msgid "Go to settings to setup the URL"
 msgstr "Gehe in die Einstellungen, um die URL zu konfigurieren"
 
@@ -86,6 +82,6 @@ msgstr "Die URL \"{received}\" ist ungültig."
 msgid "Unknown service ID \"{id}\". Service name, description and icon URL are required for custom services."
 msgstr "Unbekannte Service-ID \"{id}\". Für benutzerdefinierte Services sind der Service-Name, die Beschreibung und die URL erforderlich."
 
-#: src/components/services-view.tsx:50
+#: src/components/services-view.tsx:61
 msgid "Your Services"
 msgstr "Deine Dienste"

@@ -25,11 +25,7 @@ msgstr "Conectado"
 msgid "Connecting..."
 msgstr "Conectando..."
 
-#: src/components/services-view.tsx:122
-msgid "Fetch services"
-msgstr "Obtener servicios"
-
-#: src/components/services-view.tsx:37
+#: src/components/services-view.tsx:45
 msgid "Go to settings to setup the URL"
 msgstr "Ve a la configuración para configurar la URL"
 
@@ -86,6 +82,6 @@ msgstr "La URL \"{received}\" es inválida."
 msgid "Unknown service ID \"{id}\". Service name, description and icon URL are required for custom services."
 msgstr "ID de servicio desconocido \"{id}\". Se requieren el nombre, la descripción y la URL del icono para los servicios personalizados."
 
-#: src/components/services-view.tsx:50
+#: src/components/services-view.tsx:61
 msgid "Your Services"
 msgstr "Tus servicios"
