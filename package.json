@@ -29,6 +29,7 @@
     "@react-navigation/native": "^7.1.28",
     "@valibot/to-json-schema": "^1.6.0",
     "expo": "~55.0.6",
+    "expo-blur": "~55.0.10",
     "expo-constants": "~55.0.7",
     "expo-dev-client": "~55.0.16",
     "expo-device": "~55.0.9",
