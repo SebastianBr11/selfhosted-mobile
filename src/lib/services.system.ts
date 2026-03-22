@@ -49,6 +49,7 @@ const builtInServiceIds = [
   'syncthing',
   'synology-calendar',
   'synology-contacts',
+  'synology-dsm',
   'tandoor',
   'vaultwarden',
   'wakapi',
@@ -492,6 +493,15 @@ export const serviceSystem = createServiceSystem([
       'Create, manage, sync, and share contacts with anyone from a single platform.',
     iconUrl:
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/synology-contacts.png',
+  },
+  {
+    id: 'synology-dsm',
+    name: 'Synology DSM',
+    url: 'https://www.synology.com/en-global/dsm',
+    description:
+      'The intuitive operating system that powers every Synology NAS.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/synology-dsm.svg',
   },
   {
     id: 'tandoor',
