@@ -48,6 +48,7 @@
 - [Synology Contacts](https://www.synology.com/en-global/dsm/feature/contacts)
 - [Synology DSM](https://www.synology.com/en-global/dsm)
 - [Synology Drive](https://www.synology.com/en-global/dsm/feature/drive)
+- [Synology Photos](https://www.synology.com/en-global/dsm/feature/photos)
 - [Tandoor Recipes](https://docs.tandoor.dev/)
 - [Vaultwarden](https://github.com/dani-garcia/vaultwarden)
 - [Wakapi](https://wakapi.dev)

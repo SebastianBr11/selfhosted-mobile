@@ -51,6 +51,7 @@ const builtInServiceIds = [
   'synology-contacts',
   'synology-dsm',
   'synology-drive',
+  'synology-photos',
   'tandoor',
   'vaultwarden',
   'wakapi',
@@ -515,6 +516,18 @@ export const serviceSystem = createServiceSystem([
     packageName: 'com.synology.dsdrive',
     iconUrl:
       'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/synology-drive.png',
+  },
+  {
+    id: 'synology-photos',
+    name: 'Synology Photos',
+    url: 'https://www.synology.com/en-global/dsm/feature/photos',
+    description:
+      'Your all-in-one solution for organizing, sharing, and safeguarding your precious memories.',
+    appStoreLink:
+      'https://play.google.com/store/apps/details?id=com.synology.projectkailash',
+    packageName: 'com.synology.projectkailash',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/synology-photos.png',
   },
   {
     id: 'tandoor',
