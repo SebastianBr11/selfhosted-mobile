@@ -3,8 +3,20 @@ import { ExpoConfig, ConfigContext } from 'expo/config'
 import { version as appVersion } from './package.json'
 
 const IS_DEV = process.env.APP_VARIANT === 'development'
-const name = IS_DEV ? 'Selfhosted Library (Dev)' : 'Selfhosted Library'
-const appId = IS_DEV ? 'com.selfhostedmobile.dev' : 'com.selfhostedmobile.app'
+const IS_PREVIEW = process.env.APP_VARIANT === 'preview'
+const name = IS_DEV
+  ? 'Selfhosted Library (Dev)'
+  : IS_PREVIEW
+    ? 'Selfhosted Library (Preview)'
+    : 'Selfhosted Library'
+const appId = IS_DEV
+  ? 'com.selfhostedmobile.dev'
+  : IS_PREVIEW
+    ? 'com.selfhostedmobile.preview'
+    : 'com.selfhostedmobile.app'
+
+const adaptiveIcon = `./assets/icons/${IS_DEV ? 'debug-' : IS_PREVIEW ? 'preview-' : ''}adaptive-icon.png`
+const monochromeIcon = `./assets/icons/${IS_DEV ? 'debug-' : IS_PREVIEW ? 'preview-' : ''}monochrome-icon.png`
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
@@ -18,14 +30,17 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   platforms: ['android'],
   description: 'An android app to see your selfhosted services.',
   ios: {
-    icon: './assets/expo.icon',
+    icon: {
+      dark: './assets/icons/ios-dark.png',
+      light: './assets/icons/ios-light.png',
+      tinted: './assets/icons/ios-tinted.png',
+    },
   },
   android: {
     adaptiveIcon: {
       backgroundColor: '#E6F4FE',
-      foregroundImage: './assets/images/android-icon-foreground.png',
-      backgroundImage: './assets/images/android-icon-background.png',
-      monochromeImage: './assets/images/android-icon-monochrome.png',
+      foregroundImage: adaptiveIcon,
+      monochromeImage: monochromeIcon,
     },
     predictiveBackGestureEnabled: true,
     package: appId,
@@ -40,10 +55,13 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     [
       'expo-splash-screen',
       {
-        backgroundColor: '#208AEF',
-        android: {
-          image: './assets/images/splash-icon.png',
-          imageWidth: 76,
+        backgroundColor: '#ffffff',
+        image: './assets/icons/splash-icon-light.png',
+        imageWidth: 200,
+        resizeMode: 'contain',
+        dark: {
+          image: './assets/icons/splash-icon-dark.png',
+          backgroundColor: '#121312',
         },
       },
     ],
