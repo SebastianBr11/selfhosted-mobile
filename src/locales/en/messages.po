@@ -17,11 +17,11 @@ msgstr ""
 msgid "(from environment)"
 msgstr "(from environment)"
 
-#: src/app/settings.tsx:65
+#: src/app/settings.tsx:63
 msgid "Connected"
 msgstr "Connected"
 
-#: src/app/settings.tsx:60
+#: src/app/settings.tsx:58
 msgid "Connecting..."
 msgstr "Connecting..."
 
@@ -29,7 +29,7 @@ msgstr "Connecting..."
 msgid "Fetch services"
 msgstr "Fetch services"
 
-#: src/components/services-view.tsx:36
+#: src/components/services-view.tsx:37
 msgid "Go to settings to setup the URL"
 msgstr "Go to settings to setup the URL"
 
@@ -37,23 +37,23 @@ msgstr "Go to settings to setup the URL"
 msgid "Home"
 msgstr "Home"
 
-#: src/app/settings.tsx:65
+#: src/app/settings.tsx:63
 msgid "Not Connected"
 msgstr "Not Connected"
 
-#: src/components/service-bottom-sheet.tsx:105
+#: src/components/service-bottom-sheet.tsx:106
 msgid "Open in {name}"
 msgstr "Open in {name}"
 
-#: src/components/service-bottom-sheet.tsx:117
+#: src/components/service-bottom-sheet.tsx:118
 msgid "Open in App Store"
 msgstr "Open in App Store"
 
-#: src/components/service-bottom-sheet.tsx:81
+#: src/components/service-bottom-sheet.tsx:82
 msgid "Open in Browser"
 msgstr "Open in Browser"
 
-#: src/components/service-bottom-sheet.tsx:91
+#: src/components/service-bottom-sheet.tsx:92
 msgid "Open installed App"
 msgstr "Open installed App"
 
@@ -66,10 +66,26 @@ msgstr "Services URL "
 msgid "Settings"
 msgstr "Settings"
 
-#: src/app/settings.tsx:52
+#: src/app/settings.tsx:51
 msgid "Test connection"
 msgstr "Test connection"
 
-#: src/components/services-view.tsx:49
+#: src/lib/schema-messages.ts:7
+msgid "The {name} must be a string. The value \"{received}\" is invalid."
+msgstr "The {name} must be a string. The value \"{received}\" is invalid."
+
+#: src/lib/schema-messages.ts:12
+msgid "The {name} must not be empty."
+msgstr "The {name} must not be empty."
+
+#: src/lib/schemas.ts:8
+msgid "The URL \"{received}\" is invalid."
+msgstr "The URL \"{received}\" is invalid."
+
+#: src/lib/service.schema.ts:112
+msgid "Unknown service ID \"{id}\". Service name, description and icon URL are required for custom services."
+msgstr "Unknown service ID \"{id}\". Service name, description and icon URL are required for custom services."
+
+#: src/components/services-view.tsx:50
 msgid "Your Services"
 msgstr "Your Services"
