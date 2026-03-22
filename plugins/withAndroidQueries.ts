@@ -11,6 +11,8 @@ const withAndroidQueries: ConfigPlugin = (config) => {
         package: [
           { $: { 'android:name': 'com.audiobookshelf.app' } },
           { $: { 'android:name': 'com.x8bit.bitwarden' } },
+          { $: { 'android:name': 'com.synology.dsdrive' } },
+          { $: { 'android:name': 'com.synology.projectkailash' } },
           { $: { 'android:name': 'io.homeassistant.companion.android' } },
           { $: { 'android:name': 'app.alextran.immich' } },
           { $: { 'android:name': 'org.jellyfin.mobile' } },

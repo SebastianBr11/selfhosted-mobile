@@ -47,6 +47,11 @@ const builtInServiceIds = [
   'shelfmark',
   'stirling-pdf',
   'syncthing',
+  'synology-calendar',
+  'synology-contacts',
+  'synology-dsm',
+  'synology-drive',
+  'synology-photos',
   'tandoor',
   'vaultwarden',
   'wakapi',
@@ -472,6 +477,57 @@ export const serviceSystem = createServiceSystem([
         'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/syncthing.svg',
       dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/syncthing-dark.svg',
     },
+  },
+  {
+    id: 'synology-calendar',
+    name: 'Synology Calendar',
+    url: 'https://www.synology.com/en-global/dsm/feature/calendar',
+    description:
+      'Centrally track events and tasks on a reliable, secure, and private platform.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/synology-calendar.png',
+  },
+  {
+    id: 'synology-contacts',
+    name: 'Synology Contacts',
+    url: 'https://www.synology.com/en-global/dsm/feature/contacts',
+    description:
+      'Create, manage, sync, and share contacts with anyone from a single platform.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/synology-contacts.png',
+  },
+  {
+    id: 'synology-dsm',
+    name: 'Synology DSM',
+    url: 'https://www.synology.com/en-global/dsm',
+    description:
+      'The intuitive operating system that powers every Synology NAS.',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/synology-dsm.svg',
+  },
+  {
+    id: 'synology-drive',
+    name: 'Synology Drive',
+    url: 'https://www.synology.com/en-global/dsm/feature/drive',
+    description:
+      'Your unified solution for effortless file management and secure collaboration.',
+    appStoreLink:
+      'https://play.google.com/store/apps/details?id=com.synology.dsdrive',
+    packageName: 'com.synology.dsdrive',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/synology-drive.png',
+  },
+  {
+    id: 'synology-photos',
+    name: 'Synology Photos',
+    url: 'https://www.synology.com/en-global/dsm/feature/photos',
+    description:
+      'Your all-in-one solution for organizing, sharing, and safeguarding your precious memories.',
+    appStoreLink:
+      'https://play.google.com/store/apps/details?id=com.synology.projectkailash',
+    packageName: 'com.synology.projectkailash',
+    iconUrl:
+      'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/synology-photos.png',
   },
   {
     id: 'tandoor',
