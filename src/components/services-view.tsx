@@ -1,16 +1,3 @@
-import { ThemedText } from '@/components/themed-text'
-import { BlurView, BlurTargetView, BlurTint } from 'expo-blur'
-import { Trans } from '@lingui/react/macro'
-import { ThemedView } from '@/components/themed-view'
-import { useServices } from '@/hooks/use-services'
-import { useServicesUrl } from '@/hooks/use-services-url'
-import { Image } from 'expo-image'
-import { FlatList, Pressable, View } from 'react-native'
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
-import { schemeDependantIcon } from '@/util/theme-util'
-import { useColorScheme } from '@/hooks/use-color-scheme'
-import { useState, useRef } from 'react'
-import ServiceBottomSheet from './service-bottom-sheet'
 import {
   HorizontalFloatingToolbar,
   Host,
@@ -18,19 +5,32 @@ import {
   IconButton,
 } from '@expo/ui/jetpack-compose'
 import { align, paddingAll } from '@expo/ui/jetpack-compose/modifiers'
+import { Trans } from '@lingui/react/macro'
+import { BlurTargetView, BlurTint, BlurView } from 'expo-blur'
+import { Image } from 'expo-image'
+import { useRef, useState } from 'react'
+import { FlatList, Pressable, View } from 'react-native'
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
+import { ThemedText } from '@/components/themed-text'
+import { ThemedView } from '@/components/themed-view'
 import { InlineInsetSmall } from '@/constants/theme'
+import { useColorScheme } from '@/hooks/use-color-scheme'
+import { useServices } from '@/hooks/use-services'
+import { useServicesUrl } from '@/hooks/use-services-url'
 import { useTheme } from '@/hooks/use-theme'
+import { schemeDependantIcon } from '@/util/theme-util'
+import ServiceBottomSheet from './service-bottom-sheet'
 
 export default function ServicesView() {
   const scheme = useColorScheme()
   const theme = useTheme()
   const { url, valid } = useServicesUrl()
-  const { services, fetchState, fetchServices } = useServices(url || '')
-  const [selectedServiceId, setSelectedServiceId] = useState<string | null>(
+  const { fetchServices, fetchState, services } = useServices(url || '')
+  const [selectedServiceId, setSelectedServiceId] = useState<null | string>(
     null,
   )
 
-  const blurTargetRef = useRef<View | null>(null)
+  const blurTargetRef = useRef<null | View>(null)
   const insets = useSafeAreaInsets()
   const blurTint: BlurTint =
     scheme === 'dark' ? 'systemChromeMaterialDark' : 'systemChromeMaterialLight'
@@ -39,7 +39,7 @@ export default function ServicesView() {
     return (
       <ThemedView style={{ flex: 1 }} type="background">
         <SafeAreaView
-          style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+          style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}
         >
           <ThemedText type="title">
             <Trans>Go to settings to setup the URL</Trans>
@@ -53,44 +53,44 @@ export default function ServicesView() {
     <ThemedView style={{ flex: 1 }} type="background">
       <BlurTargetView ref={blurTargetRef}>
         <FlatList
+          columnWrapperStyle={{ gap: 12 }}
+          contentContainerStyle={{
+            backgroundColor: theme.background,
+            gap: 12,
+            paddingInline: InlineInsetSmall,
+            paddingVertical: 32,
+          }}
+          data={services}
+          keyExtractor={(item) => item.id}
           ListHeaderComponent={
             <ThemedText
-              style={{ paddingVertical: 40, marginTop: 20 }}
+              style={{ marginTop: 20, paddingVertical: 40 }}
               type="title"
             >
               <Trans>Your Services</Trans>
             </ThemedText>
           }
-          data={services}
           numColumns={2}
-          refreshing={fetchState.didFetch && fetchState.fetching}
           onRefresh={fetchServices}
-          columnWrapperStyle={{ gap: 12 }}
-          keyExtractor={(item) => item.id}
-          contentContainerStyle={{
-            gap: 12,
-            paddingInline: InlineInsetSmall,
-            paddingVertical: 32,
-            backgroundColor: theme.background,
-          }}
+          refreshing={fetchState.didFetch && fetchState.fetching}
           renderItem={({ item }) => (
             <Pressable
               onPress={() => setSelectedServiceId(item.id)}
               style={{ flex: 1 }}
             >
               <ThemedView
-                type="backgroundElement"
                 style={{
+                  alignItems: 'center',
                   borderRadius: 8,
+                  gap: 8,
                   padding: 16,
                   paddingInline: 12,
-                  gap: 8,
-                  alignItems: 'center',
                 }}
+                type="backgroundElement"
               >
                 <ThemedView
+                  style={{ aspectRatio: 1, height: 50 }}
                   type="backgroundElement"
-                  style={{ height: 50, aspectRatio: 1 }}
                 >
                   <Image
                     contentFit="cover"
@@ -99,23 +99,23 @@ export default function ServicesView() {
                   />
                 </ThemedView>
                 <ThemedView
-                  type="backgroundElement"
                   style={{
+                    alignItems: 'center',
                     flexDirection: 'row',
                     gap: 6,
-                    alignItems: 'center',
                     justifyContent: 'space-around',
                     marginInline: 18,
                   }}
+                  type="backgroundElement"
                 >
                   <ThemedText style={{ textAlign: 'center' }} type="large">
                     {item.name}
                   </ThemedText>
                 </ThemedView>
                 <ThemedText
-                  type="small"
                   style={{ textAlign: 'center' }}
                   themeColor="textSecondary"
+                  type="small"
                 >
                   {item.description}
                 </ThemedText>
@@ -125,21 +125,21 @@ export default function ServicesView() {
         />
       </BlurTargetView>
       <Host
+        matchContents
         style={{
-          position: 'absolute',
           alignSelf: 'flex-end',
           bottom: 0,
+          position: 'absolute',
         }}
-        matchContents
       >
         <HorizontalFloatingToolbar
-          variant="vibrant"
           modifiers={[align('bottomEnd'), paddingAll(16)]}
+          variant="vibrant"
         >
           <IconButton onPress={fetchServices}>
             <Icon
-              source={require('@/assets/symbols/sync.xml')}
               contentDescription="Sync Services"
+              source={require('@/assets/symbols/sync.xml')}
               tintColor={theme.textPrimary}
             />
           </IconButton>
@@ -152,11 +152,11 @@ export default function ServicesView() {
         />
       )}
       <BlurView
-        blurTarget={blurTargetRef}
         blurMethod="dimezisBlurViewSdk31Plus"
+        blurTarget={blurTargetRef}
         intensity={20}
+        style={{ height: insets.top, position: 'absolute', width: '100%' }}
         tint={blurTint}
-        style={{ position: 'absolute', width: '100%', height: insets.top }}
       ></BlurView>
     </ThemedView>
   )

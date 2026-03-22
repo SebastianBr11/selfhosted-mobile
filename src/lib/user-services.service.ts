@@ -1,27 +1,21 @@
 import { fetch } from 'expo/fetch'
-import { serviceSystem } from './services.system'
 import { Service } from './service.schema'
-
-function signalTimeout(ms: number) {
-  const ctrl = new AbortController()
-  setTimeout(() => ctrl.abort(), ms)
-  return ctrl.signal
-}
+import { serviceSystem } from './services.system'
 
 type FetchUserServices =
   | {
-      success: false
-      errorType: 'fetch-failed'
       error: Error
-    }
-  | {
+      errorType: 'fetch-failed'
       success: false
-      errorType: 'parse-failed'
-      errors: string[]
     }
   | {
-      success: true
+      errors: string[]
+      errorType: 'parse-failed'
+      success: false
+    }
+  | {
       services: Service[]
+      success: true
     }
 
 export async function fetchUserServices(
@@ -34,20 +28,26 @@ export async function fetchUserServices(
     const parseResult = serviceSystem.parse(data)
     if (!parseResult.success) {
       return {
-        success: false,
-        errorType: 'parse-failed',
         errors: parseResult.issues.map((issue) => issue.message),
+        errorType: 'parse-failed',
+        success: false,
       }
     }
     return {
-      success: true,
       services: parseResult.output,
+      success: true,
     }
   } catch (error) {
     return {
-      success: false,
-      errorType: 'fetch-failed',
       error: error as Error,
+      errorType: 'fetch-failed',
+      success: false,
     }
   }
+}
+
+function signalTimeout(ms: number) {
+  const ctrl = new AbortController()
+  setTimeout(() => ctrl.abort(), ms)
+  return ctrl.signal
 }

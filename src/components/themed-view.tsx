@@ -1,18 +1,17 @@
 import { View, type ViewProps } from 'react-native'
-
-import { useTheme } from '@/hooks/use-theme'
 import { ThemeColor } from '@/constants/colors'
 import { InlineInsetMedium } from '@/constants/theme'
+import { useTheme } from '@/hooks/use-theme'
 
 export type ThemedViewProps = ViewProps & {
-  type?: ThemeColor
   inlineInset?: boolean
+  type?: ThemeColor
 }
 
 export function ThemedView({
+  inlineInset,
   style,
   type,
-  inlineInset,
   ...otherProps
 }: ThemedViewProps) {
   const theme = useTheme()
