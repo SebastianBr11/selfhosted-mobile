@@ -18,14 +18,17 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   platforms: ['android'],
   description: 'An android app to see your selfhosted services.',
   ios: {
-    icon: './assets/expo.icon',
+    icon: {
+      dark: './assets/icons/ios-dark.png',
+      light: './assets/icons/ios-light.png',
+      tinted: './assets/icons/ios-tinted.png',
+    },
   },
   android: {
     adaptiveIcon: {
       backgroundColor: '#E6F4FE',
-      foregroundImage: './assets/images/android-icon-foreground.png',
-      backgroundImage: './assets/images/android-icon-background.png',
-      monochromeImage: './assets/images/android-icon-monochrome.png',
+      foregroundImage: './assets/icons/adaptive-icon.png',
+      monochromeImage: './assets/icons/monochrome-icon.png',
     },
     predictiveBackGestureEnabled: true,
     package: appId,
