@@ -1,8 +1,11 @@
 import * as v from 'valibot'
 import { UrlSchema } from './schemas'
+import { msg, t } from '@lingui/core/macro'
+import { emptyMessage, stringMessage } from './schema-messages'
 
 export const ServiceIdSchema = v.pipe(
-  v.string(),
+  v.string(({ received }) => stringMessage('service ID', received)),
+  v.nonEmpty(() => emptyMessage('service ID')),
   v.metadata({
     title: 'Service ID',
     description: 'A unique identifier for the service',
@@ -11,14 +14,16 @@ export const ServiceIdSchema = v.pipe(
 export const BuiltInServiceIdSchema = (builtInServiceIds: string[]) =>
   v.pipe(ServiceIdSchema, v.examples(builtInServiceIds))
 export const ServiceNameSchema = v.pipe(
-  v.string(),
+  v.string(({ received }) => stringMessage('service name', received)),
+  v.nonEmpty(() => emptyMessage('service name')),
   v.metadata({
     title: 'Service Name',
     description: 'The name of the service',
   }),
 )
 export const ServiceDescriptionSchema = v.pipe(
-  v.string(),
+  v.string(({ received }) => stringMessage('service description', received)),
+  v.nonEmpty(() => emptyMessage('service description')),
   v.metadata({
     title: 'Service Description',
     description: 'A short description of the service',
@@ -33,7 +38,9 @@ export const ServiceAppStoreLinkSchema = v.pipe(
   }),
 )
 export const ServicePackageNameSchema = v.pipe(
-  v.string(),
+  v.string(({ received }) =>
+    stringMessage('Android app package name', received),
+  ),
   v.metadata({
     title: 'Android app package name',
     description: 'The package name of the Android app',
@@ -93,13 +100,17 @@ export function createUserInputSchema(validIds: Set<string>) {
               'When using IDs from built-in services, you only have to provide a URL, the other options are optional and when used, will overide the defaults.',
           }),
         ),
-        v.check((input) => {
-          // If any field is missing, the ID must be a built-in one
-          if (!input.description || !input.appStoreLink || !input.iconUrl) {
-            return validIds.has(input.id)
-          }
-          return true
-        }, 'Description, App store link and icon URL are required for custom products.'),
+        v.check(
+          (input) => {
+            // If any field is missing, the ID must be a built-in one
+            if (!input.name || !input.description || !input.iconUrl) {
+              return validIds.has(input.id)
+            }
+            return true
+          },
+          ({ input: { id } }) =>
+            t`Unknown service ID "${id}". Service name, description and icon URL are required for custom services.`,
+        ),
       ),
     ),
   })
