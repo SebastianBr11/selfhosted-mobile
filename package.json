@@ -1,7 +1,7 @@
 {
   "name": "selfhosted-mobile",
   "main": "expo-router/entry",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "scripts": {
     "start": "APP_VARIANT=development expo start",
     "start:metro-clean": "APP_VARIANT=development expo start -c",
