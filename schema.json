@@ -6,8 +6,76 @@
       "items": {
         "type": "object",
         "properties": {
+          "appStoreLink": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "format": "uri"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string",
+                      "minLength": 1,
+                      "format": "uri"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "url"
+                  ]
+                }
+              }
+            ],
+            "title": "App store link",
+            "description": "Either a link to the app's page in the app store or an array of links with names"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Service Description",
+            "description": "A short description of the service"
+          },
+          "iconUrl": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "format": "uri"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "dark": {
+                    "type": "string",
+                    "minLength": 1,
+                    "format": "uri"
+                  },
+                  "light": {
+                    "type": "string",
+                    "minLength": 1,
+                    "format": "uri"
+                  }
+                },
+                "required": [
+                  "dark",
+                  "light"
+                ],
+                "description": "An icon URL for light and dark mode"
+              }
+            ],
+            "description": "Either a URL to an icon or an object with light and dark mode icons"
+          },
           "id": {
             "type": "string",
+            "minLength": 1,
             "title": "Service ID",
             "description": "A unique identifier for the service",
             "examples": [
@@ -55,6 +123,11 @@
               "shelfmark",
               "stirling-pdf",
               "syncthing",
+              "synology-calendar",
+              "synology-contacts",
+              "synology-dsm",
+              "synology-drive",
+              "synology-photos",
               "tandoor",
               "vaultwarden",
               "wakapi",
@@ -68,49 +141,9 @@
           },
           "name": {
             "type": "string",
+            "minLength": 1,
             "title": "Service Name",
             "description": "The name of the service"
-          },
-          "url": {
-            "type": "string",
-            "minLength": 1,
-            "format": "uri"
-          },
-          "description": {
-            "type": "string",
-            "title": "Service Description",
-            "description": "A short description of the service"
-          },
-          "appStoreLink": {
-            "anyOf": [
-              {
-                "type": "string",
-                "minLength": 1,
-                "format": "uri"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    },
-                    "url": {
-                      "type": "string",
-                      "minLength": 1,
-                      "format": "uri"
-                    }
-                  },
-                  "required": [
-                    "name",
-                    "url"
-                  ]
-                }
-              }
-            ],
-            "title": "App store link",
-            "description": "Either a link to the app's page in the app store or an array of links with names"
           },
           "packageName": {
             "type": "string",
@@ -120,35 +153,10 @@
               "com.audiobookshelf.app"
             ]
           },
-          "iconUrl": {
-            "anyOf": [
-              {
-                "type": "string",
-                "minLength": 1,
-                "format": "uri"
-              },
-              {
-                "type": "object",
-                "properties": {
-                  "light": {
-                    "type": "string",
-                    "minLength": 1,
-                    "format": "uri"
-                  },
-                  "dark": {
-                    "type": "string",
-                    "minLength": 1,
-                    "format": "uri"
-                  }
-                },
-                "required": [
-                  "light",
-                  "dark"
-                ],
-                "description": "An icon URL for light and dark mode"
-              }
-            ],
-            "description": "Either a URL to an icon or an object with light and dark mode icons"
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "format": "uri"
           }
         },
         "required": [
