@@ -96,4 +96,4 @@ jobs:
           git add schema.json
           git diff --cached --quiet && echo "schema.json didn't change, skipping commit" exit 0
           git commit -m "Update schema.json"
-          git push
+          git push origin HEAD:main
