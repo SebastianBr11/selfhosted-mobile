@@ -18,7 +18,7 @@
     "typecheck": "tsc --noEmit",
     "i18n:extract": "lingui extract",
     "i18n:compile": "lingui compile --typescript",
-    "gen:schema": "bun run scripts/generate-schema.ts"
+    "gen:schema": "tsx scripts/generate-schema.ts"
   },
   "dependencies": {
     "@expo/ui": "~55.0.2",
