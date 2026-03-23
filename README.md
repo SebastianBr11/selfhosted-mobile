@@ -5,7 +5,8 @@ This app shows you your self-hosted services.
 [<img src="https://github.com/NeoApplications/Neo-Backup/blob/902fa6adfeb0e4039f0259dd49ca4f5beef286d7/badge_github.png" alt="Get it on GitHub" height="80">](https://github.com/SebastianBr11/selfhosted-mobile/releases)
 [<img src="https://github.com/user-attachments/assets/713d71c5-3dec-4ec4-a3f2-8d28d025a9c6" alt="Get it on Obtainium" height="80">](http://apps.obtainium.imranr.dev/redirect.html?r=obtainium://add/https://github.com/SebastianBr11/selfhosted-mobile/releases)
 
-<img width="380" alt="Screenshot_20260321-122650" src="https://github.com/user-attachments/assets/4a95fb12-b90f-487d-9e4b-96b25f1b62c5" />
+<img width="380" alt="Screenshot of the App" src="https://github.com/user-attachments/assets/0d88aa9f-192c-48d4-ad2b-0057e0114405" />
+
 
 ## Built-in Services
 
