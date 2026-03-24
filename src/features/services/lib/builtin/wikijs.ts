@@ -1,0 +1,8 @@
+export const wikijs = {
+  description: 'A modern and powerful wiki app built on Node.js',
+  iconUrl:
+    'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wikijs.svg',
+  id: 'wikijs',
+  name: 'Wiki.js',
+  url: 'https://js.wiki',
+} as const
