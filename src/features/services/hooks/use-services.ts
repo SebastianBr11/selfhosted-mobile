@@ -1,12 +1,7 @@
-import { useState } from 'react'
 import { createStore } from 'stan-js'
 import { storage } from 'stan-js/storage'
 import { Service, ServiceId } from '@/features/services/lib/service.schema'
 import { fetchUserServices } from '@/features/services/lib/user-services.service'
-
-const { useStore } = createStore({
-  services: storage<Service[]>([]),
-})
 
 type FetchState =
   | { didFetch: false }
@@ -27,6 +22,11 @@ type FetchState =
       fetching: true
     }
 
+const { useStore } = createStore({
+  fetchState: { didFetch: false } satisfies FetchState as FetchState,
+  services: storage<Service[]>([]),
+})
+
 export function useService(serviceId: ServiceId) {
   const { services } = useStore()
   const service = services.find((service) => serviceId === service.id)
@@ -34,8 +34,7 @@ export function useService(serviceId: ServiceId) {
 }
 
 export function useServices(url: string) {
-  const { services, setServices } = useStore()
-  const [fetchState, setFetchState] = useState<FetchState>({ didFetch: false })
+  const { fetchState, services, setFetchState, setServices } = useStore()
 
   async function fetchServices() {
     if (fetchState.didFetch && fetchState.fetching) return
