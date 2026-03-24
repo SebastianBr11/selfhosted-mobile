@@ -1,5 +1,5 @@
 import { ColorSchemeName } from 'react-native'
-import { ServiceIconUrl } from '@/lib/service.schema'
+import { ServiceIconUrl } from '@/features/services/lib/service.schema'
 import { isObject } from './is-type'
 
 export function schemeDependantIcon(

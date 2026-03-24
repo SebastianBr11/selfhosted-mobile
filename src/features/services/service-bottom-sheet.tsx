@@ -12,7 +12,7 @@ import { useLingui } from '@lingui/react/macro'
 import * as IntentLauncher from 'expo-intent-launcher'
 import * as WebBrowser from 'expo-web-browser'
 import { useEffect, useState } from 'react'
-import { ServiceId } from '@/lib/service.schema'
+import { ServiceId } from '@/features/services/lib/service.schema'
 import { isArray } from '@/util/is-type'
 import { useService } from './hooks/use-services'
 

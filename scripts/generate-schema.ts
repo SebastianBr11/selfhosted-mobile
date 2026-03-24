@@ -1,6 +1,6 @@
-import { writeFileSync } from 'fs'
 import { toJsonSchema } from '@valibot/to-json-schema'
-import { serviceSystem } from '@/lib/services.system'
+import { writeFileSync } from 'fs'
+import { serviceSystem } from '@/features/services/lib/services.system'
 
 export async function generateJsonSchema() {
   const jsonSchema = toJsonSchema(serviceSystem.schema, {

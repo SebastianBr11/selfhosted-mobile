@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { createStore } from 'stan-js'
 import { storage } from 'stan-js/storage'
-import { Service, ServiceId } from '@/lib/service.schema'
-import { fetchUserServices } from '@/lib/user-services.service'
+import { Service, ServiceId } from '@/features/services/lib/service.schema'
+import { fetchUserServices } from '@/features/services/lib/user-services.service'
 
 const { useStore } = createStore({
   services: storage<Service[]>([]),
