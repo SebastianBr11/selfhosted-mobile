@@ -21,6 +21,7 @@
     "gen:schema": "tsx scripts/generate-schema.ts"
   },
   "dependencies": {
+    "@dev-plugins/react-query": "^0.4.0",
     "@expo/ui": "~55.0.2",
     "@lingui/core": "^5.9.3",
     "@lingui/react": "^5.9.3",
