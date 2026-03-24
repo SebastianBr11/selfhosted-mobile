@@ -33,6 +33,7 @@ export default function ServicesView() {
   const [selectedServiceId, setSelectedServiceId] = useState<null | string>(
     null,
   )
+  const [showErrorAlert, setShowErrorAlert] = useState(false)
 
   const blurTargetRef = useRef<null | View>(null)
   const insets = useSafeAreaInsets()
@@ -51,6 +52,13 @@ export default function ServicesView() {
         </SafeAreaView>
       </ThemedView>
     )
+  }
+
+  async function tryFetchServices() {
+    const fetchState = await fetchServices()
+    if (fetchState.didFetch && !fetchState.fetching && !fetchState.success) {
+      setShowErrorAlert(true)
+    }
   }
 
   return (
@@ -77,7 +85,7 @@ export default function ServicesView() {
           numColumns={2}
           refreshControl={
             <RefreshControl
-              onRefresh={fetchServices}
+              onRefresh={tryFetchServices}
               progressViewOffset={insets.top}
               refreshing={fetchState.didFetch && fetchState.fetching}
             />
@@ -145,7 +153,7 @@ export default function ServicesView() {
           modifiers={[align('bottomEnd'), paddingAll(16)]}
           variant="vibrant"
         >
-          <IconButton onPress={fetchServices}>
+          <IconButton onPress={tryFetchServices}>
             <Icon
               contentDescription="Sync Services"
               source={require('@/assets/symbols/sync.xml')}
@@ -154,12 +162,16 @@ export default function ServicesView() {
           </IconButton>
         </HorizontalFloatingToolbar>
       </Host>
-      {fetchState.didFetch && !fetchState.fetching && !fetchState.success && (
+      {showErrorAlert && (
         <Host matchContents>
           <AlertDialog
             confirmButtonText={t`Go to settings`}
             dismissButtonText={t`Dismiss`}
-            onConfirmPressed={() => router.navigate('/settings')}
+            onConfirmPressed={() => {
+              setShowErrorAlert(false)
+              router.navigate('/settings')
+            }}
+            onDismissPressed={() => setShowErrorAlert(false)}
             text={t`An error ocurred while fetching your services. Go to settings to see the error details.`}
             title={t`An error ocurred`}
           />
