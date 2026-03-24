@@ -1,3 +1,4 @@
+const pluginQuery = require('@tanstack/eslint-plugin-query')
 const expoConfig = require('eslint-config-expo/flat')
 const pluginLingui = require('eslint-plugin-lingui')
 const perfectionist = require('eslint-plugin-perfectionist')
@@ -11,6 +12,7 @@ module.exports = defineConfig([
   },
   pluginLingui.configs['flat/recommended'],
   perfectionist.configs['recommended-natural'],
+  ...pluginQuery.configs['flat/recommended'],
   {
     rules: {
       'perfectionist/sort-imports': [

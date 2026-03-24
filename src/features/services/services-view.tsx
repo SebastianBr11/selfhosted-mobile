@@ -6,6 +6,7 @@ import {
 } from '@expo/ui/jetpack-compose'
 import { align, paddingAll } from '@expo/ui/jetpack-compose/modifiers'
 import { Trans, useLingui } from '@lingui/react/macro'
+import { useQuery } from '@tanstack/react-query'
 import { BlurTargetView, BlurTint, BlurView } from 'expo-blur'
 import { Image } from 'expo-image'
 import { useRouter } from 'expo-router'
@@ -19,8 +20,8 @@ import { InlineInsetSmall } from '@/constants/theme'
 import { schemeDependantIcon } from '@/features/services/util'
 import { useColorScheme } from '@/hooks/use-color-scheme'
 import { useTheme } from '@/hooks/use-theme'
-import { useServices } from './hooks/use-services'
 import { useServicesUrl } from './hooks/use-services-url'
+import { userServicesQueryKey } from './lib/user-services.queries'
 import ServiceBottomSheet from './service-bottom-sheet'
 
 export default function ServicesView() {
@@ -28,8 +29,12 @@ export default function ServicesView() {
   const router = useRouter()
   const scheme = useColorScheme()
   const theme = useTheme()
-  const { url, valid } = useServicesUrl()
-  const { fetchServices, fetchState, services } = useServices(url || '')
+  const { deferredUrl, valid } = useServicesUrl()
+  const {
+    data: services = [],
+    isFetching,
+    refetch,
+  } = useQuery(userServicesQueryKey(deferredUrl))
   const [selectedServiceId, setSelectedServiceId] = useState<null | string>(
     null,
   )
@@ -55,8 +60,8 @@ export default function ServicesView() {
   }
 
   async function tryFetchServices() {
-    const fetchState = await fetchServices()
-    if (fetchState.didFetch && !fetchState.fetching && !fetchState.success) {
+    const { isError } = await refetch()
+    if (isError) {
       setShowErrorAlert(true)
     }
   }
@@ -87,7 +92,7 @@ export default function ServicesView() {
             <RefreshControl
               onRefresh={tryFetchServices}
               progressViewOffset={insets.top}
-              refreshing={fetchState.didFetch && fetchState.fetching}
+              refreshing={isFetching}
             />
           }
           renderItem={({ item }) => (

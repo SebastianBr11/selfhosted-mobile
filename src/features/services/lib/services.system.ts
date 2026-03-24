@@ -3,7 +3,6 @@ import { AssertExactlyAllIdsPresent } from '@/util/types'
 import { builtInServices } from './builtin'
 import { createUserInputSchema, Service } from './service.schema'
 
- 
 /**
  * Adding a new service is a three-step process:
  * 1. Add the service to the `builtInServicesIds` array
@@ -86,6 +85,21 @@ function createServiceSystem<const T extends readonly Service[] = Service[]>(
   return {
     builtIns,
     parse: (data: unknown) => {
+      const { services } = v.parse(UserInputSchema, data)
+      return services.map((item) => {
+        const defaults = defaultMap.get(item.id)
+        return {
+          appStoreLink: item.appStoreLink ?? defaults?.appStoreLink,
+          description: item.description ?? defaults?.description!,
+          iconUrl: item.iconUrl ?? defaults?.iconUrl!,
+          id: item.id,
+          name: item.name ?? defaults?.name!,
+          packageName: item.packageName ?? defaults?.packageName,
+          url: item.url,
+        } satisfies T[number]
+      })
+    },
+    safeParse: (data: unknown) => {
       const parsed = v.safeParse(UserInputSchema, data)
       if (!parsed.success) return parsed
       return {
