@@ -1,17 +1,20 @@
 import { Button, Host } from '@expo/ui/jetpack-compose'
 import { fillMaxWidth, padding } from '@expo/ui/jetpack-compose/modifiers'
 import { Trans, useLingui } from '@lingui/react/macro'
+import { useQuery } from '@tanstack/react-query'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { TextInput } from '@/components/text-input'
 import { ThemedText } from '@/components/themed-text'
 import { ThemedView } from '@/components/themed-view'
 import { InlineInsetMedium } from '@/constants/theme'
-import { useServices } from '../services/hooks/use-services'
 import { useServicesUrl } from '../services/hooks/use-services-url'
+import { userServicesQueryKey } from '../services/lib/user-services.queries'
 
 export default function SettingsView() {
-  const { errors, setUrl, url, urlFromEnv, valid } = useServicesUrl()
-  const { fetchServices, fetchState } = useServices(url || '')
+  const { errors, setUrl, url, urlFromEnv, valid: urlValid } = useServicesUrl()
+  const { error, isFetching, isSuccess, refetch } = useQuery(
+    userServicesQueryKey(url),
+  )
   const { t } = useLingui()
 
   return (
@@ -37,7 +40,7 @@ export default function SettingsView() {
               onChangeText={setUrl}
               value={url}
             />
-            {!valid && <ThemedText type="error">{errors[0]}</ThemedText>}
+            {!urlValid && <ThemedText type="error">{errors[0]}</ThemedText>}
           </ThemedView>
           <ThemedView style={{ gap: 8 }}>
             <Host matchContents>
@@ -46,30 +49,26 @@ export default function SettingsView() {
                   fillMaxWidth(),
                   padding(InlineInsetMedium, 0, InlineInsetMedium, 0),
                 ]}
-                onPress={fetchServices}
+                onPress={refetch}
               >
                 {t`Test connection`}
               </Button>
             </Host>
             <ThemedView inlineInset>
-              {fetchState.didFetch &&
-                (fetchState.fetching ? (
-                  <ThemedText type="default">
-                    <Trans>Connecting...</Trans>
+              {isFetching ? (
+                <ThemedText type="default">
+                  <Trans>Connecting...</Trans>
+                </ThemedText>
+              ) : (
+                <>
+                  <ThemedText type={isSuccess ? 'success' : 'error'}>
+                    {isSuccess ? t`Connected` : t`Not Connected`}
                   </ThemedText>
-                ) : (
-                  <>
-                    <ThemedText type={fetchState.success ? 'success' : 'error'}>
-                      {fetchState.success ? t`Connected` : t`Not Connected`}
-                    </ThemedText>
-                    {!fetchState.success &&
-                      fetchState.errors.map((error) => (
-                        <ThemedText key={error} type="error">
-                          {error}
-                        </ThemedText>
-                      ))}
-                  </>
-                ))}
+                  {error && (
+                    <ThemedText type="error">{error.message}</ThemedText>
+                  )}
+                </>
+              )}
             </ThemedView>
           </ThemedView>
         </ThemedView>

@@ -55,7 +55,6 @@ export default function ServiceBottomSheet({
     IntentLauncher.openApplication(packageName)
   }
 
-  console.log('service', service)
   return (
     <Host ignoreSafeAreaKeyboardInsets matchContents>
       <ModalBottomSheet onDismissRequest={hide}>
