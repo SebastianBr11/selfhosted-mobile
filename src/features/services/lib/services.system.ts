@@ -3,7 +3,13 @@ import { AssertExactlyAllIdsPresent } from '@/util/types'
 import { builtInServices } from './builtin'
 import { createUserInputSchema, Service } from './service.schema'
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+ 
+/**
+ * Adding a new service is a three-step process:
+ * 1. Add the service to the `builtInServicesIds` array
+ * 2. Add the service in a new file to the `src/features/services/lib/builtin` directory
+ * 3. Add the service to the {@link builtInServices} array
+ */
 const builtInServiceIds = [
   'adguard-home',
   'audiobookshelf',
