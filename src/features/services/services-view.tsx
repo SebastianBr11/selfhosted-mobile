@@ -5,12 +5,14 @@ import {
   IconButton,
 } from '@expo/ui/jetpack-compose'
 import { align, paddingAll } from '@expo/ui/jetpack-compose/modifiers'
-import { Trans } from '@lingui/react/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { BlurTargetView, BlurTint, BlurView } from 'expo-blur'
 import { Image } from 'expo-image'
+import { useRouter } from 'expo-router'
 import { useRef, useState } from 'react'
 import { FlatList, Pressable, RefreshControl, View } from 'react-native'
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
+import AlertDialog from '@/components/jetpack-compose/alert-dialog'
 import { ThemedText } from '@/components/themed-text'
 import { ThemedView } from '@/components/themed-view'
 import { InlineInsetSmall } from '@/constants/theme'
@@ -22,6 +24,8 @@ import { useServicesUrl } from './hooks/use-services-url'
 import ServiceBottomSheet from './service-bottom-sheet'
 
 export default function ServicesView() {
+  const { t } = useLingui()
+  const router = useRouter()
   const scheme = useColorScheme()
   const theme = useTheme()
   const { url, valid } = useServicesUrl()
@@ -150,6 +154,17 @@ export default function ServicesView() {
           </IconButton>
         </HorizontalFloatingToolbar>
       </Host>
+      {fetchState.didFetch && !fetchState.fetching && !fetchState.success && (
+        <Host matchContents>
+          <AlertDialog
+            confirmButtonText={t`Go to settings`}
+            dismissButtonText={t`Dismiss`}
+            onConfirmPressed={() => router.navigate('/settings')}
+            text={t`An error ocurred while fetching your services. Go to settings to see the error details.`}
+            title={t`An error ocurred`}
+          />
+        </Host>
+      )}
       {selectedServiceId && (
         <ServiceBottomSheet
           hide={() => setSelectedServiceId(null)}
