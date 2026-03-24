@@ -5,12 +5,14 @@ import {
   IconButton,
 } from '@expo/ui/jetpack-compose'
 import { align, paddingAll } from '@expo/ui/jetpack-compose/modifiers'
-import { Trans } from '@lingui/react/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { BlurTargetView, BlurTint, BlurView } from 'expo-blur'
 import { Image } from 'expo-image'
+import { useRouter } from 'expo-router'
 import { useRef, useState } from 'react'
 import { FlatList, Pressable, RefreshControl, View } from 'react-native'
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
+import AlertDialog from '@/components/jetpack-compose/alert-dialog'
 import { ThemedText } from '@/components/themed-text'
 import { ThemedView } from '@/components/themed-view'
 import { InlineInsetSmall } from '@/constants/theme'
@@ -22,6 +24,8 @@ import { useServicesUrl } from './hooks/use-services-url'
 import ServiceBottomSheet from './service-bottom-sheet'
 
 export default function ServicesView() {
+  const { t } = useLingui()
+  const router = useRouter()
   const scheme = useColorScheme()
   const theme = useTheme()
   const { url, valid } = useServicesUrl()
@@ -29,6 +33,7 @@ export default function ServicesView() {
   const [selectedServiceId, setSelectedServiceId] = useState<null | string>(
     null,
   )
+  const [showErrorAlert, setShowErrorAlert] = useState(false)
 
   const blurTargetRef = useRef<null | View>(null)
   const insets = useSafeAreaInsets()
@@ -47,6 +52,13 @@ export default function ServicesView() {
         </SafeAreaView>
       </ThemedView>
     )
+  }
+
+  async function tryFetchServices() {
+    const fetchState = await fetchServices()
+    if (fetchState.didFetch && !fetchState.fetching && !fetchState.success) {
+      setShowErrorAlert(true)
+    }
   }
 
   return (
@@ -73,7 +85,7 @@ export default function ServicesView() {
           numColumns={2}
           refreshControl={
             <RefreshControl
-              onRefresh={fetchServices}
+              onRefresh={tryFetchServices}
               progressViewOffset={insets.top}
               refreshing={fetchState.didFetch && fetchState.fetching}
             />
@@ -141,7 +153,7 @@ export default function ServicesView() {
           modifiers={[align('bottomEnd'), paddingAll(16)]}
           variant="vibrant"
         >
-          <IconButton onPress={fetchServices}>
+          <IconButton onPress={tryFetchServices}>
             <Icon
               contentDescription="Sync Services"
               source={require('@/assets/symbols/sync.xml')}
@@ -150,6 +162,21 @@ export default function ServicesView() {
           </IconButton>
         </HorizontalFloatingToolbar>
       </Host>
+      {showErrorAlert && (
+        <Host matchContents>
+          <AlertDialog
+            confirmButtonText={t`Go to settings`}
+            dismissButtonText={t`Dismiss`}
+            onConfirmPressed={() => {
+              setShowErrorAlert(false)
+              router.navigate('/settings')
+            }}
+            onDismissPressed={() => setShowErrorAlert(false)}
+            text={t`An error ocurred while fetching your services. Go to settings to see the error details.`}
+            title={t`An error ocurred`}
+          />
+        </Host>
+      )}
       {selectedServiceId && (
         <ServiceBottomSheet
           hide={() => setSelectedServiceId(null)}

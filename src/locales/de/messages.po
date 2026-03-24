@@ -13,19 +13,35 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/app/settings.tsx:31
+#: src/features/settings/settings-view.tsx:31
 msgid "(from environment)"
 msgstr "(Umgebungsvariable)"
 
-#: src/app/settings.tsx:63
+#: src/features/services/services-view.tsx:164
+msgid "An error ocurred"
+msgstr "Ein Fehler ist aufgetreten"
+
+#: src/features/services/services-view.tsx:163
+msgid "An error ocurred while fetching your services. Go to settings to see the error details."
+msgstr "Beim Abrufen deiner Dienste ist ein Fehler aufgetreten. Gehe zu den Einstellungen, um die Details anzuzeigen."
+
+#: src/features/settings/settings-view.tsx:63
 msgid "Connected"
 msgstr "Verbunden"
 
-#: src/app/settings.tsx:58
+#: src/features/settings/settings-view.tsx:58
 msgid "Connecting..."
 msgstr "Verbinde..."
 
-#: src/components/services-view.tsx:45
+#: src/features/services/services-view.tsx:161
+msgid "Dismiss"
+msgstr "Schließen"
+
+#: src/features/services/services-view.tsx:160
+msgid "Go to settings"
+msgstr "Zu den Einstellungen"
+
+#: src/features/services/services-view.tsx:49
 msgid "Go to settings to setup the URL"
 msgstr "Gehe in die Einstellungen, um die URL zu konfigurieren"
 
@@ -33,36 +49,36 @@ msgstr "Gehe in die Einstellungen, um die URL zu konfigurieren"
 msgid "Home"
 msgstr "Home"
 
-#: src/app/settings.tsx:63
+#: src/features/settings/settings-view.tsx:63
 msgid "Not Connected"
 msgstr "Nicht verbunden"
 
-#: src/components/service-bottom-sheet.tsx:106
+#: src/features/services/service-bottom-sheet.tsx:106
 msgid "Open in {name}"
 msgstr "Öffne in {name}"
 
-#: src/components/service-bottom-sheet.tsx:118
+#: src/features/services/service-bottom-sheet.tsx:118
 msgid "Open in App Store"
 msgstr "Öffne im App Store"
 
-#: src/components/service-bottom-sheet.tsx:82
+#: src/features/services/service-bottom-sheet.tsx:82
 msgid "Open in Browser"
 msgstr "Öffne im Browser"
 
-#: src/components/service-bottom-sheet.tsx:92
+#: src/features/services/service-bottom-sheet.tsx:92
 msgid "Open installed App"
 msgstr "Installierte App öffnen"
 
-#: src/app/settings.tsx:28
+#: src/features/settings/settings-view.tsx:28
 msgid "Services URL "
 msgstr "Dienste-URL "
 
-#: src/app/settings.tsx:22
 #: src/components/app-tabs.tsx:14
+#: src/features/settings/settings-view.tsx:22
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: src/app/settings.tsx:51
+#: src/features/settings/settings-view.tsx:51
 msgid "Test connection"
 msgstr "Verbindung testen"
 
@@ -78,10 +94,10 @@ msgstr "Der Wert von {name} darf nicht leer sein."
 msgid "The URL \"{received}\" is invalid."
 msgstr "Die URL \"{received}\" ist ungültig."
 
-#: src/lib/service.schema.ts:112
+#: src/features/services/lib/service.schema.ts:112
 msgid "Unknown service ID \"{id}\". Service name, description and icon URL are required for custom services."
 msgstr "Unbekannte Service-ID \"{id}\". Für benutzerdefinierte Services sind der Service-Name, die Beschreibung und die URL erforderlich."
 
-#: src/components/services-view.tsx:61
+#: src/features/services/services-view.tsx:74
 msgid "Your Services"
 msgstr "Deine Dienste"

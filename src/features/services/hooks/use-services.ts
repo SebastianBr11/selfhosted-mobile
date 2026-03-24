@@ -1,12 +1,7 @@
-import { useState } from 'react'
 import { createStore } from 'stan-js'
 import { storage } from 'stan-js/storage'
 import { Service, ServiceId } from '@/features/services/lib/service.schema'
 import { fetchUserServices } from '@/features/services/lib/user-services.service'
-
-const { useStore } = createStore({
-  services: storage<Service[]>([]),
-})
 
 type FetchState =
   | { didFetch: false }
@@ -27,6 +22,11 @@ type FetchState =
       fetching: true
     }
 
+const { useStore } = createStore({
+  fetchState: { didFetch: false } satisfies FetchState as FetchState,
+  services: storage<Service[]>([]),
+})
+
 export function useService(serviceId: ServiceId) {
   const { services } = useStore()
   const service = services.find((service) => serviceId === service.id)
@@ -34,42 +34,50 @@ export function useService(serviceId: ServiceId) {
 }
 
 export function useServices(url: string) {
-  const { services, setServices } = useStore()
-  const [fetchState, setFetchState] = useState<FetchState>({ didFetch: false })
+  const { fetchState, services, setFetchState, setServices } = useStore()
 
-  async function fetchServices() {
-    if (fetchState.didFetch && fetchState.fetching) return
+  async function fetchServices(): Promise<FetchState> {
+    if (fetchState.didFetch && fetchState.fetching) return fetchState
 
     setFetchState({ didFetch: true, fetching: true })
     const result = await fetchUserServices(url)
-    if (!result.success) {
-      if (result.errorType === 'parse-failed') {
-        setFetchState({
-          didFetch: true,
-          errors: result.errors,
-          fetching: false,
-          success: false,
-        })
-        return
-      } else if (result.errorType === 'fetch-failed') {
-        setFetchState({
-          didFetch: true,
-          errors: [result.error.message],
-          fetching: false,
-          success: false,
-        })
-        return
+
+    let newFetchState: FetchState
+    if (result.success) {
+      setServices(result.services)
+      newFetchState = {
+        didFetch: true,
+        fetching: false,
+        success: true,
       }
-      setFetchState({
+      setFetchState(newFetchState)
+      return newFetchState
+    }
+
+    if (result.errorType === 'parse-failed') {
+      newFetchState = {
+        didFetch: true,
+        errors: result.errors,
+        fetching: false,
+        success: false,
+      }
+    } else if (result.errorType === 'fetch-failed') {
+      newFetchState = {
+        didFetch: true,
+        errors: [result.error.message],
+        fetching: false,
+        success: false,
+      }
+    } else {
+      newFetchState = {
         didFetch: true,
         errors: ['Unknown error ocurred.'],
         fetching: false,
         success: false,
-      })
-      return
+      }
     }
-    setFetchState({ didFetch: true, fetching: false, success: true })
-    setServices(result.services)
+    setFetchState(newFetchState)
+    return fetchState
   }
 
   return {
