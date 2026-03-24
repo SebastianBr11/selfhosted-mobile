@@ -3,6 +3,7 @@ import { I18nProvider as BaseI18nProvider } from '@lingui/react'
 import { useLocales } from 'expo-localization'
 import { useEffect } from 'react'
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const availableLocales = ['en', 'de', 'es'] as const
 type AvailableLocale = (typeof availableLocales)[number]
 const fallbackLocale: AvailableLocale = 'en'

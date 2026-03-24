@@ -2,6 +2,7 @@ import * as v from 'valibot'
 import { AssertExactlyAllIdsPresent } from '@/util/types'
 import { createUserInputSchema, Service } from './service.schema'
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const builtInServiceIds = [
   'adguard-home',
   'audiobookshelf',
@@ -624,8 +625,7 @@ export const serviceSystem = createServiceSystem([
   },
 ])
 
-const BuiltInServiceIdSchema = v.picklist(builtInServiceIds)
-type BuiltInServiceId = v.InferOutput<typeof BuiltInServiceIdSchema>
+type BuiltInServiceId = (typeof builtInServiceIds)[number]
 
 function createServiceSystem<const T extends readonly Service[] = Service[]>(
   builtIns: AssertExactlyAllIdsPresent<T, BuiltInServiceId> & T,

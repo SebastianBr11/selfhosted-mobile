@@ -1,4 +1,4 @@
-import { msg, t } from '@lingui/core/macro'
+import { t } from '@lingui/core/macro'
 import * as v from 'valibot'
 import { emptyMessage, stringMessage } from '../../../lib/schema-messages'
 import { UrlSchema } from '../../../lib/schemas'
