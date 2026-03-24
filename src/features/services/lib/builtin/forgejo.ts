@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const forgejo = {
   description: 'A self-hosted lightweight software forge.',
   iconUrl:
@@ -5,4 +7,4 @@ export const forgejo = {
   id: 'forgejo',
   name: 'Forgejo',
   url: 'https://forgejo.org',
-} as const
+} as const satisfies Service

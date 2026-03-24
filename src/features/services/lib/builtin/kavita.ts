@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const kavita = {
   description: 'A fast, feature rich, cross platform reading server. ',
   iconUrl:
@@ -5,4 +7,4 @@ export const kavita = {
   id: 'kavita',
   name: 'Kavita',
   url: 'https://www.kavitareader.com',
-} as const
+} as const satisfies Service

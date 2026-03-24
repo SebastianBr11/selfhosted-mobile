@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const linkding = {
   description:
     'A self-hosted bookmark manager designed to be minimal, fast, and easy to set up.',
@@ -5,4 +7,4 @@ export const linkding = {
   id: 'linkding',
   name: 'linkding',
   url: 'https://linkding.link/',
-} as const
+} as const satisfies Service

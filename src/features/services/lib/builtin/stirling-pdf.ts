@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const stirlingpdf = {
   description:
     "The world's most secure PDF platform. AI-native and completely private.",
@@ -6,4 +8,4 @@ export const stirlingpdf = {
   id: 'stirling-pdf',
   name: 'Stirling PDF',
   url: 'https://www.stirling.com',
-} as const
+} as const satisfies Service

@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const navidrome = {
   description: 'Modern web-based music server',
   iconUrl:
@@ -5,4 +7,4 @@ export const navidrome = {
   id: 'navidrome',
   name: 'Navidrome',
   url: 'https://www.navidrome.org',
-} as const
+} as const satisfies Service

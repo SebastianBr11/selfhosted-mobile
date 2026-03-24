@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const calibreWeb = {
   description:
     'Web app for browsing, reading and downloading eBooks stored in a Calibre database',
@@ -6,4 +8,4 @@ export const calibreWeb = {
   id: 'calibre-web',
   name: 'Calibre-Web',
   url: 'https://github.com/janeczku/calibre-web',
-} as const
+} as const satisfies Service

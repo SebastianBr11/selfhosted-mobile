@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const ryot = {
   description: 'Roll your own tracker!',
   iconUrl: {
@@ -8,4 +10,4 @@ export const ryot = {
   id: 'ryot',
   name: 'Ryot',
   url: 'https://ryot.io',
-} as const
+} as const satisfies Service

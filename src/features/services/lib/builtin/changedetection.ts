@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const changedetection = {
   description: 'Best and simplest tool for website change detection',
   iconUrl:
@@ -5,4 +7,4 @@ export const changedetection = {
   id: 'changedetection',
   name: 'Changedetection.io',
   url: 'https://changedetection.io',
-} as const
+} as const satisfies Service

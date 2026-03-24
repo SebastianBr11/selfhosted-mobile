@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const audiobookshelf = {
   appStoreLink:
     'https://play.google.com/store/apps/details?id=com.audiobookshelf.app',
@@ -7,4 +9,4 @@ export const audiobookshelf = {
   name: 'Audiobookshelf',
   packageName: 'com.audiobookshelf.app',
   url: 'https://www.audiobookshelf.org/',
-} as const
+} as const satisfies Service

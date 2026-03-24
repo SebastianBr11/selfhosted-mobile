@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const papra = {
   description: 'The minimalistic document archiving platform.',
   iconUrl:
@@ -5,4 +7,4 @@ export const papra = {
   id: 'papra',
   name: 'Papra',
   url: 'https://github.com/papra-hq/papra',
-} as const
+} as const satisfies Service

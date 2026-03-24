@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const wakapi = {
   description:
     'A minimalist, WakaTime-compatible backend for coding statistics',
@@ -6,4 +8,4 @@ export const wakapi = {
   id: 'wakapi',
   name: 'Wakapi',
   url: 'https://wakapi.dev',
-} as const
+} as const satisfies Service

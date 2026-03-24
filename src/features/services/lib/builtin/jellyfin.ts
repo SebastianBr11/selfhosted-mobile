@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const jellyfin = {
   appStoreLink:
     'https://play.google.com/store/apps/details?id=org.jellyfin.mobile',
@@ -8,4 +10,4 @@ export const jellyfin = {
   name: 'Jellyfin',
   packageName: 'org.jellyfin.mobile',
   url: 'https://jellyfin.org/',
-} as const
+} as const satisfies Service

@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const synologyPhotos = {
   appStoreLink:
     'https://play.google.com/store/apps/details?id=com.synology.projectkailash',
@@ -9,4 +11,4 @@ export const synologyPhotos = {
   name: 'Synology Photos',
   packageName: 'com.synology.projectkailash',
   url: 'https://www.synology.com/en-global/dsm/feature/photos',
-} as const
+} as const satisfies Service

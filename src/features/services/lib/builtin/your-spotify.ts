@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const yourspotify = {
   description: 'Self hosted Spotify tracking dashboard',
   iconUrl:
@@ -5,4 +7,4 @@ export const yourspotify = {
   id: 'your-spotify',
   name: 'Your Spotify',
   url: 'https://github.com/Yooooomi/your_spotify',
-} as const
+} as const satisfies Service

@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const otterwiki = {
   description: 'A minimalistic wiki powered by python, markdown and git.',
   iconUrl: {
@@ -8,4 +10,4 @@ export const otterwiki = {
   id: 'otterwiki',
   name: 'An Otter Wiki',
   url: 'https://otterwiki.com/',
-} as const
+} as const satisfies Service

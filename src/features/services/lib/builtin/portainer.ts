@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const portainer = {
   description: 'Making Docker and Kubernetes management easy.',
   iconUrl: {
@@ -8,4 +10,4 @@ export const portainer = {
   id: 'portainer',
   name: 'Portainer',
   url: 'https://www.portainer.io/',
-} as const
+} as const satisfies Service

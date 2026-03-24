@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const grimmory = {
   description:
     'Grimmory is the successor of booklore. A modern way to organize, read, and own your digital library.',
@@ -6,4 +8,4 @@ export const grimmory = {
   id: 'grimmory',
   name: 'Grimmory',
   url: 'https://github.com/grimmory-tools/grimmory',
-} as const
+} as const satisfies Service

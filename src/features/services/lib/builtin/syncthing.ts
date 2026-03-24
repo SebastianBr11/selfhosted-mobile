@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const syncthing = {
   appStoreLink:
     'https://f-droid.org/packages/com.github.catfriend1.syncthingfork',
@@ -11,4 +13,4 @@ export const syncthing = {
   name: 'Syncthing',
   packageName: 'com.github.catfriend1.syncthingfork',
   url: 'https://syncthing.net',
-} as const
+} as const satisfies Service

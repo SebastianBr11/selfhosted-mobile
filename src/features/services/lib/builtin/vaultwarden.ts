@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const vaultwarden = {
   appStoreLink:
     'https://play.google.com/store/apps/details?id=com.x8bit.bitwarden',
@@ -11,4 +13,4 @@ export const vaultwarden = {
   name: 'Vaultwarden',
   packageName: 'com.x8bit.bitwarden',
   url: 'https://github.com/dani-garcia/vaultwarden',
-} as const
+} as const satisfies Service

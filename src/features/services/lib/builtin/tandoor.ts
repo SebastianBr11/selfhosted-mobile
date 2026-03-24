@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const tandoor = {
   description:
     'The recipe manager that allows you to manage your ever growing collection of digital recipes.',
@@ -6,4 +8,4 @@ export const tandoor = {
   id: 'tandoor',
   name: 'Tandoor Recipes',
   url: 'https://docs.tandoor.dev/',
-} as const
+} as const satisfies Service

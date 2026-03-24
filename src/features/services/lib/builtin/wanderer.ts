@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const wanderer = {
   description: 'A self-hosted trail database. Save your adventures!',
   iconUrl: {
@@ -8,4 +10,4 @@ export const wanderer = {
   id: 'wanderer',
   name: 'wanderer',
   url: 'https://wanderer.to',
-} as const
+} as const satisfies Service

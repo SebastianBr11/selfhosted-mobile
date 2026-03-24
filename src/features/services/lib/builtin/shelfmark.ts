@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const shelfmark = {
   description:
     'A self-hosted web interface for searching and downloading books and audiobooks from multiple sources.',
@@ -6,4 +8,4 @@ export const shelfmark = {
   id: 'shelfmark',
   name: 'Shelfmark',
   url: 'https://github.com/calibrain/shelfmark',
-} as const
+} as const satisfies Service

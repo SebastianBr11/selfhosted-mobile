@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const paperless = {
   appStoreLink:
     'https://f-droid.org/en/packages/de.astubenbord.paperless_mobile/',
@@ -8,4 +10,4 @@ export const paperless = {
   id: 'paperless',
   name: 'Paperless-ngx',
   url: 'https://docs.paperless-ngx.com/',
-} as const
+} as const satisfies Service

@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const synologyContacts = {
   description:
     'Create, manage, sync, and share contacts with anyone from a single platform.',
@@ -6,4 +8,4 @@ export const synologyContacts = {
   id: 'synology-contacts',
   name: 'Synology Contacts',
   url: 'https://www.synology.com/en-global/dsm/feature/contacts',
-} as const
+} as const satisfies Service

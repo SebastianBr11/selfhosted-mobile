@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const authelia = {
   description: 'The Single Sign-On Multi-Factor portal for web apps',
   iconUrl:
@@ -5,4 +7,4 @@ export const authelia = {
   id: 'authelia',
   name: 'Authelia',
   url: 'https://www.authelia.com',
-} as const
+} as const satisfies Service

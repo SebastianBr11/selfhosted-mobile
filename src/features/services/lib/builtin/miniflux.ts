@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const miniflux = {
   description: 'Minimalist and opinionated feed reader',
   iconUrl: {
@@ -8,4 +10,4 @@ export const miniflux = {
   id: 'miniflux',
   name: 'Miniflux',
   url: 'https://miniflux.app',
-} as const
+} as const satisfies Service

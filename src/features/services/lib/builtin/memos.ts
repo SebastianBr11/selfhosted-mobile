@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const memos = {
   description: 'A private timeline for your thoughts.',
   iconUrl:
@@ -5,4 +7,4 @@ export const memos = {
   id: 'memos',
   name: 'Memos',
   url: 'https://usememos.com',
-} as const
+} as const satisfies Service

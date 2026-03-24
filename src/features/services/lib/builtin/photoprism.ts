@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const photoprism = {
   description: 'AI-Powered Photos App for the Decentralized Web 🌈💎✨',
   iconUrl: {
@@ -8,4 +10,4 @@ export const photoprism = {
   id: 'photoprism',
   name: 'PhotoPrism',
   url: 'https://www.photoprism.app',
-} as const
+} as const satisfies Service

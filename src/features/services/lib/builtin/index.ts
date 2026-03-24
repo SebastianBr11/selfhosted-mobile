@@ -1,3 +1,4 @@
+import { Service } from '../service.schema'
 import { adguardHome } from './adguard-home'
 import { audiobookshelf } from './audiobookshelf'
 import { authelia } from './authelia'
@@ -116,4 +117,4 @@ export const builtInServices = [
   wgeasy,
   yamtrack,
   yourspotify,
-] as const
+] as const satisfies Service[]

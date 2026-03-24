@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const bookstack = {
   description:
     'A simple, self-hosted, easy-to-use platform for organising and storing information.',
@@ -6,4 +8,4 @@ export const bookstack = {
   id: 'bookstack',
   name: 'Bookstack',
   url: 'https://www.bookstackapp.com',
-} as const
+} as const satisfies Service

@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const nextcloud = {
   appStoreLink:
     'https://play.google.com/store/apps/details?id=com.nextcloud.client',
@@ -8,4 +10,4 @@ export const nextcloud = {
   name: 'Nextcloud',
   packageName: 'com.nextcloud.client',
   url: 'https://nextcloud.com',
-} as const
+} as const satisfies Service

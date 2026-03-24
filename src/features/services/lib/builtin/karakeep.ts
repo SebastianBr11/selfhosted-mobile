@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const karakeep = {
   appStoreLink:
     'https://play.google.com/store/apps/details?id=app.hoarder.hoardermobile',
@@ -12,4 +14,4 @@ export const karakeep = {
   name: 'Karakeep',
   packageName: 'app.hoarder.hoardermobile',
   url: 'https://karakeep.app',
-} as const
+} as const satisfies Service

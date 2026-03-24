@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const grafana = {
   description:
     'The open and composable observability and data visualization platform',
@@ -6,4 +8,4 @@ export const grafana = {
   id: 'grafana',
   name: 'Grafana',
   url: 'https://grafana.com',
-} as const
+} as const satisfies Service

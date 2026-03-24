@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const adguardHome = {
   description: 'Network-wide ads & trackers blocking DNS server',
   iconUrl:
@@ -5,4 +7,4 @@ export const adguardHome = {
   id: 'adguard-home',
   name: 'AdGuard Home',
   url: 'https://adguard.com/en/adguard-home/overview.html',
-} as const
+} as const satisfies Service

@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const fireflyIII = {
   description: 'A free and open source personal finance manager',
   iconUrl:
@@ -5,4 +7,4 @@ export const fireflyIII = {
   id: 'firefly-iii',
   name: 'Firefly III',
   url: 'https://firefly-iii.org',
-} as const
+} as const satisfies Service

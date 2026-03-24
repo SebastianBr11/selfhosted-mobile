@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const wikijs = {
   description: 'A modern and powerful wiki app built on Node.js',
   iconUrl:
@@ -5,4 +7,4 @@ export const wikijs = {
   id: 'wikijs',
   name: 'Wiki.js',
   url: 'https://js.wiki',
-} as const
+} as const satisfies Service

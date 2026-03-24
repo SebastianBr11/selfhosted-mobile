@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const seerr = {
   description:
     'Open-source media request and discovery manager for Jellyfin, Plex, and Emby.',
@@ -7,4 +9,4 @@ export const seerr = {
   name: 'Seerr',
   packageName: 'dev.seerr.mobileapp',
   url: 'https://docs.seerr.dev',
-} as const
+} as const satisfies Service

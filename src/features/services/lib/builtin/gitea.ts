@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const gitea = {
   description: 'Painless self-hosted all-in-one software development service',
   iconUrl:
@@ -5,4 +7,4 @@ export const gitea = {
   id: 'gitea',
   name: 'Gitea',
   url: 'https://about.gitea.com/',
-} as const
+} as const satisfies Service

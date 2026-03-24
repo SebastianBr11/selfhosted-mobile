@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const bentopdf = {
   description: 'A Privacy First PDF Toolkit',
   iconUrl:
@@ -5,4 +7,4 @@ export const bentopdf = {
   id: 'bentopdf',
   name: 'BentoPDF',
   url: 'https://bentopdf.com',
-} as const
+} as const satisfies Service

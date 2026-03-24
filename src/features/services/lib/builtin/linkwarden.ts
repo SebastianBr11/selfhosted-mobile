@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const linkwarden = {
   appStoreLink: 'https://play.google.com/store/apps/details?id=app.linkwarden',
   description:
@@ -8,4 +10,4 @@ export const linkwarden = {
   name: 'Linkwarden',
   packageName: 'app.linkwarden',
   url: 'https://linkwarden.app/website',
-} as const
+} as const satisfies Service

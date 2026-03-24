@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const ntfy = {
   appStoreLink: 'https://play.google.com/store/apps/details?id=io.heckel.ntfy',
   description:
@@ -8,4 +10,4 @@ export const ntfy = {
   name: 'ntfy',
   packageName: 'io.heckel.ntfy',
   url: 'https://ntfy.sh/',
-} as const
+} as const satisfies Service

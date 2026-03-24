@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const authentik = {
   description: 'The authentication glue you need.',
   iconUrl:
@@ -5,4 +7,4 @@ export const authentik = {
   id: 'authentik',
   name: 'Authentik',
   url: 'https://goauthentik.io',
-} as const
+} as const satisfies Service

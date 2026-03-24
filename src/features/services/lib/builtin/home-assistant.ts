@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const homeAssistant = {
   appStoreLink:
     'https://play.google.com/store/apps/details?id=io.homeassistant.companion.android',
@@ -9,4 +11,4 @@ export const homeAssistant = {
   name: 'Home Assistant',
   packageName: 'io.homeassistant.companion.android',
   url: 'https://www.home-assistant.io',
-} as const
+} as const satisfies Service

@@ -1,3 +1,5 @@
+import { Service } from '../service.schema'
+
 export const mealie = {
   description: 'A self hosted recipe manager and meal planner',
   iconUrl:
@@ -5,4 +7,4 @@ export const mealie = {
   id: 'mealie',
   name: 'Mealie',
   url: 'https://docs.mealie.io',
-} as const
+} as const satisfies Service
