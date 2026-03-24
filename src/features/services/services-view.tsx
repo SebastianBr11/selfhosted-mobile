@@ -9,7 +9,7 @@ import { Trans } from '@lingui/react/macro'
 import { BlurTargetView, BlurTint, BlurView } from 'expo-blur'
 import { Image } from 'expo-image'
 import { useRef, useState } from 'react'
-import { FlatList, Pressable, View } from 'react-native'
+import { FlatList, Pressable, RefreshControl, View } from 'react-native'
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 import { ThemedText } from '@/components/themed-text'
 import { ThemedView } from '@/components/themed-view'
@@ -71,8 +71,13 @@ export default function ServicesView() {
             </ThemedText>
           }
           numColumns={2}
-          onRefresh={fetchServices}
-          refreshing={fetchState.didFetch && fetchState.fetching}
+          refreshControl={
+            <RefreshControl
+              onRefresh={fetchServices}
+              progressViewOffset={insets.top}
+              refreshing={fetchState.didFetch && fetchState.fetching}
+            />
+          }
           renderItem={({ item }) => (
             <Pressable
               onPress={() => setSelectedServiceId(item.id)}
