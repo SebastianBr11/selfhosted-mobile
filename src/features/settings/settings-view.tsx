@@ -6,8 +6,8 @@ import { TextInput } from '@/components/text-input'
 import { ThemedText } from '@/components/themed-text'
 import { ThemedView } from '@/components/themed-view'
 import { InlineInsetMedium } from '@/constants/theme'
-import { useServices } from '@/hooks/use-services'
-import { useServicesUrl } from '@/hooks/use-services-url'
+import { useServices } from '../services/hooks/use-services'
+import { useServicesUrl } from '../services/hooks/use-services-url'
 
 export default function SettingsView() {
   const { errors, setUrl, url, urlFromEnv, valid } = useServicesUrl()

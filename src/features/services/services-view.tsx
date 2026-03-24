@@ -15,10 +15,10 @@ import { ThemedText } from '@/components/themed-text'
 import { ThemedView } from '@/components/themed-view'
 import { InlineInsetSmall } from '@/constants/theme'
 import { useColorScheme } from '@/hooks/use-color-scheme'
-import { useServices } from '@/hooks/use-services'
-import { useServicesUrl } from '@/hooks/use-services-url'
 import { useTheme } from '@/hooks/use-theme'
 import { schemeDependantIcon } from '@/util/theme-util'
+import { useServices } from './hooks/use-services'
+import { useServicesUrl } from './hooks/use-services-url'
 import ServiceBottomSheet from './service-bottom-sheet'
 
 export default function ServicesView() {

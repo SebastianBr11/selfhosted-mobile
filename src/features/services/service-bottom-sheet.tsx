@@ -8,13 +8,13 @@ import {
   Text,
 } from '@expo/ui/jetpack-compose'
 import { fillMaxWidth, padding } from '@expo/ui/jetpack-compose/modifiers'
-import { Trans, useLingui } from '@lingui/react/macro'
+import { useLingui } from '@lingui/react/macro'
 import * as IntentLauncher from 'expo-intent-launcher'
 import * as WebBrowser from 'expo-web-browser'
 import { useEffect, useState } from 'react'
-import { useService } from '@/hooks/use-services'
 import { ServiceId } from '@/lib/service.schema'
 import { isArray } from '@/util/is-type'
+import { useService } from './hooks/use-services'
 
 type ServiceBottomSheetProps = {
   hide: () => void
