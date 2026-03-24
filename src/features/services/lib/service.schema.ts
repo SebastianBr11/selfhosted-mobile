@@ -1,7 +1,7 @@
-import { msg, t } from '@lingui/core/macro'
+import { t } from '@lingui/core/macro'
 import * as v from 'valibot'
-import { emptyMessage, stringMessage } from './schema-messages'
-import { UrlSchema } from './schemas'
+import { emptyMessage, stringMessage } from '@/lib/schema-messages'
+import { UrlSchema } from '@/lib/schemas'
 
 export const ServiceIdSchema = v.pipe(
   v.string(({ received }) => stringMessage('service ID', received)),
