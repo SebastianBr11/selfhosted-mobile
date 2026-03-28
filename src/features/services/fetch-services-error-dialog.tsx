@@ -1,7 +1,6 @@
-import { Host } from '@expo/ui/jetpack-compose'
+import { AlertDialog, Host, Text, TextButton } from '@expo/ui/jetpack-compose'
 import { useLingui } from '@lingui/react/macro'
 import { useRouter } from 'expo-router'
-import AlertDialog from '@/components/jetpack-compose/alert-dialog'
 
 type FetchServicesErrorDialogProps = {
   hide: () => void
@@ -13,17 +12,33 @@ export function FetchServicesErrorDialog({
   const { t } = useLingui()
   return (
     <Host matchContents>
-      <AlertDialog
-        confirmButtonText={t`Go to settings`}
-        dismissButtonText={t`Dismiss`}
-        onConfirmPressed={() => {
-          hide()
-          router.navigate('/settings')
-        }}
-        onDismissPressed={hide}
-        text={t`An error ocurred while fetching your services. Go to settings to see the error details.`}
-        title={t`An error ocurred`}
-      />
+      <AlertDialog onDismissRequest={hide}>
+        <AlertDialog.Title>
+          <Text
+            style={{ typography: 'titleLarge' }}
+          >{t`An error ocurred`}</Text>
+        </AlertDialog.Title>
+        <AlertDialog.Text>
+          <Text
+            style={{ typography: 'bodyMedium' }}
+          >{t`An error ocurred while fetching your services. Go to settings to see the error details.`}</Text>
+        </AlertDialog.Text>
+        <AlertDialog.ConfirmButton>
+          <TextButton
+            onClick={() => {
+              hide()
+              router.navigate('/settings')
+            }}
+          >
+            <Text>{t`Go to settings`}</Text>
+          </TextButton>
+        </AlertDialog.ConfirmButton>
+        <AlertDialog.DismissButton>
+          <TextButton onClick={hide}>
+            <Text>{t`Dismiss`}</Text>
+          </TextButton>
+        </AlertDialog.DismissButton>
+      </AlertDialog>
     </Host>
   )
 }
