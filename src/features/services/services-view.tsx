@@ -68,7 +68,6 @@ export default function ServicesView() {
       setShowErrorAlert(true)
     }
   }
-  console.log('showing error alert', showErrorAlert)
 
   return (
     <ThemedView style={{ flex: 1 }} type="background">
