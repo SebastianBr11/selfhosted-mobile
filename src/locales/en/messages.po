@@ -13,35 +13,44 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/settings/settings-view.tsx:31
+#: src/features/settings/settings-view.tsx:34
 msgid "(from environment)"
 msgstr "(from environment)"
 
-#: src/features/services/services-view.tsx:164
+#: src/features/services/services-view.tsx:187
 msgid "An error ocurred"
 msgstr "An error ocurred"
 
-#: src/features/services/services-view.tsx:163
+#: src/features/services/services-view.tsx:186
 msgid "An error ocurred while fetching your services. Go to settings to see the error details."
 msgstr "An error ocurred while fetching your services. Go to settings to see the error details."
 
-#: src/features/settings/settings-view.tsx:63
+#: src/features/services/services-view.tsx:194
+msgid "Configure network settings"
+msgstr "Configure network settings"
+
+#: src/features/settings/settings-view.tsx:69
+msgid "Connect to the Internet to fetch new data"
+msgstr "Connect to the Internet to fetch new data"
+
+#: src/features/settings/settings-view.tsx:65
 msgid "Connected"
 msgstr "Connected"
 
-#: src/features/settings/settings-view.tsx:58
+#: src/features/settings/settings-view.tsx:60
 msgid "Connecting..."
 msgstr "Connecting..."
 
-#: src/features/services/services-view.tsx:161
+#: src/features/services/services-view.tsx:180
+#: src/features/services/services-view.tsx:195
 msgid "Dismiss"
 msgstr "Dismiss"
 
-#: src/features/services/services-view.tsx:160
+#: src/features/services/services-view.tsx:179
 msgid "Go to settings"
 msgstr "Go to settings"
 
-#: src/features/services/services-view.tsx:49
+#: src/features/services/services-view.tsx:58
 msgid "Go to settings to setup the URL"
 msgstr "Go to settings to setup the URL"
 
@@ -49,36 +58,36 @@ msgstr "Go to settings to setup the URL"
 msgid "Home"
 msgstr "Home"
 
-#: src/features/settings/settings-view.tsx:63
+#: src/features/settings/settings-view.tsx:65
 msgid "Not Connected"
 msgstr "Not Connected"
 
-#: src/features/services/service-bottom-sheet.tsx:106
+#: src/features/services/service-bottom-sheet.tsx:105
 msgid "Open in {name}"
 msgstr "Open in {name}"
 
-#: src/features/services/service-bottom-sheet.tsx:118
+#: src/features/services/service-bottom-sheet.tsx:117
 msgid "Open in App Store"
 msgstr "Open in App Store"
 
-#: src/features/services/service-bottom-sheet.tsx:82
+#: src/features/services/service-bottom-sheet.tsx:81
 msgid "Open in Browser"
 msgstr "Open in Browser"
 
-#: src/features/services/service-bottom-sheet.tsx:92
+#: src/features/services/service-bottom-sheet.tsx:91
 msgid "Open installed App"
 msgstr "Open installed App"
 
-#: src/features/settings/settings-view.tsx:28
+#: src/features/settings/settings-view.tsx:31
 msgid "Services URL "
 msgstr "Services URL "
 
 #: src/components/app-tabs.tsx:14
-#: src/features/settings/settings-view.tsx:22
+#: src/features/settings/settings-view.tsx:25
 msgid "Settings"
 msgstr "Settings"
 
-#: src/features/settings/settings-view.tsx:51
+#: src/features/settings/settings-view.tsx:54
 msgid "Test connection"
 msgstr "Test connection"
 
@@ -98,6 +107,14 @@ msgstr "The URL \"{received}\" is invalid."
 msgid "Unknown service ID \"{id}\". Service name, description and icon URL are required for custom services."
 msgstr "Unknown service ID \"{id}\". Service name, description and icon URL are required for custom services."
 
-#: src/features/services/services-view.tsx:74
+#: src/features/services/services-view.tsx:204
+msgid "You're offline"
+msgstr "You're offline"
+
+#: src/features/services/services-view.tsx:203
+msgid "You're offline. Check your network connection and try again."
+msgstr "You're offline. Check your network connection and try again."
+
+#: src/features/services/services-view.tsx:93
 msgid "Your Services"
 msgstr "Your Services"
