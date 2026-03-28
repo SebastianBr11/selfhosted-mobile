@@ -9,6 +9,7 @@ import { Trans, useLingui } from '@lingui/react/macro'
 import { useQuery } from '@tanstack/react-query'
 import { BlurTargetView, BlurTint, BlurView } from 'expo-blur'
 import { Image } from 'expo-image'
+import * as IntentLauncher from 'expo-intent-launcher'
 import { useRouter } from 'expo-router'
 import { useRef, useState } from 'react'
 import { FlatList, Pressable, RefreshControl, View } from 'react-native'
@@ -32,6 +33,7 @@ export default function ServicesView() {
   const { deferredUrl, valid } = useServicesUrl()
   const {
     data: services = [],
+    fetchStatus,
     isFetching,
     refetch,
   } = useQuery(userServicesQueryKey(deferredUrl))
@@ -39,6 +41,7 @@ export default function ServicesView() {
     null,
   )
   const [showErrorAlert, setShowErrorAlert] = useState(false)
+  const [showOfflineAlert, setShowOfflineAlert] = useState(false)
 
   const blurTargetRef = useRef<null | View>(null)
   const insets = useSafeAreaInsets()
@@ -60,6 +63,9 @@ export default function ServicesView() {
   }
 
   async function tryFetchServices() {
+    if (fetchStatus === 'paused') {
+      setShowOfflineAlert(true)
+    }
     const { isError } = await refetch()
     if (isError) {
       setShowErrorAlert(true)
@@ -179,6 +185,23 @@ export default function ServicesView() {
             onDismissPressed={() => setShowErrorAlert(false)}
             text={t`An error ocurred while fetching your services. Go to settings to see the error details.`}
             title={t`An error ocurred`}
+          />
+        </Host>
+      )}
+      {showOfflineAlert && (
+        <Host matchContents>
+          <AlertDialog
+            confirmButtonText={t`Configure network settings`}
+            dismissButtonText={t`Dismiss`}
+            onConfirmPressed={() => {
+              setShowOfflineAlert(false)
+              IntentLauncher.startActivityAsync(
+                IntentLauncher.ActivityAction.NETWORK_PROVIDER_SETTINGS,
+              )
+            }}
+            onDismissPressed={() => setShowOfflineAlert(false)}
+            text={t`You're offline. Check your network connection and try again.`}
+            title={t`You're offline`}
           />
         </Host>
       )}
