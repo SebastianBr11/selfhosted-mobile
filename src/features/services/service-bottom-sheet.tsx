@@ -4,10 +4,16 @@ import {
   FlowRow,
   Host,
   ModalBottomSheet,
+  OutlinedButton,
+  Shape,
   Spacer,
   Text,
 } from '@expo/ui/jetpack-compose'
-import { fillMaxWidth, padding } from '@expo/ui/jetpack-compose/modifiers'
+import {
+  fillMaxWidth,
+  padding,
+  Shapes,
+} from '@expo/ui/jetpack-compose/modifiers'
 import { useLingui } from '@lingui/react/macro'
 import * as IntentLauncher from 'expo-intent-launcher'
 import * as WebBrowser from 'expo-web-browser'
@@ -76,9 +82,11 @@ export default function ServiceBottomSheet({
           <FlowRow horizontalArrangement={{ spacedBy: 12 }}>
             <Button
               modifiers={[fillMaxWidth()]}
-              onPress={() => openLink(service.url)}
+              onClick={() => openLink(service.url)}
             >
-              {t`Open in Browser`}
+              <Text
+                style={{ typography: 'labelLarge' }}
+              >{t`Open in Browser`}</Text>
             </Button>
 
             {androidAppAvailable && service.packageName && (
@@ -86,9 +94,11 @@ export default function ServiceBottomSheet({
                 <Spacer modifiers={[padding(0, 6, 0, 6)]} />
                 <Button
                   modifiers={[fillMaxWidth()]}
-                  onPress={() => openApp(service.packageName!)}
+                  onClick={() => openApp(service.packageName!)}
                 >
-                  {t`Open installed App`}
+                  <Text
+                    style={{ typography: 'labelLarge' }}
+                  >{t`Open installed App`}</Text>
                 </Button>
               </>
             )}
@@ -97,25 +107,27 @@ export default function ServiceBottomSheet({
                 service.appStoreLink.map(({ name, url }) => (
                   <Column key={name}>
                     <Spacer modifiers={[padding(0, 6, 0, 6)]} />
-                    <Button
+                    <OutlinedButton
                       modifiers={[fillMaxWidth()]}
-                      onPress={() => openLink(url)}
-                      variant="outlined"
+                      onClick={() => openLink(url)}
                     >
-                      {t`Open in {name}`}
-                    </Button>
+                      <Text
+                        style={{ typography: 'labelLarge' }}
+                      >{t`Open in {name}`}</Text>
+                    </OutlinedButton>
                   </Column>
                 ))
               ) : (
                 <>
                   <Spacer modifiers={[padding(0, 6, 0, 6)]} />
-                  <Button
+                  <OutlinedButton
                     modifiers={[fillMaxWidth()]}
-                    onPress={() => openLink(service.appStoreLink as string)}
-                    variant="outlined"
+                    onClick={() => openLink(service.appStoreLink as string)}
                   >
-                    {t`Open in App Store`}
-                  </Button>
+                    <Text
+                      style={{ typography: 'labelLarge' }}
+                    >{t`Open in App Store`}</Text>
+                  </OutlinedButton>
                 </>
               ))}
           </FlowRow>

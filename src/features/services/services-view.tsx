@@ -161,7 +161,7 @@ export default function ServicesView() {
           modifiers={[align('bottomEnd'), paddingAll(16)]}
           variant="vibrant"
         >
-          <IconButton onPress={tryFetchServices}>
+          <IconButton onClick={tryFetchServices}>
             <Icon
               contentDescription="Sync Services"
               source={require('@/assets/symbols/sync.xml')}
