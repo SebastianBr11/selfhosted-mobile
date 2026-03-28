@@ -17,15 +17,15 @@ msgstr ""
 msgid "(from environment)"
 msgstr "(del entorno)"
 
-#: src/features/services/services-view.tsx:187
+#: src/features/services/fetch-services-error-dialog.tsx:25
 msgid "An error ocurred"
 msgstr "Ocurrió un error"
 
-#: src/features/services/services-view.tsx:186
+#: src/features/services/fetch-services-error-dialog.tsx:24
 msgid "An error ocurred while fetching your services. Go to settings to see the error details."
 msgstr "Ocurrió un error al obtener tus servicios. Ve a la configuración para ver los detalles del error."
 
-#: src/features/services/services-view.tsx:194
+#: src/features/services/offline-dialog.tsx:14
 msgid "Configure network settings"
 msgstr "Configurar configuración de red"
 
@@ -41,16 +41,16 @@ msgstr "Conectado"
 msgid "Connecting..."
 msgstr "Conectando..."
 
-#: src/features/services/services-view.tsx:180
-#: src/features/services/services-view.tsx:195
+#: src/features/services/fetch-services-error-dialog.tsx:18
+#: src/features/services/offline-dialog.tsx:15
 msgid "Dismiss"
 msgstr "Descartar"
 
-#: src/features/services/services-view.tsx:179
+#: src/features/services/fetch-services-error-dialog.tsx:17
 msgid "Go to settings"
 msgstr "Ir a la configuración"
 
-#: src/features/services/services-view.tsx:58
+#: src/features/services/services-view.tsx:55
 msgid "Go to settings to setup the URL"
 msgstr "Ve a la configuración para configurar la URL"
 
@@ -107,14 +107,14 @@ msgstr "La URL \"{received}\" es inválida."
 msgid "Unknown service ID \"{id}\". Service name, description and icon URL are required for custom services."
 msgstr "ID de servicio desconocido \"{id}\". Se requieren el nombre, la descripción y la URL del icono para los servicios personalizados."
 
-#: src/features/services/services-view.tsx:204
+#: src/features/services/offline-dialog.tsx:24
 msgid "You're offline"
 msgstr "Estás desconectado"
 
-#: src/features/services/services-view.tsx:203
+#: src/features/services/offline-dialog.tsx:23
 msgid "You're offline. Check your network connection and try again."
 msgstr "Estás desconectado. Comprueba tu conexión a Internet e inténtalo de nuevo."
 
-#: src/features/services/services-view.tsx:93
+#: src/features/services/services-view.tsx:91
 msgid "Your Services"
 msgstr "Tus servicios"
