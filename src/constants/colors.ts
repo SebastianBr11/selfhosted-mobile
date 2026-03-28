@@ -9,7 +9,7 @@ export const getColors = () =>
       backgroundPrimary: Color.android.dynamic.primaryContainer,
       backgroundSelected: Color.android.dynamic.surfaceContainerHighest,
       text: Color.android.dynamic.onSurface,
-      textError: Color.android.dynamic.error,
+      textError: Color.android.attr.colorError,
       textPrimary: Color.android.dynamic.primary,
       textSecondary: Color.android.dynamic.onSurfaceVariant,
       textSuccess: Color.android.holo_green_dark,
