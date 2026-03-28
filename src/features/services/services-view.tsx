@@ -10,7 +10,6 @@ import { useQuery } from '@tanstack/react-query'
 import { BlurTargetView, BlurTint, BlurView } from 'expo-blur'
 import { Image } from 'expo-image'
 import * as IntentLauncher from 'expo-intent-launcher'
-import { useRouter } from 'expo-router'
 import { useRef, useState } from 'react'
 import { FlatList, Pressable, RefreshControl, View } from 'react-native'
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -21,13 +20,13 @@ import { InlineInsetSmall } from '@/constants/theme'
 import { schemeDependantIcon } from '@/features/services/util'
 import { useColorScheme } from '@/hooks/use-color-scheme'
 import { useTheme } from '@/hooks/use-theme'
+import { FetchServicesErrorDialog } from './fetch-services-error-dialog'
 import { useServicesUrl } from './hooks/use-services-url'
 import { userServicesQueryKey } from './lib/user-services.queries'
 import ServiceBottomSheet from './service-bottom-sheet'
 
 export default function ServicesView() {
   const { t } = useLingui()
-  const router = useRouter()
   const scheme = useColorScheme()
   const theme = useTheme()
   const { deferredUrl, valid } = useServicesUrl()
@@ -71,6 +70,7 @@ export default function ServicesView() {
       setShowErrorAlert(true)
     }
   }
+  console.log('showing error alert', showErrorAlert)
 
   return (
     <ThemedView style={{ flex: 1 }} type="background">
@@ -174,19 +174,7 @@ export default function ServicesView() {
         </HorizontalFloatingToolbar>
       </Host>
       {showErrorAlert && (
-        <Host matchContents>
-          <AlertDialog
-            confirmButtonText={t`Go to settings`}
-            dismissButtonText={t`Dismiss`}
-            onConfirmPressed={() => {
-              setShowErrorAlert(false)
-              router.navigate('/settings')
-            }}
-            onDismissPressed={() => setShowErrorAlert(false)}
-            text={t`An error ocurred while fetching your services. Go to settings to see the error details.`}
-            title={t`An error ocurred`}
-          />
-        </Host>
+        <FetchServicesErrorDialog hide={() => setShowErrorAlert(false)} />
       )}
       {showOfflineAlert && (
         <Host matchContents>
