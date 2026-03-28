@@ -1,11 +1,19 @@
-import { FloatingActionButton, Host, Icon } from '@expo/ui/jetpack-compose'
+import {
+  Button,
+  FloatingActionButton,
+  Host,
+  Icon,
+  Text,
+} from '@expo/ui/jetpack-compose'
+import { padding } from '@expo/ui/jetpack-compose/modifiers'
 import { Trans } from '@lingui/react/macro'
 import { useQuery } from '@tanstack/react-query'
 import { BlurTargetView, BlurTint, BlurView } from 'expo-blur'
 import { Image } from 'expo-image'
+import { useRouter } from 'expo-router'
 import { useRef, useState } from 'react'
 import { FlatList, Pressable, RefreshControl, View } from 'react-native'
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { ThemedText } from '@/components/themed-text'
 import { ThemedView } from '@/components/themed-view'
 import { InlineInsetSmall } from '@/constants/theme'
@@ -19,6 +27,7 @@ import { OfflineDialog } from './offline-dialog'
 import ServiceBottomSheet from './service-bottom-sheet'
 
 export default function ServicesView() {
+  const router = useRouter()
   const scheme = useColorScheme()
   const theme = useTheme()
   const { deferredUrl, valid } = useServicesUrl()
@@ -39,20 +48,6 @@ export default function ServicesView() {
   const blurTint: BlurTint =
     scheme === 'dark' ? 'systemChromeMaterialDark' : 'systemChromeMaterialLight'
 
-  if (!valid) {
-    return (
-      <ThemedView style={{ flex: 1 }} type="background">
-        <SafeAreaView
-          style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}
-        >
-          <ThemedText type="title">
-            <Trans>Go to settings to setup the URL</Trans>
-          </ThemedText>
-        </SafeAreaView>
-      </ThemedView>
-    )
-  }
-
   async function tryFetchServices() {
     if (fetchStatus === 'paused') {
       setShowOfflineAlert(true)
@@ -61,6 +56,51 @@ export default function ServicesView() {
     if (isError) {
       setShowErrorAlert(true)
     }
+  }
+
+  if (services.length === 0 || !valid) {
+    return (
+      <ThemedView
+        inlineInset
+        style={{
+          alignItems: 'center',
+          flex: 1,
+          gap: 24,
+          justifyContent: 'center',
+          paddingTop: insets.top,
+        }}
+      >
+        <ThemedView style={{ alignItems: 'center', gap: 16 }}>
+          <ThemedText type="title">
+            <Trans>You have no services yet</Trans>
+          </ThemedText>
+          <ThemedText
+            style={{
+              color: theme.textSecondary,
+              fontWeight: '500',
+              justifyContent: 'center',
+              textAlign: 'center',
+            }}
+            type="large"
+          >
+            <Trans>Go to settings to setup the URL</Trans>
+          </ThemedText>
+        </ThemedView>
+        <Host matchContents>
+          <Button
+            contentPadding={{ bottom: 16, end: 32, start: 32, top: 16 }}
+            onClick={() => router.navigate('/settings')}
+          >
+            <Text style={{ fontSize: 24, fontWeight: '500' }}>Setup URL</Text>
+            <Icon
+              modifiers={[padding(4, 0, 0, 0)]}
+              source={require('@/assets/symbols/edit.xml')}
+              tintColor={theme.backgroundPrimary}
+            />
+          </Button>
+        </Host>
+      </ThemedView>
+    )
   }
 
   return (
