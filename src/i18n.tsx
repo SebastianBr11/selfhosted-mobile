@@ -8,7 +8,17 @@ const availableLocales = ['en', 'de', 'es'] as const
 type AvailableLocale = (typeof availableLocales)[number]
 const fallbackLocale: AvailableLocale = 'en'
 
-async function loadAndActivateLocale(locale: AvailableLocale | (string & {})) {
+export function I18nProvider({ children }: { children: React.ReactNode }) {
+  const locales = useLocales()
+  useEffect(() => {
+    loadAndActivateLocale(locales[0].languageCode || fallbackLocale)
+  }, [locales])
+  return <BaseI18nProvider i18n={i18n}>{children}</BaseI18nProvider>
+}
+
+export async function loadAndActivateLocale(
+  locale: AvailableLocale | (string & {}) = fallbackLocale,
+) {
   let messages: Messages
   switch (locale) {
     case 'de':
@@ -27,13 +37,4 @@ async function loadAndActivateLocale(locale: AvailableLocale | (string & {})) {
     locale,
     messages: messages,
   })
-}
-loadAndActivateLocale(fallbackLocale)
-
-export function I18nProvider({ children }: { children: React.ReactNode }) {
-  const locales = useLocales()
-  useEffect(() => {
-    loadAndActivateLocale(locales[0].languageCode || fallbackLocale)
-  }, [locales])
-  return <BaseI18nProvider i18n={i18n}>{children}</BaseI18nProvider>
 }
