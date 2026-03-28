@@ -5,15 +5,13 @@ import {
   IconButton,
 } from '@expo/ui/jetpack-compose'
 import { align, paddingAll } from '@expo/ui/jetpack-compose/modifiers'
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Trans } from '@lingui/react/macro'
 import { useQuery } from '@tanstack/react-query'
 import { BlurTargetView, BlurTint, BlurView } from 'expo-blur'
 import { Image } from 'expo-image'
-import * as IntentLauncher from 'expo-intent-launcher'
 import { useRef, useState } from 'react'
 import { FlatList, Pressable, RefreshControl, View } from 'react-native'
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
-import AlertDialog from '@/components/jetpack-compose/alert-dialog'
 import { ThemedText } from '@/components/themed-text'
 import { ThemedView } from '@/components/themed-view'
 import { InlineInsetSmall } from '@/constants/theme'
@@ -23,10 +21,10 @@ import { useTheme } from '@/hooks/use-theme'
 import { FetchServicesErrorDialog } from './fetch-services-error-dialog'
 import { useServicesUrl } from './hooks/use-services-url'
 import { userServicesQueryKey } from './lib/user-services.queries'
+import { OfflineDialog } from './offline-dialog'
 import ServiceBottomSheet from './service-bottom-sheet'
 
 export default function ServicesView() {
-  const { t } = useLingui()
   const scheme = useColorScheme()
   const theme = useTheme()
   const { deferredUrl, valid } = useServicesUrl()
@@ -177,21 +175,7 @@ export default function ServicesView() {
         <FetchServicesErrorDialog hide={() => setShowErrorAlert(false)} />
       )}
       {showOfflineAlert && (
-        <Host matchContents>
-          <AlertDialog
-            confirmButtonText={t`Configure network settings`}
-            dismissButtonText={t`Dismiss`}
-            onConfirmPressed={() => {
-              setShowOfflineAlert(false)
-              IntentLauncher.startActivityAsync(
-                IntentLauncher.ActivityAction.NETWORK_PROVIDER_SETTINGS,
-              )
-            }}
-            onDismissPressed={() => setShowOfflineAlert(false)}
-            text={t`You're offline. Check your network connection and try again.`}
-            title={t`You're offline`}
-          />
-        </Host>
+        <OfflineDialog hide={() => setShowOfflineAlert(false)} />
       )}
       {selectedServiceId && (
         <ServiceBottomSheet
