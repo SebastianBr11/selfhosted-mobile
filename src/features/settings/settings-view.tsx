@@ -12,7 +12,7 @@ import { userServicesQueryKey } from '../services/lib/user-services.queries'
 
 export default function SettingsView() {
   const { errors, setUrl, url, urlFromEnv, valid: urlValid } = useServicesUrl()
-  const { error, isFetching, isSuccess, refetch } = useQuery(
+  const { error, isFetching, isSuccess, refetch, fetchStatus } = useQuery(
     userServicesQueryKey(url),
   )
   const { t } = useLingui()
@@ -56,7 +56,7 @@ export default function SettingsView() {
             </Host>
             <ThemedView inlineInset>
               {isFetching ? (
-                <ThemedText type="default">
+                <ThemedText type="small">
                   <Trans>Connecting...</Trans>
                 </ThemedText>
               ) : (
@@ -64,6 +64,11 @@ export default function SettingsView() {
                   <ThemedText type={isSuccess ? 'success' : 'error'}>
                     {isSuccess ? t`Connected` : t`Not Connected`}
                   </ThemedText>
+                  {fetchStatus === 'paused' && (
+                    <ThemedText type="small">
+                      <Trans>Connect to the Internet to fetch new data</Trans>
+                    </ThemedText>
+                  )}
                   {error && (
                     <ThemedText type="error">{error.message}</ThemedText>
                   )}
