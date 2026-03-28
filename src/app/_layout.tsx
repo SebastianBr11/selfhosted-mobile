@@ -8,6 +8,7 @@ import { StatusBar } from 'expo-status-bar'
 import React, { useEffect, useState } from 'react'
 import { useColorScheme } from 'react-native'
 import AppTabs from '@/components/app-tabs'
+import { initI18n } from '@/features/app-init/init-i18n'
 import { initNetwork } from '@/features/app-init/init-network'
 import { I18nProvider } from '@/i18n'
 import { PersistentQueryClientProvider } from '@/persistent-query-client'
@@ -22,6 +23,7 @@ export default function TabLayout() {
     async function initializeApp() {
       try {
         await initNetwork()
+        await initI18n()
       } catch (e) {
         console.warn(e)
       } finally {
