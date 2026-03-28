@@ -12,7 +12,7 @@ import { userServicesQueryKey } from '../services/lib/user-services.queries'
 
 export default function SettingsView() {
   const { errors, setUrl, url, urlFromEnv, valid: urlValid } = useServicesUrl()
-  const { error, isFetching, isSuccess, refetch, fetchStatus } = useQuery(
+  const { error, fetchStatus, isFetching, isSuccess, refetch } = useQuery(
     userServicesQueryKey(url),
   )
   const { t } = useLingui()
