@@ -1,4 +1,4 @@
-import { Button, Host } from '@expo/ui/jetpack-compose'
+import { Button, Host, Text } from '@expo/ui/jetpack-compose'
 import { fillMaxWidth, padding } from '@expo/ui/jetpack-compose/modifiers'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { useQuery } from '@tanstack/react-query'
@@ -7,10 +7,12 @@ import { TextInput } from '@/components/text-input'
 import { ThemedText } from '@/components/themed-text'
 import { ThemedView } from '@/components/themed-view'
 import { InlineInsetMedium } from '@/constants/theme'
+import { useTheme } from '@/hooks/use-theme'
 import { useServicesUrl } from '../services/hooks/use-services-url'
 import { userServicesQueryKey } from '../services/lib/user-services.queries'
 
 export default function SettingsView() {
+  const theme = useTheme()
   const { errors, setUrl, url, urlFromEnv, valid: urlValid } = useServicesUrl()
   const { error, fetchStatus, isFetching, isSuccess, refetch } = useQuery(
     userServicesQueryKey(url),
@@ -49,9 +51,11 @@ export default function SettingsView() {
                   fillMaxWidth(),
                   padding(InlineInsetMedium, 0, InlineInsetMedium, 0),
                 ]}
-                onPress={refetch}
+                onClick={refetch}
               >
-                {t`Test connection`}
+                <Text
+                  style={{ typography: 'labelLarge' }}
+                >{t`Test connection`}</Text>
               </Button>
             </Host>
             <ThemedView inlineInset>

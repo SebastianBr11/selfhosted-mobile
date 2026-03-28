@@ -1,10 +1,4 @@
-import {
-  HorizontalFloatingToolbar,
-  Host,
-  Icon,
-  IconButton,
-} from '@expo/ui/jetpack-compose'
-import { align, paddingAll } from '@expo/ui/jetpack-compose/modifiers'
+import { FloatingActionButton, Host, Icon } from '@expo/ui/jetpack-compose'
 import { Trans } from '@lingui/react/macro'
 import { useQuery } from '@tanstack/react-query'
 import { BlurTargetView, BlurTint, BlurView } from 'expo-blur'
@@ -149,27 +143,19 @@ export default function ServicesView() {
           )}
         />
       </BlurTargetView>
-      <Host
-        matchContents
-        style={{
-          alignSelf: 'flex-end',
-          bottom: 0,
-          position: 'absolute',
-        }}
-      >
-        <HorizontalFloatingToolbar
-          modifiers={[align('bottomEnd'), paddingAll(16)]}
-          variant="vibrant"
-        >
-          <IconButton onPress={tryFetchServices}>
-            <Icon
-              contentDescription="Sync Services"
-              source={require('@/assets/symbols/sync.xml')}
-              tintColor={theme.textPrimary}
-            />
-          </IconButton>
-        </HorizontalFloatingToolbar>
-      </Host>
+      <View style={{ bottom: 16, position: 'absolute', right: 16 }}>
+        <Host matchContents>
+          <FloatingActionButton onClick={tryFetchServices}>
+            <FloatingActionButton.Icon>
+              <Icon
+                contentDescription="Sync Services"
+                source={require('@/assets/symbols/sync.xml')}
+                tintColor={theme.textPrimary}
+              />
+            </FloatingActionButton.Icon>
+          </FloatingActionButton>
+        </Host>
+      </View>
       {showErrorAlert && (
         <FetchServicesErrorDialog hide={() => setShowErrorAlert(false)} />
       )}
