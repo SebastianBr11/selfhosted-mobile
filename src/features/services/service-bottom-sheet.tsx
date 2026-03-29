@@ -23,10 +23,12 @@ import { isArray } from '@/util/is-type'
 import { useService } from './hooks/use-services'
 
 type ServiceBottomSheetProps = {
+  children?: React.ReactNode
   hide: () => void
   serviceId: ServiceId
 }
 export default function ServiceBottomSheet({
+  children,
   hide,
   serviceId,
 }: ServiceBottomSheetProps) {
@@ -79,6 +81,7 @@ export default function ServiceBottomSheet({
           >
             {service.name}
           </Text>
+          {children ? children : null}
           <FlowRow horizontalArrangement={{ spacedBy: 12 }}>
             <Button
               modifiers={[fillMaxWidth()]}

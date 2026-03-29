@@ -10,7 +10,7 @@ import { Trans } from '@lingui/react/macro'
 import { useQuery } from '@tanstack/react-query'
 import { BlurTargetView, BlurTint, BlurView } from 'expo-blur'
 import { Image } from 'expo-image'
-import { useRouter } from 'expo-router'
+import { Link, useRouter } from 'expo-router'
 import { useRef, useState } from 'react'
 import { FlatList, Pressable, RefreshControl, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -24,7 +24,6 @@ import { FetchServicesErrorDialog } from './fetch-services-error-dialog'
 import { useServicesUrl } from './hooks/use-services-url'
 import { userServicesQueryOptions } from './lib/user-services.queries'
 import { OfflineDialog } from './offline-dialog'
-import ServiceBottomSheet from './service-bottom-sheet'
 
 export default function ServicesView() {
   const router = useRouter()
@@ -37,9 +36,6 @@ export default function ServicesView() {
     isFetching,
     refetch,
   } = useQuery(userServicesQueryOptions(deferredUrl))
-  const [selectedServiceId, setSelectedServiceId] = useState<null | string>(
-    null,
-  )
   const [showErrorAlert, setShowErrorAlert] = useState(false)
   const [showOfflineAlert, setShowOfflineAlert] = useState(false)
 
@@ -89,7 +85,7 @@ export default function ServicesView() {
         <Host matchContents>
           <Button
             contentPadding={{ bottom: 16, end: 32, start: 32, top: 16 }}
-            onClick={() => router.navigate('/settings')}
+            onClick={() => router.navigate('/(settings)')}
           >
             <Text style={{ fontSize: 24, fontWeight: '500' }}>Setup URL</Text>
             <Icon
@@ -133,8 +129,11 @@ export default function ServicesView() {
             />
           }
           renderItem={({ item }) => (
-            <Pressable
-              onPress={() => setSelectedServiceId(item.id)}
+            <Link
+              href={{
+                params: { serviceId: item.id },
+                pathname: '/services/[serviceId]',
+              }}
               style={{ flex: 1 }}
             >
               <ThemedView
@@ -179,7 +178,7 @@ export default function ServicesView() {
                   {item.description}
                 </ThemedText>
               </ThemedView>
-            </Pressable>
+            </Link>
           )}
         />
       </BlurTargetView>
@@ -201,12 +200,6 @@ export default function ServicesView() {
       )}
       {showOfflineAlert && (
         <OfflineDialog hide={() => setShowOfflineAlert(false)} />
-      )}
-      {selectedServiceId && (
-        <ServiceBottomSheet
-          hide={() => setSelectedServiceId(null)}
-          serviceId={selectedServiceId}
-        />
       )}
       <BlurView
         blurMethod="dimezisBlurViewSdk31Plus"
