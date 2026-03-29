@@ -9,13 +9,13 @@ import { ThemedView } from '@/components/themed-view'
 import { InlineInsetMedium } from '@/constants/theme'
 import { useTheme } from '@/hooks/use-theme'
 import { useServicesUrl } from '../services/hooks/use-services-url'
-import { userServicesQueryKey } from '../services/lib/user-services.queries'
+import { userServicesQueryOptions } from '../services/lib/user-services.queries'
 
 export default function SettingsView() {
   const theme = useTheme()
   const { errors, setUrl, url, urlFromEnv, valid: urlValid } = useServicesUrl()
   const { error, fetchStatus, isFetching, isSuccess, refetch } = useQuery(
-    userServicesQueryKey(url),
+    userServicesQueryOptions(url),
   )
   const { t } = useLingui()
 

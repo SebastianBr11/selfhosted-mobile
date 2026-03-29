@@ -5,17 +5,17 @@ import {
 } from '@react-navigation/native'
 import * as SplashScreen from 'expo-splash-screen'
 import { StatusBar } from 'expo-status-bar'
-import React, { useEffect, useState } from 'react'
-import { useColorScheme } from 'react-native'
+import { useEffect, useState } from 'react'
 import AppTabs from '@/components/app-tabs'
 import { initI18n } from '@/features/app-init/init-i18n'
 import { initNetwork } from '@/features/app-init/init-network'
+import { useColorScheme } from '@/hooks/use-color-scheme'
 import { I18nProvider } from '@/i18n'
 import { PersistentQueryClientProvider } from '@/persistent-query-client'
 
 SplashScreen.preventAutoHideAsync()
 
-export default function TabLayout() {
+export default function RootLayout() {
   const [isReady, setIsReady] = useState(false)
   const colorScheme = useColorScheme()
 

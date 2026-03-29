@@ -6,11 +6,11 @@ export default function AppTabs() {
   const { t } = useLingui()
   return (
     <NativeTabs>
-      <NativeTabs.Trigger name="index">
+      <NativeTabs.Trigger name="(home)">
         <NativeTabs.Trigger.Label>{t`Home`}</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon md="home" sf="house.fill" />
       </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="settings">
+      <NativeTabs.Trigger name="(settings)">
         <NativeTabs.Trigger.Label>{t`Settings`}</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon md="settings" sf="gear" />
       </NativeTabs.Trigger>

@@ -2,7 +2,7 @@ import { queryOptions } from '@tanstack/react-query'
 import { fetch } from 'expo/fetch'
 import { serviceSystem } from './services.system'
 
-export const userServicesQueryKey = (url: string) => {
+export const userServicesQueryOptions = (url: string) => {
   return queryOptions({
     enabled: false,
     queryFn: async ({ signal }) => {
