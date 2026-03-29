@@ -22,7 +22,7 @@ import { useColorScheme } from '@/hooks/use-color-scheme'
 import { useTheme } from '@/hooks/use-theme'
 import { FetchServicesErrorDialog } from './fetch-services-error-dialog'
 import { useServicesUrl } from './hooks/use-services-url'
-import { userServicesQueryKey } from './lib/user-services.queries'
+import { userServicesQueryOptions } from './lib/user-services.queries'
 import { OfflineDialog } from './offline-dialog'
 import ServiceBottomSheet from './service-bottom-sheet'
 
@@ -36,7 +36,7 @@ export default function ServicesView() {
     fetchStatus,
     isFetching,
     refetch,
-  } = useQuery(userServicesQueryKey(deferredUrl))
+  } = useQuery(userServicesQueryOptions(deferredUrl))
   const [selectedServiceId, setSelectedServiceId] = useState<null | string>(
     null,
   )
