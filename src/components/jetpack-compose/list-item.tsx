@@ -29,6 +29,11 @@ export function ListItem({
 
   return (
     <BaseListItem
+      /*
+       * I tried to align the colors with the values from the Material components GitHub page.
+       * @see https://github.com/material-components/material-components-android/blob/master/lib/java/com/google/android/material/listitem/res/values/tokens.xml
+       * But those seem to be a bit different from the ones in the Android settings.
+       */
       colors={{
         containerColor: theme.backgroundElement,
         headlineColor: enabled
