@@ -20,6 +20,7 @@ import * as WebBrowser from 'expo-web-browser'
 import { useEffect, useState } from 'react'
 import { ServiceId } from '@/features/services/lib/service.schema'
 import { isArray } from '@/util/is-type'
+import { useSettings } from '../settings/hooks/use-settings'
 import { useService } from './hooks/use-services'
 
 type ServiceBottomSheetProps = {
@@ -33,6 +34,7 @@ export default function ServiceBottomSheet({
   serviceId,
 }: ServiceBottomSheetProps) {
   const service = useService(serviceId)
+  const { showAppStoreButton, showOpenInBrowserButton } = useSettings()
   const { t } = useLingui()
 
   const [androidAppAvailable, setAndroidAppAvailable] = useState(false)
@@ -82,15 +84,18 @@ export default function ServiceBottomSheet({
             {service.name}
           </Text>
           {children ? children : null}
+
           <FlowRow horizontalArrangement={{ spacedBy: 12 }}>
-            <Button
-              modifiers={[fillMaxWidth()]}
-              onClick={() => openLink(service.url)}
-            >
-              <Text
-                style={{ typography: 'labelLarge' }}
-              >{t`Open in Browser`}</Text>
-            </Button>
+            {showOpenInBrowserButton && (
+              <Button
+                modifiers={[fillMaxWidth()]}
+                onClick={() => openLink(service.url)}
+              >
+                <Text
+                  style={{ typography: 'labelLarge' }}
+                >{t`Open in Browser`}</Text>
+              </Button>
+            )}
 
             {androidAppAvailable && service.packageName && (
               <>
@@ -106,6 +111,7 @@ export default function ServiceBottomSheet({
               </>
             )}
             {service.appStoreLink &&
+              showAppStoreButton &&
               (isArray(service.appStoreLink) ? (
                 service.appStoreLink.map(({ name, url }) => (
                   <Column key={name}>
