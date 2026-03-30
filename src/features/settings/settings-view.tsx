@@ -174,6 +174,17 @@ export default function SettingsView() {
                   )
                 }
               />
+              <ListItem
+                headline="License"
+                icon={require('@/assets/symbols/license.xml')}
+                supportingText="MIT"
+                itemPosition="trailing"
+                onClick={() =>
+                  Linking.openURL(
+                    'https://github.com/SebastianBr11/selfhosted-mobile/blob/main/LICENSE',
+                  )
+                }
+              />
             </Column>
           </LazyColumn>
         </Host>
