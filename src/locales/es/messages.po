@@ -66,7 +66,7 @@ msgstr "Inicio"
 msgid "License"
 msgstr "Licencia"
 
-#: src/features/settings/settings-view.tsx:183
+#: src/features/settings/settings-view.tsx:189
 msgid "MIT"
 msgstr "MIT"
 
@@ -155,7 +155,7 @@ msgstr "Versión desconocida"
 msgid "Version"
 msgstr "Versión"
 
-#: src/features/settings/settings-view.tsx:173
+#: src/features/settings/settings-view.tsx:178
 msgid "View source code on GitHub"
 msgstr "Ver el código fuente en GitHub"
 
