@@ -4,7 +4,7 @@ import { Fonts } from '@/constants/theme'
 import { useTheme } from '@/hooks/use-theme'
 
 export type ThemedTextProps = TextProps & {
-  themeColor?: ThemeColor
+  themeColor?: Exclude<ThemeColor, 'android' | 'ios'>
   type?: keyof typeof styles
 }
 
@@ -18,7 +18,7 @@ export function ThemedText({
 
   return (
     <Text
-      style={[{ color: theme[themeColor ?? 'text'] }, styles[type], style]}
+      style={[{ color: theme[themeColor ?? 'onSurface'] }, styles[type], style]}
       {...rest}
     />
   )

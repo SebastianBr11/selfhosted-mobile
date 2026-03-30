@@ -1,30 +1,47 @@
 import { Color } from 'expo-router'
 import { Platform } from 'react-native'
 
-export const getColors = () =>
-  Platform.select({
-    default: {
-      background: Color.android.dynamic.surface,
-      backgroundElement: Color.android.dynamic.surfaceContainer,
-      backgroundPrimary: Color.android.dynamic.primaryContainer,
-      backgroundSelected: Color.android.dynamic.surfaceContainerHighest,
-      text: Color.android.dynamic.onSurface,
-      textError: Color.android.attr.colorError,
-      textPrimary: Color.android.dynamic.primary,
-      textSecondary: Color.android.dynamic.onSurfaceVariant,
-      textSuccess: Color.android.holo_green_dark,
-    },
-    ios: {
-      background: Color.ios.systemBackground,
-      backgroundElement: Color.ios.secondarySystemBackground,
-      backgroundPrimary: Color.ios.systemBackground,
-      backgroundSelected: Color.ios.tertiarySystemBackground,
-      text: Color.ios.label,
-      textError: Color.ios.systemRed,
-      textPrimary: Color.ios.systemFill,
-      textSecondary: Color.ios.secondaryLabel,
-      textSuccess: Color.ios.systemGreen,
-    },
-  } as const)
+export const getColors = () => {
+  const android = {
+    background: Color.android.dynamic.surfaceContainer,
+    backgroundDim: Color.android.dynamic.surfaceDim,
+    backgroundElement: Color.android.dynamic.surfaceBright,
+    backgroundElementHigh: Color.android.dynamic.surfaceContainerHigh,
+    backgroundElementHighest: Color.android.dynamic.surfaceContainerHighest,
+    backgroundElementLow: Color.android.dynamic.surfaceContainerLow,
+    backgroundElementLowest: Color.android.dynamic.surfaceContainerLowest,
+    backgroundPrimary: Color.android.dynamic.primaryContainer,
+    backgroundSecondary: Color.android.dynamic.secondaryContainer,
+    backgroundTertiary: Color.android.dynamic.tertiaryContainer,
+    onSurface: Color.android.dynamic.onSurface,
+    onSurfaceInverse: Color.android.dynamic.onSurfaceInverse,
+    onSurfaceVariant: Color.android.dynamic.onSurfaceVariant,
+    surface: Color.android.dynamic.surface,
+    textError: Color.android.attr.colorError,
+    textPrimary: Color.android.dynamic.primary,
+    textSecondary: Color.android.dynamic.onSurfaceVariant,
+    textSuccess: Color.android.holo_green_dark,
+  } as const
+  const ios = {
+    background: Color.ios.systemBackground,
+    backgroundElement: Color.ios.secondarySystemBackground,
+    backgroundElementHighest: Color.ios.tertiarySystemBackground,
+    backgroundPrimary: Color.ios.systemBackground,
+    onSurface: Color.ios.label,
+    onSurfaceVariant: Color.ios.secondaryLabel,
+    textError: Color.ios.systemRed,
+    textPrimary: Color.ios.systemFill,
+    textSecondary: Color.ios.secondaryLabel,
+    textSuccess: Color.ios.systemGreen,
+  } as const
+  return {
+    ...Platform.select({
+      default: android,
+      ios,
+    } as const),
+    android,
+    ios,
+  }
+}
 
 export type ThemeColor = keyof ReturnType<typeof getColors>

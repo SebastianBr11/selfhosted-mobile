@@ -5,7 +5,7 @@ import { useTheme } from '@/hooks/use-theme'
 
 export type ThemedViewProps = ViewProps & {
   inlineInset?: boolean
-  type?: ThemeColor
+  type?: Exclude<ThemeColor, 'android' | 'ios'>
 }
 
 export function ThemedView({
@@ -19,8 +19,8 @@ export function ThemedView({
   return (
     <View
       style={[
+        type && { backgroundColor: theme[type] },
         {
-          backgroundColor: theme[type ?? 'background'],
           paddingInline: inlineInset ? InlineInsetMedium : 0,
         },
         style,
