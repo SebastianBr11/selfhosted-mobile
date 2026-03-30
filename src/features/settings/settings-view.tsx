@@ -37,6 +37,9 @@ export default function SettingsView() {
   )
   const { t } = useLingui()
   const {
+    canSetOpenAppDirectly,
+    openAppDirectly,
+    setOpenAppDirectly,
     setShowAppStoreButton,
     setShowOpenInBrowserButton,
     showAppStoreButton,
@@ -135,6 +138,14 @@ export default function SettingsView() {
               onValueChange={setShowOpenInBrowserButton}
               supportingText="Show button to open in browser"
               value={showOpenInBrowserButton}
+            />
+            <SwitchListItem
+              enabled={canSetOpenAppDirectly}
+              headline="Open app directly"
+              icon={require('@/assets/symbols/rocket_launch.xml')}
+              onValueChange={setOpenAppDirectly}
+              supportingText="Open app directly instead of bottom sheet. Only available if the app store button and open in browser button are hidden."
+              value={openAppDirectly}
             />
             <ListItem
               headline="Version"
