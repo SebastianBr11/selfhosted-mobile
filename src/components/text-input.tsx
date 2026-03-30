@@ -16,8 +16,8 @@ export function TextInput({ style, ...otherProps }: TextInputProps) {
     <BaseTextInput
       style={[
         {
-          backgroundColor: theme.backgroundSelected,
-          color: otherProps.editable ? theme.text : theme.textSecondary,
+          backgroundColor: theme.backgroundElement,
+          color: otherProps.editable ? theme.onSurface : theme.textSecondary,
         },
         { borderRadius: 8, height: 48, paddingLeft: 20 },
         style,

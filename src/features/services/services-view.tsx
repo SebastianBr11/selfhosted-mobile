@@ -9,17 +9,16 @@ import { padding } from '@expo/ui/jetpack-compose/modifiers'
 import { Trans } from '@lingui/react/macro'
 import { useQuery } from '@tanstack/react-query'
 import { BlurTargetView, BlurTint, BlurView } from 'expo-blur'
-import { Image } from 'expo-image'
-import { Link, useRouter } from 'expo-router'
+import { useRouter } from 'expo-router'
 import { useRef, useState } from 'react'
-import { FlatList, Pressable, RefreshControl, View } from 'react-native'
+import { FlatList, RefreshControl, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { ThemedText } from '@/components/themed-text'
 import { ThemedView } from '@/components/themed-view'
 import { InlineInsetSmall } from '@/constants/theme'
-import { schemeDependantIcon } from '@/features/services/util'
 import { useColorScheme } from '@/hooks/use-color-scheme'
 import { useTheme } from '@/hooks/use-theme'
+import { ServicesViewItem } from './components/services-view-item'
 import { FetchServicesErrorDialog } from './fetch-services-error-dialog'
 import { useServicesUrl } from './hooks/use-services-url'
 import { userServicesQueryOptions } from './lib/user-services.queries'
@@ -128,58 +127,7 @@ export default function ServicesView() {
               refreshing={isFetching}
             />
           }
-          renderItem={({ item }) => (
-            <Link
-              href={{
-                params: { serviceId: item.id },
-                pathname: '/services/[serviceId]',
-              }}
-              style={{ flex: 1 }}
-            >
-              <ThemedView
-                style={{
-                  alignItems: 'center',
-                  borderRadius: 8,
-                  gap: 8,
-                  padding: 16,
-                  paddingInline: 12,
-                }}
-                type="backgroundElement"
-              >
-                <ThemedView
-                  style={{ aspectRatio: 1, height: 50 }}
-                  type="backgroundElement"
-                >
-                  <Image
-                    contentFit="cover"
-                    source={schemeDependantIcon(scheme, item.iconUrl)}
-                    style={{ flex: 1, width: '100%' }}
-                  />
-                </ThemedView>
-                <ThemedView
-                  style={{
-                    alignItems: 'center',
-                    flexDirection: 'row',
-                    gap: 6,
-                    justifyContent: 'space-around',
-                    marginInline: 18,
-                  }}
-                  type="backgroundElement"
-                >
-                  <ThemedText style={{ textAlign: 'center' }} type="large">
-                    {item.name}
-                  </ThemedText>
-                </ThemedView>
-                <ThemedText
-                  style={{ textAlign: 'center' }}
-                  themeColor="textSecondary"
-                  type="small"
-                >
-                  {item.description}
-                </ThemedText>
-              </ThemedView>
-            </Link>
-          )}
+          renderItem={({ item }) => <ServicesViewItem service={item} />}
         />
       </BlurTargetView>
       <View style={{ bottom: 16, position: 'absolute', right: 16 }}>

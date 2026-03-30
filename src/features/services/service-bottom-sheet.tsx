@@ -5,21 +5,16 @@ import {
   Host,
   ModalBottomSheet,
   OutlinedButton,
-  Shape,
   Spacer,
   Text,
 } from '@expo/ui/jetpack-compose'
-import {
-  fillMaxWidth,
-  padding,
-  Shapes,
-} from '@expo/ui/jetpack-compose/modifiers'
+import { fillMaxWidth, padding } from '@expo/ui/jetpack-compose/modifiers'
 import { useLingui } from '@lingui/react/macro'
-import * as IntentLauncher from 'expo-intent-launcher'
 import * as WebBrowser from 'expo-web-browser'
-import { useEffect, useState } from 'react'
 import { ServiceId } from '@/features/services/lib/service.schema'
 import { isArray } from '@/util/is-type'
+import { useSettings } from '../settings/hooks/use-settings'
+import { useInstalledApp } from './hooks/use-installed-app'
 import { useService } from './hooks/use-services'
 
 type ServiceBottomSheetProps = {
@@ -33,22 +28,9 @@ export default function ServiceBottomSheet({
   serviceId,
 }: ServiceBottomSheetProps) {
   const service = useService(serviceId)
+  const { showAppStoreButton, showOpenInBrowserButton } = useSettings()
+  const { appAvailable, openApp } = useInstalledApp(service?.packageName)
   const { t } = useLingui()
-
-  const [androidAppAvailable, setAndroidAppAvailable] = useState(false)
-
-  useEffect(() => {
-    async function updateAndroidAppAvailable(packageName: string) {
-      try {
-        setAndroidAppAvailable(
-          Boolean(await IntentLauncher.getApplicationIconAsync(packageName)),
-        )
-      } catch {}
-    }
-    if (service?.packageName) {
-      updateAndroidAppAvailable(service.packageName)
-    }
-  }, [service?.packageName])
 
   if (!service) {
     hide()
@@ -57,10 +39,6 @@ export default function ServiceBottomSheet({
 
   function openLink(url: string) {
     WebBrowser.openBrowserAsync(url)
-  }
-
-  function openApp(packageName: string) {
-    IntentLauncher.openApplication(packageName)
   }
 
   return (
@@ -82,23 +60,23 @@ export default function ServiceBottomSheet({
             {service.name}
           </Text>
           {children ? children : null}
-          <FlowRow horizontalArrangement={{ spacedBy: 12 }}>
-            <Button
-              modifiers={[fillMaxWidth()]}
-              onClick={() => openLink(service.url)}
-            >
-              <Text
-                style={{ typography: 'labelLarge' }}
-              >{t`Open in Browser`}</Text>
-            </Button>
 
-            {androidAppAvailable && service.packageName && (
+          <FlowRow horizontalArrangement={{ spacedBy: 12 }}>
+            {showOpenInBrowserButton && (
+              <Button
+                modifiers={[fillMaxWidth()]}
+                onClick={() => openLink(service.url)}
+              >
+                <Text
+                  style={{ typography: 'labelLarge' }}
+                >{t`Open in Browser`}</Text>
+              </Button>
+            )}
+
+            {appAvailable && service.packageName && (
               <>
                 <Spacer modifiers={[padding(0, 6, 0, 6)]} />
-                <Button
-                  modifiers={[fillMaxWidth()]}
-                  onClick={() => openApp(service.packageName!)}
-                >
+                <Button modifiers={[fillMaxWidth()]} onClick={openApp}>
                   <Text
                     style={{ typography: 'labelLarge' }}
                   >{t`Open installed App`}</Text>
@@ -106,6 +84,7 @@ export default function ServiceBottomSheet({
               </>
             )}
             {service.appStoreLink &&
+              showAppStoreButton &&
               (isArray(service.appStoreLink) ? (
                 service.appStoreLink.map(({ name, url }) => (
                   <Column key={name}>
