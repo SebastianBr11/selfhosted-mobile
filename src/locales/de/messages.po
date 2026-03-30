@@ -27,7 +27,7 @@ msgstr "Beim Abrufen deiner Dienste ist ein Fehler aufgetreten. Gehe zu den Eins
 
 #: src/features/settings/settings-view.tsx:133
 msgid "App Store button"
-msgstr ""
+msgstr "Öffne im App Store-Button"
 
 #: src/features/services/offline-dialog.tsx:30
 msgid "Configure network settings"
