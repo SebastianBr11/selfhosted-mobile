@@ -4,10 +4,12 @@ import { storage } from 'stan-js/storage'
 export const { useStore: useSettings } = createStore(
   {
     get canSetOpenAppDirectly() {
-      return !this.showAppStoreButton && !this.showOpenInBrowserButton
+      const { showAppStoreButton, showOpenInBrowserButton } = this
+      return !showAppStoreButton && !showOpenInBrowserButton
     },
     get openAppDirectly() {
-      return this.canSetOpenAppDirectly && this.openAppDirectlyInternal
+      const { canSetOpenAppDirectly, openAppDirectlyInternal } = this
+      return canSetOpenAppDirectly && openAppDirectlyInternal
     },
     openAppDirectlyInternal: storage<boolean>(false),
     showAppStoreButton: storage<boolean>(true),
