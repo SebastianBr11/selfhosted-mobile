@@ -26,6 +26,7 @@ import { InlineInsetMedium } from '@/constants/theme'
 import { useTheme } from '@/hooks/use-theme'
 import { useServicesUrl } from '../services/hooks/use-services-url'
 import { userServicesQueryOptions } from '../services/lib/user-services.queries'
+import * as Linking from 'expo-linking'
 import { useSettings } from './hooks/use-settings'
 
 export default function SettingsView() {
@@ -120,41 +121,60 @@ export default function SettingsView() {
         <Host matchContents>
           <LazyColumn
             modifiers={[paddingAll(InlineInsetMedium)]}
-            verticalArrangement={{ spacedBy: 2 }}
+            verticalArrangement={{ spacedBy: 16 }}
           >
-            <Text color={theme.textPrimary.toString()}>Other settings</Text>
-            <Spacer modifiers={[height(8)]} />
-            <SwitchListItem
-              headline="App Store button"
-              icon={require('@/assets/symbols/store.xml')}
-              itemPosition="leading"
-              onValueChange={setShowAppStoreButton}
-              supportingText="Show App Store button"
-              value={showAppStoreButton}
-            />
-            <SwitchListItem
-              headline="Open in browser button"
-              icon={require('@/assets/symbols/open_in_browser.xml')}
-              onValueChange={setShowOpenInBrowserButton}
-              supportingText="Show button to open in browser"
-              value={showOpenInBrowserButton}
-            />
-            <SwitchListItem
-              enabled={canSetOpenAppDirectly}
-              headline="Open app directly"
-              icon={require('@/assets/symbols/rocket_launch.xml')}
-              onValueChange={setOpenAppDirectly}
-              supportingText="Open app directly instead of bottom sheet. Only available if the app store button and open in browser button are hidden."
-              value={openAppDirectly}
-            />
-            <ListItem
-              headline="Version"
-              icon={require('@/assets/symbols/info.xml')}
-              itemPosition="trailing"
-              supportingText={
-                Application.nativeApplicationVersion || 'Unknown version'
-              }
-            />
+            <Column verticalArrangement={{ spacedBy: 2 }}>
+              <Text color={theme.textPrimary.toString()}>Other settings</Text>
+              <Spacer modifiers={[height(8)]} />
+              <SwitchListItem
+                headline="App Store button"
+                icon={require('@/assets/symbols/store.xml')}
+                itemPosition="leading"
+                onValueChange={setShowAppStoreButton}
+                supportingText="Show App Store button"
+                value={showAppStoreButton}
+              />
+              <SwitchListItem
+                headline="Open in browser button"
+                icon={require('@/assets/symbols/open_in_browser.xml')}
+                onValueChange={setShowOpenInBrowserButton}
+                supportingText="Show button to open in browser"
+                value={showOpenInBrowserButton}
+              />
+              <SwitchListItem
+                enabled={canSetOpenAppDirectly}
+                headline="Open app directly"
+                icon={require('@/assets/symbols/rocket_launch.xml')}
+                onValueChange={setOpenAppDirectly}
+                itemPosition="trailing"
+                supportingText="Open app directly instead of bottom sheet. Only available if the app store button and open in browser button are hidden."
+                value={openAppDirectly}
+              />
+            </Column>
+
+            <Column verticalArrangement={{ spacedBy: 2 }}>
+              <Text color={theme.textPrimary.toString()}>About</Text>
+              <Spacer modifiers={[height(8)]} />
+
+              <ListItem
+                headline="Version"
+                icon={require('@/assets/symbols/info.xml')}
+                itemPosition="leading"
+                supportingText={
+                  Application.nativeApplicationVersion || 'Unknown version'
+                }
+              />
+              <ListItem
+                headline="Source Code"
+                icon={require('@/assets/symbols/code.xml')}
+                supportingText="View source code on GitHub"
+                onClick={() =>
+                  Linking.openURL(
+                    'https://github.com/SebastianBr11/selfhosted-mobile',
+                  )
+                }
+              />
+            </Column>
           </LazyColumn>
         </Host>
       </ScrollView>
