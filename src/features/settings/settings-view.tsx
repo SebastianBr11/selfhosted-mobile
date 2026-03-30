@@ -15,7 +15,9 @@ import {
 import { Trans, useLingui } from '@lingui/react/macro'
 import { useQuery } from '@tanstack/react-query'
 import * as Application from 'expo-application'
+import * as Linking from 'expo-linking'
 import { ScrollView, useColorScheme } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { ListItem } from '@/components/jetpack-compose/list-item'
 import { SwitchListItem } from '@/components/jetpack-compose/switch-list-item'
 import { TextInput } from '@/components/text-input'
@@ -25,9 +27,7 @@ import { InlineInsetMedium } from '@/constants/theme'
 import { useTheme } from '@/hooks/use-theme'
 import { useServicesUrl } from '../services/hooks/use-services-url'
 import { userServicesQueryOptions } from '../services/lib/user-services.queries'
-import * as Linking from 'expo-linking'
 import { useSettings } from './hooks/use-settings'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export default function SettingsView() {
   const theme = useTheme()
@@ -49,7 +49,7 @@ export default function SettingsView() {
   } = useSettings()
 
   return (
-    <ThemedView type="background" style={{ flex: 1, paddingTop: insets.top }}>
+    <ThemedView style={{ flex: 1, paddingTop: insets.top }} type="background">
       <ScrollView>
         <Host colorScheme={colorScheme} matchContents>
           <Column modifiers={[paddingAll(InlineInsetMedium)]}>
@@ -148,8 +148,8 @@ export default function SettingsView() {
                 enabled={canSetOpenAppDirectly}
                 headline={t`Open app directly`}
                 icon={require('@/assets/symbols/rocket_launch.xml')}
-                onValueChange={setOpenAppDirectly}
                 itemPosition="trailing"
+                onValueChange={setOpenAppDirectly}
                 supportingText={t`Open app directly instead of bottom sheet. Only available if the app store button and open in browser button are hidden.`}
                 value={openAppDirectly}
               />
@@ -170,23 +170,23 @@ export default function SettingsView() {
               <ListItem
                 headline={t`Source Code`}
                 icon={require('@/assets/symbols/code.xml')}
-                supportingText={t`View source code on GitHub`}
                 onClick={() =>
                   Linking.openURL(
                     'https://github.com/SebastianBr11/selfhosted-mobile',
                   )
                 }
+                supportingText={t`View source code on GitHub`}
               />
               <ListItem
                 headline={t`License`}
                 icon={require('@/assets/symbols/license.xml')}
-                supportingText={t`MIT`}
                 itemPosition="trailing"
                 onClick={() =>
                   Linking.openURL(
                     'https://github.com/SebastianBr11/selfhosted-mobile/blob/main/LICENSE',
                   )
                 }
+                supportingText={t`MIT`}
               />
             </Column>
           </LazyColumn>
