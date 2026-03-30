@@ -16,7 +16,6 @@ import { Trans, useLingui } from '@lingui/react/macro'
 import { useQuery } from '@tanstack/react-query'
 import * as Application from 'expo-application'
 import { ScrollView, useColorScheme } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import { ListItem } from '@/components/jetpack-compose/list-item'
 import { SwitchListItem } from '@/components/jetpack-compose/switch-list-item'
 import { TextInput } from '@/components/text-input'
@@ -28,10 +27,12 @@ import { useServicesUrl } from '../services/hooks/use-services-url'
 import { userServicesQueryOptions } from '../services/lib/user-services.queries'
 import * as Linking from 'expo-linking'
 import { useSettings } from './hooks/use-settings'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export default function SettingsView() {
   const theme = useTheme()
   const colorScheme = useColorScheme()
+  const insets = useSafeAreaInsets()
   const { errors, setUrl, url, urlFromEnv, valid: urlValid } = useServicesUrl()
   const { error, fetchStatus, isFetching, isSuccess, refetch } = useQuery(
     userServicesQueryOptions(url),
@@ -48,7 +49,7 @@ export default function SettingsView() {
   } = useSettings()
 
   return (
-    <SafeAreaView style={{ backgroundColor: theme.background, flex: 1 }}>
+    <ThemedView type="background" style={{ flex: 1, paddingTop: insets.top }}>
       <ScrollView>
         <Host colorScheme={colorScheme} matchContents>
           <Column modifiers={[paddingAll(InlineInsetMedium)]}>
@@ -189,6 +190,6 @@ export default function SettingsView() {
           </LazyColumn>
         </Host>
       </ScrollView>
-    </SafeAreaView>
+    </ThemedView>
   )
 }
