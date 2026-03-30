@@ -13,11 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/settings/settings-view.tsx:34
+#: src/features/settings/settings-view.tsx:71
 msgid "(from environment)"
 msgstr "(del entorno)"
 
-#: src/features/services/fetch-services-error-dialog.tsx:25
+#: src/features/services/fetch-services-error-dialog.tsx:19
 msgid "An error ocurred"
 msgstr "Ocurrió un error"
 
@@ -25,32 +25,36 @@ msgstr "Ocurrió un error"
 msgid "An error ocurred while fetching your services. Go to settings to see the error details."
 msgstr "Ocurrió un error al obtener tus servicios. Ve a la configuración para ver los detalles del error."
 
-#: src/features/services/offline-dialog.tsx:14
+#: src/features/settings/settings-view.tsx:133
+msgid "App Store button"
+msgstr "Botón de la tienda de aplicaciones"
+
+#: src/features/services/offline-dialog.tsx:30
 msgid "Configure network settings"
 msgstr "Configurar configuración de red"
 
-#: src/features/settings/settings-view.tsx:69
+#: src/features/settings/settings-view.tsx:111
 msgid "Connect to the Internet to fetch new data"
 msgstr "Conéctate a Internet para descargar datos nuevos"
 
-#: src/features/settings/settings-view.tsx:65
+#: src/features/settings/settings-view.tsx:107
 msgid "Connected"
 msgstr "Conectado"
 
-#: src/features/settings/settings-view.tsx:60
+#: src/features/settings/settings-view.tsx:102
 msgid "Connecting..."
 msgstr "Conectando..."
 
-#: src/features/services/fetch-services-error-dialog.tsx:18
-#: src/features/services/offline-dialog.tsx:15
+#: src/features/services/fetch-services-error-dialog.tsx:38
+#: src/features/services/offline-dialog.tsx:35
 msgid "Dismiss"
 msgstr "Descartar"
 
-#: src/features/services/fetch-services-error-dialog.tsx:17
+#: src/features/services/fetch-services-error-dialog.tsx:33
 msgid "Go to settings"
 msgstr "Ir a la configuración"
 
-#: src/features/services/services-view.tsx:55
+#: src/features/services/services-view.tsx:81
 msgid "Go to settings to setup the URL"
 msgstr "Ve a la configuración para configurar la URL"
 
@@ -58,36 +62,72 @@ msgstr "Ve a la configuración para configurar la URL"
 msgid "Home"
 msgstr "Inicio"
 
-#: src/features/settings/settings-view.tsx:65
+#: src/features/settings/settings-view.tsx:181
+msgid "License"
+msgstr "Licencia"
+
+#: src/features/settings/settings-view.tsx:183
+msgid "MIT"
+msgstr "MIT"
+
+#: src/features/settings/settings-view.tsx:107
 msgid "Not Connected"
 msgstr "No Conectado"
 
-#: src/features/services/service-bottom-sheet.tsx:105
+#: src/features/settings/settings-view.tsx:149
+msgid "Open app directly"
+msgstr "Abrir la aplicación directamente"
+
+#: src/features/settings/settings-view.tsx:153
+msgid "Open app directly instead of bottom sheet. Only available if the app store button and open in browser button are hidden."
+msgstr "Abrir la aplicación directamente en lugar de la hoja inferior. Solo disponible si el botón de la tienda de aplicaciones y el botón de abrir en navegador son ocultados."
+
+#: src/features/services/service-bottom-sheet.tsx:98
 msgid "Open in {name}"
 msgstr "Abrir en {name}"
 
-#: src/features/services/service-bottom-sheet.tsx:117
+#: src/features/services/service-bottom-sheet.tsx:111
 msgid "Open in App Store"
 msgstr "Abrir en tienda de aplicaciones"
 
-#: src/features/services/service-bottom-sheet.tsx:81
+#: src/features/services/service-bottom-sheet.tsx:72
 msgid "Open in Browser"
 msgstr "Abrir en navegador"
 
-#: src/features/services/service-bottom-sheet.tsx:91
+#: src/features/settings/settings-view.tsx:141
+msgid "Open in browser button"
+msgstr "Botón de abrir en navegador"
+
+#: src/features/services/service-bottom-sheet.tsx:82
 msgid "Open installed App"
 msgstr "Abrir aplicación instalada"
 
-#: src/features/settings/settings-view.tsx:31
+#: src/features/settings/settings-view.tsx:130
+msgid "Other settings"
+msgstr "Otras configuraciones"
+
+#: src/features/settings/settings-view.tsx:68
 msgid "Services URL "
 msgstr "URL de servicios "
 
 #: src/components/app-tabs.tsx:14
-#: src/features/settings/settings-view.tsx:25
+#: src/features/settings/settings-view.tsx:60
 msgid "Settings"
 msgstr "Configuración"
 
-#: src/features/settings/settings-view.tsx:54
+#: src/features/settings/settings-view.tsx:137
+msgid "Show App Store button"
+msgstr "Mostrar botón de la tienda de aplicaciones"
+
+#: src/features/settings/settings-view.tsx:144
+msgid "Show button to open in browser"
+msgstr "Mostrar botón para abrir en navegador"
+
+#: src/features/settings/settings-view.tsx:171
+msgid "Source Code"
+msgstr "Código fuente"
+
+#: src/features/settings/settings-view.tsx:96
 msgid "Test connection"
 msgstr "Probar conexión"
 
@@ -107,14 +147,30 @@ msgstr "La URL \"{received}\" es inválida."
 msgid "Unknown service ID \"{id}\". Service name, description and icon URL are required for custom services."
 msgstr "ID de servicio desconocido \"{id}\". Se requieren el nombre, la descripción y la URL del icono para los servicios personalizados."
 
-#: src/features/services/offline-dialog.tsx:24
+#: src/features/settings/settings-view.tsx:167
+msgid "Unknown version"
+msgstr "Versión desconocida"
+
+#: src/features/settings/settings-view.tsx:163
+msgid "Version"
+msgstr "Versión"
+
+#: src/features/settings/settings-view.tsx:173
+msgid "View source code on GitHub"
+msgstr "Ver el código fuente en GitHub"
+
+#: src/features/services/services-view.tsx:70
+msgid "You have no services yet"
+msgstr "No tienes servicios todavía"
+
+#: src/features/services/offline-dialog.tsx:14
 msgid "You're offline"
 msgstr "Estás desconectado"
 
-#: src/features/services/offline-dialog.tsx:23
+#: src/features/services/offline-dialog.tsx:19
 msgid "You're offline. Check your network connection and try again."
 msgstr "Estás desconectado. Comprueba tu conexión a Internet e inténtalo de nuevo."
 
-#: src/features/services/services-view.tsx:91
+#: src/features/services/services-view.tsx:119
 msgid "Your Services"
 msgstr "Tus servicios"

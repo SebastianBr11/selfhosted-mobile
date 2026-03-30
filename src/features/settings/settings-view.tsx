@@ -125,30 +125,32 @@ export default function SettingsView() {
             verticalArrangement={{ spacedBy: 16 }}
           >
             <Column verticalArrangement={{ spacedBy: 2 }}>
-              <Text color={theme.textPrimary.toString()}>Other settings</Text>
+              <Text
+                color={theme.textPrimary.toString()}
+              >{t`Other settings`}</Text>
               <Spacer modifiers={[height(8)]} />
               <SwitchListItem
-                headline="App Store button"
+                headline={t`App Store button`}
                 icon={require('@/assets/symbols/store.xml')}
                 itemPosition="leading"
                 onValueChange={setShowAppStoreButton}
-                supportingText="Show App Store button"
+                supportingText={t`Show App Store button`}
                 value={showAppStoreButton}
               />
               <SwitchListItem
-                headline="Open in browser button"
+                headline={t`Open in browser button`}
                 icon={require('@/assets/symbols/open_in_browser.xml')}
                 onValueChange={setShowOpenInBrowserButton}
-                supportingText="Show button to open in browser"
+                supportingText={t`Show button to open in browser`}
                 value={showOpenInBrowserButton}
               />
               <SwitchListItem
                 enabled={canSetOpenAppDirectly}
-                headline="Open app directly"
+                headline={t`Open app directly`}
                 icon={require('@/assets/symbols/rocket_launch.xml')}
                 onValueChange={setOpenAppDirectly}
                 itemPosition="trailing"
-                supportingText="Open app directly instead of bottom sheet. Only available if the app store button and open in browser button are hidden."
+                supportingText={t`Open app directly instead of bottom sheet. Only available if the app store button and open in browser button are hidden.`}
                 value={openAppDirectly}
               />
             </Column>
@@ -158,17 +160,17 @@ export default function SettingsView() {
               <Spacer modifiers={[height(8)]} />
 
               <ListItem
-                headline="Version"
+                headline={t`Version`}
                 icon={require('@/assets/symbols/info.xml')}
                 itemPosition="leading"
                 supportingText={
-                  Application.nativeApplicationVersion || 'Unknown version'
+                  Application.nativeApplicationVersion || t`Unknown version`
                 }
               />
               <ListItem
-                headline="Source Code"
+                headline={t`Source Code`}
                 icon={require('@/assets/symbols/code.xml')}
-                supportingText="View source code on GitHub"
+                supportingText={t`View source code on GitHub`}
                 onClick={() =>
                   Linking.openURL(
                     'https://github.com/SebastianBr11/selfhosted-mobile',
@@ -176,9 +178,9 @@ export default function SettingsView() {
                 }
               />
               <ListItem
-                headline="License"
+                headline={t`License`}
                 icon={require('@/assets/symbols/license.xml')}
-                supportingText="MIT"
+                supportingText={t`MIT`}
                 itemPosition="trailing"
                 onClick={() =>
                   Linking.openURL(
