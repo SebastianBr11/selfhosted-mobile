@@ -14,10 +14,17 @@ export const { useStore: useSettings } = createStore(
     openAppDirectlyInternal: storage<boolean>(false),
     showAppStoreButton: storage<boolean>(true),
     showOpenInBrowserButton: storage<boolean>(true),
+    get useLocalSource() {
+      return !this.useRemoteSource
+    },
+    useRemoteSource: storage<boolean>(false),
   },
   ({ actions }) => ({
     setOpenAppDirectly(openAppDirectly: boolean) {
       actions.setOpenAppDirectlyInternal(openAppDirectly)
+    },
+    setUseLocalSource(useLocalSource: boolean) {
+      actions.setUseRemoteSource(!useLocalSource)
     },
   }),
 )
