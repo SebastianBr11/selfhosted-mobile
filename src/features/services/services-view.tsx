@@ -84,7 +84,7 @@ export default function ServicesView() {
         <Host matchContents>
           <Button
             contentPadding={{ bottom: 16, end: 32, start: 32, top: 16 }}
-            onClick={() => router.navigate('/(settings)')}
+            onClick={() => router.navigate('/settings')}
           >
             <Text style={{ fontSize: 24, fontWeight: '500' }}>Setup URL</Text>
             <Icon

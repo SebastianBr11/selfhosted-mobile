@@ -27,7 +27,7 @@ export function FetchServicesErrorDialog({
           <TextButton
             onClick={() => {
               hide()
-              router.navigate('/(settings)')
+              router.navigate('/settings')
             }}
           >
             <Text>{t`Go to settings`}</Text>
