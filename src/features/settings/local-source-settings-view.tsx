@@ -1,4 +1,5 @@
 import {
+  Box,
   Column,
   Host,
   LazyColumn,
@@ -9,7 +10,9 @@ import {
 import {
   align,
   clip,
-  paddingAll,
+  fillMaxHeight,
+  fillMaxSize,
+  padding,
   Shapes,
 } from '@expo/ui/jetpack-compose/modifiers'
 import { Image } from 'expo-image'
@@ -51,7 +54,7 @@ export function LocalSourceSettingsView() {
 
   return (
     <Host matchContents style={{ flex: 1 }}>
-      <Column horizontalAlignment="center">
+      <LazyColumn horizontalAlignment="center" modifiers={[fillMaxHeight()]}>
         <Row>
           <Text
             color={theme.onSurface.toString()}
@@ -61,33 +64,35 @@ export function LocalSourceSettingsView() {
             Choose services
           </Text>
         </Row>
-        <LazyColumn
-          modifiers={[paddingAll(16), clip(Shapes.RoundedCorner(16))]}
-          verticalArrangement={{ spacedBy: 2 }}
-        >
-          {builtInServices.map((service) => (
-            <SwitchListItem
-              headline={service.name}
-              key={service.id}
-              onClick={() => toggleServiceOrNavigate(service.id)}
-              onValueChange={() => toggleService(service.id)}
-              supportingText={service.description}
-              value={selectedServices[service.id]}
-            >
-              <SwitchListItem.Leading>
-                <RNHostView matchContents>
-                  <Image
-                    contentFit="cover"
-                    key={service.id}
-                    source={schemeDependantIcon(colorScheme, service.iconUrl)}
-                    style={{ height: 24, width: 24 }}
-                  />
-                </RNHostView>
-              </SwitchListItem.Leading>
-            </SwitchListItem>
-          ))}
-        </LazyColumn>
-      </Column>
+        <Box modifiers={[fillMaxSize(), padding(16, 16, 16, 310)]}>
+          <Column
+            modifiers={[clip(Shapes.RoundedCorner(16)), fillMaxHeight()]}
+            verticalArrangement={{ spacedBy: 2 }}
+          >
+            {builtInServices.map((service) => (
+              <SwitchListItem
+                headline={service.name}
+                key={service.id}
+                onClick={() => toggleServiceOrNavigate(service.id)}
+                onValueChange={() => toggleService(service.id)}
+                supportingText={service.description}
+                value={selectedServices[service.id]}
+              >
+                <SwitchListItem.Leading>
+                  <RNHostView matchContents>
+                    <Image
+                      contentFit="cover"
+                      key={service.id}
+                      source={schemeDependantIcon(colorScheme, service.iconUrl)}
+                      style={{ height: 24, width: 24 }}
+                    />
+                  </RNHostView>
+                </SwitchListItem.Leading>
+              </SwitchListItem>
+            ))}
+          </Column>
+        </Box>
+      </LazyColumn>
     </Host>
   )
 }
