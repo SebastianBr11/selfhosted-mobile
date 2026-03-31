@@ -11,8 +11,8 @@ type ListItemProps = {
   children?: React.ReactNode
   enabled?: boolean
   headline: string
-  icon: React.ComponentProps<typeof Icon>['source']
   itemPosition?: ItemPosition
+  leadingIcon?: React.ComponentProps<typeof Icon>['source']
   onClick?: () => void
   supportingText: string
 }
@@ -20,8 +20,8 @@ export function ListItem({
   children = null,
   enabled = true,
   headline,
-  icon,
   itemPosition,
+  leadingIcon,
   onClick,
   supportingText,
 }: ListItemProps) {
@@ -51,16 +51,18 @@ export function ListItem({
       ]}
       supportingText={supportingText}
     >
-      <BaseListItem.Leading>
-        <Icon
-          source={icon}
-          tintColor={
-            enabled
-              ? theme.onSurfaceVariant
-              : withOpacity(theme.onSurfaceVariant, 0.38)
-          }
-        />
-      </BaseListItem.Leading>
+      {leadingIcon && (
+        <BaseListItem.Leading>
+          <Icon
+            source={leadingIcon}
+            tintColor={
+              enabled
+                ? theme.onSurfaceVariant
+                : withOpacity(theme.onSurfaceVariant, 0.38)
+            }
+          />
+        </BaseListItem.Leading>
+      )}
       {children}
     </BaseListItem>
   )
@@ -68,3 +70,4 @@ export function ListItem({
 
 ListItem.Leading = BaseListItem.Leading
 ListItem.Trailing = BaseListItem.Trailing
+ListItem.SupportingContent = BaseListItem.SupportingContent
