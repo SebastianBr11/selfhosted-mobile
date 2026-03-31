@@ -17,27 +17,30 @@ import {
 } from '@expo/ui/jetpack-compose/modifiers'
 import { Image } from 'expo-image'
 import { useRouter } from 'expo-router'
-import { useState } from 'react'
 import { useColorScheme } from 'react-native'
 import { SwitchListItem } from '@/components/jetpack-compose/switch-list-item'
 import { ServiceId } from '@/features/services/lib/service.schema'
 import { serviceSystem } from '@/features/services/lib/services.system'
 import { schemeDependantIcon } from '@/features/services/util'
 import { useTheme } from '@/hooks/use-theme'
+import { useLocalServices } from './lib/local-servies'
 
 export function LocalSourceSettingsView() {
   const theme = useTheme()
   const colorScheme = useColorScheme()
   const router = useRouter()
 
-  const [selectedServices, setSelectedServices] = useState(
-    {} as Record<ServiceId, boolean>,
-  )
+  const { addServiceById, removeServiceById, servicesIdsSet } =
+    useLocalServices()
   const builtInServices = serviceSystem.builtIns
 
+  function hasServiceById(serviceId: ServiceId) {
+    return servicesIdsSet.has(serviceId)
+  }
+
   function toggleServiceOrNavigate(serviceId: ServiceId) {
-    if (!selectedServices[serviceId]) {
-      toggleService(serviceId)
+    if (!hasServiceById(serviceId)) {
+      addServiceById(serviceId)
     }
     router.navigate({
       params: { serviceId: serviceId },
@@ -46,10 +49,11 @@ export function LocalSourceSettingsView() {
   }
 
   function toggleService(serviceId: ServiceId) {
-    setSelectedServices((prevSelectedServices) => ({
-      ...prevSelectedServices,
-      [serviceId]: !prevSelectedServices[serviceId],
-    }))
+    if (hasServiceById(serviceId)) {
+      removeServiceById(serviceId)
+    } else {
+      addServiceById(serviceId)
+    }
   }
 
   return (
@@ -76,7 +80,7 @@ export function LocalSourceSettingsView() {
                 onClick={() => toggleServiceOrNavigate(service.id)}
                 onValueChange={() => toggleService(service.id)}
                 supportingText={service.description}
-                value={selectedServices[service.id]}
+                value={hasServiceById(service.id)}
               >
                 <SwitchListItem.Leading>
                   <RNHostView matchContents>

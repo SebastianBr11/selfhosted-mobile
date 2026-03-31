@@ -27,6 +27,7 @@ export default function MoreSettingsView() {
     showAppStoreButton,
     showOpenInBrowserButton,
   } = useSettings()
+
   return (
     <Host matchContents>
       <LazyColumn

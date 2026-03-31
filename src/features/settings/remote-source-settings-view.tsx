@@ -8,13 +8,13 @@ import { ThemedText } from '@/components/themed-text'
 import { ThemedView } from '@/components/themed-view'
 import { InlineInsetMedium } from '@/constants/theme'
 import { useServicesUrl } from '../services/hooks/use-services-url'
-import { userServicesQueryOptions } from '../services/lib/user-services.queries'
+import { remoteServicesQueryOptions } from '../services/lib/user-services.queries'
 
 export default function RemoteSourceSettingsView() {
   const colorScheme = useColorScheme()
   const { errors, setUrl, url, urlFromEnv, valid: urlValid } = useServicesUrl()
   const { error, fetchStatus, isFetching, isSuccess, refetch } = useQuery(
-    userServicesQueryOptions(url),
+    remoteServicesQueryOptions(url),
   )
   const { t } = useLingui()
 

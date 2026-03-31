@@ -15,7 +15,7 @@ import { ServiceId } from '@/features/services/lib/service.schema'
 import { isArray } from '@/util/is-type'
 import { useSettings } from '../settings/hooks/use-settings'
 import { useInstalledApp } from './hooks/use-installed-app'
-import { useService } from './hooks/use-services'
+import { useService } from './hooks/use-service'
 
 type ServiceBottomSheetProps = {
   children?: React.ReactNode
