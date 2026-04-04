@@ -119,6 +119,7 @@ export default function ServicesView() {
           numColumns={2}
           refreshControl={
             <RefreshControl
+              enabled={remote}
               onRefresh={tryFetchServices}
               progressViewOffset={insets.top}
               refreshing={isFetching ?? false}
