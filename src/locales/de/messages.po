@@ -156,7 +156,7 @@ msgstr "Dienst-URL"
 msgid "Services URL "
 msgstr "Dienste-URL "
 
-#: src/app/settings/(services-source)/_layout.tsx:65
+#: src/app/settings/(services-source)/_layout.tsx:64
 #: src/components/app-tabs.tsx:14
 msgid "Settings"
 msgstr "Einstellungen"
@@ -201,11 +201,11 @@ msgstr "Unbekannte Service-ID \"{id}\". Für benutzerdefinierte Services sind de
 msgid "Unknown version"
 msgstr "Unbekannte Version"
 
-#: src/app/settings/(services-source)/_layout.tsx:84
+#: src/app/settings/(services-source)/_layout.tsx:83
 msgid "Use local source"
 msgstr "Lokale Dienste"
 
-#: src/app/settings/(services-source)/_layout.tsx:85
+#: src/app/settings/(services-source)/_layout.tsx:84
 msgid "Use remote source"
 msgstr "Remote-Dienste"
 

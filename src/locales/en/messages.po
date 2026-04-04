@@ -168,7 +168,7 @@ msgstr "Service URL"
 msgid "Services URL "
 msgstr "Services URL "
 
-#: src/app/settings/(services-source)/_layout.tsx:65
+#: src/app/settings/(services-source)/_layout.tsx:64
 #: src/components/app-tabs.tsx:14
 msgid "Settings"
 msgstr "Settings"
@@ -213,11 +213,11 @@ msgstr "Unknown service ID \"{id}\". Service name, description and icon URL are 
 msgid "Unknown version"
 msgstr "Unknown version"
 
-#: src/app/settings/(services-source)/_layout.tsx:84
+#: src/app/settings/(services-source)/_layout.tsx:83
 msgid "Use local source"
 msgstr "Use local source"
 
-#: src/app/settings/(services-source)/_layout.tsx:85
+#: src/app/settings/(services-source)/_layout.tsx:84
 msgid "Use remote source"
 msgstr "Use remote source"
 

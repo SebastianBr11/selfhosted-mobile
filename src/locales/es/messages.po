@@ -156,7 +156,7 @@ msgstr "URL del servicio"
 msgid "Services URL "
 msgstr "URL de servicios "
 
-#: src/app/settings/(services-source)/_layout.tsx:65
+#: src/app/settings/(services-source)/_layout.tsx:64
 #: src/components/app-tabs.tsx:14
 msgid "Settings"
 msgstr "Configuración"
@@ -201,11 +201,11 @@ msgstr "ID de servicio desconocido \"{id}\". Se requieren el nombre, la descripc
 msgid "Unknown version"
 msgstr "Versión desconocida"
 
-#: src/app/settings/(services-source)/_layout.tsx:84
+#: src/app/settings/(services-source)/_layout.tsx:83
 msgid "Use local source"
 msgstr "Usar fuente local"
 
-#: src/app/settings/(services-source)/_layout.tsx:85
+#: src/app/settings/(services-source)/_layout.tsx:84
 msgid "Use remote source"
 msgstr "Usar fuente remota"
 
