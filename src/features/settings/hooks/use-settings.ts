@@ -17,12 +17,14 @@ export const { useStore: useSettings } = createStore(
     get useLocalSource() {
       return !this.useRemoteSource
     },
+    /** Only set in layout file! */
     useRemoteSource: storage<boolean>(false),
   },
   ({ actions }) => ({
     setOpenAppDirectly(openAppDirectly: boolean) {
       actions.setOpenAppDirectlyInternal(openAppDirectly)
     },
+    /** Only use in layout file! */
     setUseLocalSource(useLocalSource: boolean) {
       actions.setUseRemoteSource(!useLocalSource)
     },
