@@ -1,4 +1,13 @@
-import { Button, Host, Text } from '@expo/ui/jetpack-compose'
+import {
+  AnimatedVisibility,
+  Button,
+  EnterTransition,
+  ExitTransition,
+  FilledTonalButton,
+  Host,
+  LinearWavyProgressIndicator,
+  Text,
+} from '@expo/ui/jetpack-compose'
 import { fillMaxWidth, padding } from '@expo/ui/jetpack-compose/modifiers'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { useQuery } from '@tanstack/react-query'
@@ -54,12 +63,22 @@ export default function RemoteSourceSettingsView() {
                 >{t`Test connection`}</Text>
               </Button>
             </Host>
-            <ThemedView inlineInset>
-              {isFetching ? (
-                <ThemedText type="small">
-                  <Trans>Connecting...</Trans>
-                </ThemedText>
-              ) : (
+            <ThemedView inlineInset style={{ height: 32 }}>
+              <Host
+                style={{
+                  height: 16,
+                  marginBottom: 8,
+                  position: 'absolute',
+                  width: '100%',
+                  left: InlineInsetMedium,
+                  right: InlineInsetMedium,
+                }}
+              >
+                <AnimatedVisibility visible={isFetching}>
+                  <LinearWavyProgressIndicator />
+                </AnimatedVisibility>
+              </Host>
+              {fetchStatus !== 'fetching' && (
                 <>
                   <ThemedText type={isSuccess ? 'success' : 'error'}>
                     {isSuccess ? t`Connected` : t`Not Connected`}
