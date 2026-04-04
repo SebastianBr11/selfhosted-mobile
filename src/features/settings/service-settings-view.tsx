@@ -77,6 +77,6 @@ export default function ServiceSettingsView({
 const styles = StyleSheet.create({
   container: {
     gap: 16,
-    marginTop: 16,
+    marginVertical: 16,
   },
 })
