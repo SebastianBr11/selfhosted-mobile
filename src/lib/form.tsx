@@ -8,8 +8,13 @@ const { fieldContext, formContext, useFieldContext } = createFormHookContexts()
 type FormTextInputProps = {
   disabled?: boolean
   label: string
+  multiline?: boolean
 }
-function FormTextInput({ disabled = false, label }: FormTextInputProps) {
+function FormTextInput({
+  disabled = false,
+  label,
+  multiline = false,
+}: FormTextInputProps) {
   const field = useFieldContext<string>()
 
   return (
@@ -17,6 +22,7 @@ function FormTextInput({ disabled = false, label }: FormTextInputProps) {
       <Label disabled={disabled}>{label}</Label>
       <TextInput
         editable={!disabled}
+        multiline={multiline}
         onBlur={field.handleBlur}
         onChangeText={field.handleChange}
         value={field.state.value}

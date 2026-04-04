@@ -45,7 +45,7 @@ export default function ServiceSettingsView({
           {(field) => <field.FormTextInput label={t`Service URL`} />}
         </form.AppField>
         <form.AppField name="description">
-          {(field) => <field.FormTextInput label={t`Description`} />}
+          {(field) => <field.FormTextInput label={t`Description`} multiline />}
         </form.AppField>
         <form.AppField name="appStoreLink">
           {(field) => (
