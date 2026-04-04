@@ -72,6 +72,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         supportedLocales: ['de', 'en', 'es'],
       },
     ],
+    "expo-sharing"
   ],
   experiments: {
     typedRoutes: true,
