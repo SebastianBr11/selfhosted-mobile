@@ -1,5 +1,16 @@
-import { Slot } from 'expo-router'
+import { Stack } from 'expo-router'
+import { useTheme } from '@/hooks/use-theme'
 
 export default function ServiceSettingsScreen() {
-  return <Slot />
+  const theme = useTheme()
+  return (
+    <Stack>
+      <Stack.Screen name="[serviceId]">
+        <Stack.Header
+          hidden={false}
+          style={{ backgroundColor: theme.background }}
+        />
+      </Stack.Screen>
+    </Stack>
+  )
 }

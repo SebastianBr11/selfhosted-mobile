@@ -23,12 +23,7 @@ export default function SettingsLayout() {
         />
         <Stack.Screen.Title>More settings</Stack.Screen.Title>
       </Stack.Screen>
-      <Stack.Screen name="service-settings">
-        <Stack.Header
-          hidden={false}
-          style={{ backgroundColor: theme.background }}
-        />
-      </Stack.Screen>
+      <Stack.Screen name="service-settings" />
     </Stack>
   )
 }
