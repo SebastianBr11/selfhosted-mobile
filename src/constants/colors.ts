@@ -17,10 +17,10 @@ export const getColors = () => {
     onSurfaceInverse: Color.android.dynamic.onSurfaceInverse,
     onSurfaceVariant: Color.android.dynamic.onSurfaceVariant,
     surface: Color.android.dynamic.surface,
-    textError: Color.android.attr.colorError,
+    textError: '#dc2626',
     textPrimary: Color.android.dynamic.primary,
     textSecondary: Color.android.dynamic.onSurfaceVariant,
-    textSuccess: Color.android.holo_green_dark,
+    textSuccess: '#28A745',
   } as const
   const ios = {
     background: Color.ios.systemBackground,

@@ -1,14 +1,82 @@
-import { ThemedText } from '@/components/themed-text'
+import { ScrollView, StyleSheet } from 'react-native'
+import { ThemedView } from '@/components/themed-view'
+import { useAppForm } from '@/lib/form'
+import { isString } from '@/util/is-type'
+import { Service, ServiceSchema } from '../services/lib/service.schema'
 
 type ServiceSettingsViewProps = {
-  serviceId: string
+  builtIn: Service
+  service: Service
+  updateService: (service: Partial<Service>) => void
 }
 export default function ServiceSettingsView({
-  serviceId,
+  builtIn,
+  service,
+  updateService,
 }: ServiceSettingsViewProps) {
+  const form = useAppForm({
+    defaultValues: {
+      ...service,
+    },
+    listeners: {
+      onChange({ fieldApi }) {
+        if (fieldApi.state.meta.isValid) {
+          updateService({
+            [fieldApi.name]:
+              fieldApi.state.value ||
+              builtIn[fieldApi.name as keyof typeof builtIn],
+          })
+        }
+      },
+    },
+    validators: {
+      onChange: ServiceSchema,
+    },
+  })
   return (
-    <>
-      <ThemedText>Service {serviceId}</ThemedText>
-    </>
+    <ScrollView>
+      <ThemedView inlineInset style={styles.container}>
+        <form.AppField name="name">
+          {(field) => <field.FormTextInput label="Name" />}
+        </form.AppField>
+        <form.AppField name="url">
+          {(field) => <field.FormTextInput label="URL" />}
+        </form.AppField>
+        <form.AppField name="description">
+          {(field) => <field.FormTextInput label="Description" />}
+        </form.AppField>
+        <form.AppField mode="array" name="appStoreLink">
+          {(field) => (
+            <field.FormTextInput
+              disabled={
+                !(
+                  isString(service.appStoreLink) ||
+                  service.appStoreLink === undefined
+                )
+              }
+              label="App Store Link"
+            />
+          )}
+        </form.AppField>
+        <form.AppField name="iconUrl">
+          {(field) => (
+            <field.FormTextInput
+              disabled={!isString(service.iconUrl)}
+              label="Icon URL"
+            />
+          )}
+        </form.AppField>
+        <form.AppField name="packageName">
+          {(field) => <field.FormTextInput label="Android Package Name" />}
+        </form.AppField>
+      </ThemedView>
+    </ScrollView>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    gap: 16,
+    marginTop: 16,
+  },
+})

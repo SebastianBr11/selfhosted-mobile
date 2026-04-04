@@ -29,10 +29,28 @@ export const { useStore: useLocalServices } = createStore(
         prevServices.filter((service) => service.id !== serviceId),
       )
     },
+    updateService(service: Partial<Service> & { id: ServiceId }) {
+      actions.setServices((prevServices) =>
+        prevServices.map((prevService) => {
+          if (prevService.id === service.id) {
+            return {
+              ...prevService,
+              ...service,
+            }
+          }
+          return prevService
+        }),
+      )
+    },
   }),
 )
 
 export const useLocalService = (serviceId: string) => {
-  const { services } = useLocalServices()
-  return services.find((service) => service.id === serviceId)
+  const { services, updateService } = useLocalServices()
+  const service = services.find((service) => service.id === serviceId)
+  return {
+    service,
+    updateService: (service: Partial<Service>) =>
+      updateService({ ...service, id: serviceId }),
+  }
 }
