@@ -33,7 +33,7 @@ export function ConvertToLocalSourceDialog({
         <AlertDialog.Title>
           <Text
             style={{ typography: 'titleLarge' }}
-          >{t`Convert to local source?`}</Text>
+          >{t`Convert to local services?`}</Text>
         </AlertDialog.Title>
         <AlertDialog.Text>
           <Text
@@ -47,7 +47,7 @@ export function ConvertToLocalSourceDialog({
               convertToLocalSourceSettings()
             }}
           >
-            <Text>{t`Convert to local source`}</Text>
+            <Text>{t`Convert to local services`}</Text>
           </TextButton>
         </AlertDialog.ConfirmButton>
         <AlertDialog.DismissButton>

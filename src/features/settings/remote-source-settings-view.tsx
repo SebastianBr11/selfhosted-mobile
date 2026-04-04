@@ -111,7 +111,7 @@ export default function RemoteSourceSettingsView() {
                 onClick={() => setShowConvertToLocalSourceDialog(true)}
               >
                 <Text style={{ typography: 'labelLarge' }}>
-                  Use as local source
+                  {t`Convert to local services`}
                 </Text>
               </FilledTonalButton>
             </AnimatedVisibility>

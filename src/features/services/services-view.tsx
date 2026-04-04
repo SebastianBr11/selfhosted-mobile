@@ -6,7 +6,7 @@ import {
   Text,
 } from '@expo/ui/jetpack-compose'
 import { padding } from '@expo/ui/jetpack-compose/modifiers'
-import { Trans } from '@lingui/react/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { BlurTargetView, BlurTint, BlurView } from 'expo-blur'
 import { useRouter } from 'expo-router'
 import { useRef, useState } from 'react'
@@ -23,6 +23,7 @@ import { useServices } from './hooks/use-services'
 import { OfflineDialog } from './offline-dialog'
 
 export default function ServicesView() {
+  const { t } = useLingui()
   const router = useRouter()
   const scheme = useColorScheme()
   const theme = useTheme()
@@ -80,7 +81,9 @@ export default function ServicesView() {
             contentPadding={{ bottom: 16, end: 32, start: 32, top: 16 }}
             onClick={() => router.navigate('/settings')}
           >
-            <Text style={{ fontSize: 24, fontWeight: '500' }}>Setup URL</Text>
+            <Text
+              style={{ fontSize: 24, fontWeight: '500' }}
+            >{t`Setup URL`}</Text>
             <Icon
               modifiers={[padding(4, 0, 0, 0)]}
               source={require('@/assets/symbols/edit.xml')}

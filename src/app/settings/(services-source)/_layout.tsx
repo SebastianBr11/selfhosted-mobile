@@ -13,6 +13,7 @@ import {
   weight,
 } from '@expo/ui/jetpack-compose/modifiers'
 import { t } from '@lingui/core/macro'
+import { useLingui } from '@lingui/react/macro'
 import { useRouter } from 'expo-router'
 import { useColorScheme } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -27,6 +28,7 @@ export default function ServicesSourceSettingsLayout() {
   const theme = useTheme()
   const colorScheme = useColorScheme()
   const router = useRouter()
+  const { t } = useLingui()
 
   const { setUseLocalSource, setUseRemoteSource, useRemoteSource } =
     useSettings()
@@ -79,8 +81,8 @@ export default function ServicesSourceSettingsLayout() {
                   const isLocalSourceRoute =
                     route.name === 'local-source-settings'
                   const label = isLocalSourceRoute
-                    ? 'Use local source'
-                    : 'Use remote source'
+                    ? t`Use local source`
+                    : t`Use remote source`
                   const selected = state.index === index
                   return (
                     <ToggleButton

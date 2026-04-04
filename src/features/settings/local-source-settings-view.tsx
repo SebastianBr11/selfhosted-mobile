@@ -17,6 +17,7 @@ import {
   padding,
   Shapes,
 } from '@expo/ui/jetpack-compose/modifiers'
+import { useLingui } from '@lingui/react/macro'
 import { File, Paths } from 'expo-file-system'
 import { Image } from 'expo-image'
 import { useRouter } from 'expo-router'
@@ -33,6 +34,7 @@ export function LocalSourceSettingsView() {
   const theme = useTheme()
   const colorScheme = useColorScheme()
   const router = useRouter()
+  const { t } = useLingui()
 
   const { addServiceById, removeServiceById, servicesIdsSet } =
     useLocalServices()
@@ -79,7 +81,7 @@ export function LocalSourceSettingsView() {
             modifiers={[align('center')]}
             style={{ typography: 'headlineMedium' }}
           >
-            Choose services
+            {t`Choose services`}
           </Text>
           <IconButton modifiers={[align('topEnd')]} onClick={shareServices}>
             <Icon

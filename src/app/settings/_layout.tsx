@@ -1,8 +1,10 @@
+import { useLingui } from '@lingui/react/macro'
 import { Stack } from 'expo-router'
 import { useTheme } from '@/hooks/use-theme'
 
 export default function SettingsLayout() {
   const theme = useTheme()
+  const { t } = useLingui()
   return (
     <Stack
       screenOptions={{
@@ -21,7 +23,7 @@ export default function SettingsLayout() {
           hidden={false}
           style={{ backgroundColor: theme.background }}
         />
-        <Stack.Screen.Title>More settings</Stack.Screen.Title>
+        <Stack.Screen.Title>{t`More settings`}</Stack.Screen.Title>
       </Stack.Screen>
       <Stack.Screen name="service-settings" />
     </Stack>
