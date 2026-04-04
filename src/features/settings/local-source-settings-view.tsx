@@ -2,9 +2,10 @@ import {
   Box,
   Column,
   Host,
+  Icon,
+  IconButton,
   LazyColumn,
   RNHostView,
-  Row,
   Text,
 } from '@expo/ui/jetpack-compose'
 import {
@@ -12,18 +13,21 @@ import {
   clip,
   fillMaxHeight,
   fillMaxSize,
+  fillMaxWidth,
   padding,
   Shapes,
 } from '@expo/ui/jetpack-compose/modifiers'
+import { File, Paths } from 'expo-file-system'
 import { Image } from 'expo-image'
 import { useRouter } from 'expo-router'
+import { shareAsync } from 'expo-sharing'
 import { useColorScheme } from 'react-native'
 import { SwitchListItem } from '@/components/jetpack-compose/switch-list-item'
 import { ServiceId } from '@/features/services/lib/service.schema'
 import { serviceSystem } from '@/features/services/lib/services.system'
 import { schemeDependantIcon } from '@/features/services/util'
 import { useTheme } from '@/hooks/use-theme'
-import { useLocalServices } from './lib/local-servies'
+import { getLocalServicesState, useLocalServices } from './lib/local-servies'
 
 export function LocalSourceSettingsView() {
   const theme = useTheme()
@@ -56,18 +60,34 @@ export function LocalSourceSettingsView() {
     }
   }
 
+  function shareServices() {
+    const servicesFile = new File(Paths.cache, 'services.json')
+    const services = getLocalServicesState().services
+    servicesFile.write(JSON.stringify({ services }))
+    shareAsync(servicesFile.uri, {
+      dialogTitle: 'Share services',
+      mimeType: 'application/json',
+    })
+  }
+
   return (
     <Host matchContents style={{ flex: 1 }}>
       <LazyColumn horizontalAlignment="center" modifiers={[fillMaxHeight()]}>
-        <Row>
+        <Box modifiers={[padding(16, 0, 16, 0), fillMaxWidth()]}>
           <Text
             color={theme.onSurface.toString()}
-            modifiers={[align('centerVertically')]}
+            modifiers={[align('center')]}
             style={{ typography: 'headlineMedium' }}
           >
             Choose services
           </Text>
-        </Row>
+          <IconButton modifiers={[align('topEnd')]} onClick={shareServices}>
+            <Icon
+              source={require('@/assets/symbols/save.xml')}
+              tintColor={theme.android.textSecondary}
+            />
+          </IconButton>
+        </Box>
         <Box modifiers={[fillMaxSize(), padding(16, 16, 16, 310)]}>
           <Column
             modifiers={[clip(Shapes.RoundedCorner(16)), fillMaxHeight()]}

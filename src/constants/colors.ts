@@ -21,6 +21,7 @@ export const getColors = () => {
     textPrimary: Color.android.dynamic.primary,
     textSecondary: Color.android.dynamic.onSurfaceVariant,
     textSuccess: '#28A745',
+    textTertiary: Color.android.dynamic.onTertiary,
   } as const
   const ios = {
     background: Color.ios.systemBackground,
