@@ -12,7 +12,6 @@ import {
   paddingAll,
   weight,
 } from '@expo/ui/jetpack-compose/modifiers'
-import { t } from '@lingui/core/macro'
 import { useLingui } from '@lingui/react/macro'
 import { useRouter } from 'expo-router'
 import { useColorScheme } from 'react-native'

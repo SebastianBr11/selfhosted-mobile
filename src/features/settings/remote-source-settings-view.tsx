@@ -11,15 +11,15 @@ import {
 import { fillMaxWidth, padding } from '@expo/ui/jetpack-compose/modifiers'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { useQuery } from '@tanstack/react-query'
+import { useState } from 'react'
 import { ScrollView, useColorScheme } from 'react-native'
+import Label from '@/components/label'
 import { TextInput } from '@/components/text-input'
 import { ThemedText } from '@/components/themed-text'
 import { ThemedView } from '@/components/themed-view'
 import { InlineInsetMedium } from '@/constants/theme'
 import { useServicesUrl } from '../services/hooks/use-services-url'
 import { remoteServicesQueryOptions } from '../services/lib/user-services.queries'
-import Label from '@/components/label'
-import { useState } from 'react'
 import { ConvertToLocalSourceDialog } from './convert-to-local-source-dialog'
 
 export default function RemoteSourceSettingsView() {
@@ -71,11 +71,11 @@ export default function RemoteSourceSettingsView() {
               <Host
                 style={{
                   height: 16,
+                  left: InlineInsetMedium,
                   marginBottom: 8,
                   position: 'absolute',
-                  width: '100%',
-                  left: InlineInsetMedium,
                   right: InlineInsetMedium,
+                  width: '100%',
                 }}
               >
                 <AnimatedVisibility visible={isFetching}>

@@ -4,9 +4,9 @@ import { builtInServices } from '@/features/services/lib/builtin'
 import { Service, ServiceId } from '@/features/services/lib/service.schema'
 
 export const {
-  useStore: useLocalServices,
-  getState: getLocalServicesState,
   actions: { setServices: setLocalServices },
+  getState: getLocalServicesState,
+  useStore: useLocalServices,
 } = createStore(
   {
     services: storage<Service[]>([], { storageKey: 'local-services' }),

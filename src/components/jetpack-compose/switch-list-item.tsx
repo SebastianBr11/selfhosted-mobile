@@ -1,10 +1,4 @@
-import {
-  Icon,
-  Row,
-  Spacer,
-  Switch,
-  VerticalDivider,
-} from '@expo/ui/jetpack-compose'
+import { Icon, Row, Spacer, Switch } from '@expo/ui/jetpack-compose'
 import { size, width } from '@expo/ui/jetpack-compose/modifiers'
 import { useTheme } from '@/hooks/use-theme'
 import { withOpacity } from '@/util/jetpack-compose-util'

@@ -1,9 +1,9 @@
+import { useLingui } from '@lingui/react/macro'
 import { ScrollView, StyleSheet } from 'react-native'
 import { ThemedView } from '@/components/themed-view'
 import { useAppForm } from '@/lib/form'
 import { isString } from '@/util/is-type'
 import { Service, ServiceSchema } from '../services/lib/service.schema'
-import { useLingui } from '@lingui/react/macro'
 
 type ServiceSettingsViewProps = {
   builtIn: Service
