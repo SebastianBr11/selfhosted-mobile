@@ -16,10 +16,12 @@ export function TextInput({ style, ...otherProps }: TextInputProps) {
     <BaseTextInput
       style={[
         {
-          backgroundColor: theme.backgroundElement,
+          backgroundColor: otherProps.editable
+            ? theme.backgroundElement
+            : theme.android.backgroundElementHigh,
           color: otherProps.editable ? theme.onSurface : theme.textSecondary,
         },
-        { borderRadius: 8, height: 48, paddingLeft: 20 },
+        { borderRadius: 8, height: 48, paddingHorizontal: 20 },
         style,
       ]}
       {...otherProps}

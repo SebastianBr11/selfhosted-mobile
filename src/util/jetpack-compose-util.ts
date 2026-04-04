@@ -12,6 +12,9 @@ export function cornerRadii(itemPosition: ItemPosition | undefined) {
   }
 }
 
+/**
+ * Only use when supplying colors directly to Jetpack Compose components.
+ */
 export function withOpacity(color: ColorValue, opacity: number): string {
   const decimalOpacity = Math.round(opacity * 255)
   const hexOpacity = decimalOpacity.toString(16).padStart(2, '0')

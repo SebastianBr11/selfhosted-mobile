@@ -13,9 +13,13 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/settings/settings-view.tsx:71
+#: src/features/settings/remote-source-settings-view.tsx:44
 msgid "(from environment)"
 msgstr "(del entorno)"
+
+#: src/app/settings/service-settings/[serviceId].tsx:20
+msgid "{serviceName} Settings"
+msgstr "Configuración de {serviceName}"
 
 #: src/features/services/fetch-services-error-dialog.tsx:19
 msgid "An error ocurred"
@@ -25,28 +29,54 @@ msgstr "Ocurrió un error"
 msgid "An error ocurred while fetching your services. Go to settings to see the error details."
 msgstr "Ocurrió un error al obtener tus servicios. Ve a la configuración para ver los detalles del error."
 
-#: src/features/settings/settings-view.tsx:133
+#: src/features/settings/service-settings-view.tsx:72
+msgid "Android Package Name"
+msgstr "Nombre del paquete de Android"
+
+#: src/features/settings/more-settings-view.tsx:41
 msgid "App Store button"
 msgstr "Botón de la tienda de aplicaciones"
+
+#: src/features/settings/service-settings-view.tsx:59
+msgid "App Store Link"
+msgstr "Enlace a la tienda de aplicaciones"
+
+#: src/features/settings/convert-to-local-source-dialog.tsx:41
+msgid "Are you sure you want to convert the remotely fetched services into locally stored services? This will overwrite any locally stored services. This action cannot be undone."
+msgstr "Estás seguro de querer convertir los servicios obtenidos remotamente en servicios locales? Esto sobreescribirá cualquier servicio local. Esta acción no puede deshacerse."
+
+#: src/features/settings/local-source-settings-view.tsx:84
+msgid "Choose services"
+msgstr "Elegir servicios"
 
 #: src/features/services/offline-dialog.tsx:30
 msgid "Configure network settings"
 msgstr "Configurar configuración de red"
 
-#: src/features/settings/settings-view.tsx:111
+#: src/features/settings/remote-source-settings-view.tsx:92
 msgid "Connect to the Internet to fetch new data"
 msgstr "Conéctate a Internet para descargar datos nuevos"
 
-#: src/features/settings/settings-view.tsx:107
+#: src/features/settings/remote-source-settings-view.tsx:88
 msgid "Connected"
 msgstr "Conectado"
 
-#: src/features/settings/settings-view.tsx:102
-msgid "Connecting..."
-msgstr "Conectando..."
+#: src/features/settings/convert-to-local-source-dialog.tsx:50
+#: src/features/settings/remote-source-settings-view.tsx:114
+msgid "Convert to local services"
+msgstr "Convertir en servicios locales"
+
+#: src/features/settings/convert-to-local-source-dialog.tsx:36
+msgid "Convert to local services?"
+msgstr "Convertir en servicios locales?"
+
+#: src/features/settings/service-settings-view.tsx:48
+msgid "Description"
+msgstr "Descripción"
 
 #: src/features/services/fetch-services-error-dialog.tsx:38
 #: src/features/services/offline-dialog.tsx:35
+#: src/features/settings/convert-to-local-source-dialog.tsx:55
 msgid "Dismiss"
 msgstr "Descartar"
 
@@ -54,7 +84,7 @@ msgstr "Descartar"
 msgid "Go to settings"
 msgstr "Ir a la configuración"
 
-#: src/features/services/services-view.tsx:81
+#: src/features/services/services-view.tsx:76
 msgid "Go to settings to setup the URL"
 msgstr "Ve a la configuración para configurar la URL"
 
@@ -62,23 +92,31 @@ msgstr "Ve a la configuración para configurar la URL"
 msgid "Home"
 msgstr "Inicio"
 
-#: src/features/settings/settings-view.tsx:181
+#: src/features/settings/service-settings-view.tsx:67
+msgid "Icon URL"
+msgstr "URL del icono"
+
+#: src/features/settings/more-settings-view.tsx:89
 msgid "License"
 msgstr "Licencia"
 
-#: src/features/settings/settings-view.tsx:189
+#: src/features/settings/more-settings-view.tsx:97
 msgid "MIT"
 msgstr "MIT"
 
-#: src/features/settings/settings-view.tsx:107
+#: src/app/settings/_layout.tsx:26
+msgid "More settings"
+msgstr "Otras configuraciones"
+
+#: src/features/settings/remote-source-settings-view.tsx:88
 msgid "Not Connected"
 msgstr "No Conectado"
 
-#: src/features/settings/settings-view.tsx:149
+#: src/features/settings/more-settings-view.tsx:57
 msgid "Open app directly"
 msgstr "Abrir la aplicación directamente"
 
-#: src/features/settings/settings-view.tsx:153
+#: src/features/settings/more-settings-view.tsx:61
 msgid "Open app directly instead of bottom sheet. Only available if the app store button and open in browser button are hidden."
 msgstr "Abrir la aplicación directamente en lugar de la hoja inferior. Solo disponible si el botón de la tienda de aplicaciones y el botón de abrir en navegador son ocultados."
 
@@ -94,7 +132,7 @@ msgstr "Abrir en tienda de aplicaciones"
 msgid "Open in Browser"
 msgstr "Abrir en navegador"
 
-#: src/features/settings/settings-view.tsx:141
+#: src/features/settings/more-settings-view.tsx:49
 msgid "Open in browser button"
 msgstr "Botón de abrir en navegador"
 
@@ -102,32 +140,44 @@ msgstr "Botón de abrir en navegador"
 msgid "Open installed App"
 msgstr "Abrir aplicación instalada"
 
-#: src/features/settings/settings-view.tsx:130
+#: src/features/settings/more-settings-view.tsx:38
 msgid "Other settings"
 msgstr "Otras configuraciones"
 
-#: src/features/settings/settings-view.tsx:68
+#: src/features/settings/service-settings-view.tsx:42
+msgid "Service Name"
+msgstr "Nombre del servicio"
+
+#: src/features/settings/service-settings-view.tsx:45
+msgid "Service URL"
+msgstr "URL del servicio"
+
+#: src/features/settings/remote-source-settings-view.tsx:41
 msgid "Services URL "
 msgstr "URL de servicios "
 
+#: src/app/settings/(services-source)/_layout.tsx:64
 #: src/components/app-tabs.tsx:14
-#: src/features/settings/settings-view.tsx:60
 msgid "Settings"
 msgstr "Configuración"
 
-#: src/features/settings/settings-view.tsx:137
+#: src/features/services/services-view.tsx:86
+msgid "Setup URL"
+msgstr "Configurar URL"
+
+#: src/features/settings/more-settings-view.tsx:45
 msgid "Show App Store button"
 msgstr "Mostrar botón de la tienda de aplicaciones"
 
-#: src/features/settings/settings-view.tsx:144
+#: src/features/settings/more-settings-view.tsx:52
 msgid "Show button to open in browser"
 msgstr "Mostrar botón para abrir en navegador"
 
-#: src/features/settings/settings-view.tsx:171
+#: src/features/settings/more-settings-view.tsx:79
 msgid "Source Code"
 msgstr "Código fuente"
 
-#: src/features/settings/settings-view.tsx:96
+#: src/features/settings/remote-source-settings-view.tsx:67
 msgid "Test connection"
 msgstr "Probar conexión"
 
@@ -147,19 +197,27 @@ msgstr "La URL \"{received}\" es inválida."
 msgid "Unknown service ID \"{id}\". Service name, description and icon URL are required for custom services."
 msgstr "ID de servicio desconocido \"{id}\". Se requieren el nombre, la descripción y la URL del icono para los servicios personalizados."
 
-#: src/features/settings/settings-view.tsx:167
+#: src/features/settings/more-settings-view.tsx:75
 msgid "Unknown version"
 msgstr "Versión desconocida"
 
-#: src/features/settings/settings-view.tsx:163
+#: src/app/settings/(services-source)/_layout.tsx:83
+msgid "Use local source"
+msgstr "Usar fuente local"
+
+#: src/app/settings/(services-source)/_layout.tsx:84
+msgid "Use remote source"
+msgstr "Usar fuente remota"
+
+#: src/features/settings/more-settings-view.tsx:71
 msgid "Version"
 msgstr "Versión"
 
-#: src/features/settings/settings-view.tsx:178
+#: src/features/settings/more-settings-view.tsx:86
 msgid "View source code on GitHub"
 msgstr "Ver el código fuente en GitHub"
 
-#: src/features/services/services-view.tsx:70
+#: src/features/services/services-view.tsx:65
 msgid "You have no services yet"
 msgstr "No tienes servicios todavía"
 
@@ -171,6 +229,6 @@ msgstr "Estás desconectado"
 msgid "You're offline. Check your network connection and try again."
 msgstr "Estás desconectado. Comprueba tu conexión a Internet e inténtalo de nuevo."
 
-#: src/features/services/services-view.tsx:119
+#: src/features/services/services-view.tsx:116
 msgid "Your Services"
 msgstr "Tus servicios"

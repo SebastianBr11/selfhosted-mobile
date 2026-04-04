@@ -6,8 +6,7 @@ import {
   Text,
 } from '@expo/ui/jetpack-compose'
 import { padding } from '@expo/ui/jetpack-compose/modifiers'
-import { Trans } from '@lingui/react/macro'
-import { useQuery } from '@tanstack/react-query'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { BlurTargetView, BlurTint, BlurView } from 'expo-blur'
 import { useRouter } from 'expo-router'
 import { useRef, useState } from 'react'
@@ -20,21 +19,15 @@ import { useColorScheme } from '@/hooks/use-color-scheme'
 import { useTheme } from '@/hooks/use-theme'
 import { ServicesViewItem } from './components/services-view-item'
 import { FetchServicesErrorDialog } from './fetch-services-error-dialog'
-import { useServicesUrl } from './hooks/use-services-url'
-import { userServicesQueryOptions } from './lib/user-services.queries'
+import { useServices } from './hooks/use-services'
 import { OfflineDialog } from './offline-dialog'
 
 export default function ServicesView() {
+  const { t } = useLingui()
   const router = useRouter()
   const scheme = useColorScheme()
   const theme = useTheme()
-  const { deferredUrl, valid } = useServicesUrl()
-  const {
-    data: services = [],
-    fetchStatus,
-    isFetching,
-    refetch,
-  } = useQuery(userServicesQueryOptions(deferredUrl))
+  const { fetchStatus, isFetching, refetch, remote, services } = useServices()
   const [showErrorAlert, setShowErrorAlert] = useState(false)
   const [showOfflineAlert, setShowOfflineAlert] = useState(false)
 
@@ -44,6 +37,8 @@ export default function ServicesView() {
     scheme === 'dark' ? 'systemChromeMaterialDark' : 'systemChromeMaterialLight'
 
   async function tryFetchServices() {
+    if (!refetch) return
+
     if (fetchStatus === 'paused') {
       setShowOfflineAlert(true)
     }
@@ -53,7 +48,7 @@ export default function ServicesView() {
     }
   }
 
-  if (services.length === 0 || !valid) {
+  if (services.length === 0) {
     return (
       <ThemedView
         inlineInset
@@ -84,9 +79,11 @@ export default function ServicesView() {
         <Host matchContents>
           <Button
             contentPadding={{ bottom: 16, end: 32, start: 32, top: 16 }}
-            onClick={() => router.navigate('/(settings)')}
+            onClick={() => router.navigate('/settings')}
           >
-            <Text style={{ fontSize: 24, fontWeight: '500' }}>Setup URL</Text>
+            <Text
+              style={{ fontSize: 24, fontWeight: '500' }}
+            >{t`Setup URL`}</Text>
             <Icon
               modifiers={[padding(4, 0, 0, 0)]}
               source={require('@/assets/symbols/edit.xml')}
@@ -122,27 +119,30 @@ export default function ServicesView() {
           numColumns={2}
           refreshControl={
             <RefreshControl
+              enabled={remote}
               onRefresh={tryFetchServices}
               progressViewOffset={insets.top}
-              refreshing={isFetching}
+              refreshing={isFetching ?? false}
             />
           }
           renderItem={({ item }) => <ServicesViewItem service={item} />}
         />
       </BlurTargetView>
-      <View style={{ bottom: 16, position: 'absolute', right: 16 }}>
-        <Host matchContents>
-          <FloatingActionButton onClick={tryFetchServices}>
-            <FloatingActionButton.Icon>
-              <Icon
-                contentDescription="Sync Services"
-                source={require('@/assets/symbols/sync.xml')}
-                tintColor={theme.textPrimary}
-              />
-            </FloatingActionButton.Icon>
-          </FloatingActionButton>
-        </Host>
-      </View>
+      {remote && (
+        <View style={{ bottom: 16, position: 'absolute', right: 16 }}>
+          <Host matchContents>
+            <FloatingActionButton onClick={tryFetchServices}>
+              <FloatingActionButton.Icon>
+                <Icon
+                  contentDescription="Sync Services"
+                  source={require('@/assets/symbols/sync.xml')}
+                  tintColor={theme.textPrimary}
+                />
+              </FloatingActionButton.Icon>
+            </FloatingActionButton>
+          </Host>
+        </View>
+      )}
       {showErrorAlert && (
         <FetchServicesErrorDialog hide={() => setShowErrorAlert(false)} />
       )}

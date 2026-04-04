@@ -7,7 +7,7 @@ export default function ServiceScreen() {
   const { serviceId } = useLocalSearchParams<{ serviceId: ServiceId }>()
   return (
     <ServiceBottomSheet
-      hide={() => router.back()}
+      hide={() => router.dismiss()}
       serviceId={serviceId}
     ></ServiceBottomSheet>
   )

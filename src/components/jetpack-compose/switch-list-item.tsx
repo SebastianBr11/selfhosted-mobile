@@ -1,23 +1,27 @@
-import { Icon, Switch } from '@expo/ui/jetpack-compose'
-import { size } from '@expo/ui/jetpack-compose/modifiers'
+import { Icon, Row, Spacer, Switch } from '@expo/ui/jetpack-compose'
+import { size, width } from '@expo/ui/jetpack-compose/modifiers'
 import { useTheme } from '@/hooks/use-theme'
 import { withOpacity } from '@/util/jetpack-compose-util'
 import { ListItem } from './list-item'
 
 type SwitchListItemProps = {
+  children?: React.ReactNode
   enabled?: boolean
   headline: string
-  icon: React.ComponentProps<typeof Icon>['source']
   itemPosition?: 'leading' | 'trailing'
+  leadingIcon?: React.ComponentProps<typeof Icon>['source']
+  onClick?: () => void
   onValueChange: (value: boolean) => void
   supportingText: string
   value: boolean
 }
 export function SwitchListItem({
+  children,
   enabled = true,
   headline,
-  icon,
   itemPosition,
+  leadingIcon,
+  onClick,
   onValueChange,
   supportingText,
   value,
@@ -27,52 +31,71 @@ export function SwitchListItem({
     <ListItem
       enabled={enabled}
       headline={headline}
-      icon={icon}
       itemPosition={itemPosition}
-      onClick={() => onValueChange(!value)}
+      leadingIcon={leadingIcon}
+      onClick={() => (onClick ? onClick() : onValueChange(!value))}
       supportingText={supportingText}
     >
+      {children}
       <ListItem.Trailing>
-        <Switch
-          colors={{
-            disabledCheckedThumbColor: withOpacity(theme.android.surface, 0.38),
-            disabledCheckedTrackColor: withOpacity(theme.onSurface, 0.12),
-            disabledUncheckedBorderColor: withOpacity(theme.onSurface, 0.12),
-            disabledUncheckedThumbColor: withOpacity(theme.onSurface, 0.12),
-            disabledUncheckedTrackColor: withOpacity(
-              theme.backgroundElementHighest,
-              0.12,
-            ),
-          }}
-          enabled={enabled}
-          onCheckedChange={onValueChange}
-          value={value}
-        >
-          <Switch.ThumbContent>
-            {value ? (
+        <Row verticalAlignment="center">
+          {onClick && (
+            <>
               <Icon
-                modifiers={[
-                  size(Switch.DefaultIconSize, Switch.DefaultIconSize),
-                ]}
-                source={require('@/assets/symbols/check.xml')}
+                source={require('@/assets/symbols/chevron_forward.xml')}
                 tintColor={
-                  enabled
-                    ? theme.textPrimary
-                    : withOpacity(theme.onSurface, 0.12)
+                  enabled ? theme.onSurfaceVariant : theme.onSurfaceVariant
                 }
               />
-            ) : (
-              <Icon
-                modifiers={[
-                  size(Switch.DefaultIconSize, Switch.DefaultIconSize),
-                ]}
-                source={require('@/assets/symbols/clear.xml')}
-                tintColor={theme.backgroundElementHighest}
-              />
-            )}
-          </Switch.ThumbContent>
-        </Switch>
+              <Spacer modifiers={[width(8)]} />
+            </>
+          )}
+          <Switch
+            colors={{
+              disabledCheckedThumbColor: withOpacity(
+                theme.android.surface,
+                0.38,
+              ),
+              disabledCheckedTrackColor: withOpacity(theme.onSurface, 0.12),
+              disabledUncheckedBorderColor: withOpacity(theme.onSurface, 0.12),
+              disabledUncheckedThumbColor: withOpacity(theme.onSurface, 0.12),
+              disabledUncheckedTrackColor: withOpacity(
+                theme.backgroundElementHighest,
+                0.12,
+              ),
+            }}
+            enabled={enabled}
+            onCheckedChange={onValueChange}
+            value={value}
+          >
+            <Switch.ThumbContent>
+              {value ? (
+                <Icon
+                  modifiers={[
+                    size(Switch.DefaultIconSize, Switch.DefaultIconSize),
+                  ]}
+                  source={require('@/assets/symbols/check.xml')}
+                  tintColor={
+                    enabled
+                      ? theme.textPrimary
+                      : withOpacity(theme.onSurface, 0.12)
+                  }
+                />
+              ) : (
+                <Icon
+                  modifiers={[
+                    size(Switch.DefaultIconSize, Switch.DefaultIconSize),
+                  ]}
+                  source={require('@/assets/symbols/clear.xml')}
+                  tintColor={theme.backgroundElementHighest}
+                />
+              )}
+            </Switch.ThumbContent>
+          </Switch>
+        </Row>
       </ListItem.Trailing>
     </ListItem>
   )
 }
+SwitchListItem.Leading = ListItem.Leading
+SwitchListItem.SupportingContent = ListItem.SupportingContent
