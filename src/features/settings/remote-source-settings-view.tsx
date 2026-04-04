@@ -9,6 +9,7 @@ import { ThemedView } from '@/components/themed-view'
 import { InlineInsetMedium } from '@/constants/theme'
 import { useServicesUrl } from '../services/hooks/use-services-url'
 import { remoteServicesQueryOptions } from '../services/lib/user-services.queries'
+import Label from '@/components/label'
 
 export default function RemoteSourceSettingsView() {
   const colorScheme = useColorScheme()
@@ -23,23 +24,21 @@ export default function RemoteSourceSettingsView() {
       <ScrollView>
         <ThemedView style={{ gap: 16 }}>
           <ThemedView inlineInset style={{ gap: 8 }}>
-            <ThemedText themeColor="textPrimary" type="label">
+            <Label>
               <Trans>Services URL </Trans>
               {urlFromEnv && (
                 <ThemedText themeColor="textSecondary" type="small">
                   <Trans>(from environment)</Trans>
                 </ThemedText>
               )}
-            </ThemedText>
+            </Label>
             <TextInput
               editable={!urlFromEnv}
               keyboardType="url"
               onChangeText={setUrl}
               value={url}
             />
-            {!urlValid ? (
-              <ThemedText type="error">{errors[0]}</ThemedText>
-            ) : null}
+            {!urlValid ? <Label isError>{errors[0]}</Label> : null}
           </ThemedView>
           <ThemedView style={{ gap: 8 }}>
             <Host colorScheme={colorScheme} matchContents>
@@ -70,9 +69,7 @@ export default function RemoteSourceSettingsView() {
                       <Trans>Connect to the Internet to fetch new data</Trans>
                     </ThemedText>
                   )}
-                  {error && (
-                    <ThemedText type="error">{error.message}</ThemedText>
-                  )}
+                  {error && <Label isError>{error.message}</Label>}
                 </>
               )}
             </ThemedView>
