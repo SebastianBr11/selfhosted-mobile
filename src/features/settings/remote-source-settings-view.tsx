@@ -10,7 +10,7 @@ import {
 } from '@expo/ui/jetpack-compose'
 import { fillMaxWidth, padding } from '@expo/ui/jetpack-compose/modifiers'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { ScrollView, useColorScheme } from 'react-native'
 import { TextInput } from '@/components/text-input'
 import { ThemedText } from '@/components/themed-text'
@@ -19,28 +19,18 @@ import { InlineInsetMedium } from '@/constants/theme'
 import { useServicesUrl } from '../services/hooks/use-services-url'
 import { remoteServicesQueryOptions } from '../services/lib/user-services.queries'
 import Label from '@/components/label'
-import { setLocalServices } from './lib/local-servies'
-import { useRouter } from 'expo-router'
+import { useState } from 'react'
+import { ConvertToLocalSourceDialog } from './convert-to-local-source-dialog'
 
 export default function RemoteSourceSettingsView() {
   const colorScheme = useColorScheme()
-  const router = useRouter()
   const { errors, setUrl, url, urlFromEnv, valid: urlValid } = useServicesUrl()
   const { error, fetchStatus, isFetching, isSuccess, refetch } = useQuery(
     remoteServicesQueryOptions(url),
   )
   const { t } = useLingui()
-  const queryClient = useQueryClient()
-
-  function convertToLocalSourceSettings() {
-    const services = queryClient.getQueryData(
-      remoteServicesQueryOptions(url).queryKey,
-    )
-    if (services) {
-      setLocalServices(services)
-      router.navigate('/settings/local-source-settings')
-    }
-  }
+  const [showConvertToLocalSourceDialog, setShowConvertToLocalSourceDialog] =
+    useState(false)
 
   return (
     <ThemedView type="background">
@@ -118,7 +108,7 @@ export default function RemoteSourceSettingsView() {
                   fillMaxWidth(),
                   padding(InlineInsetMedium, 0, InlineInsetMedium, 0),
                 ]}
-                onClick={convertToLocalSourceSettings}
+                onClick={() => setShowConvertToLocalSourceDialog(true)}
               >
                 <Text style={{ typography: 'labelLarge' }}>
                   Use as local source
@@ -128,6 +118,11 @@ export default function RemoteSourceSettingsView() {
           </Host>
         </ThemedView>
       </ScrollView>
+      {showConvertToLocalSourceDialog && (
+        <ConvertToLocalSourceDialog
+          hide={() => setShowConvertToLocalSourceDialog(false)}
+        />
+      )}
     </ThemedView>
   )
 }
