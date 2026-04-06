@@ -7,7 +7,6 @@ This app shows you your self-hosted services.
 
 <img width="380" alt="Screenshot of the App" src="https://github.com/user-attachments/assets/0d88aa9f-192c-48d4-ad2b-0057e0114405" />
 
-
 ## Built-in Services
 
 See [builtin-services.md](./builtin-services.md) for a list of built-in services.
@@ -15,7 +14,7 @@ See [builtin-services.md](./builtin-services.md) for a list of built-in services
 There is a JSON schema for the services that you can find in [schema.json](./schema.json).
 Each release also has a schema specific to that release.
 
-You can also define custom services by supplying the following properties to the service object:
+When using the remote source, you can also define custom services by supplying the following properties to the service object:
 
 ```ts
 {
@@ -28,6 +27,13 @@ You can also define custom services by supplying the following properties to the
     iconUrl: string
 }
 ```
+
+## Deeplinks
+
+The following deeplinks are supported:
+
+- For enabling/editing sources when using the local source:
+  - `selfhostedmobile://settings/add/{serviceId}?appStoreLink={appStoreLink}&packageName={packageName}&description={description}&iconUrl={iconUrl}&name={name}&packageName={packageName}&url={url}`
 
 ## Requirements
 
