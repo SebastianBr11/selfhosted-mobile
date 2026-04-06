@@ -32,8 +32,9 @@ export default function ServiceSettingsView({
       },
     },
     validators: {
-      onChange: ServiceSchema,
-      onMount: ServiceSchema,
+      // For some reason, TanStack Form doesn't like branded types in the schema
+      onChange: ServiceSchema as any,
+      onMount: ServiceSchema as any,
     },
   })
   return (

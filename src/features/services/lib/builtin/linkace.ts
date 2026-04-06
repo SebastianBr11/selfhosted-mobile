@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from '../services-util'
 
 export const linkace = {
   description:
@@ -7,5 +8,5 @@ export const linkace = {
     'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/linkace.svg',
   id: 'linkace',
   name: 'LinkAce',
-  url: 'https://www.linkace.org',
+  url: serviceUrl('https://www.linkace.org'),
 } as const satisfies Service

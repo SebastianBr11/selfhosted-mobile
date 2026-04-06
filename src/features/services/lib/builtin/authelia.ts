@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from '../services-util'
 
 export const authelia = {
   description: 'The Single Sign-On Multi-Factor portal for web apps',
@@ -6,5 +7,5 @@ export const authelia = {
     'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/authelia.svg',
   id: 'authelia',
   name: 'Authelia',
-  url: 'https://www.authelia.com',
+  url: serviceUrl('https://www.authelia.com'),
 } as const satisfies Service

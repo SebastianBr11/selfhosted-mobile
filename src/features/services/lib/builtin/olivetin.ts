@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from '../services-util'
 
 export const olivetin = {
   description:
@@ -10,5 +11,5 @@ export const olivetin = {
   },
   id: 'olivetin',
   name: 'OliveTin',
-  url: 'https://www.olivetin.app',
+  url: serviceUrl('https://www.olivetin.app'),
 } as const satisfies Service

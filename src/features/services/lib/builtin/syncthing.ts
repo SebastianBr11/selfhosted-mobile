@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from '../services-util'
 
 export const syncthing = {
   appStoreLink:
@@ -12,5 +13,5 @@ export const syncthing = {
   id: 'syncthing',
   name: 'Syncthing',
   packageName: 'com.github.catfriend1.syncthingfork',
-  url: 'https://syncthing.net',
+  url: serviceUrl('https://syncthing.net'),
 } as const satisfies Service

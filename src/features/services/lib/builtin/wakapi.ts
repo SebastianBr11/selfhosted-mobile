@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from '../services-util'
 
 export const wakapi = {
   description:
@@ -7,5 +8,5 @@ export const wakapi = {
     'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wakapi.svg',
   id: 'wakapi',
   name: 'Wakapi',
-  url: 'https://wakapi.dev',
+  url: serviceUrl('https://wakapi.dev'),
 } as const satisfies Service

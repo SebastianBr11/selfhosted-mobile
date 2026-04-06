@@ -1,9 +1,10 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from '../services-util'
 
 export const readeck = {
   description: 'Readeck is a libre, self hosted, read later web application.',
   iconUrl: 'https://readeck.org/media/favicons/favicon.d57024ea.svg',
   id: 'readeck',
   name: 'Readeck',
-  url: 'https://readeck.org/en/',
+  url: serviceUrl('https://readeck.org/en/'),
 } as const satisfies Service

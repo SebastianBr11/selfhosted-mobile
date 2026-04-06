@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from '../services-util'
 
 export const wanderer = {
   description: 'A self-hosted trail database. Save your adventures!',
@@ -9,5 +10,5 @@ export const wanderer = {
   },
   id: 'wanderer',
   name: 'wanderer',
-  url: 'https://wanderer.to',
+  url: serviceUrl('https://wanderer.to'),
 } as const satisfies Service

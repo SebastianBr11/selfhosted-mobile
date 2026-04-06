@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from '../services-util'
 
 export const synologyCalendar = {
   description:
@@ -7,5 +8,5 @@ export const synologyCalendar = {
     'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/synology-calendar.png',
   id: 'synology-calendar',
   name: 'Synology Calendar',
-  url: 'https://www.synology.com/en-global/dsm/feature/calendar',
+  url: serviceUrl('https://www.synology.com/en-global/dsm/feature/calendar'),
 } as const satisfies Service

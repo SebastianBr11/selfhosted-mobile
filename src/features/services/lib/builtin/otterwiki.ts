@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from '../services-util'
 
 export const otterwiki = {
   description: 'A minimalistic wiki powered by python, markdown and git.',
@@ -9,5 +10,5 @@ export const otterwiki = {
   },
   id: 'otterwiki',
   name: 'An Otter Wiki',
-  url: 'https://otterwiki.com/',
+  url: serviceUrl('https://otterwiki.com/'),
 } as const satisfies Service

@@ -11,11 +11,11 @@ import {
 import { fillMaxWidth, padding } from '@expo/ui/jetpack-compose/modifiers'
 import { useLingui } from '@lingui/react/macro'
 import * as WebBrowser from 'expo-web-browser'
-import { ServiceId } from '@/features/services/lib/service.schema'
 import { isArray } from '@/util/is-type'
 import { useSettings } from '../../settings/hooks/use-settings'
 import { useInstalledApp } from '../hooks/use-installed-app'
 import { useService } from '../hooks/use-service'
+import { ServiceId } from '../lib/services.system'
 
 type ServiceBottomSheetProps = {
   children?: React.ReactNode

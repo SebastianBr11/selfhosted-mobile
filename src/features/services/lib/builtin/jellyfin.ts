@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from '../services-util'
 
 export const jellyfin = {
   appStoreLink:
@@ -9,5 +10,5 @@ export const jellyfin = {
   id: 'jellyfin',
   name: 'Jellyfin',
   packageName: 'org.jellyfin.mobile',
-  url: 'https://jellyfin.org/',
+  url: serviceUrl('https://jellyfin.org/'),
 } as const satisfies Service

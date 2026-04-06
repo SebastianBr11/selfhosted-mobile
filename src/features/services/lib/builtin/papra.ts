@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from '../services-util'
 
 export const papra = {
   description: 'The minimalistic document archiving platform.',
@@ -6,5 +7,5 @@ export const papra = {
     'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/papra.svg',
   id: 'papra',
   name: 'Papra',
-  url: 'https://github.com/papra-hq/papra',
+  url: serviceUrl('https://github.com/papra-hq/papra'),
 } as const satisfies Service

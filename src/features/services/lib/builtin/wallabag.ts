@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from '../services-util'
 
 export const wallabag = {
   appStoreLink:
@@ -12,5 +13,5 @@ export const wallabag = {
   id: 'wallabag',
   name: 'Wallabag',
   packageName: 'fr.gaulupeau.apps.InThePoche',
-  url: 'https://wallabag.org',
+  url: serviceUrl('https://wallabag.org'),
 } as const satisfies Service

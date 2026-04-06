@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from '../services-util'
 
 export const photoprism = {
   description: 'AI-Powered Photos App for the Decentralized Web 🌈💎✨',
@@ -9,5 +10,5 @@ export const photoprism = {
   },
   id: 'photoprism',
   name: 'PhotoPrism',
-  url: 'https://www.photoprism.app',
+  url: serviceUrl('https://www.photoprism.app'),
 } as const satisfies Service
