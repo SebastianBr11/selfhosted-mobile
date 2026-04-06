@@ -42,6 +42,25 @@ export const {
         prevServices.filter((service) => service.id !== serviceId),
       )
     },
+    resetService(serviceId: ServiceId) {
+      const builtInService = builtInServices.find(
+        (service) => service.id === serviceId,
+      )
+      if (!builtInService) {
+        console.warn(
+          `Trying to reset service, but service with id ${serviceId} is not a built-in service.`,
+        )
+        return
+      }
+      actions.setServices((prevServices) =>
+        prevServices.map((prevService) => {
+          if (prevService.id === serviceId) {
+            return builtInService
+          }
+          return prevService
+        }),
+      )
+    },
     updateService(service: Partial<Service>) {
       actions.setServices((prevServices) =>
         prevServices.map((prevService) => {
@@ -59,9 +78,10 @@ export const {
 )
 
 export const useLocalService = (serviceId: string) => {
-  const { services, updateService } = useLocalServices()
+  const { resetService, services, updateService } = useLocalServices()
   const service = services.find((service) => service.id === serviceId)
   return {
+    resetService: () => resetService(serviceId),
     service,
     updateService: (service: Partial<Service>) =>
       updateService({ ...service, id: serviceId }),
