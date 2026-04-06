@@ -15,7 +15,10 @@ export const {
     },
   },
   ({ actions }) => ({
-    addServiceById(serviceId: ServiceId) {
+    addServiceById(
+      serviceId: ServiceId,
+      fieldsToUpdate?: Partial<Omit<Service, 'id'>>,
+    ) {
       const builtInService = builtInServices.find(
         (service) => service.id === serviceId,
       )
@@ -25,14 +28,21 @@ export const {
         )
         return
       }
-      actions.setServices((prevServices) => [...prevServices, builtInService])
+      if (fieldsToUpdate) {
+        actions.setServices((prevServices) => [
+          ...prevServices,
+          { ...builtInService, ...fieldsToUpdate },
+        ])
+      } else {
+        actions.setServices((prevServices) => [...prevServices, builtInService])
+      }
     },
     removeServiceById(serviceId: ServiceId) {
       actions.setServices((prevServices) =>
         prevServices.filter((service) => service.id !== serviceId),
       )
     },
-    updateService(service: Partial<Service> & { id: ServiceId }) {
+    updateService(service: Partial<Service>) {
       actions.setServices((prevServices) =>
         prevServices.map((prevService) => {
           if (prevService.id === service.id) {
