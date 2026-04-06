@@ -30,10 +30,14 @@ When using the remote source, you can also define custom services by supplying t
 
 ## Deeplinks
 
+When setting URLs, make sure to escape the URL.
+
 The following deeplinks are supported:
 
 - For enabling/editing sources when using the local source:
   - `selfhostedmobile://settings/add/{serviceId}?appStoreLink={appStoreLink}&packageName={packageName}&description={description}&iconUrl={iconUrl}&name={name}&packageName={packageName}&url={url}`
+- For setting the services url when using the remote source:
+  - `selfhostedmobile://settings?serviceUrl={serviceUrl}`
 
 ## Requirements
 

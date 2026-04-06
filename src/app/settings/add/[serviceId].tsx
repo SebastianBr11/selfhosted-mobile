@@ -5,13 +5,13 @@ import { useLocalServices } from '@/features/settings/lib/local-servies'
 
 export default function AddScreen() {
   const { serviceId, ...serviceParams } = useLocalSearchParams<{
-    appStoreLink: string
-    description: string
-    iconUrl: string
-    name: string
-    packageName: string
+    appStoreLink?: string
+    description?: string
+    iconUrl?: string
+    name?: string
+    packageName?: string
     serviceId: ServiceId
-    url: string
+    url?: string
   }>()
   const { addServiceById, servicesIdsSet, updateService } = useLocalServices()
 
