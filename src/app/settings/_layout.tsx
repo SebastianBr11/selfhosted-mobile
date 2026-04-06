@@ -26,6 +26,7 @@ export default function SettingsLayout() {
         <Stack.Screen.Title>{t`More settings`}</Stack.Screen.Title>
       </Stack.Screen>
       <Stack.Screen name="service-settings" />
+      <Stack.Screen name="add/[serviceId]" />
     </Stack>
   )
 }

@@ -10,7 +10,7 @@ export default function ServiceSettingsScreen() {
   const { serviceId } = useLocalSearchParams<{ serviceId: ServiceId }>()
   const { service, updateService } = useLocalService(serviceId)
   const router = useRouter()
-  if (!service) return router.dismiss()
+  if (!service) return router.replace('/settings/local-source-settings')
 
   const serviceName = service.name
   const builtIn = builtInServices.find((service) => service.id === serviceId)!

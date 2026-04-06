@@ -46,7 +46,10 @@ export function LocalSourceSettingsView() {
 
   function toggleServiceOrNavigate(serviceId: ServiceId) {
     if (!hasServiceById(serviceId)) {
-      addServiceById(serviceId)
+      return router.navigate({
+        params: { serviceId },
+        pathname: '/settings/add/[serviceId]',
+      })
     }
     router.navigate({
       params: { serviceId: serviceId },
