@@ -1,13 +1,12 @@
 import { fetch } from 'expo/fetch'
 import * as v from 'valibot'
-import { SemanticVersionSchema } from '@/lib/schemas'
+import {
+  LeadingVSemanticVersionSchema,
+  SemanticVersionSchema,
+} from '@/lib/schemas'
 import { DataLoader } from './types'
 
-const VersionResponseSchema = v.pipe(
-  v.string(),
-  v.transform((versionString) => versionString.substring(1)), // remove leading 'v'
-  SemanticVersionSchema,
-)
+const VersionResponseSchema = LeadingVSemanticVersionSchema
 
 export type DozzleVersion = v.InferOutput<typeof VersionResponseSchema>
 

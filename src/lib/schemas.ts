@@ -18,6 +18,15 @@ export const SemanticVersionSchema = v.pipe(
 export type SemanticVersion = v.InferOutput<typeof SemanticVersionSchema>
 
 /**
+ * Same as {@link SemanticVersionSchema} but with a leading 'v'
+ */
+export const LeadingVSemanticVersionSchema = v.pipe(
+  v.string(),
+  v.transform((versionString) => versionString.substring(1)), // remove leading 'v'
+  SemanticVersionSchema,
+)
+
+/**
  * Creates a schema that accepts an array of unique values and returns an array.
  * Taken from https://github.com/open-circle/valibot/issues/685#issuecomment-2198360532
  */
