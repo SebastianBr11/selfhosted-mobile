@@ -17,19 +17,19 @@ msgstr ""
 msgid "(from environment)"
 msgstr "(Umgebungsvariable)"
 
-#: src/app/settings/service-settings/[serviceId].tsx:20
+#: src/app/settings/service-settings/[serviceId].tsx:44
 msgid "{serviceName} Settings"
 msgstr "{serviceName} Einstellungen"
 
-#: src/features/services/fetch-services-error-dialog.tsx:19
+#: src/features/services/components/fetch-services-error-dialog.tsx:19
 msgid "An error ocurred"
 msgstr "Ein Fehler ist aufgetreten"
 
-#: src/features/services/fetch-services-error-dialog.tsx:24
+#: src/features/services/components/fetch-services-error-dialog.tsx:24
 msgid "An error ocurred while fetching your services. Go to settings to see the error details."
 msgstr "Beim Abrufen deiner Dienste ist ein Fehler aufgetreten. Gehe zu den Einstellungen, um die Details anzuzeigen."
 
-#: src/features/settings/service-settings-view.tsx:72
+#: src/features/settings/service-settings-view.tsx:73
 msgid "Android Package Name"
 msgstr "Android-Paketname"
 
@@ -37,19 +37,23 @@ msgstr "Android-Paketname"
 msgid "App Store button"
 msgstr "Öffne im App Store-Button"
 
-#: src/features/settings/service-settings-view.tsx:59
+#: src/features/settings/service-settings-view.tsx:60
 msgid "App Store Link"
 msgstr "App Store-Link"
 
-#: src/features/settings/convert-to-local-source-dialog.tsx:41
+#: src/features/settings/components/convert-to-local-source-dialog.tsx:41
 msgid "Are you sure you want to convert the remotely fetched services into locally stored services? This will overwrite any locally stored services. This action cannot be undone."
 msgstr "Bist du sicher, dass du die zuletzt abgerufenen Dienste in lokale Dienste umwandeln willst? Dies wird alle lokal gespeicherten Dienste überschreiben. Diese Aktion kann nicht rückgängig gemacht werden."
 
-#: src/features/settings/local-source-settings-view.tsx:84
+#: src/features/settings/components/reset-service-settings-dialog.tsx:28
+msgid "Are you sure you want to reset the settings for this service? This will overwrite the current settings. This action cannot be undone."
+msgstr "Bist du sicher, dass du die Einstellungen dieses Dienstes zurücksetzen willst? Dies wird die aktuellen Einstellungen überschreiben. Diese Aktion kann nicht rückgängig gemacht werden."
+
+#: src/features/settings/local-source-settings-view.tsx:87
 msgid "Choose services"
 msgstr "Dienste auswählen"
 
-#: src/features/services/offline-dialog.tsx:30
+#: src/features/services/components/offline-dialog.tsx:30
 msgid "Configure network settings"
 msgstr "Netzwerk-Einstellungen konfigurieren"
 
@@ -61,26 +65,27 @@ msgstr "Verbinde dich mit dem Internet, um neue Daten abzurufen"
 msgid "Connected"
 msgstr "Verbunden"
 
-#: src/features/settings/convert-to-local-source-dialog.tsx:50
+#: src/features/settings/components/convert-to-local-source-dialog.tsx:50
 #: src/features/settings/remote-source-settings-view.tsx:114
 msgid "Convert to local services"
 msgstr "In lokale Dienste umwandeln"
 
-#: src/features/settings/convert-to-local-source-dialog.tsx:36
+#: src/features/settings/components/convert-to-local-source-dialog.tsx:36
 msgid "Convert to local services?"
 msgstr "In lokale Dienste umwandeln?"
 
-#: src/features/settings/service-settings-view.tsx:48
+#: src/features/settings/service-settings-view.tsx:49
 msgid "Description"
 msgstr "Beschreibung"
 
-#: src/features/services/fetch-services-error-dialog.tsx:38
-#: src/features/services/offline-dialog.tsx:35
-#: src/features/settings/convert-to-local-source-dialog.tsx:55
+#: src/features/services/components/fetch-services-error-dialog.tsx:38
+#: src/features/services/components/offline-dialog.tsx:35
+#: src/features/settings/components/convert-to-local-source-dialog.tsx:55
+#: src/features/settings/components/reset-service-settings-dialog.tsx:42
 msgid "Dismiss"
 msgstr "Schließen"
 
-#: src/features/services/fetch-services-error-dialog.tsx:33
+#: src/features/services/components/fetch-services-error-dialog.tsx:33
 msgid "Go to settings"
 msgstr "Zu den Einstellungen"
 
@@ -92,9 +97,9 @@ msgstr "Gehe in die Einstellungen, um die URL zu konfigurieren"
 msgid "Home"
 msgstr "Home"
 
-#: src/features/settings/service-settings-view.tsx:67
+#: src/features/settings/service-settings-view.tsx:68
 msgid "Icon URL"
-msgstr ""
+msgstr "Icon-URL"
 
 #: src/features/settings/more-settings-view.tsx:89
 msgid "License"
@@ -104,7 +109,7 @@ msgstr "Lizenz"
 msgid "MIT"
 msgstr "MIT"
 
-#: src/app/settings/_layout.tsx:26
+#: src/app/settings/_layout.tsx:22
 msgid "More settings"
 msgstr "Weitere Einstellungen"
 
@@ -120,15 +125,15 @@ msgstr "App direkt öffnen"
 msgid "Open app directly instead of bottom sheet. Only available if the app store button and open in browser button are hidden."
 msgstr "App direkt öffnen statt im Bottom Sheet. Nur verfügbar, wenn der Button zum App Store und der Button zum Browser verborgen sind."
 
-#: src/features/services/service-bottom-sheet.tsx:98
+#: src/features/services/components/service-bottom-sheet.tsx:98
 msgid "Open in {name}"
 msgstr "Öffne in {name}"
 
-#: src/features/services/service-bottom-sheet.tsx:111
+#: src/features/services/components/service-bottom-sheet.tsx:111
 msgid "Open in App Store"
 msgstr "Öffne im App Store"
 
-#: src/features/services/service-bottom-sheet.tsx:72
+#: src/features/services/components/service-bottom-sheet.tsx:72
 msgid "Open in Browser"
 msgstr "Öffne im Browser"
 
@@ -136,7 +141,7 @@ msgstr "Öffne im Browser"
 msgid "Open in browser button"
 msgstr "Öffne im Browser-Button"
 
-#: src/features/services/service-bottom-sheet.tsx:82
+#: src/features/services/components/service-bottom-sheet.tsx:82
 msgid "Open installed App"
 msgstr "Installierte App öffnen"
 
@@ -144,11 +149,19 @@ msgstr "Installierte App öffnen"
 msgid "Other settings"
 msgstr "Andere Einstellungen"
 
-#: src/features/settings/service-settings-view.tsx:42
+#: src/features/settings/components/reset-service-settings-dialog.tsx:23
+msgid "Reset service settings?"
+msgstr "Dienst-Einstellungen zurücksetzen?"
+
+#: src/features/settings/components/reset-service-settings-dialog.tsx:37
+msgid "Reset settings"
+msgstr "Einstellungen zurücksetzen"
+
+#: src/features/settings/service-settings-view.tsx:43
 msgid "Service Name"
 msgstr "Dienst-Name"
 
-#: src/features/settings/service-settings-view.tsx:45
+#: src/features/settings/service-settings-view.tsx:46
 msgid "Service URL"
 msgstr "Dienst-URL"
 
@@ -221,11 +234,11 @@ msgstr "Quellcode auf GitHub anzeigen"
 msgid "You have no services yet"
 msgstr "Du hast noch keine Dienste"
 
-#: src/features/services/offline-dialog.tsx:14
+#: src/features/services/components/offline-dialog.tsx:14
 msgid "You're offline"
 msgstr "Du bist offline"
 
-#: src/features/services/offline-dialog.tsx:19
+#: src/features/services/components/offline-dialog.tsx:19
 msgid "You're offline. Check your network connection and try again."
 msgstr "Du bist offline. Prüfe deine Netzwerkverbindung und versuche es erneut."
 
