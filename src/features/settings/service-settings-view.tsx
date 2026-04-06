@@ -33,6 +33,7 @@ export default function ServiceSettingsView({
     },
     validators: {
       onChange: ServiceSchema,
+      onMount: ServiceSchema,
     },
   })
   return (

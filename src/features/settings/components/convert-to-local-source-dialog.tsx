@@ -2,9 +2,9 @@ import { AlertDialog, Host, Text, TextButton } from '@expo/ui/jetpack-compose'
 import { useLingui } from '@lingui/react/macro'
 import { useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'expo-router'
-import { useServicesUrl } from '../services/hooks/use-services-url'
-import { remoteServicesQueryOptions } from '../services/lib/user-services.queries'
-import { setLocalServices } from './lib/local-servies'
+import { useServicesUrl } from '@/features/services/hooks/use-services-url'
+import { remoteServicesQueryOptions } from '@/features/services/lib/user-services.queries'
+import { setLocalServices } from '../lib/local-servies'
 
 type FetchServicesErrorDialogProps = {
   hide: () => void

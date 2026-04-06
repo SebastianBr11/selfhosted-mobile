@@ -20,7 +20,7 @@ import { ThemedView } from '@/components/themed-view'
 import { InlineInsetMedium } from '@/constants/theme'
 import { useServicesUrl } from '../services/hooks/use-services-url'
 import { remoteServicesQueryOptions } from '../services/lib/user-services.queries'
-import { ConvertToLocalSourceDialog } from './convert-to-local-source-dialog'
+import { ConvertToLocalSourceDialog } from './components/convert-to-local-source-dialog'
 
 export default function RemoteSourceSettingsView() {
   const colorScheme = useColorScheme()
