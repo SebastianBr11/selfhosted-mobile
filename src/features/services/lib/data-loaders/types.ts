@@ -15,6 +15,7 @@ export type LoaderEntry<PublicData, SecretData, Credentials> =
       checkForUpdates?: (
         serviceUrl: ServiceUrl,
         version: SemanticVersion,
+        cupUrl?: string,
       ) => Promise<
         | {
             changelog?: string

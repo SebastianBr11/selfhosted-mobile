@@ -46,14 +46,18 @@ export default function ServiceBottomSheet({
   serviceId,
 }: ServiceBottomSheetProps) {
   const service = useService(serviceId)
-  const { showAppStoreButton, showOpenInBrowserButton, useLocalSource } =
-    useSettings()
+  const {
+    fetchServiceData,
+    showAppStoreButton,
+    showOpenInBrowserButton,
+    useLocalSource,
+  } = useSettings()
   const { appAvailable, openApp } = useInstalledApp(service?.packageName)
   const { t } = useLingui()
   const theme = useTheme()
   const { url } = useServicesUrl()
-  const { data, error, isError, isLoading } = useQuery(
-    userServiceQueryOptions(url, serviceId, useLocalSource),
+  const { data, error, isEnabled, isError, isLoading } = useQuery(
+    userServiceQueryOptions(url, serviceId, useLocalSource, fetchServiceData),
   )
   const [showHealthDialog, setShowHealthDialog] = useState(false)
 
@@ -80,7 +84,8 @@ export default function ServiceBottomSheet({
               verticalArrangement="center"
             >
               <Box modifiers={[weight(1)]}>
-                {data?.healthy !== undefined &&
+                {isEnabled &&
+                  data?.healthy !== undefined &&
                   (data.healthy ? (
                     <IconButton onClick={() => setShowHealthDialog(true)}>
                       <Icon
@@ -98,7 +103,7 @@ export default function ServiceBottomSheet({
                       />
                     </IconButton>
                   ))}
-                {isError && (
+                {isEnabled && isError && (
                   <IconButton onClick={() => setShowHealthDialog(true)}>
                     <Icon
                       contentDescription="Unavailable"
@@ -132,23 +137,24 @@ export default function ServiceBottomSheet({
                 </FilledTonalIconButton>
               </Box>
             </Row>
-            {isLoading ? (
-              <CircularWavyProgressIndicator
-                modifiers={[align('centerHorizontally')]}
-              />
-            ) : data?.publicData?.version ? (
-              <Row>
-                <Text>{data?.publicData.version}</Text>
-              </Row>
-            ) : data?.notAvailable ? (
-              <Row>
-                <Text>{t`No additional data available`}</Text>
-              </Row>
-            ) : isError ? (
-              <Row>
-                <Text>{t`An error ocurred`}</Text>
-              </Row>
-            ) : null}
+            {isEnabled &&
+              (isLoading ? (
+                <CircularWavyProgressIndicator
+                  modifiers={[align('centerHorizontally')]}
+                />
+              ) : data?.publicData?.version ? (
+                <Row>
+                  <Text>{data?.publicData.version}</Text>
+                </Row>
+              ) : data?.notAvailable ? (
+                <Row>
+                  <Text>{t`No additional data available`}</Text>
+                </Row>
+              ) : isError ? (
+                <Row>
+                  <Text>{t`An error ocurred`}</Text>
+                </Row>
+              ) : null)}
             {children ? children : null}
             <FlowRow horizontalArrangement={{ spacedBy: 12 }}>
               {showOpenInBrowserButton && (

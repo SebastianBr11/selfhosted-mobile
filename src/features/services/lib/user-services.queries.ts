@@ -22,8 +22,10 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
   url: string,
   id: T,
   localService: boolean,
+  enabled: boolean,
 ) => {
   return queryOptions({
+    enabled,
     queryFn: async ({ client }) => {
       let services: Service[] | undefined
       if (localService) {
