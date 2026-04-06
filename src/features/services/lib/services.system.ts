@@ -8,6 +8,7 @@ import { createUserInputSchema, Service } from './service.schema'
  * 1. Add the service to the `builtInServicesIds` array
  * 2. Add the service in a new file to the `src/features/services/lib/builtin` directory
  * 3. Add the service to the {@link builtInServices} array
+ * 4. If we want to fetch data from the service's API, add a data loader for the service in the data-loaders directory
  */
 export const builtInServiceIds = [
   'adguard-home',
