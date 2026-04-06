@@ -1,5 +1,5 @@
 import { Service } from '../service.schema'
-import { serviceUrl } from '../services-util'
+import { serviceUrl } from './builtin-util'
 
 export const romm = {
   description: 'A beautiful, powerful, self-hosted rom manager and player.',

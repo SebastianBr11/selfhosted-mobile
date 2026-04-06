@@ -1,5 +1,5 @@
 import { Service } from '../service.schema'
-import { serviceUrl } from '../services-util'
+import { serviceUrl } from './builtin-util'
 
 export const mealie = {
   description: 'A self hosted recipe manager and meal planner',

@@ -1,5 +1,5 @@
 import { Service } from '../service.schema'
-import { serviceUrl } from '../services-util'
+import { serviceUrl } from './builtin-util'
 
 export const linkwarden = {
   appStoreLink: 'https://play.google.com/store/apps/details?id=app.linkwarden',

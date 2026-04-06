@@ -1,5 +1,5 @@
 import { Service } from '../service.schema'
-import { serviceUrl } from '../services-util'
+import { serviceUrl } from './builtin-util'
 
 export const synologyDsm = {
   description: 'The intuitive operating system that powers every Synology NAS.',

@@ -1,5 +1,5 @@
 import { Service } from '../service.schema'
-import { serviceUrl } from '../services-util'
+import { serviceUrl } from './builtin-util'
 
 export const authelia = {
   description: 'The Single Sign-On Multi-Factor portal for web apps',

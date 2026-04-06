@@ -1,5 +1,5 @@
 import { Service } from '../service.schema'
-import { serviceUrl } from '../services-util'
+import { serviceUrl } from './builtin-util'
 
 export const otterwiki = {
   description: 'A minimalistic wiki powered by python, markdown and git.',
