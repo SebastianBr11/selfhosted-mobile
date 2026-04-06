@@ -52,7 +52,7 @@ export default function ServiceBottomSheet({
   const { t } = useLingui()
   const theme = useTheme()
   const { url } = useServicesUrl()
-  const { data, isError, isLoading } = useQuery(
+  const { data, error, isError, isLoading } = useQuery(
     userServiceQueryOptions(url, serviceId, useLocalSource),
   )
   const [showHealthDialog, setShowHealthDialog] = useState(false)
@@ -207,9 +207,9 @@ export default function ServiceBottomSheet({
       </Host>
       {showHealthDialog && (
         <ServiceHealthDialog
+          error={error}
           healthy={!!data?.healthy}
           hide={() => setShowHealthDialog(false)}
-          unavailable={isError}
         />
       )}
     </>
