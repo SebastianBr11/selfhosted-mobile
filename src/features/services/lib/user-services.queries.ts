@@ -39,14 +39,23 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
       if (isBuiltInServiceId(service.id)) {
         const loaders = getDataLoader(service.id)
         if (!loaders) {
-          return null
+          return { notAvailable: true }
+        }
+
+        let healthy = false
+        try {
+          healthy = await loaders.checkHealth(service.url)
+        } catch {
+          return { healthy }
         }
 
         const publicData = await loaders.loadPublicData(service.url)
+        console.log(publicData)
+        console.log('healthy')
 
-        return { publicData }
+        return { healthy, publicData }
       }
-      return null
+      return { notAvailable: true }
     },
     queryKey: [
       'services',

@@ -23,6 +23,11 @@ export type AudiobookshelfStatus = v.InferOutput<typeof StatusResponseSchema>
 
 export const audiobookshelf = {
   audiobookshelf: {
+    checkHealth: async (serviceUrl) => {
+      const url = new URL('/healthcheck', serviceUrl)
+      const response = await fetch(url)
+      return response.ok
+    },
     loadPublicData: async (serviceUrl) => {
       const url = new URL('/status', serviceUrl)
       const response = await fetch(url)

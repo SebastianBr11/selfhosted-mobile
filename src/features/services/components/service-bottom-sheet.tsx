@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   CircularWavyProgressIndicator,
   Column,
@@ -6,6 +7,7 @@ import {
   FlowRow,
   Host,
   Icon,
+  IconButton,
   ModalBottomSheet,
   OutlinedButton,
   Row,
@@ -16,6 +18,7 @@ import {
   align,
   fillMaxWidth,
   padding,
+  weight,
   width,
 } from '@expo/ui/jetpack-compose/modifiers'
 import { useLingui } from '@lingui/react/macro'
@@ -72,33 +75,61 @@ export default function ServiceBottomSheet({
             modifiers={[fillMaxWidth()]}
             verticalArrangement="center"
           >
-            <Text
-              modifiers={[align('centerVertically')]}
-              style={{
-                fontSize: 32,
-                fontWeight: 'bold',
-                lineHeight: 32,
-                textAlign: 'center',
-              }}
-            >
-              {service.name}
-            </Text>
+            <Box modifiers={[weight(1)]}>
+              {data?.healthy !== undefined &&
+                (data.healthy ? (
+                  <IconButton>
+                    <Icon
+                      contentDescription="Healthy"
+                      source={require('@/assets/symbols/heart_check.xml')}
+                      tintColor={theme.textSuccess}
+                    />
+                  </IconButton>
+                ) : (
+                  <IconButton>
+                    <Icon
+                      contentDescription="Unhealthy"
+                      source={require('@/assets/symbols/heart_broken.xml')}
+                      tintColor={theme.textError}
+                    />
+                  </IconButton>
+                ))}
+            </Box>
+            <Box modifiers={[weight(4), align('centerVertically')]}>
+              <Text
+                modifiers={[fillMaxWidth()]}
+                style={{
+                  fontSize: 32,
+                  fontWeight: 'bold',
+                  lineHeight: 32,
+                  textAlign: 'center',
+                }}
+              >
+                {service.name}
+              </Text>
+            </Box>
             <Spacer modifiers={[width(8)]} />
-            <FilledTonalIconButton>
-              <Icon
-                contentDescription="Update available"
-                source={require('@/assets/symbols/update.xml')}
-                tintColor={theme.onSurface}
-              />
-            </FilledTonalIconButton>
+            <Box modifiers={[weight(1)]}>
+              <FilledTonalIconButton>
+                <Icon
+                  contentDescription="Update available"
+                  source={require('@/assets/symbols/update.xml')}
+                  tintColor={theme.onSurface}
+                />
+              </FilledTonalIconButton>
+            </Box>
           </Row>
           {isLoading ? (
             <CircularWavyProgressIndicator
               modifiers={[align('centerHorizontally')]}
             />
-          ) : data?.publicData.version ? (
+          ) : data?.publicData?.version ? (
             <Row>
               <Text>{data?.publicData.version}</Text>
+            </Row>
+          ) : data?.notAvailable ? (
+            <Row>
+              <Text>{t`No additional data available`}</Text>
             </Row>
           ) : isError ? (
             <Row>

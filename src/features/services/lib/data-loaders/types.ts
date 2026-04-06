@@ -12,6 +12,22 @@ export type DataLoader<
 export type LoaderEntry<PublicData, SecretData, Credentials> =
   | undefined
   | {
+      checkForUpdates?: (
+        serviceUrl: ServiceUrl,
+        version: SemanticVersion,
+      ) => Promise<
+        | {
+            changelog?: string
+            hasUpdate: true
+            newVersion: SemanticVersion
+            updateUrl?: string
+          }
+        | { hasUpdate: false }
+      >
+      /**
+       * Returns true if the service is healthy
+       */
+      checkHealth: (serviceUrl: ServiceUrl) => Promise<boolean>
       loadPublicData: (serviceUrl: ServiceUrl) => Promise<{
         data: PublicData
         version: SemanticVersion

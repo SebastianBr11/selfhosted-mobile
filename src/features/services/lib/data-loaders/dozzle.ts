@@ -12,9 +12,14 @@ export type DozzleVersion = v.InferOutput<typeof VersionResponseSchema>
 
 export const dozzle = {
   dozzle: {
+    checkHealth: async (serviceUrl) => {
+      const url = new URL('/healthcheck', serviceUrl)
+      const response = await fetch(url)
+      return response.ok
+    },
     loadPublicData: async (serviceUrl) => {
       const url = new URL('/api/version', serviceUrl)
-      const response = await fetch(url, { credentials: 'include' })
+      const response = await fetch(url)
       const data = await response.json()
       const version = v.parse(VersionResponseSchema, data)
       return {
