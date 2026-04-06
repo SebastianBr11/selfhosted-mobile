@@ -14,10 +14,6 @@ export default function SettingsLayout() {
     >
       <Stack.Screen name="(services-source)" />
       <Stack.Screen name="index" />
-      <Stack.Screen
-        name="select-services"
-        options={{ presentation: 'transparentModal' }}
-      />
       <Stack.Screen name="more-settings">
         <Stack.Header
           hidden={false}
