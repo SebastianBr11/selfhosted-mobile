@@ -17,10 +17,10 @@ import { ThemedView } from '@/components/themed-view'
 import { InlineInsetSmall } from '@/constants/theme'
 import { useColorScheme } from '@/hooks/use-color-scheme'
 import { useTheme } from '@/hooks/use-theme'
+import { FetchServicesErrorDialog } from './components/fetch-services-error-dialog'
+import { OfflineDialog } from './components/offline-dialog'
 import { ServicesViewItem } from './components/services-view-item'
-import { FetchServicesErrorDialog } from './fetch-services-error-dialog'
 import { useServices } from './hooks/use-services'
-import { OfflineDialog } from './offline-dialog'
 
 export default function ServicesView() {
   const { t } = useLingui()
