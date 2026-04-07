@@ -3,13 +3,14 @@ import * as v from 'valibot'
 import { LeadingVSemanticVersionSchema } from '@/lib/schemas'
 import { compareSemanticVersions } from '../../util'
 import { DataLoader } from './types'
+import TurndownService from 'turndown'
+import { parseHTML } from 'linkedom'
 
 const VersionResponseSchema = v.pipe(
   v.string(),
   v.transform((s) => {
     // The response from Dozzle is wrapped in <pre>
     const m = s.match(/^<pre\b[^>]*>([\s\S]*)<\/pre>$/i)
-    console.log('m', m)
     return m ? m[1] : s
   }),
   LeadingVSemanticVersionSchema,
@@ -41,7 +42,7 @@ export const dozzle = {
         (release) => compareSemanticVersions(version, release.tag) < 0,
       )
       const hasUpdate = newerVersions.length > 0
-      const changelog = newerVersions
+      const changelogHTML = newerVersions
         .reduce((acc, release) => {
           let str = `<h1>${release.name}</h1>`
           str += release.body
@@ -49,6 +50,10 @@ export const dozzle = {
           return acc
         }, [] as string[])
         .join('<br><br>')
+      const turndownService = new TurndownService()
+      const changelog = turndownService.turndown(
+        parseHTML(changelogHTML).document,
+      )
       const latest = releases[0]
 
       if (hasUpdate) {

@@ -6,34 +6,34 @@ import {
   Text,
   TextButton,
 } from '@expo/ui/jetpack-compose'
-import { WebView } from 'react-native-webview'
-import { useLingui } from '@lingui/react/macro'
-import { UpdateData } from '../lib/data-loaders/types'
-import { useTheme } from '@/hooks/use-theme'
-import { useColorScheme } from 'react-native'
 import { clickable } from '@expo/ui/jetpack-compose/modifiers'
+import { useLingui } from '@lingui/react/macro'
 import { openBrowserAsync } from 'expo-web-browser'
+import { ScrollView } from 'react-native'
+import { EnrichedMarkdownText } from 'react-native-enriched-markdown'
+import { WebView } from 'react-native-webview'
+import { useTheme } from '@/hooks/use-theme'
 import { SemanticVersion } from '@/lib/schemas'
+import { UpdateData } from '../lib/data-loaders/types'
 
 type ServiceUpdatesDialogProps = {
+  currentVersion: SemanticVersion
   hide: () => void
   updateData: UpdateData
-  currentVersion: SemanticVersion
 }
 export function ServiceUpdatesDialog({
+  currentVersion,
   hide,
   updateData,
-  currentVersion,
 }: ServiceUpdatesDialogProps) {
   const { t } = useLingui()
   const theme = useTheme()
-  const colorScheme = useColorScheme()
   const { changelog, link, newVersion, releaseTimestamp } = updateData
   return (
     <Host matchContents>
       <AlertDialog
-        properties={{ usePlatformDefaultWidth: false }}
         onDismissRequest={hide}
+        properties={{ usePlatformDefaultWidth: false }}
       >
         <AlertDialog.Title>
           <Text
@@ -56,13 +56,13 @@ export function ServiceUpdatesDialog({
               )}
               {link && (
                 <Text
+                  color={theme.textPrimary.toString()}
                   modifiers={[
                     clickable(() => openBrowserAsync(link), {
                       indication: false,
                     }),
                   ]}
                   style={{ typography: 'bodyMedium' }}
-                  color={theme.textPrimary.toString()}
                 >
                   {link}
                 </Text>
@@ -70,20 +70,28 @@ export function ServiceUpdatesDialog({
             </Column>
             {changelog && (
               <RNHostView>
-                <WebView
-                  links
-                  forceDarkOn={colorScheme === 'dark'}
-                  textZoom={350}
-                  style={{ backgroundColor: theme.backgroundElement }}
-                  source={{
-                    // Adding target="_blank" makes links open in the browser instead of in the WebView.
-                    html: `<head><base target="_blank"></head>
-                    <style>
-                       body { color: ${theme.onSurface.toString()}; }
-                       a { color: ${theme.textPrimary.toString()}; }
-                    </style>${changelog}`,
-                  }}
-                />
+                <ScrollView>
+                  <EnrichedMarkdownText
+                    flavor="github"
+                    markdown={changelog}
+                    markdownStyle={{
+                      blockquote: { color: theme.onSurfaceVariant.toString() },
+                      code: { color: theme.onSurfaceVariant.toString() },
+                      em: { color: theme.onSurfaceVariant.toString() },
+                      h1: { color: theme.onSurface.toString() },
+                      h2: { color: theme.onSurface.toString() },
+                      h3: { color: theme.onSurface.toString() },
+                      h4: { color: theme.onSurface.toString() },
+                      h5: { color: theme.onSurface.toString() },
+                      h6: { color: theme.onSurface.toString() },
+                      list: { color: theme.onSurfaceVariant.toString() },
+                      paragraph: { color: theme.onSurfaceVariant.toString() },
+                      strong: { color: theme.onSurfaceVariant.toString() },
+                      table: { color: theme.onSurfaceVariant.toString() },
+                    }}
+                    onLinkPress={(event) => openBrowserAsync(event.url)}
+                  />
+                </ScrollView>
               </RNHostView>
             )}
           </Column>
