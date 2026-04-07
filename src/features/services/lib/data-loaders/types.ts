@@ -16,15 +16,7 @@ export type LoaderEntry<PublicData, SecretData, Credentials> =
         serviceUrl: ServiceUrl,
         version: SemanticVersion,
         cupUrl?: string,
-      ) => Promise<
-        | {
-            changelog?: string
-            hasUpdate: true
-            newVersion: SemanticVersion
-            updateUrl?: string
-          }
-        | { hasUpdate: false }
-      >
+      ) => Promise<UpdateData | { hasUpdate: false }>
       /**
        * Returns true if the service is healthy
        */
@@ -35,3 +27,11 @@ export type LoaderEntry<PublicData, SecretData, Credentials> =
       }>
       loadSecretData?: (credentials: Credentials) => Promise<SecretData>
     }
+
+export type UpdateData = {
+  changelog?: string
+  hasUpdate: true
+  link?: string
+  newVersion: SemanticVersion
+  releaseTimestamp?: string
+}

@@ -46,11 +46,12 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
 
         const healthy = await loaders.checkHealth(service.url)
         const publicData = await loaders.loadPublicData(service.url)
+        const updateData = await loaders.checkForUpdates?.(
+          service.url,
+          publicData.version,
+        )
 
-        console.log(publicData)
-        console.log('healthy')
-
-        return { healthy, publicData }
+        return { healthy, publicData, updateData }
       }
       return { notAvailable: true }
     },

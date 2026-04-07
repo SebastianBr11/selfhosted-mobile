@@ -34,6 +34,7 @@ import { useServicesUrl } from '../hooks/use-services-url'
 import { ServiceId } from '../lib/services.system'
 import { userServiceQueryOptions } from '../lib/user-services.queries'
 import { ServiceHealthDialog } from './service-health-dialog'
+import { ServiceUpdatesDialog } from './service-updates-dialog'
 
 type ServiceBottomSheetProps = {
   children?: React.ReactNode
@@ -60,6 +61,7 @@ export default function ServiceBottomSheet({
     userServiceQueryOptions(url, serviceId, useLocalSource, fetchServiceData),
   )
   const [showHealthDialog, setShowHealthDialog] = useState(false)
+  const [showUpdatesDialog, setShowUpdatesDialog] = useState(false)
 
   if (!service) {
     hide()
@@ -128,13 +130,17 @@ export default function ServiceBottomSheet({
               </Box>
               <Spacer modifiers={[width(8)]} />
               <Box modifiers={[weight(1)]}>
-                <FilledTonalIconButton>
-                  <Icon
-                    contentDescription="Update available"
-                    source={require('@/assets/symbols/update.xml')}
-                    tintColor={theme.onSurface}
-                  />
-                </FilledTonalIconButton>
+                {data?.updateData?.hasUpdate && (
+                  <FilledTonalIconButton
+                    onClick={() => setShowUpdatesDialog(true)}
+                  >
+                    <Icon
+                      contentDescription="Update available"
+                      source={require('@/assets/symbols/update.xml')}
+                      tintColor={theme.onSurface}
+                    />
+                  </FilledTonalIconButton>
+                )}
               </Box>
             </Row>
             {isEnabled &&
@@ -216,6 +222,13 @@ export default function ServiceBottomSheet({
           error={error}
           healthy={!!data?.healthy}
           hide={() => setShowHealthDialog(false)}
+        />
+      )}
+      {showUpdatesDialog && data?.updateData?.hasUpdate && (
+        <ServiceUpdatesDialog
+          currentVersion={data.publicData.version}
+          hide={() => setShowUpdatesDialog(false)}
+          updateData={data.updateData}
         />
       )}
     </>
