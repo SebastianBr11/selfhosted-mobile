@@ -105,15 +105,6 @@ export default function ServiceBottomSheet({
                       />
                     </IconButton>
                   ))}
-                {isEnabled && isError && (
-                  <IconButton onClick={() => setShowHealthDialog(true)}>
-                    <Icon
-                      contentDescription="Unavailable"
-                      source={require('@/assets/symbols/error.xml')}
-                      tintColor={theme.textError}
-                    />
-                  </IconButton>
-                )}
               </Box>
               <Box modifiers={[weight(4), align('centerVertically')]}>
                 <Text
@@ -130,6 +121,15 @@ export default function ServiceBottomSheet({
               </Box>
               <Spacer modifiers={[width(8)]} />
               <Box modifiers={[weight(1)]}>
+                {isEnabled && isError && (
+                  <IconButton onClick={() => setShowHealthDialog(true)}>
+                    <Icon
+                      contentDescription="Unavailable"
+                      source={require('@/assets/symbols/error.xml')}
+                      tintColor={theme.textError}
+                    />
+                  </IconButton>
+                )}
                 {data?.updateData?.hasUpdate && (
                   <FilledTonalIconButton
                     onClick={() => setShowUpdatesDialog(true)}
