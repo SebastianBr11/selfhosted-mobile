@@ -29,6 +29,7 @@ export type LoaderEntry<PublicData, SecretData, Credentials> =
         version: SemanticVersion
       }>
       loadSecretData?: (credentials: Credentials) => Promise<SecretData>
+      /** Used for checking for updates */
       repo?: {
         name: string
         /** Version Control System */

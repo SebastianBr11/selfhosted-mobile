@@ -15,7 +15,7 @@ const GithubReleaseSchema = v.object({
   id: v.number(),
   name: v.string(),
   published_at: v.pipe(v.string(), v.isoTimestamp()),
-  tag_name: LeadingVSemanticVersionSchema,
+  tag_name: v.union([LeadingVSemanticVersionSchema, SemanticVersionSchema]),
 })
 const GithubReleasesSchema = v.array(GithubReleaseSchema)
 

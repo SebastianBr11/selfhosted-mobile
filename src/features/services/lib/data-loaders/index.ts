@@ -3,6 +3,7 @@ import { audiobookshelf } from './audiobookshelf'
 import { dozzle } from './dozzle'
 import { jellyfin } from './jellyfin'
 import { readeck } from './readeck'
+import { romm } from './romm'
 import { DataLoader } from './types'
 
 const dataLoaders: DataLoader<BuiltInServiceId, object> = {
@@ -44,7 +45,7 @@ const dataLoaders: DataLoader<BuiltInServiceId, object> = {
   'pi-hole': undefined,
   portainer: undefined,
   ...readeck,
-  romm: undefined,
+  ...romm,
   ryot: undefined,
   seerr: undefined,
   shelfmark: undefined,
