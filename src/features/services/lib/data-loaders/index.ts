@@ -1,6 +1,7 @@
 import { BuiltInServiceId } from '../services.system'
 import { audiobookshelf } from './audiobookshelf'
 import { dozzle } from './dozzle'
+import { jellyfin } from './jellyfin'
 import { DataLoader } from './types'
 
 const dataLoaders: DataLoader<BuiltInServiceId, object> = {
@@ -22,7 +23,7 @@ const dataLoaders: DataLoader<BuiltInServiceId, object> = {
   grimmory: undefined,
   'home-assistant': undefined,
   immich: undefined,
-  jellyfin: undefined,
+  ...jellyfin,
   karakeep: undefined,
   kavita: undefined,
   linkace: undefined,
