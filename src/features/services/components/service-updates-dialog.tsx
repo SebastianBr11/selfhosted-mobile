@@ -12,6 +12,7 @@ import { openBrowserAsync } from 'expo-web-browser'
 import { ScrollView } from 'react-native'
 import { EnrichedMarkdownText } from 'react-native-enriched-markdown'
 import { WebView } from 'react-native-webview'
+import { Fonts } from '@/constants/theme'
 import { useTheme } from '@/hooks/use-theme'
 import { SemanticVersion } from '@/lib/schemas'
 import { UpdateData } from '../lib/data-loaders/types'
@@ -75,8 +76,17 @@ export function ServiceUpdatesDialog({
                     flavor="github"
                     markdown={changelog}
                     markdownStyle={{
-                      blockquote: { color: theme.onSurfaceVariant.toString() },
-                      code: { color: theme.onSurfaceVariant.toString() },
+                      blockquote: {
+                        color: theme.onSurfaceVariant.toString(),
+                      },
+                      code: {
+                        backgroundColor: theme.backgroundElement.toString(),
+                        color: theme.onSurfaceVariant.toString(),
+                        fontFamily: Fonts.mono,
+                      },
+                      codeBlock: {
+                        backgroundColor: theme.backgroundElement.toString(),
+                      },
                       em: { color: theme.onSurfaceVariant.toString() },
                       h1: { color: theme.onSurface.toString() },
                       h2: { color: theme.onSurface.toString() },
