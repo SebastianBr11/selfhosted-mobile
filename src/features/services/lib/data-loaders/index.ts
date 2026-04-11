@@ -2,6 +2,7 @@ import { BuiltInServiceId } from '../services.system'
 import { audiobookshelf } from './audiobookshelf'
 import { dozzle } from './dozzle'
 import { jellyfin } from './jellyfin'
+import { readeck } from './readeck'
 import { DataLoader } from './types'
 
 const dataLoaders: DataLoader<BuiltInServiceId, object> = {
@@ -42,7 +43,7 @@ const dataLoaders: DataLoader<BuiltInServiceId, object> = {
   photoprism: undefined,
   'pi-hole': undefined,
   portainer: undefined,
-  readeck: undefined,
+  ...readeck,
   romm: undefined,
   ryot: undefined,
   seerr: undefined,

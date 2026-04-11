@@ -3,7 +3,6 @@ import { fetch } from 'expo/fetch'
 import { getLocalServicesState } from '@/features/settings/lib/local-servies'
 import { getDataLoader } from './data-loaders'
 import { dataLoaderUtil } from './data-loaders/data-loader-util'
-import { UpdateData } from './data-loaders/types'
 import { Service } from './service.schema'
 import { isBuiltInServiceId } from './services-util'
 import { ServiceId, serviceSystem } from './services.system'
@@ -56,6 +55,13 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
           )
         } else if (loaders.repo) {
           switch (loaders.repo.vcs) {
+            case 'codeberg': {
+              updateData = await dataLoaderUtil.checkCodebergForUpdates(
+                loaders.repo.name,
+                publicData.version,
+              )
+              break
+            }
             case 'github': {
               updateData = await dataLoaderUtil.checkGithubForUpdates(
                 loaders.repo.name,
