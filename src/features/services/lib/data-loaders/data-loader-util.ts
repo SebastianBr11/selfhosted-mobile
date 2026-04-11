@@ -1,6 +1,12 @@
 import { fetch } from 'expo/fetch'
 import * as v from 'valibot'
-import { LeadingVSemanticVersionSchema, UrlSchema } from '@/lib/schemas'
+import {
+  LeadingVSemanticVersionSchema,
+  SemanticVersion,
+  UrlSchema,
+} from '@/lib/schemas'
+import { compareSemanticVersions } from '../../util'
+import { UpdateData } from './types'
 
 const GithubReleaseSchema = v.object({
   body: v.string(),
@@ -15,4 +21,38 @@ const GithubReleasesSchema = v.array(GithubReleaseSchema)
 export async function fetchGithubReleases(repo: string) {
   const data = await fetch(`https://api.github.com/repos/${repo}/releases`)
   return v.parse(GithubReleasesSchema, await data.json())
+}
+
+export const dataLoaderUtil = {
+  checkGithubForUpdates: async (
+    repoName: string,
+    currentVersion: SemanticVersion,
+  ) => {
+    const releases = await fetchGithubReleases(repoName)
+    const newerVersions = releases.filter(
+      (release) =>
+        compareSemanticVersions(currentVersion, release.tag_name) < 0,
+    )
+    const hasUpdate = newerVersions.length > 0
+    const changelog = newerVersions
+      .reduce((acc, release) => {
+        let str = `# ${release.name}\n`
+        str += release.body
+        acc.push(str)
+        return acc
+      }, [] as string[])
+      .join('\n\n')
+    const latest = releases[0]
+
+    if (hasUpdate) {
+      return {
+        changelog,
+        hasUpdate,
+        link: latest.html_url,
+        newVersion: latest.tag_name,
+        releaseTimestamp: latest.published_at,
+      } satisfies UpdateData
+    }
+    return { hasUpdate }
+  },
 }

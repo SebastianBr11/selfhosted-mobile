@@ -1,10 +1,10 @@
 import { fetch } from 'expo/fetch'
+import { parseHTML } from 'linkedom'
+import TurndownService from 'turndown'
 import * as v from 'valibot'
 import { LeadingVSemanticVersionSchema } from '@/lib/schemas'
 import { compareSemanticVersions } from '../../util'
 import { DataLoader } from './types'
-import TurndownService from 'turndown'
-import { parseHTML } from 'linkedom'
 
 const VersionResponseSchema = v.pipe(
   v.string(),

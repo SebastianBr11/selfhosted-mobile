@@ -2,6 +2,8 @@ import { queryOptions } from '@tanstack/react-query'
 import { fetch } from 'expo/fetch'
 import { getLocalServicesState } from '@/features/settings/lib/local-servies'
 import { getDataLoader } from './data-loaders'
+import { dataLoaderUtil } from './data-loaders/data-loader-util'
+import { UpdateData } from './data-loaders/types'
 import { Service } from './service.schema'
 import { isBuiltInServiceId } from './services-util'
 import { ServiceId, serviceSystem } from './services.system'
@@ -46,10 +48,22 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
 
         const healthy = await loaders.checkHealth(service.url)
         const publicData = await loaders.loadPublicData(service.url)
-        const updateData = await loaders.checkForUpdates?.(
-          service.url,
-          publicData.version,
-        )
+        let updateData
+        if (loaders.checkForUpdates) {
+          updateData = await loaders.checkForUpdates(
+            service.url,
+            publicData.version,
+          )
+        } else if (loaders.repo) {
+          switch (loaders.repo.vcs) {
+            case 'github': {
+              updateData = await dataLoaderUtil.checkGithubForUpdates(
+                loaders.repo.name,
+                publicData.version,
+              )
+            }
+          }
+        }
 
         return { healthy, publicData, updateData }
       }
