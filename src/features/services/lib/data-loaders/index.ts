@@ -4,6 +4,7 @@ import { dozzle } from './dozzle'
 import { jellyfin } from './jellyfin'
 import { readeck } from './readeck'
 import { romm } from './romm'
+import { shelfmark } from './shelfmark'
 import { DataLoader } from './types'
 
 const dataLoaders: DataLoader<BuiltInServiceId, object> = {
@@ -12,6 +13,7 @@ const dataLoaders: DataLoader<BuiltInServiceId, object> = {
   ...jellyfin,
   ...readeck,
   ...romm,
+  ...shelfmark,
 }
 
 export function getDataLoader(serviceId: BuiltInServiceId) {
