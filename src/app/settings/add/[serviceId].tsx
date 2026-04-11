@@ -1,6 +1,6 @@
 import { Redirect, useLocalSearchParams } from 'expo-router'
 import { useEffect } from 'react'
-import { ServiceId } from '@/features/services/lib/service.schema'
+import { ServiceId } from '@/features/services/lib/services.system'
 import { useLocalServices } from '@/features/settings/lib/local-servies'
 
 export default function AddScreen() {

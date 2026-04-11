@@ -24,8 +24,10 @@ import { useRouter } from 'expo-router'
 import { shareAsync } from 'expo-sharing'
 import { useColorScheme } from 'react-native'
 import { SwitchListItem } from '@/components/jetpack-compose/switch-list-item'
-import { ServiceId } from '@/features/services/lib/service.schema'
-import { serviceSystem } from '@/features/services/lib/services.system'
+import {
+  ServiceId,
+  serviceSystem,
+} from '@/features/services/lib/services.system'
 import { schemeDependantIcon } from '@/features/services/util'
 import { useTheme } from '@/hooks/use-theme'
 import { getLocalServicesState, useLocalServices } from './lib/local-servies'
