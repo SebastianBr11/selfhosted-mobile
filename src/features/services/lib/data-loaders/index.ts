@@ -6,6 +6,7 @@ import { readeck } from './readeck'
 import { romm } from './romm'
 import { shelfmark } from './shelfmark'
 import { DataLoader } from './types'
+import { vaultwarden } from './vaultwarden'
 
 const dataLoaders: DataLoader<BuiltInServiceId, object> = {
   ...audiobookshelf,
@@ -14,6 +15,7 @@ const dataLoaders: DataLoader<BuiltInServiceId, object> = {
   ...readeck,
   ...romm,
   ...shelfmark,
+  ...vaultwarden,
 }
 
 export function getDataLoader(serviceId: BuiltInServiceId) {
