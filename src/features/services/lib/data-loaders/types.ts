@@ -7,7 +7,7 @@ export type DataLoader<
   PublicData extends object,
   SecretData = unknown,
   Credentials = unknown,
-> = Record<Id, LoaderEntry<PublicData, SecretData, Credentials>>
+> = Partial<Record<Id, LoaderEntry<PublicData, SecretData, Credentials>>>
 
 export type LoaderEntry<PublicData, SecretData, Credentials> =
   | undefined
