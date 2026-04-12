@@ -5,6 +5,7 @@ import { gitea } from './gitea'
 import { grimmory } from './grimmory'
 import { immich } from './immich'
 import { jellyfin } from './jellyfin'
+import { mealie } from './mealie'
 import { readeck } from './readeck'
 import { romm } from './romm'
 import { shelfmark } from './shelfmark'
@@ -22,6 +23,7 @@ const dataLoaders: DataLoader<BuiltInServiceId, object> = {
   ...gitea,
   ...grimmory,
   ...immich,
+  ...mealie,
 }
 
 export function getDataLoader(serviceId: BuiltInServiceId) {

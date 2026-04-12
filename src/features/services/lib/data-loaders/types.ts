@@ -24,7 +24,7 @@ export type LoaderEntry<PublicData, SecretData, Credentials> = {
   checkHealth: (serviceUrl: ServiceUrl) => Promise<boolean>
   loadPublicData: (serviceUrl: ServiceUrl) => Promise<{
     data: PublicData
-    version: SemanticVersion
+    version: 'nightly' | SemanticVersion
   }>
   loadSecretData?: (credentials: Credentials) => Promise<SecretData>
   /** Used for checking for updates */

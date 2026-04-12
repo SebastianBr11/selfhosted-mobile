@@ -47,6 +47,10 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
 
         const healthy = await loaders.checkHealth(service.url)
         const publicData = await loaders.loadPublicData(service.url)
+        if (publicData.version === 'nightly') {
+          return { healthy, publicData }
+        }
+
         let updateData
         if (loaders.checkForUpdates) {
           updateData = await loaders.checkForUpdates(
