@@ -2,6 +2,7 @@ import { BuiltInServiceId } from '../services.system'
 import { audiobookshelf } from './audiobookshelf'
 import { dozzle } from './dozzle'
 import { gitea } from './gitea'
+import { grimmory } from './grimmory'
 import { jellyfin } from './jellyfin'
 import { readeck } from './readeck'
 import { romm } from './romm'
@@ -18,6 +19,7 @@ const dataLoaders: DataLoader<BuiltInServiceId, object> = {
   ...shelfmark,
   ...vaultwarden,
   ...gitea,
+  ...grimmory,
 }
 
 export function getDataLoader(serviceId: BuiltInServiceId) {
