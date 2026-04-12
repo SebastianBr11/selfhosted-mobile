@@ -15,6 +15,7 @@ import { seerr } from './seerr'
 import { shelfmark } from './shelfmark'
 import { DataLoader } from './types'
 import { vaultwarden } from './vaultwarden'
+import { wallabag } from './wallabag'
 
 const dataLoaders: DataLoader<BuiltInServiceId, object> = {
   ...audiobookshelf,
@@ -32,6 +33,7 @@ const dataLoaders: DataLoader<BuiltInServiceId, object> = {
   ...memos,
   ...portainer,
   ...seerr,
+  ...wallabag,
 }
 
 export function getDataLoader(serviceId: BuiltInServiceId) {
