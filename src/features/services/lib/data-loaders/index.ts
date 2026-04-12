@@ -1,6 +1,7 @@
 import { BuiltInServiceId } from '../services.system'
 import { audiobookshelf } from './audiobookshelf'
 import { dozzle } from './dozzle'
+import { forgejo } from './forgejo'
 import { gitea } from './gitea'
 import { grimmory } from './grimmory'
 import { immich } from './immich'
@@ -20,6 +21,7 @@ const dataLoaders: DataLoader<BuiltInServiceId, object> = {
   ...readeck,
   ...romm,
   ...shelfmark,
+  ...forgejo,
   ...vaultwarden,
   ...gitea,
   ...grimmory,
