@@ -11,6 +11,7 @@ import { memos } from './memos'
 import { portainer } from './portainer'
 import { readeck } from './readeck'
 import { romm } from './romm'
+import { seerr } from './seerr'
 import { shelfmark } from './shelfmark'
 import { DataLoader } from './types'
 import { vaultwarden } from './vaultwarden'
@@ -30,6 +31,7 @@ const dataLoaders: DataLoader<BuiltInServiceId, object> = {
   ...mealie,
   ...memos,
   ...portainer,
+  ...seerr,
 }
 
 export function getDataLoader(serviceId: BuiltInServiceId) {
