@@ -93,7 +93,7 @@ export default function ServiceBottomSheet({
                       <Icon
                         contentDescription="Healthy"
                         source={require('@/assets/symbols/heart_check.xml')}
-                        tintColor={theme.textSuccess}
+                        tint={theme.textSuccess}
                       />
                     </IconButton>
                   ) : (
@@ -101,7 +101,7 @@ export default function ServiceBottomSheet({
                       <Icon
                         contentDescription="Unhealthy"
                         source={require('@/assets/symbols/heart_broken.xml')}
-                        tintColor={theme.textError}
+                        tint={theme.textError}
                       />
                     </IconButton>
                   ))}
@@ -126,7 +126,7 @@ export default function ServiceBottomSheet({
                     <Icon
                       contentDescription="Unavailable"
                       source={require('@/assets/symbols/error.xml')}
-                      tintColor={theme.textError}
+                      tint={theme.textError}
                     />
                   </IconButton>
                 )}
@@ -137,7 +137,7 @@ export default function ServiceBottomSheet({
                     <Icon
                       contentDescription="Update available"
                       source={require('@/assets/symbols/update.xml')}
-                      tintColor={theme.onSurface}
+                      tint={theme.onSurface}
                     />
                   </FilledTonalIconButton>
                 )}

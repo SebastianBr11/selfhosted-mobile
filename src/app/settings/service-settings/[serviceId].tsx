@@ -34,7 +34,7 @@ export default function ServiceSettingsScreen() {
                   contentDescription="Reset Service Settings"
                   size={24}
                   source={require('@/assets/symbols/reset_settings.xml')}
-                  tintColor={theme.onSurface}
+                  tint={theme.onSurface}
                 />
               </IconButton>
             </Host>

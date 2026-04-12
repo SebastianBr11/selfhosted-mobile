@@ -91,7 +91,7 @@ export function LocalSourceSettingsView() {
           <IconButton modifiers={[align('topEnd')]} onClick={shareServices}>
             <Icon
               source={require('@/assets/symbols/save.xml')}
-              tintColor={theme.android.textSecondary}
+              tint={theme.android.textSecondary}
             />
           </IconButton>
         </Box>
@@ -109,7 +109,7 @@ export function LocalSourceSettingsView() {
                 supportingText={service.description}
                 value={hasServiceById(service.id)}
               >
-                <SwitchListItem.Leading>
+                <SwitchListItem.LeadingContent>
                   <RNHostView matchContents>
                     <Image
                       contentFit="cover"
@@ -118,7 +118,7 @@ export function LocalSourceSettingsView() {
                       style={{ height: 24, width: 24 }}
                     />
                   </RNHostView>
-                </SwitchListItem.Leading>
+                </SwitchListItem.LeadingContent>
               </SwitchListItem>
             ))}
           </Column>
