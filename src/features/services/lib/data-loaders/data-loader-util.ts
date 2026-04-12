@@ -15,7 +15,7 @@ const GithubReleaseSchema = v.object({
   id: v.number(),
   name: v.string(),
   published_at: v.pipe(v.string(), v.isoTimestamp()),
-  tag_name: v.union([LeadingVSemanticVersionSchema, SemanticVersionSchema]),
+  tag_name: v.union([SemanticVersionSchema, LeadingVSemanticVersionSchema]),
 })
 const GithubReleasesSchema = v.array(GithubReleaseSchema)
 
@@ -25,7 +25,7 @@ const CodebergReleaseSchema = v.object({
   id: v.number(),
   name: v.string(),
   published_at: v.pipe(v.string(), v.isoTimestamp()),
-  tag_name: v.union([LeadingVSemanticVersionSchema, SemanticVersionSchema]),
+  tag_name: v.union([SemanticVersionSchema, LeadingVSemanticVersionSchema]),
 })
 const CodebergReleasesSchema = v.array(CodebergReleaseSchema)
 
