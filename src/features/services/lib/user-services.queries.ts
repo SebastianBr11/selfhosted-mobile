@@ -39,45 +39,46 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
         throw new Error(`Service "${id}" not found`)
       }
 
-      if (isBuiltInServiceId(service.id)) {
-        const loaders = getDataLoader(service.id)
-        if (!loaders) {
-          return { notAvailable: true }
-        }
+      if (!isBuiltInServiceId(service.id)) {
+        return { notAvailable: true }
+      }
 
-        const healthy = await loaders.checkHealth(service.url)
-        const publicData = await loaders.loadPublicData(service.url)
-        if (publicData.version === 'nightly') {
-          return { healthy, publicData }
-        }
+      const loaders = getDataLoader(service.id)
+      if (!loaders) {
+        return { notAvailable: true }
+      }
 
-        let updateData
-        if (loaders.checkForUpdates) {
-          updateData = await loaders.checkForUpdates(
-            service.url,
-            publicData.version,
-          )
-        } else if (loaders.repo) {
-          switch (loaders.repo.vcs) {
-            case 'codeberg': {
-              updateData = await dataLoaderUtil.checkCodebergForUpdates(
-                loaders.repo.name,
-                publicData.version,
-              )
-              break
-            }
-            case 'github': {
-              updateData = await dataLoaderUtil.checkGithubForUpdates(
-                loaders.repo.name,
-                publicData.version,
-              )
-            }
+      const healthy = await loaders.checkHealth(service.url)
+      const publicData = await loaders.loadPublicData(service.url)
+      if (publicData.version === 'nightly') {
+        return { healthy, publicData }
+      }
+
+      let updateData
+      if (loaders.checkForUpdates) {
+        updateData = await loaders.checkForUpdates(
+          service.url,
+          publicData.version,
+        )
+      } else if (loaders.repo) {
+        switch (loaders.repo.vcs) {
+          case 'codeberg': {
+            updateData = await dataLoaderUtil.checkCodebergForUpdates(
+              loaders.repo.name,
+              publicData.version,
+            )
+            break
+          }
+          case 'github': {
+            updateData = await dataLoaderUtil.checkGithubForUpdates(
+              loaders.repo.name,
+              publicData.version,
+            )
           }
         }
-
-        return { healthy, publicData, updateData }
       }
-      return { notAvailable: true }
+
+      return { healthy, publicData, updateData }
     },
     queryKey: [
       'services',
