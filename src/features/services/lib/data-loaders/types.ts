@@ -1,4 +1,5 @@
 import { SemanticVersion } from '@/lib/schemas'
+import { Version } from '@/lib/types'
 import { ServiceUrl } from '../service.schema'
 import { BuiltInServiceId } from '../services.system'
 
@@ -24,7 +25,7 @@ export type LoaderEntry<PublicData, SecretData, Credentials> = {
   checkHealth: (serviceUrl: ServiceUrl) => Promise<boolean>
   loadPublicData: (serviceUrl: ServiceUrl) => Promise<{
     data: PublicData
-    version: 'nightly' | SemanticVersion
+    version: Version
   }>
   loadSecretData?: (credentials: Credentials) => Promise<SecretData>
   /** Used for checking for updates */

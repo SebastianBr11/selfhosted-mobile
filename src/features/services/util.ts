@@ -10,20 +10,20 @@ export function compareSemanticVersions(
   a: SemanticVersion,
   b: SemanticVersion,
 ) {
-  const a1 = a.split('.')
-  const b1 = b.split('.')
-  const len = Math.min(a1.length, b1.length)
-
-  for (let i = 0; i < len; i++) {
-    const a2 = +a1[i] || 0
-    const b2 = +b1[i] || 0
-
-    if (a2 !== b2) {
-      return a2 > b2 ? 1 : -1
-    }
+  console.log(a.raw, b.raw)
+  if (a.major !== b.major) {
+    console.log('major bigger', a.major > b.major ? a.raw : b.raw)
+    return a.major > b.major ? 1 : -1
   }
-
-  return b1.length - a1.length
+  if (a.minor !== b.minor) {
+    console.log('minor bigger', a.minor > b.minor ? a.raw : b.raw)
+    return a.minor > b.minor ? 1 : -1
+  }
+  if (a.patch !== b.patch) {
+    console.log('patch bigger', a.patch > b.patch ? a.raw : b.raw)
+    return a.patch > b.patch ? 1 : -1
+  }
+  return 0
 }
 
 export function schemeDependantIcon(

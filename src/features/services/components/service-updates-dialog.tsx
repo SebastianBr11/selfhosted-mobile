@@ -11,14 +11,13 @@ import { useLingui } from '@lingui/react/macro'
 import { openBrowserAsync } from 'expo-web-browser'
 import { ScrollView } from 'react-native'
 import { EnrichedMarkdownText } from 'react-native-enriched-markdown'
-import { WebView } from 'react-native-webview'
 import { Fonts } from '@/constants/theme'
 import { useTheme } from '@/hooks/use-theme'
-import { SemanticVersion } from '@/lib/schemas'
+import { Version } from '@/lib/types'
 import { UpdateData } from '../lib/data-loaders/types'
 
 type ServiceUpdatesDialogProps = {
-  currentVersion: SemanticVersion
+  currentVersion: Version
   hide: () => void
   updateData: UpdateData
 }

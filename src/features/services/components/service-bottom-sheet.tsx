@@ -150,7 +150,7 @@ export default function ServiceBottomSheet({
                 />
               ) : data?.publicData?.version ? (
                 <Row>
-                  <Text>{data?.publicData.version}</Text>
+                  <Text>{data?.publicData.version.toString()}</Text>
                 </Row>
               ) : data?.notAvailable ? (
                 <Row>

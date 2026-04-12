@@ -8,10 +8,28 @@ export const UrlSchema = v.pipe(
   v.url(({ received }) => t`The URL "${received}" is invalid.`),
 )
 
+const semverRegex =
+  /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/
+
 export const SemanticVersionSchema = v.pipe(
-  v.string(),
-  v.regex(
-    /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/,
+  v.nonNullable(
+    v.pipe(
+      v.string(),
+      v.transform((s) => {
+        const result = semverRegex.exec(s)
+        if (result) {
+          return {
+            build: result[5],
+            major: Number(result[1]),
+            minor: Number(result[2]),
+            patch: Number(result[3]),
+            prerelease: result[4],
+            raw: s,
+            toString: () => s,
+          }
+        }
+      }),
+    ),
   ),
   v.brand('SemanticVersion'),
 )
