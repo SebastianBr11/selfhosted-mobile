@@ -3,6 +3,7 @@ import { audiobookshelf } from './audiobookshelf'
 import { dozzle } from './dozzle'
 import { gitea } from './gitea'
 import { grimmory } from './grimmory'
+import { immich } from './immich'
 import { jellyfin } from './jellyfin'
 import { readeck } from './readeck'
 import { romm } from './romm'
@@ -20,6 +21,7 @@ const dataLoaders: DataLoader<BuiltInServiceId, object> = {
   ...vaultwarden,
   ...gitea,
   ...grimmory,
+  ...immich,
 }
 
 export function getDataLoader(serviceId: BuiltInServiceId) {
