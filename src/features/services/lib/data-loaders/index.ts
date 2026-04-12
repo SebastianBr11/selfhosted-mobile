@@ -8,6 +8,7 @@ import { immich } from './immich'
 import { jellyfin } from './jellyfin'
 import { mealie } from './mealie'
 import { memos } from './memos'
+import { portainer } from './portainer'
 import { readeck } from './readeck'
 import { romm } from './romm'
 import { shelfmark } from './shelfmark'
@@ -28,6 +29,7 @@ const dataLoaders: DataLoader<BuiltInServiceId, object> = {
   ...immich,
   ...mealie,
   ...memos,
+  ...portainer,
 }
 
 export function getDataLoader(serviceId: BuiltInServiceId) {
