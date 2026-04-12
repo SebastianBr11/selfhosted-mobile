@@ -1,5 +1,5 @@
 import 'tsx/cjs'
-import { ExpoConfig, ConfigContext } from 'expo/config'
+import { ConfigContext, ExpoConfig } from 'expo/config'
 import { version as appVersion } from './package.json'
 
 const IS_DEV = process.env.APP_VARIANT === 'development'
@@ -20,15 +20,27 @@ const monochromeIcon = `./assets/icons/${IS_DEV ? 'debug-' : IS_PREVIEW ? 'previ
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name,
-  slug: 'selfhosted-mobile',
-  version: appVersion,
-  orientation: 'portrait',
-  icon: './assets/images/icon.png',
-  scheme: 'selfhostedmobile',
-  userInterfaceStyle: 'automatic',
-  platforms: ['android'],
+  android: {
+    adaptiveIcon: {
+      backgroundColor: '#E6F4FE',
+      foregroundImage: adaptiveIcon,
+      monochromeImage: monochromeIcon,
+    },
+    package: appId,
+    predictiveBackGestureEnabled: true,
+  },
   description: 'An android app to see your selfhosted services.',
+  experiments: {
+    reactCompiler: true,
+    typedRoutes: true,
+  },
+  extra: {
+    eas: {
+      projectId: 'efcf4ebd-d45b-4359-a939-3449d6767b50',
+    },
+    router: {},
+  },
+  icon: './assets/images/icon.png',
   ios: {
     icon: {
       dark: './assets/icons/ios-dark.png',
@@ -36,19 +48,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       tinted: './assets/icons/ios-tinted.png',
     },
   },
-  android: {
-    adaptiveIcon: {
-      backgroundColor: '#E6F4FE',
-      foregroundImage: adaptiveIcon,
-      monochromeImage: monochromeIcon,
-    },
-    predictiveBackGestureEnabled: true,
-    package: appId,
-  },
-  web: {
-    output: 'static',
-    favicon: './assets/images/favicon.png',
-  },
+  name,
+  orientation: 'portrait',
+  platforms: ['android'],
   plugins: [
     './plugins/withAndroidQueries.ts',
     'expo-router',
@@ -56,13 +58,13 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       'expo-splash-screen',
       {
         backgroundColor: '#ffffff',
+        dark: {
+          backgroundColor: '#121312',
+          image: './assets/icons/splash-icon-dark.png',
+        },
         image: './assets/icons/splash-icon-light.png',
         imageWidth: 200,
         resizeMode: 'contain',
-        dark: {
-          image: './assets/icons/splash-icon-dark.png',
-          backgroundColor: '#121312',
-        },
       },
     ],
     'expo-web-browser',
@@ -72,18 +74,16 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         supportedLocales: ['de', 'en', 'es'],
       },
     ],
-    "expo-sharing",
-    "expo-image",
-    "expo-font"
+    'expo-sharing',
+    'expo-image',
+    'expo-font',
   ],
-  experiments: {
-    typedRoutes: true,
-    reactCompiler: true,
-  },
-  extra: {
-    router: {},
-    eas: {
-      projectId: 'efcf4ebd-d45b-4359-a939-3449d6767b50',
-    },
+  scheme: 'selfhostedmobile',
+  slug: 'selfhosted-mobile',
+  userInterfaceStyle: 'automatic',
+  version: appVersion,
+  web: {
+    favicon: './assets/images/favicon.png',
+    output: 'static',
   },
 })
