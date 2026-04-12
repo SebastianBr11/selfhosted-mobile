@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const grimmory = {
   description:
@@ -7,5 +8,5 @@ export const grimmory = {
     'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/booklore.svg',
   id: 'grimmory',
   name: 'Grimmory',
-  url: 'https://github.com/grimmory-tools/grimmory',
+  url: serviceUrl('https://github.com/grimmory-tools/grimmory'),
 } as const satisfies Service

@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const yamtrack = {
   description:
@@ -10,5 +11,5 @@ export const yamtrack = {
   },
   id: 'yamtrack',
   name: 'Yamtrack',
-  url: 'https://github.com/FuzzyGrim/Yamtrack',
+  url: serviceUrl('https://github.com/FuzzyGrim/Yamtrack'),
 } as const satisfies Service

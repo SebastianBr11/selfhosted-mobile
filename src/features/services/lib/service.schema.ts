@@ -63,6 +63,14 @@ export const ServiceIconUrlSchema = v.pipe(
   }),
 )
 
+const ServiceUrlSchema = v.pipe(
+  UrlSchema,
+  v.metadata({
+    description: 'The URL of the service',
+    title: 'Service URL',
+  }),
+  v.brand('ServiceUrl'),
+)
 export const ServiceSchema = v.object({
   appStoreLink: v.optional(ServiceAppStoreLinkSchema),
   description: ServiceDescriptionSchema,
@@ -70,13 +78,12 @@ export const ServiceSchema = v.object({
   id: ServiceIdSchema,
   name: ServiceNameSchema,
   packageName: v.optional(ServicePackageNameSchema),
-  url: UrlSchema,
+  url: ServiceUrlSchema,
 })
 export type Service = v.InferOutput<typeof ServiceSchema>
 export type ServiceAppStoreLink = Service['appStoreLink']
 export type ServiceDescription = Service['description']
 export type ServiceIconUrl = Service['iconUrl']
-export type ServiceId = Service['id']
 export type ServiceName = Service['name']
 export type ServiceUrl = Service['url']
 
@@ -92,7 +99,7 @@ export function createUserInputSchema(validIds: Set<string>) {
             id: BuiltInServiceIdSchema([...validIds]),
             name: v.optional(ServiceNameSchema),
             packageName: v.optional(ServicePackageNameSchema),
-            url: UrlSchema,
+            url: ServiceUrlSchema,
           }),
           v.metadata({
             description:

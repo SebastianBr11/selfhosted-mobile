@@ -1,7 +1,8 @@
 import { createStore } from 'stan-js'
 import { storage } from 'stan-js/storage'
 import { builtInServices } from '@/features/services/lib/builtin'
-import { Service, ServiceId } from '@/features/services/lib/service.schema'
+import { Service } from '@/features/services/lib/service.schema'
+import { ServiceId } from '@/features/services/lib/services.system'
 
 export const {
   actions: { setServices: setLocalServices },

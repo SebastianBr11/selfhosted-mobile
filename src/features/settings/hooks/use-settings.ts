@@ -7,6 +7,11 @@ export const { useStore: useSettings } = createStore(
       const { showAppStoreButton, showOpenInBrowserButton } = this
       return !showAppStoreButton && !showOpenInBrowserButton
     },
+    get canSetUseCupToCheckForUpdates() {
+      const { fetchServiceData } = this
+      return fetchServiceData
+    },
+    fetchServiceData: storage<boolean>(true),
     get openAppDirectly() {
       const { canSetOpenAppDirectly, openAppDirectlyInternal } = this
       return canSetOpenAppDirectly && openAppDirectlyInternal
@@ -14,6 +19,12 @@ export const { useStore: useSettings } = createStore(
     openAppDirectlyInternal: storage<boolean>(false),
     showAppStoreButton: storage<boolean>(true),
     showOpenInBrowserButton: storage<boolean>(true),
+    get useCupToCheckForUpdates() {
+      const { canSetUseCupToCheckForUpdates, useCupToCheckForUpdatesInternal } =
+        this
+      return canSetUseCupToCheckForUpdates && useCupToCheckForUpdatesInternal
+    },
+    useCupToCheckForUpdatesInternal: storage<boolean>(true),
     get useLocalSource() {
       return !this.useRemoteSource
     },
@@ -23,6 +34,9 @@ export const { useStore: useSettings } = createStore(
   ({ actions }) => ({
     setOpenAppDirectly(openAppDirectly: boolean) {
       actions.setOpenAppDirectlyInternal(openAppDirectly)
+    },
+    setUseCupToCheckForUpdates(useCupToCheckForUpdates: boolean) {
+      actions.setUseCupToCheckForUpdatesInternal(useCupToCheckForUpdates)
     },
     /** Only use in layout file! */
     setUseLocalSource(useLocalSource: boolean) {

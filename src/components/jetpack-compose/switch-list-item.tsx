@@ -37,15 +37,13 @@ export function SwitchListItem({
       supportingText={supportingText}
     >
       {children}
-      <ListItem.Trailing>
+      <ListItem.TrailingContent>
         <Row verticalAlignment="center">
           {onClick && (
             <>
               <Icon
                 source={require('@/assets/symbols/chevron_forward.xml')}
-                tintColor={
-                  enabled ? theme.onSurfaceVariant : theme.onSurfaceVariant
-                }
+                tint={enabled ? theme.onSurfaceVariant : theme.onSurfaceVariant}
               />
               <Spacer modifiers={[width(8)]} />
             </>
@@ -75,7 +73,7 @@ export function SwitchListItem({
                     size(Switch.DefaultIconSize, Switch.DefaultIconSize),
                   ]}
                   source={require('@/assets/symbols/check.xml')}
-                  tintColor={
+                  tint={
                     enabled
                       ? theme.textPrimary
                       : withOpacity(theme.onSurface, 0.12)
@@ -87,15 +85,15 @@ export function SwitchListItem({
                     size(Switch.DefaultIconSize, Switch.DefaultIconSize),
                   ]}
                   source={require('@/assets/symbols/clear.xml')}
-                  tintColor={theme.backgroundElementHighest}
+                  tint={theme.backgroundElementHighest}
                 />
               )}
             </Switch.ThumbContent>
           </Switch>
         </Row>
-      </ListItem.Trailing>
+      </ListItem.TrailingContent>
     </ListItem>
   )
 }
-SwitchListItem.Leading = ListItem.Leading
+SwitchListItem.LeadingContent = ListItem.LeadingContent
 SwitchListItem.SupportingContent = ListItem.SupportingContent

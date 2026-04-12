@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const karakeep = {
   appStoreLink:
@@ -13,5 +14,5 @@ export const karakeep = {
   id: 'karakeep',
   name: 'Karakeep',
   packageName: 'app.hoarder.hoardermobile',
-  url: 'https://karakeep.app',
+  url: serviceUrl('https://karakeep.app'),
 } as const satisfies Service

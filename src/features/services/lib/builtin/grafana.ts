@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const grafana = {
   description:
@@ -7,5 +8,5 @@ export const grafana = {
     'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/grafana.svg',
   id: 'grafana',
   name: 'Grafana',
-  url: 'https://grafana.com',
+  url: serviceUrl('https://grafana.com'),
 } as const satisfies Service

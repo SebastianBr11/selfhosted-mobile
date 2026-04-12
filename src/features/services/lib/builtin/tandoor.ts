@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const tandoor = {
   description:
@@ -7,5 +8,5 @@ export const tandoor = {
     'https://github.com/vabene1111/recipes/raw/develop/docs/logo_color.svg',
   id: 'tandoor',
   name: 'Tandoor Recipes',
-  url: 'https://docs.tandoor.dev/',
+  url: serviceUrl('https://docs.tandoor.dev/'),
 } as const satisfies Service

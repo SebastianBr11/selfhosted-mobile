@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const audiobookshelf = {
   appStoreLink:
@@ -8,5 +9,5 @@ export const audiobookshelf = {
   id: 'audiobookshelf',
   name: 'Audiobookshelf',
   packageName: 'com.audiobookshelf.app',
-  url: 'https://www.audiobookshelf.org/',
+  url: serviceUrl('https://www.audiobookshelf.org/'),
 } as const satisfies Service

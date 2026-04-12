@@ -68,7 +68,7 @@ export default function ServicesSourceSettingsLayout() {
                 >
                   <Icon
                     source={require('@/assets/symbols/settings.xml')}
-                    tintColor={theme.onSurface}
+                    tint={theme.onSurface}
                   />
                 </IconButton>
               </Row>

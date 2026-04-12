@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const shelfmark = {
   description:
@@ -7,5 +8,5 @@ export const shelfmark = {
     'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/shelfmark.png',
   id: 'shelfmark',
   name: 'Shelfmark',
-  url: 'https://github.com/calibrain/shelfmark',
+  url: serviceUrl('https://github.com/calibrain/shelfmark'),
 } as const satisfies Service

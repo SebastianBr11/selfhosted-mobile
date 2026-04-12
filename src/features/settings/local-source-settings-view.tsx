@@ -24,8 +24,10 @@ import { useRouter } from 'expo-router'
 import { shareAsync } from 'expo-sharing'
 import { useColorScheme } from 'react-native'
 import { SwitchListItem } from '@/components/jetpack-compose/switch-list-item'
-import { ServiceId } from '@/features/services/lib/service.schema'
-import { serviceSystem } from '@/features/services/lib/services.system'
+import {
+  ServiceId,
+  serviceSystem,
+} from '@/features/services/lib/services.system'
 import { schemeDependantIcon } from '@/features/services/util'
 import { useTheme } from '@/hooks/use-theme'
 import { getLocalServicesState, useLocalServices } from './lib/local-servies'
@@ -89,7 +91,7 @@ export function LocalSourceSettingsView() {
           <IconButton modifiers={[align('topEnd')]} onClick={shareServices}>
             <Icon
               source={require('@/assets/symbols/save.xml')}
-              tintColor={theme.android.textSecondary}
+              tint={theme.android.textSecondary}
             />
           </IconButton>
         </Box>
@@ -107,7 +109,7 @@ export function LocalSourceSettingsView() {
                 supportingText={service.description}
                 value={hasServiceById(service.id)}
               >
-                <SwitchListItem.Leading>
+                <SwitchListItem.LeadingContent>
                   <RNHostView matchContents>
                     <Image
                       contentFit="cover"
@@ -116,7 +118,7 @@ export function LocalSourceSettingsView() {
                       style={{ height: 24, width: 24 }}
                     />
                   </RNHostView>
-                </SwitchListItem.Leading>
+                </SwitchListItem.LeadingContent>
               </SwitchListItem>
             ))}
           </Column>

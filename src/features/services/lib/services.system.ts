@@ -8,8 +8,9 @@ import { createUserInputSchema, Service } from './service.schema'
  * 1. Add the service to the `builtInServicesIds` array
  * 2. Add the service in a new file to the `src/features/services/lib/builtin` directory
  * 3. Add the service to the {@link builtInServices} array
+ * 4. If we want to fetch data from the service's API, add a data loader for the service in the data-loaders directory
  */
-const builtInServiceIds = [
+export const builtInServiceIds = [
   'adguard-home',
   'audiobookshelf',
   'authelia',
@@ -72,7 +73,8 @@ const builtInServiceIds = [
 
 export const serviceSystem = createServiceSystem(builtInServices)
 
-type BuiltInServiceId = (typeof builtInServiceIds)[number]
+export type BuiltInServiceId = (typeof builtInServiceIds)[number]
+export type ServiceId = BuiltInServiceId | (string & {})
 
 function createServiceSystem<const T extends readonly Service[] = Service[]>(
   builtIns: AssertExactlyAllIdsPresent<T, BuiltInServiceId> & T,
@@ -92,7 +94,7 @@ function createServiceSystem<const T extends readonly Service[] = Service[]>(
           appStoreLink: item.appStoreLink ?? defaults?.appStoreLink,
           description: item.description ?? defaults?.description!,
           iconUrl: item.iconUrl ?? defaults?.iconUrl!,
-          id: item.id,
+          id: item.id as ServiceId,
           name: item.name ?? defaults?.name!,
           packageName: item.packageName ?? defaults?.packageName,
           url: item.url,
@@ -110,7 +112,7 @@ function createServiceSystem<const T extends readonly Service[] = Service[]>(
             appStoreLink: item.appStoreLink ?? defaults?.appStoreLink,
             description: item.description ?? defaults?.description!,
             iconUrl: item.iconUrl ?? defaults?.iconUrl!,
-            id: item.id,
+            id: item.id as ServiceId,
             name: item.name ?? defaults?.name!,
             packageName: item.packageName ?? defaults?.packageName,
             url: item.url,
