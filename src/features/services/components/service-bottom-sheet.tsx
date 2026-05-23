@@ -127,7 +127,7 @@ export default function ServiceBottomSheet({
                         typography: 'labelLarge',
                       }}
                     >
-                      {data?.publicData?.version.toString()}
+                      {data?.publicData?.version.raw}
                     </Text>
                   )}
                 </FlowRow>

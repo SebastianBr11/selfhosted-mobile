@@ -50,7 +50,7 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
 
       const healthy = await loaders.checkHealth(service.url)
       const publicData = await loaders.loadPublicData(service.url)
-      if (publicData.version === 'nightly') {
+      if (publicData.version.type === 'nightly') {
         return { healthy, publicData }
       }
 

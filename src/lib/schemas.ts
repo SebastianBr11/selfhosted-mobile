@@ -15,7 +15,6 @@ export const SemanticVersionSchema = v.pipe(
   v.string(),
   v.transform((s) => {
     const result = semverRegex.exec(s)
-    // console.log(s, !!result)
     if (result) {
       return {
         build: result[5],
@@ -24,7 +23,7 @@ export const SemanticVersionSchema = v.pipe(
         patch: Number(result[3]),
         prerelease: result[4],
         raw: s,
-        toString: () => s,
+        type: 'semantic-version' as const,
       }
     }
   }),
@@ -41,6 +40,17 @@ export const LeadingVSemanticVersionSchema = v.pipe(
   v.transform((versionString) => versionString.substring(1)), // remove leading 'v'
   SemanticVersionSchema,
 )
+
+export const NightlyVersionSchema = v.pipe(
+  v.literal('nightly'),
+  v.transform((s) => ({
+    raw: s,
+    type: 'nightly' as const,
+  })),
+)
+export type NightlyVersion = v.InferOutput<typeof NightlyVersionSchema>
+
+export type Version = NightlyVersion | SemanticVersion
 
 /**
  * Creates a schema that accepts an array of unique values and returns an array.

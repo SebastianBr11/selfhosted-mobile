@@ -1,5 +1,4 @@
-import { SemanticVersion } from '@/lib/schemas'
-import { Version } from '@/lib/types'
+import { SemanticVersion, Version } from '@/lib/schemas'
 import { ServiceUrl } from '../service.schema'
 import { BuiltInServiceId } from '../services.system'
 

@@ -13,7 +13,7 @@ import { ScrollView } from 'react-native'
 import { EnrichedMarkdownText } from 'react-native-enriched-markdown'
 import { Fonts } from '@/constants/theme'
 import { useTheme } from '@/hooks/use-theme'
-import { Version } from '@/lib/types'
+import { Version } from '@/lib/schemas'
 import { UpdateData } from '../lib/data-loaders/types'
 
 type ServiceUpdatesDialogProps = {
