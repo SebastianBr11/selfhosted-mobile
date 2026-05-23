@@ -22,6 +22,7 @@ msgid "{serviceName} Settings"
 msgstr "{serviceName} Einstellungen"
 
 #: src/features/services/components/fetch-services-error-dialog.tsx:19
+#: src/features/services/components/service-bottom-sheet.tsx:170
 msgid "An error ocurred"
 msgstr "Ein Fehler ist aufgetreten"
 
@@ -29,15 +30,15 @@ msgstr "Ein Fehler ist aufgetreten"
 msgid "An error ocurred while fetching your services. Go to settings to see the error details."
 msgstr "Beim Abrufen deiner Dienste ist ein Fehler aufgetreten. Gehe zu den Einstellungen, um die Details anzuzeigen."
 
-#: src/features/settings/service-settings-view.tsx:73
+#: src/features/settings/service-settings-view.tsx:74
 msgid "Android Package Name"
 msgstr "Android-Paketname"
 
-#: src/features/settings/more-settings-view.tsx:41
+#: src/features/settings/more-settings-view.tsx:75
 msgid "App Store button"
 msgstr "Öffne im App Store-Button"
 
-#: src/features/settings/service-settings-view.tsx:60
+#: src/features/settings/service-settings-view.tsx:61
 msgid "App Store Link"
 msgstr "App Store-Link"
 
@@ -49,7 +50,11 @@ msgstr "Bist du sicher, dass du die zuletzt abgerufenen Dienste in lokale Dienst
 msgid "Are you sure you want to reset the settings for this service? This will overwrite the current settings. This action cannot be undone."
 msgstr "Bist du sicher, dass du die Einstellungen dieses Dienstes zurücksetzen willst? Dies wird die aktuellen Einstellungen überschreiben. Diese Aktion kann nicht rückgängig gemacht werden."
 
-#: src/features/settings/local-source-settings-view.tsx:87
+#: src/features/services/components/service-updates-dialog.tsx:43
+msgid "Changes since {rawCurrentVersion}"
+msgstr "Änderungen seit {rawCurrentVersion}"
+
+#: src/features/settings/local-source-settings-view.tsx:89
 msgid "Choose services"
 msgstr "Dienste auswählen"
 
@@ -74,16 +79,22 @@ msgstr "In lokale Dienste umwandeln"
 msgid "Convert to local services?"
 msgstr "In lokale Dienste umwandeln?"
 
-#: src/features/settings/service-settings-view.tsx:49
+#: src/features/settings/service-settings-view.tsx:50
 msgid "Description"
 msgstr "Beschreibung"
 
 #: src/features/services/components/fetch-services-error-dialog.tsx:38
 #: src/features/services/components/offline-dialog.tsx:35
+#: src/features/services/components/service-health-dialog.tsx:52
+#: src/features/services/components/service-updates-dialog.tsx:112
 #: src/features/settings/components/convert-to-local-source-dialog.tsx:55
 #: src/features/settings/components/reset-service-settings-dialog.tsx:42
 msgid "Dismiss"
 msgstr "Schließen"
+
+#: src/features/settings/more-settings-view.tsx:52
+msgid "Enable data fetching"
+msgstr "Zusätzliche Daten abrufen"
 
 #: src/features/services/components/fetch-services-error-dialog.tsx:33
 msgid "Go to settings"
@@ -97,15 +108,15 @@ msgstr "Gehe in die Einstellungen, um die URL zu konfigurieren"
 msgid "Home"
 msgstr "Home"
 
-#: src/features/settings/service-settings-view.tsx:68
+#: src/features/settings/service-settings-view.tsx:69
 msgid "Icon URL"
 msgstr "Icon-URL"
 
-#: src/features/settings/more-settings-view.tsx:89
+#: src/features/settings/more-settings-view.tsx:123
 msgid "License"
 msgstr "Lizenz"
 
-#: src/features/settings/more-settings-view.tsx:97
+#: src/features/settings/more-settings-view.tsx:131
 msgid "MIT"
 msgstr "MIT"
 
@@ -113,41 +124,49 @@ msgstr "MIT"
 msgid "More settings"
 msgstr "Weitere Einstellungen"
 
+#: src/features/services/components/service-bottom-sheet.tsx:166
+msgid "No additional data available"
+msgstr "Keine zusätzlichen Daten verfügbar"
+
 #: src/features/settings/remote-source-settings-view.tsx:88
 msgid "Not Connected"
 msgstr "Nicht verbunden"
 
-#: src/features/settings/more-settings-view.tsx:57
+#: src/features/settings/more-settings-view.tsx:91
 msgid "Open app directly"
 msgstr "App direkt öffnen"
 
-#: src/features/settings/more-settings-view.tsx:61
+#: src/features/settings/more-settings-view.tsx:95
 msgid "Open app directly instead of bottom sheet. Only available if the app store button and open in browser button are hidden."
 msgstr "App direkt öffnen statt im Bottom Sheet. Nur verfügbar, wenn der Button zum App Store und der Button zum Browser verborgen sind."
 
-#: src/features/services/components/service-bottom-sheet.tsx:98
+#: src/features/services/components/service-bottom-sheet.tsx:208
 msgid "Open in {name}"
 msgstr "Öffne in {name}"
 
-#: src/features/services/components/service-bottom-sheet.tsx:111
+#: src/features/services/components/service-bottom-sheet.tsx:221
 msgid "Open in App Store"
 msgstr "Öffne im App Store"
 
-#: src/features/services/components/service-bottom-sheet.tsx:72
+#: src/features/services/components/service-bottom-sheet.tsx:182
 msgid "Open in Browser"
 msgstr "Öffne im Browser"
 
-#: src/features/settings/more-settings-view.tsx:49
+#: src/features/settings/more-settings-view.tsx:83
 msgid "Open in browser button"
 msgstr "Öffne im Browser-Button"
 
-#: src/features/services/components/service-bottom-sheet.tsx:82
+#: src/features/services/components/service-bottom-sheet.tsx:192
 msgid "Open installed App"
 msgstr "Installierte App öffnen"
 
-#: src/features/settings/more-settings-view.tsx:38
+#: src/features/settings/more-settings-view.tsx:72
 msgid "Other settings"
 msgstr "Andere Einstellungen"
+
+#: src/features/services/components/service-updates-dialog.tsx:53
+msgid "Release date:"
+msgstr "Veröffentlichkeitsdatum:"
 
 #: src/features/settings/components/reset-service-settings-dialog.tsx:23
 msgid "Reset service settings?"
@@ -157,11 +176,27 @@ msgstr "Dienst-Einstellungen zurücksetzen?"
 msgid "Reset settings"
 msgstr "Einstellungen zurücksetzen"
 
-#: src/features/settings/service-settings-view.tsx:43
+#: src/features/settings/more-settings-view.tsx:49
+msgid "Service Details Fetching"
+msgstr "Abrufen zusätzlicher Daten"
+
+#: src/features/services/components/service-health-dialog.tsx:32
+msgid "Service is healthy"
+msgstr "Dienst ist gesund"
+
+#: src/features/services/components/service-health-dialog.tsx:30
+msgid "Service is unavailable"
+msgstr "Dienst ist nicht verfügbar"
+
+#: src/features/services/components/service-health-dialog.tsx:33
+msgid "Service is unhealthy"
+msgstr "Dienst ist ungesund"
+
+#: src/features/settings/service-settings-view.tsx:44
 msgid "Service Name"
 msgstr "Dienst-Name"
 
-#: src/features/settings/service-settings-view.tsx:46
+#: src/features/settings/service-settings-view.tsx:47
 msgid "Service URL"
 msgstr "Dienst-URL"
 
@@ -178,15 +213,15 @@ msgstr "Einstellungen"
 msgid "Setup URL"
 msgstr "URL konfigurieren"
 
-#: src/features/settings/more-settings-view.tsx:45
+#: src/features/settings/more-settings-view.tsx:79
 msgid "Show App Store button"
 msgstr "Zeige App Store-Button"
 
-#: src/features/settings/more-settings-view.tsx:52
+#: src/features/settings/more-settings-view.tsx:86
 msgid "Show button to open in browser"
 msgstr "Zeige Button, um im Browser zu öffnen"
 
-#: src/features/settings/more-settings-view.tsx:79
+#: src/features/settings/more-settings-view.tsx:113
 msgid "Source Code"
 msgstr "Quellcode"
 
@@ -202,17 +237,29 @@ msgstr "Der Wert von {name} muss ein String sein. Der Wert \"{received}\" ist un
 msgid "The {name} must not be empty."
 msgstr "Der Wert von {name} darf nicht leer sein."
 
+#: src/features/services/components/service-health-dialog.tsx:40
+msgid "The service cannot be reached. Make sure it is running and try again. See the error details below"
+msgstr "Der Dienst kann nicht erreicht werden. Stell sicher, dass er läuft und versuch es erneut. Siehe die Fehler-Details unten"
+
 #: src/lib/schemas.ts:8
 msgid "The URL \"{received}\" is invalid."
 msgstr "Die URL \"{received}\" ist ungültig."
 
-#: src/features/services/lib/service.schema.ts:112
+#: src/features/services/lib/service.schema.ts:119
 msgid "Unknown service ID \"{id}\". Service name, description and icon URL are required for custom services."
 msgstr "Unbekannte Service-ID \"{id}\". Für benutzerdefinierte Services sind der Service-Name, die Beschreibung und die URL erforderlich."
 
-#: src/features/settings/more-settings-view.tsx:75
+#: src/features/settings/more-settings-view.tsx:109
 msgid "Unknown version"
 msgstr "Unbekannte Version"
+
+#: src/features/settings/more-settings-view.tsx:65
+msgid "Use Cup (if available) to check for updates"
+msgstr "Cup benutzen (wenn verfügbar), um nach Updates zu suchen"
+
+#: src/features/settings/more-settings-view.tsx:61
+msgid "Use Cup to check for updates"
+msgstr "Cup benutzen, um nach Updates zu suchen"
 
 #: src/app/settings/(services-source)/_layout.tsx:83
 msgid "Use local source"
@@ -222,11 +269,19 @@ msgstr "Lokale Dienste"
 msgid "Use remote source"
 msgstr "Remote-Dienste"
 
-#: src/features/settings/more-settings-view.tsx:71
+#: src/features/settings/more-settings-view.tsx:56
+msgid "Use service API to fetch service details"
+msgstr "Die API des Dienstes verwenden, um zusätzliche Daten abzurufen"
+
+#: src/features/settings/more-settings-view.tsx:105
 msgid "Version"
 msgstr "Version"
 
-#: src/features/settings/more-settings-view.tsx:86
+#: src/features/services/components/service-updates-dialog.tsx:49
+msgid "Version {rawNewVersion} is available."
+msgstr "Version {rawNewVersion} ist verfügbar."
+
+#: src/features/settings/more-settings-view.tsx:120
 msgid "View source code on GitHub"
 msgstr "Quellcode auf GitHub anzeigen"
 
@@ -241,6 +296,14 @@ msgstr "Du bist offline"
 #: src/features/services/components/offline-dialog.tsx:19
 msgid "You're offline. Check your network connection and try again."
 msgstr "Du bist offline. Prüfe deine Netzwerkverbindung und versuche es erneut."
+
+#: src/features/services/components/service-health-dialog.tsx:42
+msgid "Your service is healthy. There is nothing to do."
+msgstr "Der Dienstag ist gesund. Es gibt nichts zu tun."
+
+#: src/features/services/components/service-health-dialog.tsx:43
+msgid "Your service is unhealthy. You should probably check it out."
+msgstr "Der Dienst ist ungesund. Du solltest ihn dir mal anschauen."
 
 #: src/features/services/services-view.tsx:116
 msgid "Your Services"
