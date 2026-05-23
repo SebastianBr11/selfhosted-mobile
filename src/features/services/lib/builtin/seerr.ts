@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const seerr = {
   description:
@@ -8,5 +9,5 @@ export const seerr = {
   id: 'seerr',
   name: 'Seerr',
   packageName: 'dev.seerr.mobileapp',
-  url: 'https://docs.seerr.dev',
+  url: serviceUrl('https://docs.seerr.dev'),
 } as const satisfies Service

@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const synologyDrive = {
   appStoreLink:
@@ -10,5 +11,5 @@ export const synologyDrive = {
   id: 'synology-drive',
   name: 'Synology Drive',
   packageName: 'com.synology.dsdrive',
-  url: 'https://www.synology.com/en-global/dsm/feature/drive',
+  url: serviceUrl('https://www.synology.com/en-global/dsm/feature/drive'),
 } as const satisfies Service

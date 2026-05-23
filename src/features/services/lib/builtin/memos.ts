@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const memos = {
   description: 'A private timeline for your thoughts.',
@@ -6,5 +7,5 @@ export const memos = {
     'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/memos.svg',
   id: 'memos',
   name: 'Memos',
-  url: 'https://usememos.com',
+  url: serviceUrl('https://usememos.com'),
 } as const satisfies Service

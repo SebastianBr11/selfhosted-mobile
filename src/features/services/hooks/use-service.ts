@@ -1,4 +1,4 @@
-import { ServiceId } from '@/features/services/lib/service.schema'
+import { ServiceId } from '../lib/services.system'
 import { useServices } from './use-services'
 
 export function useService(serviceId: ServiceId) {

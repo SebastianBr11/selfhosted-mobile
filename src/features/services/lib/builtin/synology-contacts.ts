@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const synologyContacts = {
   description:
@@ -7,5 +8,5 @@ export const synologyContacts = {
     'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/synology-contacts.png',
   id: 'synology-contacts',
   name: 'Synology Contacts',
-  url: 'https://www.synology.com/en-global/dsm/feature/contacts',
+  url: serviceUrl('https://www.synology.com/en-global/dsm/feature/contacts'),
 } as const satisfies Service

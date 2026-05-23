@@ -1,6 +1,6 @@
 import { AlertDialog, Host, Text, TextButton } from '@expo/ui/jetpack-compose'
 import { useLingui } from '@lingui/react/macro'
-import { ServiceId } from '@/features/services/lib/service.schema'
+import { ServiceId } from '@/features/services/lib/services.system'
 import { useLocalService } from '../lib/local-servies'
 
 type ResetServiceSettingsDialogProps = {

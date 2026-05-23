@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const immich = {
   appStoreLink: 'https://get.immich.app/android',
@@ -8,5 +9,5 @@ export const immich = {
   id: 'immich',
   name: 'Immich',
   packageName: 'app.alextran.immich',
-  url: 'https://immich.app/',
+  url: serviceUrl('https://immich.app/'),
 } as const satisfies Service

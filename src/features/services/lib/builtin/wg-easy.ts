@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const wgeasy = {
   description: 'The easiest way to run WireGuard VPN + Web-based Admin UI.',
@@ -6,5 +7,5 @@ export const wgeasy = {
     'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wireguard.svg',
   id: 'wg-easy',
   name: 'wg-easy',
-  url: 'https://wg-easy.github.io/wg-easy/latest/',
+  url: serviceUrl('https://wg-easy.github.io/wg-easy/latest/'),
 } as const satisfies Service

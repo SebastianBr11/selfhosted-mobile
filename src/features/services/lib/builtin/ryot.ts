@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const ryot = {
   description: 'Roll your own tracker!',
@@ -9,5 +10,5 @@ export const ryot = {
   },
   id: 'ryot',
   name: 'Ryot',
-  url: 'https://ryot.io',
+  url: serviceUrl('https://ryot.io'),
 } as const satisfies Service
