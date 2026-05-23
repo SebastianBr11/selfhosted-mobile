@@ -1,6 +1,6 @@
 import { fetch } from 'expo/fetch'
 import * as v from 'valibot'
-import { SemanticVersionSchema } from '@/lib/schemas'
+import { NightlyVersionSchema, SemanticVersionSchema } from '@/lib/schemas'
 import { DataLoader } from './types'
 
 const AboutSchema = v.object({
@@ -10,7 +10,7 @@ const AboutSchema = v.object({
   oidcProviderName: v.string(),
   oidcRedirect: v.boolean(),
   production: v.boolean(),
-  version: v.union([v.literal('nightly'), SemanticVersionSchema]),
+  version: v.union([NightlyVersionSchema, SemanticVersionSchema]),
 })
 
 export type MealieAbout = v.InferOutput<typeof AboutSchema>
