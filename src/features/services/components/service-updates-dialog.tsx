@@ -29,6 +29,8 @@ export function ServiceUpdatesDialog({
   const { t } = useLingui()
   const theme = useTheme()
   const { changelog, link, newVersion, releaseTimestamp } = updateData
+  const rawCurrentVersion = currentVersion.raw
+  const rawNewVersion = newVersion.raw
   return (
     <Host matchContents>
       <AlertDialog
@@ -38,13 +40,13 @@ export function ServiceUpdatesDialog({
         <AlertDialog.Title>
           <Text
             style={{ typography: 'titleLarge' }}
-          >{t`Changes since ${currentVersion}`}</Text>
+          >{t`Changes since ${rawCurrentVersion}`}</Text>
         </AlertDialog.Title>
         <AlertDialog.Text>
           <Column verticalArrangement={{ spacedBy: 16 }}>
             <Column verticalArrangement={{ spacedBy: 8 }}>
               <Text style={{ typography: 'bodyLarge' }}>
-                {t`Version ${newVersion} is available.`}
+                {t`Version ${rawNewVersion} is available.`}
               </Text>
               {releaseTimestamp && (
                 <Text>
