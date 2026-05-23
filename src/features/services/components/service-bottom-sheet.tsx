@@ -107,17 +107,30 @@ export default function ServiceBottomSheet({
                   ))}
               </Box>
               <Box modifiers={[weight(4), align('centerVertically')]}>
-                <Text
-                  modifiers={[fillMaxWidth()]}
-                  style={{
-                    fontSize: 32,
-                    fontWeight: 'bold',
-                    lineHeight: 32,
-                    textAlign: 'center',
-                  }}
-                >
-                  {service.name}
-                </Text>
+                <FlowRow horizontalArrangement={'center'}>
+                  <Text
+                    modifiers={[fillMaxWidth()]}
+                    style={{
+                      fontSize: 32,
+                      fontWeight: 'bold',
+                      lineHeight: 32,
+                      textAlign: 'center',
+                    }}
+                  >
+                    {service.name}
+                  </Text>
+                  {data?.publicData?.version && (
+                    <Text
+                      color={theme.android.textPrimary.toString()}
+                      modifiers={[padding(16, 8, 16, 8)]}
+                      style={{
+                        typography: 'labelLarge',
+                      }}
+                    >
+                      {data?.publicData?.version.toString()}
+                    </Text>
+                  )}
+                </FlowRow>
               </Box>
               <Spacer modifiers={[width(8)]} />
               <Box modifiers={[weight(1)]}>
@@ -148,10 +161,6 @@ export default function ServiceBottomSheet({
                 <CircularWavyProgressIndicator
                   modifiers={[align('centerHorizontally')]}
                 />
-              ) : data?.publicData?.version ? (
-                <Row>
-                  <Text>{data?.publicData.version.toString()}</Text>
-                </Row>
               ) : data?.notAvailable ? (
                 <Row>
                   <Text>{t`No additional data available`}</Text>
