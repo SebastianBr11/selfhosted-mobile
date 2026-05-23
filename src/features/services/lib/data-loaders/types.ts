@@ -36,8 +36,10 @@ export type LoaderEntry<PublicData, SecretData, Credentials> = {
 }
 
 export type UpdateData = {
+  /** Changelog formatted as Markdown */
   changelog?: string
   hasUpdate: true
+  /** URL to the latest version */
   link?: string
   newVersion: SemanticVersion
   releaseTimestamp?: string
