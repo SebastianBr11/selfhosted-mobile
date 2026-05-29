@@ -16,22 +16,21 @@ const InfoSchema = v.object({
 export type JellyfinInfo = v.InferOutput<typeof InfoSchema>
 
 export const jellyfin = {
-  jellyfin: {
-    checkHealth: async (serverUrl) => {
-      const url = new URL('/health', serverUrl)
-      const response = await fetch(url)
-      return response.ok
-    },
-    loadPublicData: async (serverUrl) => {
-      const url = new URL('/System/Info/Public', serverUrl)
-      const response = await fetch(url)
-      const data = await response.json()
-      const info = v.parse(InfoSchema, data)
-      return {
-        data: info,
-        version: info.Version,
-      }
-    },
-    repo: { name: 'jellyfin/jellyfin', vcs: 'github' },
+  checkHealth: async (serverUrl) => {
+    const url = new URL('/health', serverUrl)
+    const response = await fetch(url)
+    return response.ok
   },
-} satisfies DataLoader<'jellyfin', JellyfinInfo>
+  loadPublicData: async (serverUrl) => {
+    const url = new URL('/System/Info/Public', serverUrl)
+    const response = await fetch(url)
+    const data = await response.json()
+    const info = v.parse(InfoSchema, data)
+    return {
+      data: info,
+      version: info.Version,
+    }
+  },
+  repo: { name: 'jellyfin/jellyfin', vcs: 'github' },
+  serviceId: 'jellyfin',
+} as const satisfies DataLoader<'jellyfin', JellyfinInfo>

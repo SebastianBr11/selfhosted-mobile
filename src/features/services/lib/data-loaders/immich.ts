@@ -16,22 +16,21 @@ const VersionSchema = v.pipe(
 export type ImmichVersion = v.InferOutput<typeof VersionSchema>
 
 export const immich = {
-  immich: {
-    checkHealth: async (serviceUrl) => {
-      const url = new URL('/api/server/ping', serviceUrl)
-      const response = await fetch(url)
-      return response.ok
-    },
-    loadPublicData: async (serviceUrl) => {
-      const url = new URL('/api/server/version', serviceUrl)
-      const response = await fetch(url)
-      const data = await response.json()
-      const version = v.parse(VersionSchema, data)
-      return {
-        data: version,
-        version: version,
-      }
-    },
-    repo: { name: 'immich-app/immich', vcs: 'github' },
+  checkHealth: async (serviceUrl) => {
+    const url = new URL('/api/server/ping', serviceUrl)
+    const response = await fetch(url)
+    return response.ok
   },
-} satisfies DataLoader<'immich', ImmichVersion>
+  loadPublicData: async (serviceUrl) => {
+    const url = new URL('/api/server/version', serviceUrl)
+    const response = await fetch(url)
+    const data = await response.json()
+    const version = v.parse(VersionSchema, data)
+    return {
+      data: version,
+      version: version,
+    }
+  },
+  repo: { name: 'immich-app/immich', vcs: 'github' },
+  serviceId: 'immich',
+} as const satisfies DataLoader<'immich', ImmichVersion>

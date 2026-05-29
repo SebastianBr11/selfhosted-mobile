@@ -16,22 +16,21 @@ const AboutSchema = v.object({
 export type MealieAbout = v.InferOutput<typeof AboutSchema>
 
 export const mealie = {
-  mealie: {
-    checkHealth: async (serviceUrl) => {
-      const url = new URL('/api/app/about', serviceUrl)
-      const response = await fetch(url)
-      return response.ok
-    },
-    loadPublicData: async (serviceUrl) => {
-      const url = new URL('/api/app/about', serviceUrl)
-      const response = await fetch(url)
-      const data = await response.json()
-      const about = v.parse(AboutSchema, data)
-      return {
-        data: about,
-        version: about.version,
-      }
-    },
-    repo: { name: 'mealie-recipes/mealie', vcs: 'github' },
+  checkHealth: async (serviceUrl) => {
+    const url = new URL('/api/app/about', serviceUrl)
+    const response = await fetch(url)
+    return response.ok
   },
-} satisfies DataLoader<'mealie', MealieAbout>
+  loadPublicData: async (serviceUrl) => {
+    const url = new URL('/api/app/about', serviceUrl)
+    const response = await fetch(url)
+    const data = await response.json()
+    const about = v.parse(AboutSchema, data)
+    return {
+      data: about,
+      version: about.version,
+    }
+  },
+  repo: { name: 'mealie-recipes/mealie', vcs: 'github' },
+  serviceId: 'mealie',
+} as const satisfies DataLoader<'mealie', MealieAbout>

@@ -21,22 +21,21 @@ const HeartbeatSchema = v.object({
 export type RommHeartbeat = v.InferOutput<typeof HeartbeatSchema>
 
 export const romm = {
-  romm: {
-    checkHealth: async (serviceUrl) => {
-      const url = new URL('/', serviceUrl)
-      const response = await fetch(url)
-      return response.ok
-    },
-    loadPublicData: async (serviceUrl) => {
-      const url = new URL('/api/heartbeat', serviceUrl)
-      const response = await fetch(url)
-      const data = await response.json()
-      const heartbeat = v.parse(HeartbeatSchema, data)
-      return {
-        data: heartbeat,
-        version: heartbeat.SYSTEM.VERSION,
-      }
-    },
-    repo: { name: 'rommapp/romm', vcs: 'github' },
+  checkHealth: async (serviceUrl) => {
+    const url = new URL('/', serviceUrl)
+    const response = await fetch(url)
+    return response.ok
   },
-} satisfies DataLoader<'romm', RommHeartbeat>
+  loadPublicData: async (serviceUrl) => {
+    const url = new URL('/api/heartbeat', serviceUrl)
+    const response = await fetch(url)
+    const data = await response.json()
+    const heartbeat = v.parse(HeartbeatSchema, data)
+    return {
+      data: heartbeat,
+      version: heartbeat.SYSTEM.VERSION,
+    }
+  },
+  repo: { name: 'rommapp/romm', vcs: 'github' },
+  serviceId: 'romm',
+} as const satisfies DataLoader<'romm', RommHeartbeat>

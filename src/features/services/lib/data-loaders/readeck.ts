@@ -16,22 +16,21 @@ const InfoSchema = v.object({
 export type ReadeckInfo = v.InferOutput<typeof InfoSchema>
 
 export const readeck = {
-  readeck: {
-    checkHealth: async (serviceUrl) => {
-      const url = new URL('/', serviceUrl)
-      const response = await fetch(url)
-      return response.ok
-    },
-    loadPublicData: async (serviceUrl) => {
-      const url = new URL('/api/info', serviceUrl)
-      const response = await fetch(url)
-      const data = await response.json()
-      const info = v.parse(InfoSchema, data)
-      return {
-        data: info,
-        version: info.version.release,
-      }
-    },
-    repo: { name: 'readeck/readeck', vcs: 'codeberg' },
+  checkHealth: async (serviceUrl) => {
+    const url = new URL('/', serviceUrl)
+    const response = await fetch(url)
+    return response.ok
   },
-} satisfies DataLoader<'readeck', ReadeckInfo>
+  loadPublicData: async (serviceUrl) => {
+    const url = new URL('/api/info', serviceUrl)
+    const response = await fetch(url)
+    const data = await response.json()
+    const info = v.parse(InfoSchema, data)
+    return {
+      data: info,
+      version: info.version.release,
+    }
+  },
+  repo: { name: 'readeck/readeck', vcs: 'codeberg' },
+  serviceId: 'readeck',
+} as const satisfies DataLoader<'readeck', ReadeckInfo>

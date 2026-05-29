@@ -8,22 +8,21 @@ const VersionSchema = SemanticVersionSchema
 export type VaultwardenVersion = v.InferOutput<typeof VersionSchema>
 
 export const vaultwarden = {
-  vaultwarden: {
-    checkHealth: async (serviceUrl) => {
-      const url = new URL('/api/alive', serviceUrl)
-      const response = await fetch(url)
-      return response.ok
-    },
-    loadPublicData: async (serviceUrl) => {
-      const url = new URL('/api/version', serviceUrl)
-      const response = await fetch(url)
-      const data = await response.json()
-      const version = v.parse(VersionSchema, data)
-      return {
-        data: version,
-        version,
-      }
-    },
-    repo: { name: 'dani-garcia/vaultwarden', vcs: 'github' },
+  checkHealth: async (serviceUrl) => {
+    const url = new URL('/api/alive', serviceUrl)
+    const response = await fetch(url)
+    return response.ok
   },
-} satisfies DataLoader<'vaultwarden', VaultwardenVersion>
+  loadPublicData: async (serviceUrl) => {
+    const url = new URL('/api/version', serviceUrl)
+    const response = await fetch(url)
+    const data = await response.json()
+    const version = v.parse(VersionSchema, data)
+    return {
+      data: version,
+      version,
+    }
+  },
+  repo: { name: 'dani-garcia/vaultwarden', vcs: 'github' },
+  serviceId: 'vaultwarden',
+} as const satisfies DataLoader<'vaultwarden', VaultwardenVersion>

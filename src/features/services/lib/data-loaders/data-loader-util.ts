@@ -6,8 +6,12 @@ import {
   SemanticVersionSchema,
   UrlSchema,
 } from '@/lib/schemas'
+import { getDataLoader, hasDataLoader } from '.'
 import { compareSemanticVersions } from '../../util'
-import { UpdateData } from './types'
+import { Service } from '../service.schema'
+import { isBuiltInServiceId } from '../services-util'
+import { CupData, CupUpdateData } from './cup'
+import { UpdateCheck, UpdateData } from './types'
 
 const GithubReleaseSchema = v.object({
   body: v.string(),
@@ -43,7 +47,7 @@ export const dataLoaderUtil = {
   checkCodebergForUpdates: async (
     repoName: string,
     currentVersion: SemanticVersion,
-  ) => {
+  ): Promise<UpdateCheck> => {
     const releases = await fetchCodebergReleases(repoName)
     const newerVersions = releases.filter(
       (release) =>
@@ -67,14 +71,15 @@ export const dataLoaderUtil = {
         link: latest.html_url,
         newVersion: latest.tag_name,
         releaseTimestamp: latest.published_at,
-      } satisfies UpdateData
+        type: 'generic',
+      }
     }
     return { hasUpdate }
   },
   checkGithubForUpdates: async (
     repoName: string,
     currentVersion: SemanticVersion,
-  ) => {
+  ): Promise<UpdateCheck> => {
     const releases = await fetchGithubReleases(repoName)
     const newerVersions = releases.filter(
       (release) =>
@@ -98,8 +103,50 @@ export const dataLoaderUtil = {
         link: latest.html_url,
         newVersion: latest.tag_name,
         releaseTimestamp: latest.published_at,
-      } satisfies UpdateData
+        type: 'generic',
+      }
     }
     return { hasUpdate }
+  },
+  checkServiceUpdatesUsingCup: (
+    service: Service,
+    cupData: CupData,
+  ): UpdateCheck => {
+    let baseFilter = (image: CupData['images'][number]) =>
+      image.parts.repository.toLowerCase().includes(service.id.toLowerCase()) ||
+      image.url?.toLowerCase().includes(service.id.toLowerCase())
+    let imageFilter = baseFilter
+
+    if (isBuiltInServiceId(service.id) && hasDataLoader(service.id)) {
+      const serviceLoader = getDataLoader(service.id)
+      if ('repo' in serviceLoader) {
+        imageFilter = (image) =>
+          image.parts.repository.toLowerCase() ===
+            serviceLoader.repo?.name.toLowerCase() || baseFilter(image)
+      }
+    }
+
+    const serviceImages = cupData.images.filter(imageFilter)
+    const inUseServiceImages = serviceImages.filter((image) => image.in_use)
+    if (inUseServiceImages.length !== 1) {
+      return { hasUpdate: false }
+    }
+    const usedImage = inUseServiceImages[0]
+    if (usedImage.result.has_update && usedImage.result.info) {
+      return {
+        hasUpdate: true,
+        info: usedImage.result.info,
+        otherData: {
+          version: usedImage.parts.tag,
+        },
+        type: 'cup',
+      }
+    }
+    return {
+      hasUpdate: false,
+      otherData: {
+        version: usedImage.parts.tag,
+      },
+    }
   },
 }

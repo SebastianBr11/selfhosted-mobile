@@ -12,22 +12,21 @@ const InfoSchema = v.object({
 export type WallabagInfo = v.InferOutput<typeof InfoSchema>
 
 export const wallabag = {
-  wallabag: {
-    checkHealth: async (serviceUrl) => {
-      const url = new URL('/api/info', serviceUrl)
-      const response = await fetch(url)
-      return response.ok
-    },
-    loadPublicData: async (serviceUrl) => {
-      const url = new URL('/api/info', serviceUrl)
-      const response = await fetch(url)
-      const data = await response.json()
-      const info = v.parse(InfoSchema, data)
-      return {
-        data: info,
-        version: info.version,
-      }
-    },
-    repo: { name: 'wallabag/wallabag', vcs: 'github' },
+  checkHealth: async (serviceUrl) => {
+    const url = new URL('/api/info', serviceUrl)
+    const response = await fetch(url)
+    return response.ok
   },
-} satisfies DataLoader<'wallabag', WallabagInfo>
+  loadPublicData: async (serviceUrl) => {
+    const url = new URL('/api/info', serviceUrl)
+    const response = await fetch(url)
+    const data = await response.json()
+    const info = v.parse(InfoSchema, data)
+    return {
+      data: info,
+      version: info.version,
+    }
+  },
+  repo: { name: 'wallabag/wallabag', vcs: 'github' },
+  serviceId: 'wallabag',
+} as const satisfies DataLoader<'wallabag', WallabagInfo>

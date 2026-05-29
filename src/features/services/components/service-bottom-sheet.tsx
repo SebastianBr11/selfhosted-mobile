@@ -51,14 +51,22 @@ export default function ServiceBottomSheet({
     fetchServiceData,
     showAppStoreButton,
     showOpenInBrowserButton,
+    useCupToCheckForUpdates,
     useLocalSource,
   } = useSettings()
   const { appAvailable, openApp } = useInstalledApp(service?.packageName)
   const { t } = useLingui()
   const theme = useTheme()
   const { url } = useServicesUrl()
+
   const { data, error, isEnabled, isError, isLoading } = useQuery(
-    userServiceQueryOptions(url, serviceId, useLocalSource, fetchServiceData),
+    userServiceQueryOptions(
+      url,
+      serviceId,
+      useLocalSource,
+      fetchServiceData,
+      useCupToCheckForUpdates,
+    ),
   )
   const [showHealthDialog, setShowHealthDialog] = useState(false)
   const [showUpdatesDialog, setShowUpdatesDialog] = useState(false)
@@ -119,7 +127,7 @@ export default function ServiceBottomSheet({
                   >
                     {service.name}
                   </Text>
-                  {data?.publicData?.version && (
+                  {isEnabled && data?.publicData?.version && (
                     <Text
                       color={theme.android.textPrimary.toString()}
                       modifiers={[padding(16, 8, 16, 8)]}
@@ -143,7 +151,7 @@ export default function ServiceBottomSheet({
                     />
                   </IconButton>
                 )}
-                {data?.updateData?.hasUpdate && (
+                {isEnabled && data?.updateData?.hasUpdate && (
                   <FilledTonalIconButton
                     onClick={() => setShowUpdatesDialog(true)}
                   >

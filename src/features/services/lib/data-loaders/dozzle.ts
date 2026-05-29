@@ -32,55 +32,55 @@ const ReleasesResponseSchema = v.array(
 export type DozzleVersion = v.InferOutput<typeof VersionResponseSchema>
 
 export const dozzle = {
-  dozzle: {
-    checkForUpdates: async (serviceUrl, version) => {
-      const url = new URL('/api/releases', serviceUrl)
-      const response = await fetch(url)
-      const data = await response.json()
-      const releases = v.parse(ReleasesResponseSchema, data)
-      const newerVersions = releases.filter(
-        (release) => compareSemanticVersions(version, release.tag) < 0,
-      )
-      const hasUpdate = newerVersions.length > 0
-      const changelogHTML = newerVersions
-        .reduce((acc, release) => {
-          let str = `<h1>${release.name}</h1>`
-          str += release.body
-          acc.push(str)
-          return acc
-        }, [] as string[])
-        .join('<br><br>')
-      const turndownService = new TurndownService()
-      const changelog = turndownService.turndown(
-        parseHTML(changelogHTML).document,
-      )
-      const latest = releases[0]
+  checkForUpdates: async (serviceUrl, version) => {
+    const url = new URL('/api/releases', serviceUrl)
+    const response = await fetch(url)
+    const data = await response.json()
+    const releases = v.parse(ReleasesResponseSchema, data)
+    const newerVersions = releases.filter(
+      (release) => compareSemanticVersions(version, release.tag) < 0,
+    )
+    const hasUpdate = newerVersions.length > 0
+    const changelogHTML = newerVersions
+      .reduce((acc, release) => {
+        let str = `<h1>${release.name}</h1>`
+        str += release.body
+        acc.push(str)
+        return acc
+      }, [] as string[])
+      .join('<br><br>')
+    const turndownService = new TurndownService()
+    const changelog = turndownService.turndown(
+      parseHTML(changelogHTML).document,
+    )
+    const latest = releases[0]
 
-      if (hasUpdate) {
-        return {
-          changelog,
-          hasUpdate,
-          link: latest.htmlUrl,
-          newVersion: latest.tag,
-          releaseTimestamp: latest.createdAt,
-        }
-      }
-      return { hasUpdate }
-    },
-    checkHealth: async (serviceUrl) => {
-      const url = new URL('/healthcheck', serviceUrl)
-      const response = await fetch(url)
-      return response.ok
-    },
-    loadPublicData: async (serviceUrl) => {
-      const url = new URL('/api/version', serviceUrl)
-      const response = await fetch(url)
-      const data = await response.text()
-      const version = v.parse(VersionResponseSchema, data)
+    if (hasUpdate) {
       return {
-        data: version,
-        version,
+        changelog,
+        hasUpdate,
+        link: latest.htmlUrl,
+        newVersion: latest.tag,
+        releaseTimestamp: latest.createdAt,
+        type: 'generic',
       }
-    },
+    }
+    return { hasUpdate }
   },
-} satisfies DataLoader<'dozzle', DozzleVersion>
+  checkHealth: async (serviceUrl) => {
+    const url = new URL('/healthcheck', serviceUrl)
+    const response = await fetch(url)
+    return response.ok
+  },
+  loadPublicData: async (serviceUrl) => {
+    const url = new URL('/api/version', serviceUrl)
+    const response = await fetch(url)
+    const data = await response.text()
+    const version = v.parse(VersionResponseSchema, data)
+    return {
+      data: version,
+      version,
+    }
+  },
+  serviceId: 'dozzle',
+} as const satisfies DataLoader<'dozzle', DozzleVersion>

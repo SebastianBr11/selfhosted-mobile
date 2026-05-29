@@ -28,9 +28,23 @@ export function ServiceUpdatesDialog({
 }: ServiceUpdatesDialogProps) {
   const { t } = useLingui()
   const theme = useTheme()
-  const { changelog, link, newVersion, releaseTimestamp } = updateData
-  const rawCurrentVersion = currentVersion.raw
-  const rawNewVersion = newVersion.raw
+  let changelog,
+    link,
+    rawCurrentVersion = currentVersion.raw,
+    rawNewVersion,
+    releaseTimestamp
+  if (updateData.type === 'cup') {
+    if (updateData.info.type === 'digest') {
+      rawNewVersion = updateData.info.remote_digest
+    } else {
+      rawNewVersion = updateData.info.new_version.raw
+    }
+  } else {
+    changelog = updateData.changelog
+    link = updateData.link
+    releaseTimestamp = updateData.releaseTimestamp
+    rawNewVersion = updateData.newVersion.raw
+  }
   return (
     <Host matchContents>
       <AlertDialog

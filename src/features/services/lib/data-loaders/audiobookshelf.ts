@@ -22,23 +22,22 @@ const StatusResponseSchema = v.object(
 export type AudiobookshelfStatus = v.InferOutput<typeof StatusResponseSchema>
 
 export const audiobookshelf = {
-  audiobookshelf: {
-    checkHealth: async (serviceUrl) => {
-      const url = new URL('/healthcheck', serviceUrl)
-      const response = await fetch(url)
-      return response.ok
-    },
-    loadPublicData: async (serviceUrl) => {
-      const url = new URL('/status', serviceUrl)
-      const response = await fetch(url)
-      const data = await response.json()
-      const status = v.parse(StatusResponseSchema, data)
-
-      return {
-        data: status,
-        version: status.serverVersion,
-      }
-    },
-    repo: { name: 'advplyr/audiobookshelf', vcs: 'github' },
+  checkHealth: async (serviceUrl) => {
+    const url = new URL('/healthcheck', serviceUrl)
+    const response = await fetch(url)
+    return response.ok
   },
-} satisfies DataLoader<'audiobookshelf', AudiobookshelfStatus>
+  loadPublicData: async (serviceUrl) => {
+    const url = new URL('/status', serviceUrl)
+    const response = await fetch(url)
+    const data = await response.json()
+    const status = v.parse(StatusResponseSchema, data)
+
+    return {
+      data: status,
+      version: status.serverVersion,
+    }
+  },
+  repo: { name: 'advplyr/audiobookshelf', vcs: 'github' },
+  serviceId: 'audiobookshelf',
+} as const satisfies DataLoader<'audiobookshelf', AudiobookshelfStatus>

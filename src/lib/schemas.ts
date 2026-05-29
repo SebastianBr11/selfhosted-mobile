@@ -41,6 +41,18 @@ export const LeadingVSemanticVersionSchema = v.pipe(
   SemanticVersionSchema,
 )
 
+export const ContainerTagSchema = v.union([
+  SemanticVersionSchema,
+  LeadingVSemanticVersionSchema,
+  v.pipe(
+    v.string(),
+    v.transform((s) => {
+      return { raw: s, type: 'container-tag' as const }
+    }),
+  ),
+])
+export type ContainerTag = v.InferOutput<typeof ContainerTagSchema>
+
 export const NightlyVersionSchema = v.pipe(
   v.literal('nightly'),
   v.transform((s) => ({
@@ -50,7 +62,11 @@ export const NightlyVersionSchema = v.pipe(
 )
 export type NightlyVersion = v.InferOutput<typeof NightlyVersionSchema>
 
-export type Version = NightlyVersion | SemanticVersion
+export type Version =
+  | ContainerTag
+  | NightlyVersion
+  | SemanticVersion
+  | { raw: 'No version available'; type: 'unavailable' }
 
 /**
  * Creates a schema that accepts an array of unique values and returns an array.

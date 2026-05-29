@@ -14,22 +14,21 @@ const HealthcheckSchema = v.object({
 export type GrimmoryHealthcheck = v.InferOutput<typeof HealthcheckSchema>
 
 export const grimmory = {
-  grimmory: {
-    checkHealth: async (serviceUrl) => {
-      const url = new URL('/api/v1/healthcheck', serviceUrl)
-      const response = await fetch(url)
-      return response.ok
-    },
-    loadPublicData: async (serviceUrl) => {
-      const url = new URL('/api/v1/healthcheck', serviceUrl)
-      const response = await fetch(url)
-      const data = await response.json()
-      const healthcheck = v.parse(HealthcheckSchema, data)
-      return {
-        data: healthcheck,
-        version: healthcheck.data.version,
-      }
-    },
-    repo: { name: 'grimmory-tools/grimmory', vcs: 'github' },
+  checkHealth: async (serviceUrl) => {
+    const url = new URL('/api/v1/healthcheck', serviceUrl)
+    const response = await fetch(url)
+    return response.ok
   },
-} satisfies DataLoader<'grimmory', GrimmoryHealthcheck>
+  loadPublicData: async (serviceUrl) => {
+    const url = new URL('/api/v1/healthcheck', serviceUrl)
+    const response = await fetch(url)
+    const data = await response.json()
+    const healthcheck = v.parse(HealthcheckSchema, data)
+    return {
+      data: healthcheck,
+      version: healthcheck.data.version,
+    }
+  },
+  repo: { name: 'grimmory-tools/grimmory', vcs: 'github' },
+  serviceId: 'grimmory',
+} as const satisfies DataLoader<'grimmory', GrimmoryHealthcheck>

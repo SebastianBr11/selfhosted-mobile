@@ -1,5 +1,6 @@
 import { BuiltInServiceId } from '../services.system'
 import { audiobookshelf } from './audiobookshelf'
+import { cup } from './cup'
 import { dozzle } from './dozzle'
 import { forgejo } from './forgejo'
 import { gitea } from './gitea'
@@ -13,29 +14,41 @@ import { readeck } from './readeck'
 import { romm } from './romm'
 import { seerr } from './seerr'
 import { shelfmark } from './shelfmark'
-import { DataLoader } from './types'
+import { DataLoader, DataLoaders } from './types'
 import { vaultwarden } from './vaultwarden'
 import { wallabag } from './wallabag'
 
-const dataLoaders: DataLoader<BuiltInServiceId, object> = {
-  ...audiobookshelf,
-  ...dozzle,
-  ...jellyfin,
-  ...readeck,
-  ...romm,
-  ...shelfmark,
-  ...forgejo,
-  ...vaultwarden,
-  ...gitea,
-  ...grimmory,
-  ...immich,
-  ...mealie,
-  ...memos,
-  ...portainer,
-  ...seerr,
-  ...wallabag,
+const dataLoaders = {
+  audiobookshelf,
+  cup,
+  dozzle,
+  forgejo,
+  gitea,
+  grimmory,
+  immich,
+  jellyfin,
+  mealie,
+  memos,
+  portainer,
+  readeck,
+  romm,
+  seerr,
+  shelfmark,
+  vaultwarden,
+  wallabag,
+} as const satisfies DataLoaders
+
+export type AvailableDataLoaderId = keyof typeof dataLoaders
+export type AvailableDataLoaders = typeof dataLoaders
+
+export function getDataLoader<T extends AvailableDataLoaderId>(
+  serviceId: T,
+): AvailableDataLoaders[T] {
+  return dataLoaders[serviceId]
 }
 
-export function getDataLoader(serviceId: BuiltInServiceId) {
-  return dataLoaders[serviceId]
+export function hasDataLoader(
+  serviceId: BuiltInServiceId,
+): serviceId is AvailableDataLoaderId {
+  return serviceId in dataLoaders
 }

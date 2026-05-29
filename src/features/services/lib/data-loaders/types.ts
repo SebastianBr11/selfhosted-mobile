@@ -1,13 +1,30 @@
 import { SemanticVersion, Version } from '@/lib/schemas'
 import { ServiceUrl } from '../service.schema'
 import { BuiltInServiceId } from '../services.system'
+import { CupUpdateData } from './cup'
 
 export type DataLoader<
   Id extends BuiltInServiceId,
   PublicData extends object,
   SecretData = unknown,
   Credentials = unknown,
-> = Partial<Record<Id, LoaderEntry<PublicData, SecretData, Credentials>>>
+> = LoaderEntry<PublicData, SecretData, Credentials> & { serviceId: Id }
+
+export type DataLoaders = {
+  [Id in BuiltInServiceId]?: DataLoader<Id, object>
+}
+
+export type GenericUpdateData = {
+  /** Changelog formatted as Markdown */
+  changelog?: string
+  hasUpdate: true
+  /** URL to the latest version */
+  link?: string
+  newVersion: SemanticVersion
+  otherData?: never
+  releaseTimestamp?: string
+  type: 'generic'
+}
 
 export type LoaderEntry<PublicData, SecretData, Credentials> = {
   /**
@@ -17,7 +34,7 @@ export type LoaderEntry<PublicData, SecretData, Credentials> = {
   checkForUpdates?: (
     serviceUrl: ServiceUrl,
     version: SemanticVersion,
-  ) => Promise<UpdateData | { hasUpdate: false }>
+  ) => Promise<UpdateCheck>
   /**
    * Returns true if the service is healthy
    */
@@ -35,12 +52,11 @@ export type LoaderEntry<PublicData, SecretData, Credentials> = {
   }
 }
 
-export type UpdateData = {
-  /** Changelog formatted as Markdown */
-  changelog?: string
-  hasUpdate: true
-  /** URL to the latest version */
-  link?: string
-  newVersion: SemanticVersion
-  releaseTimestamp?: string
-}
+export type UpdateCheck =
+  | CupUpdateData
+  | GenericUpdateData
+  | { hasUpdate: false; otherData?: never }
+
+export type UpdateData =
+  | Extract<CupUpdateData, { hasUpdate: true }>
+  | GenericUpdateData

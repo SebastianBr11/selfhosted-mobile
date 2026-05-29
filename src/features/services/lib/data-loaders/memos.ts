@@ -11,22 +11,21 @@ const ProfileSchema = v.object({
 export type MemosInstanceProfile = v.InferOutput<typeof ProfileSchema>
 
 export const memos = {
-  memos: {
-    checkHealth: async (serviceUrl) => {
-      const url = new URL('/api/v1/instance/profile', serviceUrl)
-      const response = await fetch(url)
-      return response.ok
-    },
-    loadPublicData: async (serviceUrl) => {
-      const url = new URL('/api/v1/instance/profile', serviceUrl)
-      const response = await fetch(url)
-      const data = await response.json()
-      const about = v.parse(ProfileSchema, data)
-      return {
-        data: about,
-        version: about.version,
-      }
-    },
-    repo: { name: 'usememos/memos', vcs: 'github' },
+  checkHealth: async (serviceUrl) => {
+    const url = new URL('/api/v1/instance/profile', serviceUrl)
+    const response = await fetch(url)
+    return response.ok
   },
-} satisfies DataLoader<'memos', MemosInstanceProfile>
+  loadPublicData: async (serviceUrl) => {
+    const url = new URL('/api/v1/instance/profile', serviceUrl)
+    const response = await fetch(url)
+    const data = await response.json()
+    const about = v.parse(ProfileSchema, data)
+    return {
+      data: about,
+      version: about.version,
+    }
+  },
+  repo: { name: 'usememos/memos', vcs: 'github' },
+  serviceId: 'memos',
+} as const satisfies DataLoader<'memos', MemosInstanceProfile>

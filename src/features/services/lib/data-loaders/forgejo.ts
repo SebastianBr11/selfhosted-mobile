@@ -10,22 +10,21 @@ const VersionSchema = v.object({
 export type ForgejoVersion = v.InferOutput<typeof VersionSchema>
 
 export const forgejo = {
-  forgejo: {
-    checkHealth: async (serviceUrl) => {
-      const url = new URL('/api/healthz', serviceUrl)
-      const response = await fetch(url)
-      return response.ok
-    },
-    loadPublicData: async (serviceUrl) => {
-      const url = new URL('/api/v1/version', serviceUrl)
-      const response = await fetch(url)
-      const data = await response.json()
-      const version = v.parse(VersionSchema, data)
-      return {
-        data: version,
-        version: version.version,
-      }
-    },
-    repo: { name: 'forgejo/forgejo', vcs: 'codeberg' },
+  checkHealth: async (serviceUrl) => {
+    const url = new URL('/api/healthz', serviceUrl)
+    const response = await fetch(url)
+    return response.ok
   },
-} satisfies DataLoader<'forgejo', ForgejoVersion>
+  loadPublicData: async (serviceUrl) => {
+    const url = new URL('/api/v1/version', serviceUrl)
+    const response = await fetch(url)
+    const data = await response.json()
+    const version = v.parse(VersionSchema, data)
+    return {
+      data: version,
+      version: version.version,
+    }
+  },
+  repo: { name: 'forgejo/forgejo', vcs: 'codeberg' },
+  serviceId: 'forgejo',
+} as const satisfies DataLoader<'forgejo', ForgejoVersion>

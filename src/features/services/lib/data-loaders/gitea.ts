@@ -10,22 +10,21 @@ const VersionSchema = v.object({
 export type GiteaVersion = v.InferOutput<typeof VersionSchema>
 
 export const gitea = {
-  gitea: {
-    checkHealth: async (serviceUrl) => {
-      const url = new URL('/api/healthz', serviceUrl)
-      const response = await fetch(url)
-      return response.ok
-    },
-    loadPublicData: async (serviceUrl) => {
-      const url = new URL('/api/v1/version', serviceUrl)
-      const response = await fetch(url)
-      const data = await response.json()
-      const version = v.parse(VersionSchema, data)
-      return {
-        data: version,
-        version: version.version,
-      }
-    },
-    repo: { name: 'go-gitea/gitea', vcs: 'github' },
+  checkHealth: async (serviceUrl) => {
+    const url = new URL('/api/healthz', serviceUrl)
+    const response = await fetch(url)
+    return response.ok
   },
-} satisfies DataLoader<'gitea', GiteaVersion>
+  loadPublicData: async (serviceUrl) => {
+    const url = new URL('/api/v1/version', serviceUrl)
+    const response = await fetch(url)
+    const data = await response.json()
+    const version = v.parse(VersionSchema, data)
+    return {
+      data: version,
+      version: version.version,
+    }
+  },
+  repo: { name: 'go-gitea/gitea', vcs: 'github' },
+  serviceId: 'gitea',
+} as const satisfies DataLoader<'gitea', GiteaVersion>

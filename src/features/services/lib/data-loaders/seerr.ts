@@ -11,22 +11,21 @@ const StatusSchema = v.object({
 export type SeerrStatus = v.InferOutput<typeof StatusSchema>
 
 export const seerr = {
-  seerr: {
-    checkHealth: async (serviceUrl) => {
-      const url = new URL('/api/v1/status', serviceUrl)
-      const response = await fetch(url)
-      return response.ok
-    },
-    loadPublicData: async (serviceUrl) => {
-      const url = new URL('/api/v1/status', serviceUrl)
-      const response = await fetch(url)
-      const data = await response.json()
-      const status = v.parse(StatusSchema, data)
-      return {
-        data: status,
-        version: status.version,
-      }
-    },
-    repo: { name: 'seerr-team/seerr', vcs: 'github' },
+  checkHealth: async (serviceUrl) => {
+    const url = new URL('/api/v1/status', serviceUrl)
+    const response = await fetch(url)
+    return response.ok
   },
-} satisfies DataLoader<'seerr', SeerrStatus>
+  loadPublicData: async (serviceUrl) => {
+    const url = new URL('/api/v1/status', serviceUrl)
+    const response = await fetch(url)
+    const data = await response.json()
+    const status = v.parse(StatusSchema, data)
+    return {
+      data: status,
+      version: status.version,
+    }
+  },
+  repo: { name: 'seerr-team/seerr', vcs: 'github' },
+  serviceId: 'seerr',
+} as const satisfies DataLoader<'seerr', SeerrStatus>
