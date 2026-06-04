@@ -40,6 +40,9 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
   enabled: boolean,
   useCupToCheckForUpdates: boolean,
 ) => {
+  if (id === 'cup') {
+    useCupToCheckForUpdates = false
+  }
   return queryOptions({
     enabled,
     queryFn: async ({ client }) => {
