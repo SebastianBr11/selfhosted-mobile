@@ -7,6 +7,7 @@ import { gitea } from './gitea'
 import { grimmory } from './grimmory'
 import { immich } from './immich'
 import { jellyfin } from './jellyfin'
+import { linkding } from './linkding'
 import { mealie } from './mealie'
 import { memos } from './memos'
 import { portainer } from './portainer'
@@ -27,6 +28,7 @@ const dataLoaders = {
   grimmory,
   immich,
   jellyfin,
+  linkding,
   mealie,
   memos,
   portainer,
