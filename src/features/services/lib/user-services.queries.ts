@@ -61,10 +61,10 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
       let cupFoundUpdates = false
 
       if (useCupToCheckForUpdates) {
-        const cupData = client.getQueryData(
-          cupQueryOptions(url, localService, true).queryKey,
+        const cupData = await client.fetchQuery(
+          cupQueryOptions(url, localService, true),
         )
-        if (cupData?.publicData?.data) {
+        if (cupData.publicData?.data) {
           updateData = dataLoaderUtil.checkServiceUpdatesUsingCup(
             service,
             cupData.publicData.data as CupData,
