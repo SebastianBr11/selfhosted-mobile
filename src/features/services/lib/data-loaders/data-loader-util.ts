@@ -128,7 +128,7 @@ export const dataLoaderUtil = {
 
     const serviceImages = cupData.images.filter(imageFilter)
     const inUseServiceImages = serviceImages.filter((image) => image.in_use)
-    if (inUseServiceImages.length !== 1) {
+    if (inUseServiceImages.length < 1) {
       return { hasUpdate: false }
     }
     const usedImage = inUseServiceImages[0]
