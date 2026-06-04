@@ -22,7 +22,6 @@ import {
   width,
 } from '@expo/ui/jetpack-compose/modifiers'
 import { useLingui } from '@lingui/react/macro'
-import { useQuery } from '@tanstack/react-query'
 import * as WebBrowser from 'expo-web-browser'
 import { useState } from 'react'
 import { useTheme } from '@/hooks/use-theme'
@@ -30,9 +29,8 @@ import { isArray } from '@/util/is-type'
 import { useSettings } from '../../settings/hooks/use-settings'
 import { useInstalledApp } from '../hooks/use-installed-app'
 import { useService } from '../hooks/use-service'
-import { useServicesUrl } from '../hooks/use-services-url'
+import { useServiceData } from '../hooks/use-service-data'
 import { ServiceId } from '../lib/services.system'
-import { userServiceQueryOptions } from '../lib/user-services.queries'
 import { ServiceHealthDialog } from './service-health-dialog'
 import { ServiceUpdatesDialog } from './service-updates-dialog'
 
@@ -46,28 +44,16 @@ export default function ServiceBottomSheet({
   hide,
   serviceId,
 }: ServiceBottomSheetProps) {
-  const service = useService(serviceId)
-  const {
-    fetchServiceData,
-    showAppStoreButton,
-    showOpenInBrowserButton,
-    useCupToCheckForUpdates,
-    useLocalSource,
-  } = useSettings()
-  const { appAvailable, openApp } = useInstalledApp(service?.packageName)
   const { t } = useLingui()
   const theme = useTheme()
-  const { url } = useServicesUrl()
 
-  const { data, error, isEnabled, isError, isLoading } = useQuery(
-    userServiceQueryOptions(
-      url,
-      serviceId,
-      useLocalSource,
-      fetchServiceData,
-      useCupToCheckForUpdates,
-    ),
-  )
+  const service = useService(serviceId)
+  const { data, error, isError, isLoading } = useServiceData(serviceId)
+  const { appAvailable, openApp } = useInstalledApp(service?.packageName)
+
+  const { fetchServiceData, showAppStoreButton, showOpenInBrowserButton } =
+    useSettings()
+
   const [showHealthDialog, setShowHealthDialog] = useState(false)
   const [showUpdatesDialog, setShowUpdatesDialog] = useState(false)
 
@@ -94,7 +80,7 @@ export default function ServiceBottomSheet({
               verticalArrangement="center"
             >
               <Box modifiers={[weight(1)]}>
-                {isEnabled &&
+                {fetchServiceData &&
                   data?.healthy !== undefined &&
                   (data.healthy ? (
                     <IconButton onClick={() => setShowHealthDialog(true)}>
@@ -127,7 +113,7 @@ export default function ServiceBottomSheet({
                   >
                     {service.name}
                   </Text>
-                  {isEnabled && data?.publicData?.version && (
+                  {fetchServiceData && data?.publicData?.version && (
                     <Text
                       color={theme.android.textPrimary.toString()}
                       modifiers={[padding(16, 8, 16, 8)]}
@@ -142,7 +128,7 @@ export default function ServiceBottomSheet({
               </Box>
               <Spacer modifiers={[width(8)]} />
               <Box modifiers={[weight(1)]}>
-                {isEnabled && isError && (
+                {fetchServiceData && isError && (
                   <IconButton onClick={() => setShowHealthDialog(true)}>
                     <Icon
                       contentDescription="Unavailable"
@@ -151,7 +137,7 @@ export default function ServiceBottomSheet({
                     />
                   </IconButton>
                 )}
-                {isEnabled && data?.updateData?.hasUpdate && (
+                {fetchServiceData && data?.updateData?.hasUpdate && (
                   <FilledTonalIconButton
                     onClick={() => setShowUpdatesDialog(true)}
                   >
@@ -164,7 +150,7 @@ export default function ServiceBottomSheet({
                 )}
               </Box>
             </Row>
-            {isEnabled &&
+            {fetchServiceData &&
               (isLoading ? (
                 <CircularWavyProgressIndicator
                   modifiers={[align('centerHorizontally')]}

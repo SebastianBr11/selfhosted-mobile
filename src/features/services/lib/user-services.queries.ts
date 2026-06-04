@@ -2,18 +2,13 @@ import { queryOptions } from '@tanstack/react-query'
 import { fetch } from 'expo/fetch'
 import { getLocalServicesState } from '@/features/settings/lib/local-servies'
 import { Version } from '@/lib/schemas'
-import {
-  AvailableDataLoaderId,
-  AvailableDataLoaders,
-  getDataLoader,
-  hasDataLoader,
-} from './data-loaders'
+import { getDataLoader, hasDataLoader } from './data-loaders'
 import { CupData } from './data-loaders/cup'
 import { dataLoaderUtil } from './data-loaders/data-loader-util'
 import { UpdateCheck } from './data-loaders/types'
 import { Service } from './service.schema'
 import { isBuiltInServiceId } from './services-util'
-import { BuiltInServiceId, ServiceId, serviceSystem } from './services.system'
+import { ServiceId, serviceSystem } from './services.system'
 
 export const remoteServicesQueryOptions = (url: string) => {
   return queryOptions({
