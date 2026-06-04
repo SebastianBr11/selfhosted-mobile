@@ -6,6 +6,7 @@ import {
   LeadingVSemanticVersionSchema,
   SemanticVersionSchema,
 } from '@/lib/schemas'
+import { dataLoaderUtil } from './data-loader-util'
 import { DataLoader } from './types'
 
 const CupVersionInfoSchema = v.object({
@@ -43,7 +44,7 @@ const CupImageSchema = v.object({
 })
 const CupDataSchema = v.object({
   images: v.array(CupImageSchema),
-  last_updated: v.string(),
+  last_updated: v.pipe(v.string(), v.isoTimestamp()),
   metrics: v.object({
     major_updates: v.number(),
     minor_updates: v.number(),
@@ -83,7 +84,22 @@ export const cup = {
     const url = new URL('/api/v3/json', serviceUrl)
     const response = await fetch(url)
     const data = await response.json()
-    const cupData = v.parse(CupDataSchema, data)
+    let cupData = v.parse(CupDataSchema, data)
+
+    if (cupData.last_updated) {
+      const lastUpdated = new Date(cupData.last_updated)
+      const oneHourMs = 60 * 60 * 1000
+      const diffMs = Date.now() - lastUpdated.getTime()
+      const shouldRefresh = diffMs >= oneHourMs
+
+      if (shouldRefresh) {
+        await fetch(new URL('/api/v3/refresh', serviceUrl))
+        const response = await fetch(url)
+        const data = await response.json()
+        cupData = v.parse(CupDataSchema, data)
+      }
+    }
+
     return {
       data: cupData,
       version: { raw: 'No version available', type: 'unavailable' },
