@@ -51,7 +51,17 @@ export const ContainerTagSchema = v.union([
     }),
   ),
 ])
+
+export const OtherVersionSchema = v.pipe(
+  v.string(),
+  v.transform((s) => ({
+    raw: s,
+    type: 'other-version' as const,
+  })),
+)
 export type ContainerTag = v.InferOutput<typeof ContainerTagSchema>
+
+export type OtherVersion = v.InferOutput<typeof OtherVersionSchema>
 
 export const NightlyVersionSchema = v.pipe(
   v.literal('nightly'),
@@ -65,6 +75,7 @@ export type NightlyVersion = v.InferOutput<typeof NightlyVersionSchema>
 export type Version =
   | ContainerTag
   | NightlyVersion
+  | OtherVersion
   | SemanticVersion
   | { raw: 'No version available'; type: 'unavailable' }
 

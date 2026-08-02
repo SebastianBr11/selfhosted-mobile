@@ -1,6 +1,6 @@
 import { ColorSchemeName } from 'react-native'
 import { ServiceIconUrl } from '@/features/services/lib/service.schema'
-import { SemanticVersion } from '@/lib/schemas'
+import { OtherVersion, SemanticVersion } from '@/lib/schemas'
 import { isObject } from '@/util/is-type'
 
 /**
@@ -20,6 +20,17 @@ export function compareSemanticVersions(
     return a.patch > b.patch ? 1 : -1
   }
   return 0
+}
+
+export function compareVersions(
+  a: OtherVersion | SemanticVersion,
+  b: OtherVersion | SemanticVersion,
+) {
+  if (a.type === 'semantic-version' && b.type === 'semantic-version') {
+    return compareSemanticVersions(a, b)
+  }
+
+  return a.raw.localeCompare(b.raw)
 }
 
 export function schemeDependantIcon(

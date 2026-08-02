@@ -2,12 +2,13 @@ import { fetch } from 'expo/fetch'
 import * as v from 'valibot'
 import {
   LeadingVSemanticVersionSchema,
+  OtherVersionSchema,
   SemanticVersion,
   SemanticVersionSchema,
   UrlSchema,
 } from '@/lib/schemas'
 import { getDataLoader, hasDataLoader } from '.'
-import { compareSemanticVersions } from '../../util'
+import { compareVersions } from '../../util'
 import { Service } from '../service.schema'
 import { isBuiltInServiceId } from '../services-util'
 import { CupData, CupUpdateData } from './cup'
@@ -19,7 +20,11 @@ const GithubReleaseSchema = v.object({
   id: v.number(),
   name: v.string(),
   published_at: v.pipe(v.string(), v.isoTimestamp()),
-  tag_name: v.union([SemanticVersionSchema, LeadingVSemanticVersionSchema]),
+  tag_name: v.union([
+    SemanticVersionSchema,
+    LeadingVSemanticVersionSchema,
+    OtherVersionSchema,
+  ]),
 })
 const GithubReleasesSchema = v.array(GithubReleaseSchema)
 
@@ -29,7 +34,11 @@ const CodebergReleaseSchema = v.object({
   id: v.number(),
   name: v.string(),
   published_at: v.pipe(v.string(), v.isoTimestamp()),
-  tag_name: v.union([SemanticVersionSchema, LeadingVSemanticVersionSchema]),
+  tag_name: v.union([
+    SemanticVersionSchema,
+    LeadingVSemanticVersionSchema,
+    OtherVersionSchema,
+  ]),
 })
 const CodebergReleasesSchema = v.array(CodebergReleaseSchema)
 
@@ -50,8 +59,7 @@ export const dataLoaderUtil = {
   ): Promise<UpdateCheck> => {
     const releases = await fetchCodebergReleases(repoName)
     const newerVersions = releases.filter(
-      (release) =>
-        compareSemanticVersions(currentVersion, release.tag_name) < 0,
+      (release) => compareVersions(currentVersion, release.tag_name) < 0,
     )
     const hasUpdate = newerVersions.length > 0
     const changelog = newerVersions
@@ -82,8 +90,7 @@ export const dataLoaderUtil = {
   ): Promise<UpdateCheck> => {
     const releases = await fetchGithubReleases(repoName)
     const newerVersions = releases.filter(
-      (release) =>
-        compareSemanticVersions(currentVersion, release.tag_name) < 0,
+      (release) => compareVersions(currentVersion, release.tag_name) < 0,
     )
     const hasUpdate = newerVersions.length > 0
     const changelog = newerVersions

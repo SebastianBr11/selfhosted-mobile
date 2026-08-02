@@ -1,4 +1,4 @@
-import { SemanticVersion, Version } from '@/lib/schemas'
+import { OtherVersion, SemanticVersion, Version } from '@/lib/schemas'
 import { ServiceUrl } from '../service.schema'
 import { BuiltInServiceId } from '../services.system'
 import { CupUpdateData } from './cup'
@@ -20,7 +20,7 @@ export type GenericUpdateData = {
   hasUpdate: true
   /** URL to the latest version */
   link?: string
-  newVersion: SemanticVersion
+  newVersion: OtherVersion | SemanticVersion
   otherData?: never
   releaseTimestamp?: string
   type: 'generic'
