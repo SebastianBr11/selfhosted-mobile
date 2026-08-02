@@ -22,7 +22,7 @@ msgid "{serviceName} Settings"
 msgstr "{serviceName} Einstellungen"
 
 #: src/features/services/components/fetch-services-error-dialog.tsx:19
-#: src/features/services/components/service-bottom-sheet.tsx:170
+#: src/features/services/components/service-bottom-sheet.tsx:162
 msgid "An error ocurred"
 msgstr "Ein Fehler ist aufgetreten"
 
@@ -50,7 +50,7 @@ msgstr "Bist du sicher, dass du die zuletzt abgerufenen Dienste in lokale Dienst
 msgid "Are you sure you want to reset the settings for this service? This will overwrite the current settings. This action cannot be undone."
 msgstr "Bist du sicher, dass du die Einstellungen dieses Dienstes zurücksetzen willst? Dies wird die aktuellen Einstellungen überschreiben. Diese Aktion kann nicht rückgängig gemacht werden."
 
-#: src/features/services/components/service-updates-dialog.tsx:43
+#: src/features/services/components/service-updates-dialog.tsx:57
 msgid "Changes since {rawCurrentVersion}"
 msgstr "Änderungen seit {rawCurrentVersion}"
 
@@ -86,7 +86,7 @@ msgstr "Beschreibung"
 #: src/features/services/components/fetch-services-error-dialog.tsx:38
 #: src/features/services/components/offline-dialog.tsx:35
 #: src/features/services/components/service-health-dialog.tsx:52
-#: src/features/services/components/service-updates-dialog.tsx:112
+#: src/features/services/components/service-updates-dialog.tsx:126
 #: src/features/settings/components/convert-to-local-source-dialog.tsx:55
 #: src/features/settings/components/reset-service-settings-dialog.tsx:42
 msgid "Dismiss"
@@ -124,7 +124,7 @@ msgstr "MIT"
 msgid "More settings"
 msgstr "Weitere Einstellungen"
 
-#: src/features/services/components/service-bottom-sheet.tsx:166
+#: src/features/services/components/service-bottom-sheet.tsx:158
 msgid "No additional data available"
 msgstr "Keine zusätzlichen Daten verfügbar"
 
@@ -140,15 +140,15 @@ msgstr "App direkt öffnen"
 msgid "Open app directly instead of bottom sheet. Only available if the app store button and open in browser button are hidden."
 msgstr "App direkt öffnen statt im Bottom Sheet. Nur verfügbar, wenn der Button zum App Store und der Button zum Browser verborgen sind."
 
-#: src/features/services/components/service-bottom-sheet.tsx:208
+#: src/features/services/components/service-bottom-sheet.tsx:200
 msgid "Open in {name}"
 msgstr "Öffne in {name}"
 
-#: src/features/services/components/service-bottom-sheet.tsx:221
+#: src/features/services/components/service-bottom-sheet.tsx:213
 msgid "Open in App Store"
 msgstr "Öffne im App Store"
 
-#: src/features/services/components/service-bottom-sheet.tsx:182
+#: src/features/services/components/service-bottom-sheet.tsx:174
 msgid "Open in Browser"
 msgstr "Öffne im Browser"
 
@@ -156,7 +156,7 @@ msgstr "Öffne im Browser"
 msgid "Open in browser button"
 msgstr "Öffne im Browser-Button"
 
-#: src/features/services/components/service-bottom-sheet.tsx:192
+#: src/features/services/components/service-bottom-sheet.tsx:184
 msgid "Open installed App"
 msgstr "Installierte App öffnen"
 
@@ -164,7 +164,7 @@ msgstr "Installierte App öffnen"
 msgid "Other settings"
 msgstr "Andere Einstellungen"
 
-#: src/features/services/components/service-updates-dialog.tsx:53
+#: src/features/services/components/service-updates-dialog.tsx:67
 msgid "Release date:"
 msgstr "Veröffentlichkeitsdatum:"
 
@@ -277,7 +277,7 @@ msgstr "Die API des Dienstes verwenden, um zusätzliche Daten abzurufen"
 msgid "Version"
 msgstr "Version"
 
-#: src/features/services/components/service-updates-dialog.tsx:49
+#: src/features/services/components/service-updates-dialog.tsx:63
 msgid "Version {rawNewVersion} is available."
 msgstr "Version {rawNewVersion} ist verfügbar."
 
