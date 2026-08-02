@@ -6,5 +6,6 @@ export const readeck = {
   iconUrl: 'https://readeck.org/media/favicons/favicon.d57024ea.svg',
   id: 'readeck',
   name: 'Readeck',
+  packageName: 'org.readeck.apps.android',
   url: serviceUrl('https://readeck.org/en/'),
 } as const satisfies Service
