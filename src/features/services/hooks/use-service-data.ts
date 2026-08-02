@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, UseQueryResult } from '@tanstack/react-query'
 import { useSettings } from '@/features/settings/hooks/use-settings'
 import { ServiceId } from '../lib/services.system'
 import { userServiceQueryOptions } from '../lib/user-services.queries'
@@ -10,7 +10,7 @@ export function useServiceData(serviceId: ServiceId) {
 
   const { url } = useServicesUrl()
 
-  return useQuery(
+  const query = useQuery(
     userServiceQueryOptions(
       url,
       serviceId,
@@ -19,4 +19,11 @@ export function useServiceData(serviceId: ServiceId) {
       useCupToCheckForUpdates,
     ),
   )
+
+  return {
+    error: fetchServiceData ? query.error : null,
+    isLoading: fetchServiceData ? query.isLoading : false,
+    query,
+    serviceData: fetchServiceData ? query.data : undefined,
+  }
 }

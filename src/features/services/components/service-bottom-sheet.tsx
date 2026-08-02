@@ -48,11 +48,11 @@ export default function ServiceBottomSheet({
   const theme = useTheme()
 
   const service = useService(serviceId)
-  const { data, error, isError, isLoading } = useServiceData(serviceId)
+  const { error, isLoading, serviceData } = useServiceData(serviceId)
+  const isError = !!error
   const { appAvailable, openApp } = useInstalledApp(service?.packageName)
 
-  const { fetchServiceData, showAppStoreButton, showOpenInBrowserButton } =
-    useSettings()
+  const { showAppStoreButton, showOpenInBrowserButton } = useSettings()
 
   const [showHealthDialog, setShowHealthDialog] = useState(false)
   const [showUpdatesDialog, setShowUpdatesDialog] = useState(false)
@@ -80,9 +80,8 @@ export default function ServiceBottomSheet({
               verticalArrangement="center"
             >
               <Box modifiers={[weight(1)]}>
-                {fetchServiceData &&
-                  data?.healthy !== undefined &&
-                  (data.healthy ? (
+                {serviceData?.healthy !== undefined &&
+                  (serviceData.healthy ? (
                     <IconButton onClick={() => setShowHealthDialog(true)}>
                       <Icon
                         contentDescription="Healthy"
@@ -113,7 +112,7 @@ export default function ServiceBottomSheet({
                   >
                     {service.name}
                   </Text>
-                  {fetchServiceData && data?.publicData?.version && (
+                  {serviceData?.publicData?.version && (
                     <Text
                       color={theme.android.textPrimary.toString()}
                       modifiers={[padding(16, 8, 16, 8)]}
@@ -121,14 +120,14 @@ export default function ServiceBottomSheet({
                         typography: 'labelLarge',
                       }}
                     >
-                      {data?.publicData?.version.raw}
+                      {serviceData?.publicData?.version.raw}
                     </Text>
                   )}
                 </FlowRow>
               </Box>
               <Spacer modifiers={[width(8)]} />
               <Box modifiers={[weight(1)]}>
-                {fetchServiceData && isError && (
+                {isError && (
                   <IconButton onClick={() => setShowHealthDialog(true)}>
                     <Icon
                       contentDescription="Unavailable"
@@ -137,7 +136,7 @@ export default function ServiceBottomSheet({
                     />
                   </IconButton>
                 )}
-                {fetchServiceData && data?.updateData?.hasUpdate && (
+                {serviceData?.updateData?.hasUpdate && (
                   <FilledTonalIconButton
                     onClick={() => setShowUpdatesDialog(true)}
                   >
@@ -150,20 +149,19 @@ export default function ServiceBottomSheet({
                 )}
               </Box>
             </Row>
-            {fetchServiceData &&
-              (isLoading ? (
-                <CircularWavyProgressIndicator
-                  modifiers={[align('centerHorizontally')]}
-                />
-              ) : data?.notAvailable ? (
-                <Row>
-                  <Text>{t`No additional data available`}</Text>
-                </Row>
-              ) : isError ? (
-                <Row>
-                  <Text>{t`An error ocurred`}</Text>
-                </Row>
-              ) : null)}
+            {isLoading ? (
+              <CircularWavyProgressIndicator
+                modifiers={[align('centerHorizontally')]}
+              />
+            ) : serviceData?.notAvailable ? (
+              <Row>
+                <Text>{t`No additional data available`}</Text>
+              </Row>
+            ) : isError ? (
+              <Row>
+                <Text>{t`An error ocurred`}</Text>
+              </Row>
+            ) : null}
             {children ? children : null}
             <FlowRow horizontalArrangement={{ spacedBy: 12 }}>
               {showOpenInBrowserButton && (
@@ -223,15 +221,15 @@ export default function ServiceBottomSheet({
       {showHealthDialog && (
         <ServiceHealthDialog
           error={error}
-          healthy={!!data?.healthy}
+          healthy={!!serviceData?.healthy}
           hide={() => setShowHealthDialog(false)}
         />
       )}
-      {showUpdatesDialog && data?.updateData?.hasUpdate && (
+      {showUpdatesDialog && serviceData?.updateData?.hasUpdate && (
         <ServiceUpdatesDialog
-          currentVersion={data.publicData.version}
+          currentVersion={serviceData.publicData.version}
           hide={() => setShowUpdatesDialog(false)}
-          updateData={data.updateData}
+          updateData={serviceData.updateData}
         />
       )}
     </>
