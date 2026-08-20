@@ -4,8 +4,7 @@ import { serviceUrl } from './builtin-util'
 export const grimmory = {
   description:
     'Grimmory is the successor of booklore. A modern way to organize, read, and own your digital library.',
-  iconUrl:
-    'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/booklore.svg',
+  iconUrl: 'https://cdn.jsdelivr.net/gh/selfhst/icons/svg/grimmory.svg',
   id: 'grimmory',
   name: 'Grimmory',
   url: serviceUrl('https://github.com/grimmory-tools/grimmory'),
