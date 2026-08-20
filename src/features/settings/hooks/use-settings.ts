@@ -29,7 +29,7 @@ export const { getState: getSettingsState, useStore: useSettings } =
           !!canSetUseCupToCheckForUpdates && !!useCupToCheckForUpdatesInternal
         )
       },
-      useCupToCheckForUpdatesInternal: storage<boolean>(true),
+      useCupToCheckForUpdatesInternal: storage<boolean>(false),
       get useLocalSource() {
         return !this.useRemoteSource
       },
