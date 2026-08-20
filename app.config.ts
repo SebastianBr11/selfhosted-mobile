@@ -77,6 +77,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     'expo-sharing',
     'expo-image',
     'expo-font',
+    'expo-status-bar',
   ],
   scheme: 'selfhostedmobile',
   slug: 'selfhosted-mobile',
