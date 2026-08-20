@@ -1,4 +1,4 @@
-import { useQuery, UseQueryResult } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { useSettings } from '@/features/settings/hooks/use-settings'
 import { ServiceId } from '../lib/services.system'
 import { userServiceQueryOptions } from '../lib/user-services.queries'

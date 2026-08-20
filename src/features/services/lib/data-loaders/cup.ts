@@ -1,12 +1,6 @@
 import { fetch } from 'expo/fetch'
 import * as v from 'valibot'
-import {
-  ContainerTag,
-  ContainerTagSchema,
-  LeadingVSemanticVersionSchema,
-  SemanticVersionSchema,
-} from '@/lib/schemas'
-import { dataLoaderUtil } from './data-loader-util'
+import { ContainerTag, ContainerTagSchema } from '@/lib/schemas'
 import { DataLoader } from './types'
 
 const CupVersionInfoSchema = v.object({

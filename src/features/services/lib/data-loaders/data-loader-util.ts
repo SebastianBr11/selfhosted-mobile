@@ -11,8 +11,8 @@ import { getDataLoader, hasDataLoader } from '.'
 import { compareVersions } from '../../util'
 import { Service } from '../service.schema'
 import { isBuiltInServiceId } from '../services-util'
-import { CupData, CupUpdateData } from './cup'
-import { UpdateCheck, UpdateData } from './types'
+import { CupData } from './cup'
+import { UpdateCheck } from './types'
 
 const GithubReleaseSchema = v.object({
   body: v.string(),

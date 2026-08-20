@@ -15,7 +15,7 @@ import { readeck } from './readeck'
 import { romm } from './romm'
 import { seerr } from './seerr'
 import { shelfmark } from './shelfmark'
-import { DataLoader, DataLoaders } from './types'
+import { DataLoaders } from './types'
 import { vaultwarden } from './vaultwarden'
 import { wallabag } from './wallabag'
 
