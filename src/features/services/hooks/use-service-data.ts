@@ -4,7 +4,7 @@ import { ServiceId } from '../lib/services.system'
 import { userServiceQueryOptions } from '../lib/user-services.queries'
 import { useServicesUrl } from './use-services-url'
 
-export function useServiceData(serviceId: ServiceId) {
+export function useServiceData<T extends ServiceId>(serviceId: T) {
   const { fetchServiceData, useCupToCheckForUpdates, useLocalSource } =
     useSettings()
 
@@ -20,10 +20,19 @@ export function useServiceData(serviceId: ServiceId) {
     ),
   )
 
+  if (fetchServiceData) {
+    return {
+      error: query.error,
+      isLoading: query.isLoading,
+      query,
+      serviceData: query.data,
+    }
+  }
+
   return {
-    error: fetchServiceData ? query.error : null,
-    isLoading: fetchServiceData ? query.isLoading : false,
+    error: null,
+    isLoading: false,
     query,
-    serviceData: fetchServiceData ? query.data : undefined,
+    serviceData: undefined,
   }
 }

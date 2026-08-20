@@ -81,7 +81,7 @@ export default function ServiceBottomSheet({
             >
               <Box modifiers={[weight(1)]}>
                 {serviceData?.healthy !== undefined &&
-                  (serviceData.healthy ? (
+                  (serviceData?.healthy ? (
                     <IconButton onClick={() => setShowHealthDialog(true)}>
                       <Icon
                         contentDescription="Healthy"
@@ -153,7 +153,7 @@ export default function ServiceBottomSheet({
               <CircularWavyProgressIndicator
                 modifiers={[align('centerHorizontally')]}
               />
-            ) : serviceData?.notAvailable ? (
+            ) : !serviceData?.hasData ? (
               <Row>
                 <Text>{t`No additional data available`}</Text>
               </Row>

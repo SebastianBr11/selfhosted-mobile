@@ -2,8 +2,12 @@ import { queryOptions } from '@tanstack/react-query'
 import { fetch } from 'expo/fetch'
 import { getLocalServicesState } from '@/features/settings/lib/local-servies'
 import { Version } from '@/lib/schemas'
-import { getDataLoader, hasDataLoader } from './data-loaders'
-import { CupData } from './data-loaders/cup'
+import {
+  AvailableDataLoaderId,
+  AvailableDataLoaders,
+  getDataLoader,
+  hasDataLoader,
+} from './data-loaders'
 import { dataLoaderUtil } from './data-loaders/data-loader-util'
 import { UpdateCheck } from './data-loaders/types'
 import { Service } from './service.schema'
@@ -27,6 +31,24 @@ const cupQueryOptions = (
   localService: boolean,
   enabled: boolean,
 ) => userServiceQueryOptions(url, 'cup', localService, enabled, false)
+type LoaderResult<T extends AvailableDataLoaderId> =
+  {
+    hasData: true
+    healthy: boolean
+    publicData: PublicData<T>
+    updateData: UpdateCheck
+  }
+type NoLoaderResult = null | {
+  /** The service has no loader, so it has no extra data besides the version */
+  hasData: false
+  publicData: { version: Version }
+  updateData: UpdateCheck
+}
+
+type PublicData<T extends AvailableDataLoaderId> = Awaited<
+  ReturnType<AvailableDataLoaders[T]['loadPublicData']>
+>
+
 
 export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
   url: string,
@@ -38,6 +60,7 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
   if (id === 'cup') {
     useCupToCheckForUpdates = false
   }
+
   return queryOptions({
     enabled,
     queryFn: async ({ client }) => {
@@ -51,7 +74,6 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
       if (!service) {
         throw new Error(`Service "${id}" not found`)
       }
-
       let updateData: UpdateCheck = { hasUpdate: false }
       let cupFoundUpdates = false
 
@@ -59,10 +81,10 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
         const cupData = await client.fetchQuery(
           cupQueryOptions(url, localService, true),
         )
-        if (cupData.publicData?.data) {
+        if (cupData?.hasData) {
           updateData = dataLoaderUtil.checkServiceUpdatesUsingCup(
             service,
-            cupData.publicData.data as CupData,
+            cupData.publicData.data,
           )
           cupFoundUpdates = updateData.hasUpdate
         }
@@ -72,33 +94,43 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
         if (updateData) {
           if (updateData.otherData?.version) {
             return {
+              hasData: false,
               publicData: {
-                data: {},
                 version: updateData.otherData.version,
               },
               updateData,
-            }
+            } satisfies NoLoaderResult
           }
           return {
+            hasData: false,
             publicData: {
-              data: {},
               version: {
                 raw: 'No version available',
                 type: 'unavailable',
               } satisfies Version,
             },
             updateData,
-          }
+          } satisfies NoLoaderResult
         }
-        return { notAvailable: true }
+        return null satisfies NoLoaderResult
       }
 
       const loaders = getDataLoader(id)
 
       const healthy = await loaders.checkHealth(service.url)
-      const publicData = await loaders.loadPublicData(service.url)
+
+      // Without the cast, the type would not be narrowed correctly
+      // to the service's public data.
+      const publicData = (await loaders.loadPublicData(
+        service.url,
+      )) as PublicData<typeof id>
       if (publicData.version.type !== 'semantic-version') {
-        return { healthy, publicData, serviceId: loaders.serviceId }
+        return {
+          hasData: true,
+          healthy,
+          publicData,
+          updateData,
+        } satisfies LoaderResult<typeof id>
       }
 
       const loaderCanCheckForUpdate = 'checkForUpdates' in loaders
@@ -107,11 +139,11 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
       // Those can still be used however to get more info (changelog, etc.)
       if (useCupToCheckForUpdates && !cupFoundUpdates) {
         return {
+          hasData: true,
           healthy,
           publicData,
-          serviceId: loaders.serviceId,
           updateData,
-        }
+        } satisfies LoaderResult<typeof id>
       }
 
       if (loaderCanCheckForUpdate) {
@@ -138,11 +170,11 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
       }
 
       return {
+        hasData: true,
         healthy,
         publicData,
-        serviceId: loaders.serviceId,
         updateData,
-      }
+      } satisfies LoaderResult<typeof id>
     },
     queryKey: [
       'services',
