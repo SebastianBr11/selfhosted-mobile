@@ -28,12 +28,14 @@ export const remoteServicesQueryOptions = (url: string) => {
 
 const cupQueryOptions = (
   url: string,
-  isLocalService: boolean,
-  enabled: boolean,
+  options: {
+    enabled: boolean
+    isLocalService: boolean
+    showPrereleases: boolean
+  },
 ) =>
   userServiceQueryOptions(url, 'cup', {
-    enabled,
-    isLocalService,
+    ...options,
     useCupToCheckForUpdates: false,
   })
 
@@ -63,11 +65,12 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
   options: {
     enabled: boolean
     isLocalService: boolean
+    showPrereleases: boolean
     useCupToCheckForUpdates: boolean
   },
 ) => {
   let useCupToCheckForUpdates = options.useCupToCheckForUpdates
-  const { enabled, isLocalService } = options
+  const { enabled, isLocalService, showPrereleases } = options
   if (id === 'cup') {
     useCupToCheckForUpdates = false
   }
@@ -90,7 +93,11 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
 
       if (useCupToCheckForUpdates) {
         const cupData = await client.fetchQuery(
-          cupQueryOptions(url, isLocalService, true),
+          cupQueryOptions(url, {
+            enabled: true,
+            isLocalService,
+            showPrereleases,
+          }),
         )
         if (cupData?.hasData) {
           updateData = dataLoaderUtil.checkServiceUpdatesUsingCup(
@@ -168,6 +175,7 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
             updateData = await dataLoaderUtil.checkCodebergForUpdates(
               loaders.repo.name,
               publicData.version,
+              showPrereleases,
             )
             break
           }
@@ -175,6 +183,7 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
             updateData = await dataLoaderUtil.checkGithubForUpdates(
               loaders.repo.name,
               publicData.version,
+              showPrereleases,
             )
           }
         }
@@ -195,6 +204,7 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
       'info',
       isLocalService ? 'local' : 'remote',
       useCupToCheckForUpdates ? 'cup-update-check' : 'normal-update-check',
+      showPrereleases ? 'with-prereleases' : 'without-prereleases',
     ],
   })
 }

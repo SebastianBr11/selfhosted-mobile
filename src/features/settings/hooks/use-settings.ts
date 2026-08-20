@@ -8,6 +8,10 @@ export const { getState: getSettingsState, useStore: useSettings } =
         const { showAppStoreButton, showOpenInBrowserButton } = this
         return !showAppStoreButton && !showOpenInBrowserButton
       },
+      get canSetShowPrerelases() {
+        const { fetchServiceData } = this
+        return !!fetchServiceData
+      },
       get canSetUseCupToCheckForUpdates() {
         const { fetchServiceData } = this
         return !!fetchServiceData
@@ -20,6 +24,11 @@ export const { getState: getSettingsState, useStore: useSettings } =
       openAppDirectlyInternal: storage<boolean>(false),
       showAppStoreButton: storage<boolean>(true),
       showOpenInBrowserButton: storage<boolean>(true),
+      get showPrereleases() {
+        const { canSetShowPrerelases, showPrereleasesInternal } = this
+        return !!canSetShowPrerelases && !!showPrereleasesInternal
+      },
+      showPrereleasesInternal: storage<boolean>(false),
       get useCupToCheckForUpdates() {
         const {
           canSetUseCupToCheckForUpdates,
@@ -39,6 +48,9 @@ export const { getState: getSettingsState, useStore: useSettings } =
     ({ actions }) => ({
       setOpenAppDirectly(openAppDirectly: boolean) {
         actions.setOpenAppDirectlyInternal(openAppDirectly)
+      },
+      setShowPrereleases(showPrereleases: boolean) {
+        actions.setShowPrereleasesInternal(showPrereleases)
       },
       setUseCupToCheckForUpdates(useCupToCheckForUpdates: boolean) {
         actions.setUseCupToCheckForUpdatesInternal(useCupToCheckForUpdates)

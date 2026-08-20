@@ -21,6 +21,7 @@ export default function MoreSettingsView() {
 
   const {
     canSetOpenAppDirectly,
+    canSetShowPrerelases,
     canSetUseCupToCheckForUpdates,
     fetchServiceData,
     openAppDirectly,
@@ -28,9 +29,11 @@ export default function MoreSettingsView() {
     setOpenAppDirectly,
     setShowAppStoreButton,
     setShowOpenInBrowserButton,
+    setShowPrereleases,
     setUseCupToCheckForUpdates,
     showAppStoreButton,
     showOpenInBrowserButton,
+    showPrereleases,
     useCupToCheckForUpdates,
   } = useSettings()
 
@@ -58,11 +61,19 @@ export default function MoreSettingsView() {
             <SwitchListItem
               enabled={canSetUseCupToCheckForUpdates}
               headline={t`Use Cup to check for updates`}
-              itemPosition="trailing"
               leadingIcon={require('@/assets/symbols/update.xml')}
               onValueChange={setUseCupToCheckForUpdates}
               supportingText={t`Use Cup (if available) to check for updates`}
               value={useCupToCheckForUpdates}
+            />
+            <SwitchListItem
+              enabled={canSetShowPrerelases}
+              headline={t`Show Pre-Releases`}
+              itemPosition="trailing"
+              leadingIcon={require('@/assets/symbols/release_alert.xml')}
+              onValueChange={setShowPrereleases}
+              supportingText={t`Include Pre-Releases when checking for updates`}
+              value={showPrereleases}
             />
           </Column>
           <Column verticalArrangement={{ spacedBy: 2 }}>

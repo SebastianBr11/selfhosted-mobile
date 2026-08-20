@@ -5,8 +5,12 @@ import { userServiceQueryOptions } from '../lib/user-services.queries'
 import { useServicesUrl } from './use-services-url'
 
 export function useServiceData<T extends ServiceId>(serviceId: T) {
-  const { fetchServiceData, useCupToCheckForUpdates, useLocalSource } =
-    useSettings()
+  const {
+    fetchServiceData,
+    showPrereleases,
+    useCupToCheckForUpdates,
+    useLocalSource,
+  } = useSettings()
 
   const { url } = useServicesUrl()
 
@@ -14,6 +18,7 @@ export function useServiceData<T extends ServiceId>(serviceId: T) {
     userServiceQueryOptions(url, serviceId, {
       enabled: fetchServiceData,
       isLocalService: useLocalSource,
+      showPrereleases,
       useCupToCheckForUpdates,
     }),
   )

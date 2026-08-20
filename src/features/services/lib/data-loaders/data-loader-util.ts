@@ -19,6 +19,7 @@ const GithubReleaseSchema = v.object({
   html_url: UrlSchema,
   id: v.number(),
   name: v.string(),
+  prerelease: v.boolean(),
   published_at: v.pipe(v.string(), v.isoTimestamp()),
   tag_name: v.union([
     SemanticVersionSchema,
@@ -33,6 +34,7 @@ const CodebergReleaseSchema = v.object({
   html_url: UrlSchema,
   id: v.number(),
   name: v.string(),
+  prerelease: v.boolean(),
   published_at: v.pipe(v.string(), v.isoTimestamp()),
   tag_name: v.union([
     SemanticVersionSchema,
@@ -56,9 +58,16 @@ export const dataLoaderUtil = {
   checkCodebergForUpdates: async (
     repoName: string,
     currentVersion: SemanticVersion,
+    includePreleaseVersions: boolean,
   ): Promise<UpdateCheck> => {
     const releases = await fetchCodebergReleases(repoName)
-    const newerVersions = releases.filter(
+    let filteredReleases
+    if (includePreleaseVersions) {
+      filteredReleases = releases
+    } else {
+      filteredReleases = releases.filter((release) => !release.prerelease)
+    }
+    const newerVersions = filteredReleases.filter(
       (release) => compareVersions(currentVersion, release.tag_name) < 0,
     )
     const hasUpdate = newerVersions.length > 0
@@ -70,7 +79,7 @@ export const dataLoaderUtil = {
         return acc
       }, [] as string[])
       .join('\n\n')
-    const latest = releases[0]
+    const latest = filteredReleases[0]
 
     if (hasUpdate) {
       return {
@@ -87,9 +96,16 @@ export const dataLoaderUtil = {
   checkGithubForUpdates: async (
     repoName: string,
     currentVersion: SemanticVersion,
+    includePreleaseVersions: boolean,
   ): Promise<UpdateCheck> => {
     const releases = await fetchGithubReleases(repoName)
-    const newerVersions = releases.filter(
+    let filteredReleases
+    if (includePreleaseVersions) {
+      filteredReleases = releases
+    } else {
+      filteredReleases = releases.filter((release) => !release.prerelease)
+    }
+    const newerVersions = filteredReleases.filter(
       (release) => compareVersions(currentVersion, release.tag_name) < 0,
     )
     const hasUpdate = newerVersions.length > 0
@@ -101,7 +117,7 @@ export const dataLoaderUtil = {
         return acc
       }, [] as string[])
       .join('\n\n')
-    const latest = releases[0]
+    const latest = filteredReleases[0]
 
     if (hasUpdate) {
       return {
