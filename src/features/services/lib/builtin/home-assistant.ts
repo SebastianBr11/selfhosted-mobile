@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const homeAssistant = {
   appStoreLink:
@@ -10,5 +11,5 @@ export const homeAssistant = {
   id: 'home-assistant',
   name: 'Home Assistant',
   packageName: 'io.homeassistant.companion.android',
-  url: 'https://www.home-assistant.io',
+  url: serviceUrl('https://www.home-assistant.io'),
 } as const satisfies Service

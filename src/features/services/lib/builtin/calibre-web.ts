@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const calibreWeb = {
   description:
@@ -7,5 +8,5 @@ export const calibreWeb = {
     'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/calibre-web.svg',
   id: 'calibre-web',
   name: 'Calibre-Web',
-  url: 'https://github.com/janeczku/calibre-web',
+  url: serviceUrl('https://github.com/janeczku/calibre-web'),
 } as const satisfies Service

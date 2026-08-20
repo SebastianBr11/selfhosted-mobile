@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const navidrome = {
   description: 'Modern web-based music server',
@@ -6,5 +7,5 @@ export const navidrome = {
     'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/navidrome.svg',
   id: 'navidrome',
   name: 'Navidrome',
-  url: 'https://www.navidrome.org',
+  url: serviceUrl('https://www.navidrome.org'),
 } as const satisfies Service

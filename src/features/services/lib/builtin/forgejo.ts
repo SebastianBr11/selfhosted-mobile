@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const forgejo = {
   description: 'A self-hosted lightweight software forge.',
@@ -6,5 +7,5 @@ export const forgejo = {
     'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/forgejo.svg',
   id: 'forgejo',
   name: 'Forgejo',
-  url: 'https://forgejo.org',
+  url: serviceUrl('https://forgejo.org'),
 } as const satisfies Service

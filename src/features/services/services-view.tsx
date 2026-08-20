@@ -87,7 +87,7 @@ export default function ServicesView() {
             <Icon
               modifiers={[padding(4, 0, 0, 0)]}
               source={require('@/assets/symbols/edit.xml')}
-              tintColor={theme.backgroundPrimary}
+              tint={theme.backgroundPrimary}
             />
           </Button>
         </Host>
@@ -136,7 +136,7 @@ export default function ServicesView() {
                 <Icon
                   contentDescription="Sync Services"
                   source={require('@/assets/symbols/sync.xml')}
-                  tintColor={theme.textPrimary}
+                  tint={theme.textPrimary}
                 />
               </FloatingActionButton.Icon>
             </FloatingActionButton>

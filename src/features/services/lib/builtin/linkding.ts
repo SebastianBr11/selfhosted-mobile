@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const linkding = {
   description:
@@ -6,5 +7,5 @@ export const linkding = {
   iconUrl: 'https://linkding.link/_astro/logo.DkvM5cgj.svg',
   id: 'linkding',
   name: 'linkding',
-  url: 'https://linkding.link/',
+  url: serviceUrl('https://linkding.link/'),
 } as const satisfies Service

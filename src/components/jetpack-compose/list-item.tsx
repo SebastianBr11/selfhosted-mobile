@@ -1,4 +1,4 @@
-import { ListItem as BaseListItem, Icon } from '@expo/ui/jetpack-compose'
+import { ListItem as BaseListItem, Icon, Text } from '@expo/ui/jetpack-compose'
 import { clickable, clip, Shapes } from '@expo/ui/jetpack-compose/modifiers'
 import { useTheme } from '@/hooks/use-theme'
 import {
@@ -36,38 +36,42 @@ export function ListItem({
        */
       colors={{
         containerColor: theme.backgroundElement,
-        headlineColor: enabled
+        leadingContentColor: enabled
           ? theme.onSurface
           : withOpacity(theme.onSurface, 0.38),
-        overlineColor: theme.onSurfaceVariant,
-        supportingColor: enabled
+        overlineContentColor: theme.onSurfaceVariant,
+        supportingContentColor: enabled
           ? theme.onSurfaceVariant
           : withOpacity(theme.onSurfaceVariant, 0.38),
       }}
-      headline={headline}
       modifiers={[
         clip(Shapes.RoundedCorner(cornerRadii(itemPosition))),
         ...(onClick && enabled ? [clickable(onClick)] : []),
       ]}
-      supportingText={supportingText}
     >
+      <BaseListItem.HeadlineContent>
+        <Text style={{ typography: 'bodyLarge' }}>{headline}</Text>
+      </BaseListItem.HeadlineContent>
+      <BaseListItem.SupportingContent>
+        <Text style={{ typography: 'bodyMedium' }}>{supportingText}</Text>
+      </BaseListItem.SupportingContent>
       {leadingIcon && (
-        <BaseListItem.Leading>
+        <BaseListItem.LeadingContent>
           <Icon
             source={leadingIcon}
-            tintColor={
+            tint={
               enabled
                 ? theme.onSurfaceVariant
                 : withOpacity(theme.onSurfaceVariant, 0.38)
             }
           />
-        </BaseListItem.Leading>
+        </BaseListItem.LeadingContent>
       )}
       {children}
     </BaseListItem>
   )
 }
 
-ListItem.Leading = BaseListItem.Leading
-ListItem.Trailing = BaseListItem.Trailing
+ListItem.LeadingContent = BaseListItem.LeadingContent
+ListItem.TrailingContent = BaseListItem.TrailingContent
 ListItem.SupportingContent = BaseListItem.SupportingContent

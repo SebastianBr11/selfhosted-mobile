@@ -1,6 +1,6 @@
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import ServiceBottomSheet from '@/features/services/components/service-bottom-sheet'
-import { ServiceId } from '@/features/services/lib/service.schema'
+import { ServiceId } from '@/features/services/lib/services.system'
 
 export default function ServiceScreen() {
   const router = useRouter()

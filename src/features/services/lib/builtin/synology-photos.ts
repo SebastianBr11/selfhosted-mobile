@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const synologyPhotos = {
   appStoreLink:
@@ -10,5 +11,5 @@ export const synologyPhotos = {
   id: 'synology-photos',
   name: 'Synology Photos',
   packageName: 'com.synology.projectkailash',
-  url: 'https://www.synology.com/en-global/dsm/feature/photos',
+  url: serviceUrl('https://www.synology.com/en-global/dsm/feature/photos'),
 } as const satisfies Service

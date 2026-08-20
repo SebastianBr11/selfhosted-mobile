@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const portainer = {
   description: 'Making Docker and Kubernetes management easy.',
@@ -9,5 +10,5 @@ export const portainer = {
   },
   id: 'portainer',
   name: 'Portainer',
-  url: 'https://www.portainer.io/',
+  url: serviceUrl('https://www.portainer.io/'),
 } as const satisfies Service

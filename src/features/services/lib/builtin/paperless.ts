@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const paperless = {
   appStoreLink:
@@ -9,5 +10,5 @@ export const paperless = {
     'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/paperless-ngx.svg',
   id: 'paperless',
   name: 'Paperless-ngx',
-  url: 'https://docs.paperless-ngx.com/',
+  url: serviceUrl('https://docs.paperless-ngx.com/'),
 } as const satisfies Service

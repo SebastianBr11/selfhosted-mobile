@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const miniflux = {
   description: 'Minimalist and opinionated feed reader',
@@ -9,5 +10,5 @@ export const miniflux = {
   },
   id: 'miniflux',
   name: 'Miniflux',
-  url: 'https://miniflux.app',
+  url: serviceUrl('https://miniflux.app'),
 } as const satisfies Service

@@ -1,4 +1,5 @@
 import { Service } from '../service.schema'
+import { serviceUrl } from './builtin-util'
 
 export const vaultwarden = {
   appStoreLink:
@@ -12,5 +13,5 @@ export const vaultwarden = {
   id: 'vaultwarden',
   name: 'Vaultwarden',
   packageName: 'com.x8bit.bitwarden',
-  url: 'https://github.com/dani-garcia/vaultwarden',
+  url: serviceUrl('https://github.com/dani-garcia/vaultwarden'),
 } as const satisfies Service

@@ -3,7 +3,7 @@ import { useLingui } from '@lingui/react/macro'
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router'
 import { useState } from 'react'
 import { builtInServices } from '@/features/services/lib/builtin'
-import { ServiceId } from '@/features/services/lib/service.schema'
+import { ServiceId } from '@/features/services/lib/services.system'
 import { ResetServiceSettingsDialog } from '@/features/settings/components/reset-service-settings-dialog'
 import { useLocalService } from '@/features/settings/lib/local-servies'
 import ServiceSettingsView from '@/features/settings/service-settings-view'
@@ -34,7 +34,7 @@ export default function ServiceSettingsScreen() {
                   contentDescription="Reset Service Settings"
                   size={24}
                   source={require('@/assets/symbols/reset_settings.xml')}
-                  tintColor={theme.onSurface}
+                  tint={theme.onSurface}
                 />
               </IconButton>
             </Host>
