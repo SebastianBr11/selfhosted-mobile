@@ -34,7 +34,7 @@ msgstr "An error ocurred while fetching your services. Go to settings to see the
 msgid "Android Package Name"
 msgstr "Android Package Name"
 
-#: src/features/settings/more-settings-view.tsx:74
+#: src/features/settings/more-settings-view.tsx:85
 msgid "App Store button"
 msgstr "App Store button"
 
@@ -104,7 +104,7 @@ msgstr "Description"
 msgid "Dismiss"
 msgstr "Dismiss"
 
-#: src/features/settings/more-settings-view.tsx:51
+#: src/features/settings/more-settings-view.tsx:54
 msgid "Enable data fetching"
 msgstr "Enable data fetching"
 
@@ -124,11 +124,15 @@ msgstr "Home"
 msgid "Icon URL"
 msgstr "Icon URL"
 
-#: src/features/settings/more-settings-view.tsx:122
+#: src/features/settings/more-settings-view.tsx:75
+msgid "Include Pre-Releases when checking for updates"
+msgstr "Include Pre-Releases when checking for updates"
+
+#: src/features/settings/more-settings-view.tsx:133
 msgid "License"
 msgstr "License"
 
-#: src/features/settings/more-settings-view.tsx:130
+#: src/features/settings/more-settings-view.tsx:141
 msgid "MIT"
 msgstr "MIT"
 
@@ -144,11 +148,11 @@ msgstr "No additional data available"
 msgid "Not Connected"
 msgstr "Not Connected"
 
-#: src/features/settings/more-settings-view.tsx:90
+#: src/features/settings/more-settings-view.tsx:101
 msgid "Open app directly"
 msgstr "Open app directly"
 
-#: src/features/settings/more-settings-view.tsx:94
+#: src/features/settings/more-settings-view.tsx:105
 msgid "Open app directly instead of bottom sheet. Only available if the app store button and open in browser button are hidden."
 msgstr "Open app directly instead of bottom sheet. Only available if the app store button and open in browser button are hidden."
 
@@ -164,7 +168,7 @@ msgstr "Open in App Store"
 msgid "Open in Browser"
 msgstr "Open in Browser"
 
-#: src/features/settings/more-settings-view.tsx:82
+#: src/features/settings/more-settings-view.tsx:93
 msgid "Open in browser button"
 msgstr "Open in browser button"
 
@@ -172,7 +176,7 @@ msgstr "Open in browser button"
 msgid "Open installed App"
 msgstr "Open installed App"
 
-#: src/features/settings/more-settings-view.tsx:71
+#: src/features/settings/more-settings-view.tsx:82
 msgid "Other settings"
 msgstr "Other settings"
 
@@ -188,7 +192,7 @@ msgstr "Reset service settings?"
 msgid "Reset settings"
 msgstr "Reset settings"
 
-#: src/features/settings/more-settings-view.tsx:48
+#: src/features/settings/more-settings-view.tsx:51
 msgid "Service Details Fetching"
 msgstr "Service Details Fetching"
 
@@ -225,15 +229,19 @@ msgstr "Settings"
 msgid "Setup URL"
 msgstr "Setup URL"
 
-#: src/features/settings/more-settings-view.tsx:78
+#: src/features/settings/more-settings-view.tsx:89
 msgid "Show App Store button"
 msgstr "Show App Store button"
 
-#: src/features/settings/more-settings-view.tsx:85
+#: src/features/settings/more-settings-view.tsx:96
 msgid "Show button to open in browser"
 msgstr "Show button to open in browser"
 
-#: src/features/settings/more-settings-view.tsx:112
+#: src/features/settings/more-settings-view.tsx:71
+msgid "Show Pre-Releases"
+msgstr "Show Pre-Releases"
+
+#: src/features/settings/more-settings-view.tsx:123
 msgid "Source Code"
 msgstr "Source Code"
 
@@ -261,15 +269,15 @@ msgstr "The URL \"{received}\" is invalid."
 msgid "Unknown service ID \"{id}\". Service name, description and icon URL are required for custom services."
 msgstr "Unknown service ID \"{id}\". Service name, description and icon URL are required for custom services."
 
-#: src/features/settings/more-settings-view.tsx:108
+#: src/features/settings/more-settings-view.tsx:119
 msgid "Unknown version"
 msgstr "Unknown version"
 
-#: src/features/settings/more-settings-view.tsx:64
+#: src/features/settings/more-settings-view.tsx:66
 msgid "Use Cup (if available) to check for updates"
 msgstr "Use Cup (if available) to check for updates"
 
-#: src/features/settings/more-settings-view.tsx:60
+#: src/features/settings/more-settings-view.tsx:63
 msgid "Use Cup to check for updates"
 msgstr "Use Cup to check for updates"
 
@@ -281,11 +289,11 @@ msgstr "Use local source"
 msgid "Use remote source"
 msgstr "Use remote source"
 
-#: src/features/settings/more-settings-view.tsx:55
+#: src/features/settings/more-settings-view.tsx:58
 msgid "Use service API to fetch service details"
 msgstr "Use service API to fetch service details"
 
-#: src/features/settings/more-settings-view.tsx:104
+#: src/features/settings/more-settings-view.tsx:115
 msgid "Version"
 msgstr "Version"
 
@@ -293,7 +301,7 @@ msgstr "Version"
 msgid "Version {rawNewVersion} is available."
 msgstr "Version {rawNewVersion} is available."
 
-#: src/features/settings/more-settings-view.tsx:119
+#: src/features/settings/more-settings-view.tsx:130
 msgid "View source code on GitHub"
 msgstr "View source code on GitHub"
 

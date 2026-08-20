@@ -34,7 +34,7 @@ msgstr "Ocurrió un error al obtener tus servicios. Ve a la configuración para 
 msgid "Android Package Name"
 msgstr "Nombre del paquete de Android"
 
-#: src/features/settings/more-settings-view.tsx:74
+#: src/features/settings/more-settings-view.tsx:85
 msgid "App Store button"
 msgstr "Botón de la tienda de aplicaciones"
 
@@ -92,7 +92,7 @@ msgstr "Descripción"
 msgid "Dismiss"
 msgstr "Descartar"
 
-#: src/features/settings/more-settings-view.tsx:51
+#: src/features/settings/more-settings-view.tsx:54
 msgid "Enable data fetching"
 msgstr "Habilitar la recuperación de datos adicionales"
 
@@ -112,11 +112,15 @@ msgstr "Inicio"
 msgid "Icon URL"
 msgstr "URL del icono"
 
-#: src/features/settings/more-settings-view.tsx:122
+#: src/features/settings/more-settings-view.tsx:75
+msgid "Include Pre-Releases when checking for updates"
+msgstr "Incluir versiones preliminares al buscar actualizaciones"
+
+#: src/features/settings/more-settings-view.tsx:133
 msgid "License"
 msgstr "Licencia"
 
-#: src/features/settings/more-settings-view.tsx:130
+#: src/features/settings/more-settings-view.tsx:141
 msgid "MIT"
 msgstr "MIT"
 
@@ -132,11 +136,11 @@ msgstr "No hay más información disponible"
 msgid "Not Connected"
 msgstr "No Conectado"
 
-#: src/features/settings/more-settings-view.tsx:90
+#: src/features/settings/more-settings-view.tsx:101
 msgid "Open app directly"
 msgstr "Abrir la aplicación directamente"
 
-#: src/features/settings/more-settings-view.tsx:94
+#: src/features/settings/more-settings-view.tsx:105
 msgid "Open app directly instead of bottom sheet. Only available if the app store button and open in browser button are hidden."
 msgstr "Abrir la aplicación directamente en lugar de la hoja inferior. Solo disponible si el botón de la tienda de aplicaciones y el botón de abrir en navegador son ocultados."
 
@@ -152,7 +156,7 @@ msgstr "Abrir en tienda de aplicaciones"
 msgid "Open in Browser"
 msgstr "Abrir en navegador"
 
-#: src/features/settings/more-settings-view.tsx:82
+#: src/features/settings/more-settings-view.tsx:93
 msgid "Open in browser button"
 msgstr "Botón de abrir en navegador"
 
@@ -160,7 +164,7 @@ msgstr "Botón de abrir en navegador"
 msgid "Open installed App"
 msgstr "Abrir aplicación instalada"
 
-#: src/features/settings/more-settings-view.tsx:71
+#: src/features/settings/more-settings-view.tsx:82
 msgid "Other settings"
 msgstr "Otras configuraciones"
 
@@ -176,7 +180,7 @@ msgstr "Restablecer las configuraciones del servicio?"
 msgid "Reset settings"
 msgstr "Restablecer configuraciones"
 
-#: src/features/settings/more-settings-view.tsx:48
+#: src/features/settings/more-settings-view.tsx:51
 msgid "Service Details Fetching"
 msgstr "Recuperación de datos adicionales de los servicios"
 
@@ -213,15 +217,19 @@ msgstr "Configuración"
 msgid "Setup URL"
 msgstr "Configurar URL"
 
-#: src/features/settings/more-settings-view.tsx:78
+#: src/features/settings/more-settings-view.tsx:89
 msgid "Show App Store button"
 msgstr "Mostrar botón de la tienda de aplicaciones"
 
-#: src/features/settings/more-settings-view.tsx:85
+#: src/features/settings/more-settings-view.tsx:96
 msgid "Show button to open in browser"
 msgstr "Mostrar botón para abrir en navegador"
 
-#: src/features/settings/more-settings-view.tsx:112
+#: src/features/settings/more-settings-view.tsx:71
+msgid "Show Pre-Releases"
+msgstr "Mostrar versiones preliminares"
+
+#: src/features/settings/more-settings-view.tsx:123
 msgid "Source Code"
 msgstr "Código fuente"
 
@@ -249,15 +257,15 @@ msgstr "La URL \"{received}\" es inválida."
 msgid "Unknown service ID \"{id}\". Service name, description and icon URL are required for custom services."
 msgstr "ID de servicio desconocido \"{id}\". Se requieren el nombre, la descripción y la URL del icono para los servicios personalizados."
 
-#: src/features/settings/more-settings-view.tsx:108
+#: src/features/settings/more-settings-view.tsx:119
 msgid "Unknown version"
 msgstr "Versión desconocida"
 
-#: src/features/settings/more-settings-view.tsx:64
+#: src/features/settings/more-settings-view.tsx:66
 msgid "Use Cup (if available) to check for updates"
 msgstr "Usar Cup (si disponible) para para comprobar si hay actualizaciones"
 
-#: src/features/settings/more-settings-view.tsx:60
+#: src/features/settings/more-settings-view.tsx:63
 msgid "Use Cup to check for updates"
 msgstr "Usar Cup para para comprobar si hay actualizaciones"
 
@@ -269,11 +277,11 @@ msgstr "Usar fuente local"
 msgid "Use remote source"
 msgstr "Usar fuente remota"
 
-#: src/features/settings/more-settings-view.tsx:55
+#: src/features/settings/more-settings-view.tsx:58
 msgid "Use service API to fetch service details"
 msgstr "Usar la API del servicio para obtener más información sobre los servicios"
 
-#: src/features/settings/more-settings-view.tsx:104
+#: src/features/settings/more-settings-view.tsx:115
 msgid "Version"
 msgstr "Versión"
 
@@ -281,7 +289,7 @@ msgstr "Versión"
 msgid "Version {rawNewVersion} is available."
 msgstr "La versión {rawNewVersion} ya está disponible."
 
-#: src/features/settings/more-settings-view.tsx:119
+#: src/features/settings/more-settings-view.tsx:130
 msgid "View source code on GitHub"
 msgstr "Ver el código fuente en GitHub"
 
