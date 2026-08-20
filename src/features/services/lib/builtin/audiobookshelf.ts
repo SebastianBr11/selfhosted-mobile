@@ -5,7 +5,7 @@ export const audiobookshelf = {
   appStoreLink:
     'https://play.google.com/store/apps/details?id=com.audiobookshelf.app',
   description: 'Self-hosted audiobook and podcast server',
-  iconUrl: 'https://www.audiobookshelf.org/Logo.png',
+  iconUrl: 'https://cdn.jsdelivr.net/gh/selfhst/icons/svg/audiobookshelf.svg',
   id: 'audiobookshelf',
   name: 'Audiobookshelf',
   packageName: 'com.audiobookshelf.app',
