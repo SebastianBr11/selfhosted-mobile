@@ -28,9 +28,15 @@ export const remoteServicesQueryOptions = (url: string) => {
 
 const cupQueryOptions = (
   url: string,
-  localService: boolean,
+  isLocalService: boolean,
   enabled: boolean,
-) => userServiceQueryOptions(url, 'cup', localService, enabled, false)
+) =>
+  userServiceQueryOptions(url, 'cup', {
+    enabled,
+    isLocalService,
+    useCupToCheckForUpdates: false,
+  })
+
 type LoaderResult<T extends AvailableDataLoaderId> =
   {
     hasData: true
@@ -38,6 +44,7 @@ type LoaderResult<T extends AvailableDataLoaderId> =
     publicData: PublicData<T>
     updateData: UpdateCheck
   }
+
 type NoLoaderResult = null | {
   /** The service has no loader, so it has no extra data besides the version */
   hasData: false
@@ -53,10 +60,14 @@ type PublicData<T extends AvailableDataLoaderId> = Awaited<
 export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
   url: string,
   id: T,
-  localService: boolean,
-  enabled: boolean,
-  useCupToCheckForUpdates: boolean,
+  options: {
+    enabled: boolean
+    isLocalService: boolean
+    useCupToCheckForUpdates: boolean
+  },
 ) => {
+  let useCupToCheckForUpdates = options.useCupToCheckForUpdates
+  const { enabled, isLocalService } = options
   if (id === 'cup') {
     useCupToCheckForUpdates = false
   }
@@ -65,7 +76,7 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
     enabled,
     queryFn: async ({ client }) => {
       let services: Service[] | undefined
-      if (localService) {
+      if (isLocalService) {
         services = getLocalServicesState().services
       } else {
         services = client.getQueryData(remoteServicesQueryOptions(url).queryKey)
@@ -79,7 +90,7 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
 
       if (useCupToCheckForUpdates) {
         const cupData = await client.fetchQuery(
-          cupQueryOptions(url, localService, true),
+          cupQueryOptions(url, isLocalService, true),
         )
         if (cupData?.hasData) {
           updateData = dataLoaderUtil.checkServiceUpdatesUsingCup(
@@ -182,7 +193,7 @@ export const userServiceQueryOptions = <T extends ServiceId = ServiceId>(
       'single',
       id,
       'info',
-      localService ? 'local' : 'remote',
+      isLocalService ? 'local' : 'remote',
       useCupToCheckForUpdates ? 'cup-update-check' : 'normal-update-check',
     ],
   })

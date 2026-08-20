@@ -11,13 +11,11 @@ export function useServiceData<T extends ServiceId>(serviceId: T) {
   const { url } = useServicesUrl()
 
   const query = useQuery(
-    userServiceQueryOptions(
-      url,
-      serviceId,
-      useLocalSource,
-      fetchServiceData,
+    userServiceQueryOptions(url, serviceId, {
+      enabled: fetchServiceData,
+      isLocalService: useLocalSource,
       useCupToCheckForUpdates,
-    ),
+    }),
   )
 
   if (fetchServiceData) {
