@@ -25,6 +25,7 @@ export function useServiceData<T extends ServiceId>(serviceId: T) {
 
   if (fetchServiceData) {
     return {
+      enabled: fetchServiceData,
       error: query.error,
       isLoading: query.isLoading,
       query,
@@ -33,6 +34,7 @@ export function useServiceData<T extends ServiceId>(serviceId: T) {
   }
 
   return {
+    enabled: fetchServiceData,
     error: null,
     isLoading: false,
     query,

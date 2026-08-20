@@ -48,7 +48,12 @@ export default function ServiceBottomSheet({
   const theme = useTheme()
 
   const service = useService(serviceId)
-  const { error, isLoading, serviceData } = useServiceData(serviceId)
+  const {
+    error,
+    isLoading,
+    query: serviceDataQuery,
+    serviceData,
+  } = useServiceData(serviceId)
   const isError = !!error
   const { appAvailable, openApp } = useInstalledApp(service?.packageName)
 
@@ -153,7 +158,7 @@ export default function ServiceBottomSheet({
               <CircularWavyProgressIndicator
                 modifiers={[align('centerHorizontally')]}
               />
-            ) : !serviceData?.hasData ? (
+            ) : !serviceData?.hasData && serviceDataQuery.isEnabled ? (
               <Row>
                 <Text>{t`No additional data available`}</Text>
               </Row>
