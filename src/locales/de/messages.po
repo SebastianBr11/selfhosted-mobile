@@ -22,7 +22,7 @@ msgid "{serviceName} Settings"
 msgstr "{serviceName} Einstellungen"
 
 #: src/features/services/components/fetch-services-error-dialog.tsx:19
-#: src/features/services/components/service-bottom-sheet.tsx:162
+#: src/features/services/components/service-bottom-sheet.tsx:167
 msgid "An error ocurred"
 msgstr "Ein Fehler ist aufgetreten"
 
@@ -128,7 +128,7 @@ msgstr "MIT"
 msgid "More settings"
 msgstr "Weitere Einstellungen"
 
-#: src/features/services/components/service-bottom-sheet.tsx:158
+#: src/features/services/components/service-bottom-sheet.tsx:163
 msgid "No additional data available"
 msgstr "Keine zusätzlichen Daten verfügbar"
 
@@ -144,15 +144,15 @@ msgstr "App direkt öffnen"
 msgid "Open app directly instead of bottom sheet. Only available if the app store button and open in browser button are hidden."
 msgstr "App direkt öffnen statt im Bottom Sheet. Nur verfügbar, wenn der Button zum App Store und der Button zum Browser verborgen sind."
 
-#: src/features/services/components/service-bottom-sheet.tsx:200
+#: src/features/services/components/service-bottom-sheet.tsx:205
 msgid "Open in {name}"
 msgstr "Öffne in {name}"
 
-#: src/features/services/components/service-bottom-sheet.tsx:213
+#: src/features/services/components/service-bottom-sheet.tsx:218
 msgid "Open in App Store"
 msgstr "Öffne im App Store"
 
-#: src/features/services/components/service-bottom-sheet.tsx:174
+#: src/features/services/components/service-bottom-sheet.tsx:179
 msgid "Open in Browser"
 msgstr "Öffne im Browser"
 
@@ -160,7 +160,7 @@ msgstr "Öffne im Browser"
 msgid "Open in browser button"
 msgstr "Öffne im Browser-Button"
 
-#: src/features/services/components/service-bottom-sheet.tsx:184
+#: src/features/services/components/service-bottom-sheet.tsx:189
 msgid "Open installed App"
 msgstr "Installierte App öffnen"
 
