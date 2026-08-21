@@ -14,13 +14,13 @@ import {
 } from '@expo/ui/jetpack-compose/modifiers'
 import { useLingui } from '@lingui/react/macro'
 import { useRouter } from 'expo-router'
+import TopTabs from 'expo-router/js-top-tabs'
 import { useColorScheme } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { ThemedView } from '@/components/themed-view'
 import { InlineInsetMedium } from '@/constants/theme'
 import { useSettings } from '@/features/settings/hooks/use-settings'
 import { useTheme } from '@/hooks/use-theme'
-import { MaterialTopTabs } from '@/navigators'
 
 export default function ServicesSourceSettingsLayout() {
   const insets = useSafeAreaInsets()
@@ -33,7 +33,7 @@ export default function ServicesSourceSettingsLayout() {
     useSettings()
 
   return (
-    <MaterialTopTabs
+    <TopTabs
       backBehavior="none"
       initialRouteName={
         useRemoteSource ? 'remote-source-settings' : 'local-source-settings'
@@ -110,8 +110,8 @@ export default function ServicesSourceSettingsLayout() {
         </ThemedView>
       )}
     >
-      <MaterialTopTabs.Screen name="remote-source-settings" />
-      <MaterialTopTabs.Screen name="local-source-settings" />
-    </MaterialTopTabs>
+      <TopTabs.Screen name="remote-source-settings" />
+      <TopTabs.Screen name="local-source-settings" />
+    </TopTabs>
   )
 }
