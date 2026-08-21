@@ -33,10 +33,9 @@ export function ListItem({
        */
       colors={{
         containerColor: theme.backgroundElement,
-        leadingContentColor: enabled
+        contentColor: enabled
           ? theme.onSurface
           : withOpacity(theme.onSurface, 0.38),
-        overlineContentColor: theme.onSurfaceVariant,
         supportingContentColor: enabled
           ? theme.onSurfaceVariant
           : withOpacity(theme.onSurfaceVariant, 0.38),
