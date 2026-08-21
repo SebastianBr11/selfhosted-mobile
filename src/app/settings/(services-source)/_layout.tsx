@@ -47,7 +47,7 @@ export default function ServicesSourceSettingsLayout() {
       }}
       tabBar={({ navigation, state }) => (
         <ThemedView style={{ paddingTop: insets.top }} type="background">
-          <Host colorScheme={colorScheme} matchContents>
+          <Host colorScheme={colorScheme} matchContents={{ vertical: true }}>
             <Column
               modifiers={[paddingAll(InlineInsetMedium)]}
               verticalArrangement={{ spacedBy: 32 }}
