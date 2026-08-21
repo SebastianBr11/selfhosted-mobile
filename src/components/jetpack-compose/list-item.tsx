@@ -1,11 +1,8 @@
 import { ListItem as BaseListItem, Icon, Text } from '@expo/ui/jetpack-compose'
 import { clickable, clip, Shapes } from '@expo/ui/jetpack-compose/modifiers'
 import { useTheme } from '@/hooks/use-theme'
-import {
-  cornerRadii,
-  ItemPosition,
-  withOpacity,
-} from '@/util/jetpack-compose-util'
+import { withOpacity } from '@/util/color-util'
+import { cornerRadii, ItemPosition } from '@/util/jetpack-compose-util'
 
 type ListItemProps = {
   children?: React.ReactNode

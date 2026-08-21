@@ -1,5 +1,3 @@
-import { ColorValue } from 'react-native'
-
 export type ItemPosition = 'leading' | 'trailing'
 export function cornerRadii(itemPosition: ItemPosition | undefined) {
   switch (itemPosition) {
@@ -10,13 +8,4 @@ export function cornerRadii(itemPosition: ItemPosition | undefined) {
     default:
       return { bottomEnd: 4, bottomStart: 4, topEnd: 4, topStart: 4 }
   }
-}
-
-/**
- * Only use when supplying colors directly to Jetpack Compose components.
- */
-export function withOpacity(color: ColorValue, opacity: number): string {
-  const decimalOpacity = Math.round(opacity * 255)
-  const hexOpacity = decimalOpacity.toString(16).padStart(2, '0')
-  return `#${hexOpacity}${String(color).substring(1)}`
 }
