@@ -78,7 +78,7 @@ export function LocalSourceSettingsView() {
   }
 
   return (
-    <Host matchContents style={{ flex: 1 }}>
+    <Host>
       <LazyColumn horizontalAlignment="center" modifiers={[fillMaxHeight()]}>
         <Box modifiers={[padding(16, 0, 16, 0), fillMaxWidth()]}>
           <Text
