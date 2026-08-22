@@ -13,8 +13,9 @@ import {
   weight,
 } from '@expo/ui/jetpack-compose/modifiers'
 import { useLingui } from '@lingui/react/macro'
-import { useRouter } from 'expo-router'
-import TopTabs from 'expo-router/js-top-tabs'
+import { TabNavigationState, useRouter } from 'expo-router'
+import TopTabs, { MaterialTopTabNavigationProp } from 'expo-router/js-top-tabs'
+import { ParamListBase } from 'expo-router/react-navigation'
 import { useColorScheme } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { ThemedView } from '@/components/themed-view'
@@ -45,7 +46,17 @@ export default function ServicesSourceSettingsLayout() {
         swipeEnabled: false,
         tabBarScrollEnabled: true,
       }}
-      tabBar={({ navigation, state }) => (
+      tabBar={({
+        navigation,
+        state,
+      }: {
+        navigation: MaterialTopTabNavigationProp<
+          ParamListBase,
+          string,
+          string | undefined
+        >
+        state: TabNavigationState<ParamListBase>
+      }) => (
         <ThemedView style={{ paddingTop: insets.top }} type="background">
           <Host colorScheme={colorScheme} matchContents={{ vertical: true }}>
             <Column
