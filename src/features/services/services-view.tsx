@@ -1,11 +1,16 @@
 import {
   Button,
+  Column,
   FloatingActionButton,
   Host,
   Icon,
   Text,
 } from '@expo/ui/jetpack-compose'
-import { padding } from '@expo/ui/jetpack-compose/modifiers'
+import {
+  align,
+  padding,
+  wrapContentHeight,
+} from '@expo/ui/jetpack-compose/modifiers'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { BlurTargetView, BlurTint, BlurView } from 'expo-blur'
 import { useRouter } from 'expo-router'
@@ -14,7 +19,7 @@ import { FlatList, RefreshControl, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { ThemedText } from '@/components/themed-text'
 import { ThemedView } from '@/components/themed-view'
-import { InlineInsetSmall } from '@/constants/theme'
+import { InlineInsetMedium, InlineInsetSmall } from '@/constants/theme'
 import { useColorScheme } from '@/hooks/use-color-scheme'
 import { useTheme } from '@/hooks/use-theme'
 import { FetchServicesErrorDialog } from './components/fetch-services-error-dialog'
@@ -50,35 +55,42 @@ export default function ServicesView() {
 
   if (services.length === 0) {
     return (
-      <ThemedView
-        inlineInset
-        style={{
-          alignItems: 'center',
-          flex: 1,
-          gap: 24,
-          justifyContent: 'center',
-          paddingTop: insets.top,
-        }}
-      >
-        <ThemedView style={{ alignItems: 'center', gap: 16 }}>
-          <ThemedText type="title">
-            <Trans>You have no services yet</Trans>
-          </ThemedText>
-          <ThemedText
-            style={{
-              color: theme.textSecondary,
-              fontWeight: '500',
-              justifyContent: 'center',
-              textAlign: 'center',
-            }}
-            type="large"
-          >
-            <Trans>Go to settings to setup the URL</Trans>
-          </ThemedText>
-        </ThemedView>
-        <Host matchContents>
+      <Host style={{ flex: 1 }}>
+        <Column
+          modifiers={[
+            padding(InlineInsetMedium, insets.top, InlineInsetMedium, 0),
+            wrapContentHeight(),
+          ]}
+          verticalArrangement={{ spacedBy: 24 }}
+        >
+          <Column verticalArrangement={{ spacedBy: 8 }}>
+            <Text
+              color={theme.onSurface.toString()}
+              modifiers={[align('centerHorizontally')]}
+              style={{
+                fontWeight: '700',
+                lineBreak: 'heading',
+                lineHeight: 56,
+                textAlign: 'center',
+                typography: 'displayLarge',
+              }}
+            >{t`You have no services yet`}</Text>
+            <Text
+              color={theme.textSecondary.toString()}
+              modifiers={[align('centerHorizontally')]}
+              style={{
+                lineBreak: 'heading',
+                lineHeight: 32,
+                textAlign: 'center',
+                typography: 'headlineMedium',
+              }}
+            >
+              {t`Go to settings to setup the URL`}
+            </Text>
+          </Column>
           <Button
             contentPadding={{ bottom: 16, end: 32, start: 32, top: 16 }}
+            modifiers={[align('centerHorizontally')]}
             onClick={() => router.navigate('/settings')}
           >
             <Text
@@ -90,8 +102,8 @@ export default function ServicesView() {
               tint={theme.backgroundPrimary}
             />
           </Button>
-        </Host>
-      </ThemedView>
+        </Column>
+      </Host>
     )
   }
 
