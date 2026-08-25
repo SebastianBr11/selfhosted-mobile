@@ -22,7 +22,7 @@ jobs:
         run: |
           bun run i18n:extract
           git add .
-          git diff --cached --quiet || (echo "Translations are not up to date" && exit 1)
+          git diff --cached --quiet src/locales || (echo "Translations are not up to date" && exit 1)
 
       - name: Compile lingui translations
         run: bun run i18n:compile
