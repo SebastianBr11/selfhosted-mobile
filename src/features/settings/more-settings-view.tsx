@@ -111,6 +111,11 @@ export default function MoreSettingsView() {
             headline={t`Version`}
             itemPosition="leading"
             leadingIcon={require('@/assets/symbols/info.xml')}
+            onClick={() =>
+              Linking.openURL(
+                `https://github.com/SebastianBr11/selfhosted-mobile/releases/tag/v${Application.nativeApplicationVersion}`,
+              )
+            }
             supportingText={
               Application.nativeApplicationVersion || t`Unknown version`
             }
