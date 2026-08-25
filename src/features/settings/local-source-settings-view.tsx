@@ -112,7 +112,7 @@ export function LocalSourceSettingsView() {
                 <SwitchListItem.LeadingContent>
                   <RNHostView matchContents>
                     <Image
-                      contentFit="cover"
+                      contentFit="contain"
                       key={service.id}
                       source={schemeDependantIcon(colorScheme, service.iconUrl)}
                       style={{ height: 24, width: 24 }}
