@@ -15,7 +15,7 @@
     "android:eas-preview": "eas build --local --profile preview --platform android",
     "android:eas-prod": "eas build --local --profile production --platform android",
     "prebuild": "expo prebuild --clean",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "expo customize tsconfig.json && tsc --noEmit",
     "i18n:extract": "lingui extract",
     "i18n:compile": "lingui compile --typescript",
     "gen:schema": "tsx scripts/generate-schema.ts"
