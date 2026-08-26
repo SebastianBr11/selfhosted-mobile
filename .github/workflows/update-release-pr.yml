@@ -1,0 +1,41 @@
+name: Create/Update Release PR
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+jobs:
+  update-release-pr:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.merged }}
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Create/Update GitHub Release PR
+        run: |
+          BODY=$(gh api --method POST -H "Accept: application/vnd.github+json" \
+          -H "X-GitHub-Api-Version: 2026-03-10" \
+          /repos/${GITHUB_REPOSITORY}/releases/generate-notes \
+            -f 'tag_name=main' \
+            -f 'target_commitish=main' \
+            -q .body)
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git switch -C release
+          git commit --allow-empty -m "chore(main): [release]"
+
+          gh pr create --base main \
+          --draft \
+          --title "chore(main): [release]" \
+          --body "
+          - [ ] Bump version
+          ${BODY}" \
+          --assignee "@me"
