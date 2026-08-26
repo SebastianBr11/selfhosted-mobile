@@ -32,8 +32,20 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          if [[ $string == *"Exciting New Features"* ]]; then
+            echo "Features found, bumping minor version"
+            # Without `--git-tag-version false` it would create a commit
+            npm version minor --git-tag-version false
+          else
+            echo "No Features found, bumping patch version"
+            # Without `--git-tag-version false` it would create a commit
+            npm version patch --git-tag-version false
+          fi
+
+          VERSION=$(jq -r .version package.json)
+
           git switch -C release
-          git commit --allow-empty -m "chore(main): [release]"
+          git commit -m "chore(main): ${VERSION} [release]"
 
           git push origin release --force
 
@@ -43,7 +55,7 @@ jobs:
             echo "No PR found. Creating one..."
             gh pr create --base main \
             --draft \
-            --title "chore(main): [release]" \
+            --title "chore(main): ${VERSION} [release]" \
             --body "
             - [ ] Bump version
             ${BODY}" \
