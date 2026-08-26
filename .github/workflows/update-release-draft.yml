@@ -8,9 +8,11 @@ on:
       - closed
 
 jobs:
-  test:
+  update-release-draft:
     runs-on: ubuntu-latest
     if: ${{ github.event.pull_request.merged }}
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
