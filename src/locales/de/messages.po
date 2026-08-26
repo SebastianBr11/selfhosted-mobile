@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/settings/remote-source-settings-view.tsx:44
+#: src/features/settings/remote-source-settings-view.tsx:57
 msgid "(from environment)"
 msgstr "(Umgebungsvariable)"
 
@@ -54,7 +54,7 @@ msgstr "Bist du sicher, dass du die Einstellungen dieses Dienstes zurücksetzen 
 msgid "Changes since {rawCurrentVersion}"
 msgstr "Änderungen seit {rawCurrentVersion}"
 
-#: src/features/settings/local-source-settings-view.tsx:89
+#: src/features/settings/local-source-settings-view.tsx:92
 msgid "Choose services"
 msgstr "Dienste auswählen"
 
@@ -62,16 +62,16 @@ msgstr "Dienste auswählen"
 msgid "Configure network settings"
 msgstr "Netzwerk-Einstellungen konfigurieren"
 
-#: src/features/settings/remote-source-settings-view.tsx:91
+#: src/features/settings/remote-source-settings-view.tsx:120
 msgid "Connect to the Internet to fetch new data"
 msgstr "Verbinde dich mit dem Internet, um neue Daten abzurufen"
 
-#: src/features/settings/remote-source-settings-view.tsx:87
+#: src/features/settings/remote-source-settings-view.tsx:113
 msgid "Connected"
 msgstr "Verbunden"
 
 #: src/features/settings/components/convert-to-local-source-dialog.tsx:50
-#: src/features/settings/remote-source-settings-view.tsx:112
+#: src/features/settings/remote-source-settings-view.tsx:142
 msgid "Convert to local services"
 msgstr "In lokale Dienste umwandeln"
 
@@ -100,7 +100,7 @@ msgstr "Zusätzliche Daten abrufen"
 msgid "Go to settings"
 msgstr "Zu den Einstellungen"
 
-#: src/features/services/services-view.tsx:76
+#: src/features/services/services-view.tsx:88
 msgid "Go to settings to setup the URL"
 msgstr "Gehe in die Einstellungen, um die URL zu konfigurieren"
 
@@ -132,7 +132,7 @@ msgstr "Weitere Einstellungen"
 msgid "No additional data available"
 msgstr "Keine zusätzlichen Daten verfügbar"
 
-#: src/features/settings/remote-source-settings-view.tsx:87
+#: src/features/settings/remote-source-settings-view.tsx:113
 msgid "Not Connected"
 msgstr "Nicht verbunden"
 
@@ -204,7 +204,7 @@ msgstr "Dienst-Name"
 msgid "Service URL"
 msgstr "Dienst-URL"
 
-#: src/features/settings/remote-source-settings-view.tsx:41
+#: src/features/settings/remote-source-settings-view.tsx:53
 msgid "Services URL "
 msgstr "Dienste-URL "
 
@@ -213,7 +213,7 @@ msgstr "Dienste-URL "
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: src/features/services/services-view.tsx:86
+#: src/features/services/services-view.tsx:98
 msgid "Setup URL"
 msgstr "URL konfigurieren"
 
@@ -233,7 +233,7 @@ msgstr "Pre-Releases anzeigen"
 msgid "Source Code"
 msgstr "Quellcode"
 
-#: src/features/settings/remote-source-settings-view.tsx:66
+#: src/features/settings/remote-source-settings-view.tsx:93
 msgid "Test connection"
 msgstr "Verbindung testen"
 
@@ -293,7 +293,7 @@ msgstr "Version {rawNewVersion} ist verfügbar."
 msgid "View source code on GitHub"
 msgstr "Quellcode auf GitHub anzeigen"
 
-#: src/features/services/services-view.tsx:65
+#: src/features/services/services-view.tsx:77
 msgid "You have no services yet"
 msgstr "Du hast noch keine Dienste"
 
@@ -313,6 +313,6 @@ msgstr "Der Dienstag ist gesund. Es gibt nichts zu tun."
 msgid "Your service is unhealthy. You should probably check it out."
 msgstr "Der Dienst ist ungesund. Du solltest ihn dir mal anschauen."
 
-#: src/features/services/services-view.tsx:116
+#: src/features/services/services-view.tsx:128
 msgid "Your Services"
 msgstr "Deine Dienste"
