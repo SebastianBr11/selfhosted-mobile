@@ -19,9 +19,9 @@ jobs:
 
       - name: Create/Update GitHub Release PR
         run: |
-          BODY=$(gh api  --method POST  -H "Accept: application/vnd.github+json" \
+          BODY=$(gh api --method POST -H "Accept: application/vnd.github+json" \
           -H "X-GitHub-Api-Version: 2026-03-10" \
-          /repos/SebastianBr11/selfhosted-mobile/releases/generate-notes \
+          /repos/${GITHUB_REPOSITORY}/releases/generate-notes \
             -f 'tag_name=main' \
             -f 'target_commitish=main' \
             -q .body)
