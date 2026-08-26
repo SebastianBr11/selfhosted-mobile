@@ -5,5 +5,8 @@ import { useColorScheme } from '@/hooks/use-color-scheme'
 export function useTheme() {
   // Triggers re-render when system theme changes
   const scheme = useColorScheme()
-  return useMemo(getColors, [scheme])
+  return useMemo(() => {
+    void scheme
+    return getColors()
+  }, [scheme])
 }

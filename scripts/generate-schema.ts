@@ -4,7 +4,7 @@ import { serviceSystem } from '@/features/services/lib/services.system'
 
 export async function generateJsonSchema() {
   const jsonSchema = toJsonSchema(serviceSystem.schema, {
-    ignoreActions: ['check'],
+    ignoreActions: ['check', 'brand'],
   })
 
   jsonSchema.$id =

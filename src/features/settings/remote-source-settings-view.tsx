@@ -8,7 +8,7 @@ import {
   LinearWavyProgressIndicator,
   Text,
 } from '@expo/ui/jetpack-compose'
-import { fillMaxWidth, padding } from '@expo/ui/jetpack-compose/modifiers'
+import { padding } from '@expo/ui/jetpack-compose/modifiers'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
@@ -54,10 +54,9 @@ export default function RemoteSourceSettingsView() {
             {!urlValid ? <Label isError>{errors[0]}</Label> : null}
           </ThemedView>
           <ThemedView style={{ gap: 8 }}>
-            <Host colorScheme={colorScheme} matchContents>
+            <Host colorScheme={colorScheme} matchContents={{ vertical: true }}>
               <Button
                 modifiers={[
-                  fillMaxWidth(),
                   padding(InlineInsetMedium, 0, InlineInsetMedium, 0),
                 ]}
                 onClick={refetch}
@@ -97,7 +96,7 @@ export default function RemoteSourceSettingsView() {
               )}
             </ThemedView>
           </ThemedView>
-          <Host matchContents>
+          <Host matchContents={{ vertical: true }}>
             <AnimatedVisibility
               enterTransition={EnterTransition.fadeIn()}
               exitTransition={ExitTransition.fadeOut()}
@@ -105,7 +104,6 @@ export default function RemoteSourceSettingsView() {
             >
               <FilledTonalButton
                 modifiers={[
-                  fillMaxWidth(),
                   padding(InlineInsetMedium, 0, InlineInsetMedium, 0),
                 ]}
                 onClick={() => setShowConvertToLocalSourceDialog(true)}

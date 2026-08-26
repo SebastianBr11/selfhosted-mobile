@@ -78,8 +78,8 @@ export function LocalSourceSettingsView() {
   }
 
   return (
-    <Host matchContents style={{ flex: 1 }}>
-      <LazyColumn horizontalAlignment="center" modifiers={[fillMaxHeight()]}>
+    <Host style={{ flex: 1 }}>
+      <LazyColumn horizontalAlignment="center">
         <Box modifiers={[padding(16, 0, 16, 0), fillMaxWidth()]}>
           <Text
             color={theme.onSurface.toString()}
@@ -95,7 +95,7 @@ export function LocalSourceSettingsView() {
             />
           </IconButton>
         </Box>
-        <Box modifiers={[fillMaxSize(), padding(16, 16, 16, 310)]}>
+        <Box modifiers={[fillMaxSize(), padding(16, 16, 16, 16)]}>
           <Column
             modifiers={[clip(Shapes.RoundedCorner(16)), fillMaxHeight()]}
             verticalArrangement={{ spacedBy: 2 }}
@@ -112,7 +112,7 @@ export function LocalSourceSettingsView() {
                 <SwitchListItem.LeadingContent>
                   <RNHostView matchContents>
                     <Image
-                      contentFit="cover"
+                      contentFit="contain"
                       key={service.id}
                       source={schemeDependantIcon(colorScheme, service.iconUrl)}
                       style={{ height: 24, width: 24 }}

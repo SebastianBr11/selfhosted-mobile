@@ -1,4 +1,12 @@
 import 'tsx/cjs'
+import font from 'expo-font/plugin'
+import image from 'expo-image/plugin'
+import localization from 'expo-localization/plugin'
+import routerPlugin from 'expo-router/plugin'
+import sharing from 'expo-sharing/plugin'
+import splashScreen from 'expo-splash-screen/plugin'
+import statusBar from 'expo-status-bar/plugin'
+import webBrowser from 'expo-web-browser/plugin'
 import { ConfigContext, ExpoConfig } from 'expo/config'
 import { version as appVersion } from './package.json'
 
@@ -53,30 +61,25 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   platforms: ['android'],
   plugins: [
     './plugins/withAndroidQueries.ts',
-    'expo-router',
-    [
-      'expo-splash-screen',
-      {
-        backgroundColor: '#ffffff',
-        dark: {
-          backgroundColor: '#121312',
-          image: './assets/icons/splash-icon-dark.png',
-        },
-        image: './assets/icons/splash-icon-light.png',
-        imageWidth: 200,
-        resizeMode: 'contain',
+    routerPlugin(),
+    splashScreen({
+      backgroundColor: '#ffffff',
+      dark: {
+        backgroundColor: '#121312',
+        image: './assets/icons/splash-icon-dark.png',
       },
-    ],
-    'expo-web-browser',
-    [
-      'expo-localization',
-      {
-        supportedLocales: ['de', 'en', 'es'],
-      },
-    ],
-    'expo-sharing',
-    'expo-image',
-    'expo-font',
+      image: './assets/icons/splash-icon-light.png',
+      imageWidth: 200,
+      resizeMode: 'contain',
+    }),
+    webBrowser(),
+    localization({
+      supportedLocales: ['de', 'en', 'es'],
+    }),
+    sharing(),
+    image(),
+    font(),
+    statusBar(),
   ],
   scheme: 'selfhostedmobile',
   slug: 'selfhosted-mobile',

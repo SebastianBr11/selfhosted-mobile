@@ -156,7 +156,9 @@
           "url": {
             "type": "string",
             "minLength": 1,
-            "format": "uri"
+            "format": "uri",
+            "title": "Service URL",
+            "description": "The URL of the service"
           }
         },
         "required": [

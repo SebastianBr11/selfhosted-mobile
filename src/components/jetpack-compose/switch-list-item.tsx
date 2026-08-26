@@ -1,7 +1,7 @@
 import { Icon, Row, Spacer, Switch } from '@expo/ui/jetpack-compose'
 import { size, width } from '@expo/ui/jetpack-compose/modifiers'
 import { useTheme } from '@/hooks/use-theme'
-import { withOpacity } from '@/util/jetpack-compose-util'
+import { withOpacity } from '@/util/color-util'
 import { ListItem } from './list-item'
 
 type SwitchListItemProps = {

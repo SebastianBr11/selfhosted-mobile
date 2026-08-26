@@ -45,7 +45,7 @@ export function ServicesViewItem({ service }: ServicesViewItemProps) {
           type="backgroundElement"
         >
           <Image
-            contentFit="cover"
+            contentFit="contain"
             source={schemeDependantIcon(colorScheme, service.iconUrl)}
             style={{ flex: 1, width: '100%' }}
           />

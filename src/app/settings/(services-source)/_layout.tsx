@@ -13,14 +13,15 @@ import {
   weight,
 } from '@expo/ui/jetpack-compose/modifiers'
 import { useLingui } from '@lingui/react/macro'
-import { useRouter } from 'expo-router'
+import { TabNavigationState, useRouter } from 'expo-router'
+import TopTabs, { MaterialTopTabNavigationProp } from 'expo-router/js-top-tabs'
+import { ParamListBase } from 'expo-router/react-navigation'
 import { useColorScheme } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { ThemedView } from '@/components/themed-view'
 import { InlineInsetMedium } from '@/constants/theme'
 import { useSettings } from '@/features/settings/hooks/use-settings'
 import { useTheme } from '@/hooks/use-theme'
-import { MaterialTopTabs } from '@/navigators'
 
 export default function ServicesSourceSettingsLayout() {
   const insets = useSafeAreaInsets()
@@ -33,7 +34,7 @@ export default function ServicesSourceSettingsLayout() {
     useSettings()
 
   return (
-    <MaterialTopTabs
+    <TopTabs
       backBehavior="none"
       initialRouteName={
         useRemoteSource ? 'remote-source-settings' : 'local-source-settings'
@@ -45,9 +46,19 @@ export default function ServicesSourceSettingsLayout() {
         swipeEnabled: false,
         tabBarScrollEnabled: true,
       }}
-      tabBar={({ navigation, state }) => (
+      tabBar={({
+        navigation,
+        state,
+      }: {
+        navigation: MaterialTopTabNavigationProp<
+          ParamListBase,
+          string,
+          string | undefined
+        >
+        state: TabNavigationState<ParamListBase>
+      }) => (
         <ThemedView style={{ paddingTop: insets.top }} type="background">
-          <Host colorScheme={colorScheme} matchContents>
+          <Host colorScheme={colorScheme} matchContents={{ vertical: true }}>
             <Column
               modifiers={[paddingAll(InlineInsetMedium)]}
               verticalArrangement={{ spacedBy: 32 }}
@@ -110,8 +121,8 @@ export default function ServicesSourceSettingsLayout() {
         </ThemedView>
       )}
     >
-      <MaterialTopTabs.Screen name="remote-source-settings" />
-      <MaterialTopTabs.Screen name="local-source-settings" />
-    </MaterialTopTabs>
+      <TopTabs.Screen name="remote-source-settings" />
+      <TopTabs.Screen name="local-source-settings" />
+    </TopTabs>
   )
 }
