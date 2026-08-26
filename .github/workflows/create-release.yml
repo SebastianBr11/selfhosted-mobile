@@ -77,7 +77,7 @@ jobs:
         with:
           name: schema
 
-      - name: 📝 Create GitHub Release
+      - name: 📝 Create/Update GitHub Release with files
         uses: softprops/action-gh-release@v1
         with:
           draft: true
