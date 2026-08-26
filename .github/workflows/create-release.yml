@@ -90,6 +90,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update CHANGELOG.md
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           NEW_CHANGELOG_STRING=$(gh release view --json body,publishedAt,name -t \
                 '# {{.name}} ({{timefmt "2006-01-02" .publishedAt}})
