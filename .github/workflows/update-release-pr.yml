@@ -32,6 +32,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          git switch -C release
+
           if [[ $string == *"Exciting New Features"* ]]; then
             echo "Features found, bumping minor version"
             # Without `--git-tag-version false` it would create a commit
@@ -44,7 +46,7 @@ jobs:
 
           VERSION=$(jq -r .version package.json)
 
-          git switch -C release
+          git add package.json
           git commit -m "chore(main): ${VERSION} [release]"
 
           git push origin release --force
