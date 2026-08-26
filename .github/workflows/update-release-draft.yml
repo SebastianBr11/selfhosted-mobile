@@ -13,10 +13,10 @@ jobs:
     if: ${{ github.event.pull_request.merged }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: 📝 Create/Update GitHub Release Draft
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           draft: true
           generate_release_notes: true
