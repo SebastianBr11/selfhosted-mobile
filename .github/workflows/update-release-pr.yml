@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.pull_request.merged }}
     permissions:
+      contents: write
       pull-requests: write
     steps:
       - name: Checkout repository
