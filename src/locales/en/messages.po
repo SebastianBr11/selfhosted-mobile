@@ -128,11 +128,11 @@ msgstr "Icon URL"
 msgid "Include Pre-Releases when checking for updates"
 msgstr "Include Pre-Releases when checking for updates"
 
-#: src/features/settings/more-settings-view.tsx:129
+#: src/features/settings/more-settings-view.tsx:134
 msgid "License"
 msgstr "License"
 
-#: src/features/settings/more-settings-view.tsx:137
+#: src/features/settings/more-settings-view.tsx:142
 msgid "MIT"
 msgstr "MIT"
 
@@ -241,7 +241,7 @@ msgstr "Show button to open in browser"
 msgid "Show Pre-Releases"
 msgstr "Show Pre-Releases"
 
-#: src/features/settings/more-settings-view.tsx:119
+#: src/features/settings/more-settings-view.tsx:124
 msgid "Source Code"
 msgstr "Source Code"
 
@@ -269,7 +269,7 @@ msgstr "The URL \"{received}\" is invalid."
 msgid "Unknown service ID \"{id}\". Service name, description and icon URL are required for custom services."
 msgstr "Unknown service ID \"{id}\". Service name, description and icon URL are required for custom services."
 
-#: src/features/settings/more-settings-view.tsx:115
+#: src/features/settings/more-settings-view.tsx:120
 msgid "Unknown version"
 msgstr "Unknown version"
 
@@ -301,7 +301,7 @@ msgstr "Version"
 msgid "Version {rawNewVersion} is available."
 msgstr "Version {rawNewVersion} is available."
 
-#: src/features/settings/more-settings-view.tsx:126
+#: src/features/settings/more-settings-view.tsx:131
 msgid "View source code on GitHub"
 msgstr "View source code on GitHub"
 

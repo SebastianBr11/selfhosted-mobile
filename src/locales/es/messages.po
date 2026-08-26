@@ -116,11 +116,11 @@ msgstr "URL del icono"
 msgid "Include Pre-Releases when checking for updates"
 msgstr "Incluir versiones preliminares al buscar actualizaciones"
 
-#: src/features/settings/more-settings-view.tsx:129
+#: src/features/settings/more-settings-view.tsx:134
 msgid "License"
 msgstr "Licencia"
 
-#: src/features/settings/more-settings-view.tsx:137
+#: src/features/settings/more-settings-view.tsx:142
 msgid "MIT"
 msgstr "MIT"
 
@@ -229,7 +229,7 @@ msgstr "Mostrar botón para abrir en navegador"
 msgid "Show Pre-Releases"
 msgstr "Mostrar versiones preliminares"
 
-#: src/features/settings/more-settings-view.tsx:119
+#: src/features/settings/more-settings-view.tsx:124
 msgid "Source Code"
 msgstr "Código fuente"
 
@@ -257,7 +257,7 @@ msgstr "La URL \"{received}\" es inválida."
 msgid "Unknown service ID \"{id}\". Service name, description and icon URL are required for custom services."
 msgstr "ID de servicio desconocido \"{id}\". Se requieren el nombre, la descripción y la URL del icono para los servicios personalizados."
 
-#: src/features/settings/more-settings-view.tsx:115
+#: src/features/settings/more-settings-view.tsx:120
 msgid "Unknown version"
 msgstr "Versión desconocida"
 
@@ -289,7 +289,7 @@ msgstr "Versión"
 msgid "Version {rawNewVersion} is available."
 msgstr "La versión {rawNewVersion} ya está disponible."
 
-#: src/features/settings/more-settings-view.tsx:126
+#: src/features/settings/more-settings-view.tsx:131
 msgid "View source code on GitHub"
 msgstr "Ver el código fuente en GitHub"
 
