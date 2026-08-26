@@ -34,7 +34,7 @@ jobs:
 
           git switch -C release
 
-          if [[ $string == *"Exciting New Features"* ]]; then
+          if [[ $BODY == *"Exciting New Features"* ]]; then
             echo "Features found, bumping minor version"
             # Without `--git-tag-version false` it would create a commit
             npm version minor --git-tag-version false
