@@ -11,8 +11,6 @@ import {
 import {
   align,
   clip,
-  fillMaxHeight,
-  fillMaxSize,
   fillMaxWidth,
   padding,
   Shapes,
@@ -24,6 +22,7 @@ import { useRouter } from 'expo-router'
 import { shareAsync } from 'expo-sharing'
 import { useColorScheme } from 'react-native'
 import { SwitchListItem } from '@/components/jetpack-compose/switch-list-item'
+import { InlineInsetSmall } from '@/constants/theme'
 import {
   ServiceId,
   serviceSystem,
@@ -79,8 +78,12 @@ export function LocalSourceSettingsView() {
 
   return (
     <Host style={{ flex: 1 }}>
-      <LazyColumn horizontalAlignment="center">
-        <Box modifiers={[padding(16, 0, 16, 0), fillMaxWidth()]}>
+      <LazyColumn
+        horizontalAlignment="center"
+        modifiers={[padding(InlineInsetSmall, 0, InlineInsetSmall, 0)]}
+        verticalArrangement={{ spacedBy: 16 }}
+      >
+        <Box modifiers={[fillMaxWidth()]}>
           <Text
             color={theme.onSurface.toString()}
             modifiers={[align('center')]}
@@ -95,9 +98,9 @@ export function LocalSourceSettingsView() {
             />
           </IconButton>
         </Box>
-        <Box modifiers={[fillMaxSize(), padding(16, 16, 16, 16)]}>
+        <Box modifiers={[padding(0, 0, 0, 16)]}>
           <Column
-            modifiers={[clip(Shapes.RoundedCorner(16)), fillMaxHeight()]}
+            modifiers={[clip(Shapes.RoundedCorner(16))]}
             verticalArrangement={{ spacedBy: 2 }}
           >
             {builtInServices.map((service) => (
