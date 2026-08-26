@@ -35,6 +35,8 @@ jobs:
           git switch -C release
           git commit --allow-empty -m "chore(main): [release]"
 
+          git push origin release
+
           gh pr create --base main \
           --draft \
           --title "chore(main): [release]" \
