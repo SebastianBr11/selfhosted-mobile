@@ -69,9 +69,7 @@ jobs:
             gh pr create --base main \
             --draft \
             --title "chore: ${VERSION} [release]" \
-            --body "
-            - [ ] Bump version
-            ${BODY}" \
+            --body "${BODY}" \
             --assignee "SebastianBr11"
           else
             echo "PR #$PR_NUMBER exists. Editing it..."
