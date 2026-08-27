@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.6.1
+
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+### What's Changed
+#### Other Changes 🔄
+* ci(create-tag-for-release): add permissions for creating commit by @SebastianBr11 in https://github.com/SebastianBr11/selfhosted-mobile/pull/79
+* Update changelog in release pr by @SebastianBr11 in https://github.com/SebastianBr11/selfhosted-mobile/pull/81
+* ci(update-release-pr): actually add CHANGELOG by @SebastianBr11 in https://github.com/SebastianBr11/selfhosted-mobile/pull/82
+
+
+**Full Changelog**: https://github.com/SebastianBr11/selfhosted-mobile/compare/v0.6.0...main
+
+
 ## v0.6.0: Public Service Data (2026-08-26)
 
 <!-- Release notes generated using configuration in .github/release.yml at v0.6.0 -->
