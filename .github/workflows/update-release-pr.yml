@@ -29,6 +29,9 @@ jobs:
             -f 'target_commitish=main' \
             -q .body)
 
+          # Increase heading level by one
+          INDENTED_BODY=$(printf '%s' "$text" | sed -E 's/^(#{1,6})([[:space:]]+)/#\1\2/')
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
@@ -46,7 +49,15 @@ jobs:
 
           VERSION=$(jq -r .version package.json)
 
+          NEW_CHANGELOG_STRING=$(printf '%s\n\n%s\n\n' "## v${VERSION}" "${INDENTED_BODY}")
+
+          printf '\n%s\n\n' "$NEW_CHANGELOG_STRING" > temp_changelog
+          # Inserts after first line
+          sed -i "/^# Changelog/r temp_changelog" CHANGELOG.md
+          rm temp_changelog
+
           git add package.json
+          git add CHANGELOG.md
           git commit -m "chore(main): ${VERSION} [release]"
 
           git push origin release --force
@@ -57,14 +68,13 @@ jobs:
             echo "No PR found. Creating one..."
             gh pr create --base main \
             --draft \
-            --title "chore(main): ${VERSION} [release]" \
-            --body "
-            - [ ] Bump version
-            ${BODY}" \
+            --title "chore: ${VERSION} [release]" \
+            --body "${BODY}" \
             --assignee "SebastianBr11"
           else
             echo "PR #$PR_NUMBER exists. Editing it..."
-            gh pr edit $PR_NUMBER --body "
+            gh pr edit $PR_NUMBER --title "chore: ${VERSION} [release]" \
+            --body "
             - [ ] Bump version
             ${BODY}"
           fi
