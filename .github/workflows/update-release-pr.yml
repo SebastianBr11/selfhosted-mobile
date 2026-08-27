@@ -30,7 +30,7 @@ jobs:
             -q .body)
 
           # Increase heading level by one
-          INDENTED_BODY=$(printf '%s' "$text" | sed -E 's/^(#{1,6})([[:space:]]+)/#\1\2/')
+          INDENTED_BODY=$(printf '%s' "$BODY" | sed -E 's/^(#{1,6})([[:space:]]+)/#\1\2/')
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
